@@ -211,7 +211,9 @@ def generate_docs(paths: ArtifactPaths, build_html: bool = False) -> None:
 
 def verify_clean(paths_to_check: Iterable[Path], cwd: Path) -> None:
     """Fail if tracked generated files differ from the working tree."""
-    rel_paths = [str(path.relative_to(cwd)) for path in paths_to_check if path.exists()]
+    rel_paths = [
+        path.relative_to(cwd).as_posix() for path in paths_to_check if path.exists()
+    ]
     if not rel_paths:
         return
     run(["git", "diff", "--exit-code", "--", *rel_paths], cwd=cwd)

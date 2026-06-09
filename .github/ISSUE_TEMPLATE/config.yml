@@ -20,3 +20,8 @@ issue_templates:
     title: "[General]: "
     labels: ["general"]
     body: "./ISSUE_TEMPLATE/general_report.md"
+  - name: "Metadata Term Request"
+    description: "Request a new metadata term or unit."
+    title: "[Metadata Term]: "
+    labels: ["metadata", "enhancement"]
+    body: "./ISSUE_TEMPLATE/metadata_term_request.md"

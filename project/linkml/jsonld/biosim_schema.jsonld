@@ -7617,6 +7617,7 @@
     {
       "name": "Analysis",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis",
+      "description": "Analysis stage of simulation workflow.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slots": [
         "analysis_tool",
@@ -8060,7 +8061,7 @@
   "source_file": "biosim_schema.yaml",
   "source_file_date": "2026-06-03T09:32:49",
   "source_file_size": 2410,
-  "generation_date": "2026-06-09T10:35:15",
+  "generation_date": "2026-06-09T14:10:52",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

@@ -8,7 +8,17 @@
 biosim_schema:SimulationMetadata a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path biosim_schema:topology ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path biosim_schema:settings ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
@@ -18,11 +28,6 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 5 ;
             sh:path biosim_schema:composition ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path biosim_schema:topology ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -42,12 +47,7 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 7 ;
-            sh:path biosim_schema:compute ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path biosim_schema:settings ] ;
+            sh:path biosim_schema:compute ] ;
     sh:targetClass biosim_schema:SimulationMetadata .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity> a sh:NodeShape ;
@@ -68,30 +68,30 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ],
+        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ],
-        [ sh:defaultValue "1/bar" ;
+    sh:property [ sh:defaultValue "1/bar" ;
             sh:in ( qudt:PER-BAR qudt:PER-PA ) ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity> a sh:NodeShape ;
@@ -113,12 +113,20 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "Are the molecule positions derived from a prediction?" ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ;
+            sh:description "Electrostatic charge of a molecule." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 13 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_charge> ;
+            sh:pattern "^[+-]?\\d+(\\.\\d+)?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/predicted_structure> ],
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/InChI> ;
+            sh:pattern "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$" ],
         [ sh:datatype xsd:string ;
             sh:description "PubChem CID of chemical molecules and their activities against biological assays." ;
             sh:maxCount 1 ;
@@ -127,19 +135,51 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/PubChem_CID> ;
             sh:pattern "^\\d+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models." ;
+            sh:description "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/SMILES> ;
-            sh:pattern "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$" ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ;
-            sh:description "Electrostatic charge of a molecule." ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/InChIKey> ;
+            sh:pattern "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "One letter sequence for protein amino acids." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/protein_sequence> ;
+            sh:pattern "^[ACDEFGHIKLMNPQRSTVWY]+$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/alphafold_ID> ;
+            sh:pattern "^AF-[A-Z0-9]+-F1$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "UniProt accession ID" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/UNIPROT_ID> ;
+            sh:pattern "^[A-Z0-9]{6,10}$" ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> ;
+            sh:description "The molecular weight of a molecule." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 13 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_charge> ;
-            sh:pattern "^[+-]?\\d+(\\.\\d+)?$" ],
+            sh:order 12 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecular_weight> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Has the initial model been modified from the original?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Are the molecule positions derived from a prediction?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/predicted_structure> ],
         [ sh:datatype xsd:string ;
             sh:description "The molecular formula of a molecule\\" ;
             sh:maxCount 1 ;
@@ -147,20 +187,6 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:order 11 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecular_formula> ;
             sh:pattern "^([A-Z][a-z]?\\d*)+$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/InChI> ;
-            sh:pattern "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$" ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of atoms in a molecule." ;
-            sh:maxCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/atom_count> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of monomeric units in a polymer(e.g. protein or nucleic acid)." ;
             sh:maxCount 1 ;
@@ -168,6 +194,20 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 16 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/monomer_count> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of atoms in a molecule." ;
+            sh:maxCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 15 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/atom_count> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Protein Data Bank identifier" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/PDB_ID> ;
+            sh:pattern "^[0-9A-Za-z]{4}$" ],
         [ sh:datatype xsd:string ;
             sh:description "One letter sequence for nucleic acid nucleotides." ;
             sh:maxCount 1 ;
@@ -176,59 +216,19 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/nucleic_sequence> ;
             sh:pattern "^[ACGTURYSWKMBDHVN]+$" ],
         [ sh:datatype xsd:string ;
-            sh:description "Protein Data Bank identifier" ;
+            sh:description "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/PDB_ID> ;
-            sh:pattern "^[0-9A-Za-z]{4}$" ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Has the initial model been modified from the original?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
-        [ sh:datatype xsd:string ;
-            sh:description "UniProt accession ID" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/UNIPROT_ID> ;
-            sh:pattern "^[A-Z0-9]{6,10}$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "One letter sequence for protein amino acids." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/protein_sequence> ;
-            sh:pattern "^[ACDEFGHIKLMNPQRSTVWY]+$" ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> ;
-            sh:description "The molecular weight of a molecule." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 12 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecular_weight> ],
-        [ sh:datatype xsd:string ;
-            sh:description "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/InChIKey> ;
-            sh:pattern "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$" ],
+            sh:order 2 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/SMILES> ;
+            sh:pattern "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$" ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of instances of a given molecule, defined as bonded atoms or beads." ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_count> ],
-        [ sh:datatype xsd:string ;
-            sh:description "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/alphafold_ID> ;
-            sh:pattern "^AF-[A-Z0-9]+-F1$" ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_count> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> a sh:NodeShape ;
@@ -251,12 +251,12 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "Number of unique simulated molecules, defined as bonded atoms or beads." ;
+            sh:description "Total number of atoms in the simulation." ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/unique_molecule_count> ],
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/total_atom_count> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> ;
             sh:description "Concentration of salt in the solution." ;
             sh:maxCount 1 ;
@@ -271,78 +271,38 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:order 0 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/total_molecule_count> ],
         [ sh:datatype xsd:integer ;
-            sh:description "Total number of atoms in the simulation." ;
+            sh:description "Number of unique simulated molecules, defined as bonded atoms or beads." ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/total_atom_count> ] ;
+            sh:order 2 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/unique_molecule_count> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/compute/Software> ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/software> ],
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/hardware> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/compute/Performance> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/performance> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> ;
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/compute/Software> ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/hardware> ] ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/software> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:integer ;
-            sh:description "Number of physical CPU cores in each socket." ;
-            sh:maxCount 1 ;
-            sh:minInclusive 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/cores_per_socket> ],
-        [ sh:description "GPU vendor used by the compute nodes, if applicable." ;
-            sh:in ( "Nvidia" "AMD" "Intel" "None" ) ;
-            sh:maxCount 1 ;
-            sh:order 8 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/GPU_vendor> ],
-        [ sh:description "CPU instruction-set architecture of the compute nodes." ;
-            sh:in ( "x86" "ARM" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_architecture> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of physical CPU sockets in each compute node." ;
-            sh:maxCount 1 ;
-            sh:minInclusive 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/sockets_per_node> ],
-        [ sh:description "Compute node profile used for the simulation run." ;
-            sh:in ( "CPU only" "GPU Accelerated" "Hybrid CPU GPU" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/node_type> ],
-        [ sh:description "Broad type of system used to run the simulation workload." ;
-            sh:in ( "HPC Cluster" "Cloud VM" "Local" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/execution_platform> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> ;
-            sh:description "Amount of memory installed per compute node." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/memory_per_node> ],
-        [ sh:datatype xsd:integer ;
             sh:description "Number of hardware threads per physical core." ;
             sh:maxCount 1 ;
             sh:minInclusive 1 ;
@@ -350,57 +310,87 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:order 7 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/threads_per_core> ],
         [ sh:datatype xsd:integer ;
+            sh:description "Number of physical CPU sockets in each compute node." ;
+            sh:maxCount 1 ;
+            sh:minInclusive 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/sockets_per_node> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> ;
+            sh:description "Amount of memory installed per compute node." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/memory_per_node> ],
+        [ sh:datatype xsd:integer ;
             sh:description "Number of compute nodes used for the run." ;
             sh:maxCount 1 ;
             sh:minInclusive 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/node_count> ],
-        [ sh:description "CPU vendor used in the compute nodes." ;
-            sh:in ( "AMD" "Intel" "ARM" "Other" ) ;
+        [ sh:description "Broad type of system used to run the simulation workload." ;
+            sh:in ( "HPC Cluster" "Cloud VM" "Local" ) ;
             sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_vendor> ],
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/execution_platform> ],
+        [ sh:description "CPU instruction-set architecture of the compute nodes." ;
+            sh:in ( "x86" "ARM" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_architecture> ],
         [ sh:datatype xsd:integer ;
             sh:description "Number of GPUs present in each compute node." ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/GPUs_per_node> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/GPUs_per_node> ],
+        [ sh:description "GPU vendor used by the compute nodes, if applicable." ;
+            sh:in ( "Nvidia" "AMD" "Intel" "None" ) ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/GPU_vendor> ],
+        [ sh:description "Compute node profile used for the simulation run." ;
+            sh:in ( "CPU only" "GPU Accelerated" "Hybrid CPU GPU" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/node_type> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of physical CPU cores in each socket." ;
+            sh:maxCount 1 ;
+            sh:minInclusive 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/cores_per_socket> ],
+        [ sh:description "CPU vendor used in the compute nodes." ;
+            sh:in ( "AMD" "Intel" "ARM" "Other" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_vendor> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/Performance> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> ;
-            sh:description "Total energy consumed by the simulation run." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/energy_consumption> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
             sh:description "Total elapsed runtime of the simulation." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/wall_time> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/wall_time> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> ;
+            sh:description "Total energy consumed by the simulation run." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/energy_consumption> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/compute/Performance> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/Software> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Workload manager or job scheduler used to launch the simulation." ;
-            sh:in ( "SLURM" "PBS" "LSF" "SGE" "None" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/scheduler> ],
-        [ sh:description "Operating system installed on the hardware used to perform the simulation." ;
-            sh:in ( "Linux" "macOS" "Windows" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/operating_system> ],
-        [ sh:description "MPI implementation used for distributed parallel execution." ;
+    sh:property [ sh:description "MPI implementation used for distributed parallel execution." ;
             sh:in ( "OpenMPI" "MPICH" "IntelMPI" "MVAPICH2" "None" ) ;
             sh:maxCount 1 ;
             sh:order 2 ;
@@ -409,7 +399,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:in ( "Apptainer" "Docker" "Podman" "None" ) ;
             sh:maxCount 1 ;
             sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/container_runtime> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/container_runtime> ],
+        [ sh:description "Workload manager or job scheduler used to launch the simulation." ;
+            sh:in ( "SLURM" "PBS" "LSF" "SGE" "None" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/scheduler> ],
+        [ sh:description "Operating system installed on the hardware used to perform the simulation." ;
+            sh:in ( "Linux" "macOS" "Windows" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/compute/operating_system> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/compute/Software> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages> a sh:NodeShape ;
@@ -421,36 +421,36 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_enthalpy> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> ;
-            sh:description "Average volume sampled from the simulation, given as a float." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_volume> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ;
             sh:description "Average potential energy sampled from the simulation, given as a float." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_potential_energy> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ;
-            sh:description "Average kinetic energy sampled from the simulation, given as a float." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_kinetic_energy> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> ;
             sh:description "Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_volume_vector> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ;
+            sh:description "Average kinetic energy sampled from the simulation, given as a float." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_kinetic_energy> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> ;
             sh:description "Average pressure sampled from the simulation, given as a float." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_pressure> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> ;
+            sh:description "Average volume sampled from the simulation, given as a float." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/observables/average_volume> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> ;
             sh:description "Average temperature sampled from the simulation, given as a float." ;
             sh:maxCount 1 ;
@@ -473,17 +473,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Force field used to describe carbohydrate." ;
-            sh:in ( "GLYCAM06" "GLYCAM_06EP" "GLYCAM_06j-1" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential_name> ],
-        [ sh:datatype xsd:boolean ;
+    sh:property [ sh:datatype xsd:boolean ;
             sh:description "Has the initial model been modified from the original?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
+        [ sh:description "Force field used to describe carbohydrate." ;
+            sh:in ( "GLYCAM06" "GLYCAM_06EP" "GLYCAM_06j-1" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential_name> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> a sh:NodeShape ;
@@ -505,134 +505,134 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Force field used to describe lipids." ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:description "Has the initial model been modified from the original?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
+        [ sh:description "Force field used to describe lipids." ;
             sh:in ( "LIPID21" ) ;
             sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name> ],
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name> ] ;
+    sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> .
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "ML force field used to describe molecules." ;
+            sh:in ( "MACE" "ANI" "NequIP" "UMA" "AceFF" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential_name> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Has the initial model been modified from the original?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ] ;
-    sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> .
-
-<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "Has the initial model been modified from the original?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
-        [ sh:description "ML force field used to describe molecules." ;
-            sh:in ( "MACE" "ANI" "NequIP" "UMA" "AceFF" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential_name> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
+    sh:property [ sh:description "Force field used to describe nucleic acids." ;
+            sh:in ( "ff99-bsc0" "ff99OL3" "LJbb" "ROC" "Shaw" "OL15" "OL21" "OL24" "OL3" "bsc1" "terminal_monophosphate" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential_name> ],
+        [ sh:datatype xsd:boolean ;
             sh:description "Has the initial model been modified from the original?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
-        [ sh:description "Force field used to describe nucleic acids." ;
-            sh:in ( "ff99-bsc0" "ff99OL3" "LJbb" "ROC" "Shaw" "OL15" "OL21" "OL24" "OL3" "bsc1" "terminal_monophosphate" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential_name> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
+    sh:property [ sh:description "Force field used to describe polymers (excluding proteins and nucleic acids)." ;
+            sh:in ( "LignAmb25" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name> ],
+        [ sh:datatype xsd:boolean ;
             sh:description "Has the initial model been modified from the original?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
-        [ sh:description "Force field used to describe polymers (excluding proteins and nucleic acids)." ;
-            sh:in ( "LignAmb25" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> ;
-            sh:description "Force field for lipids." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> ;
             sh:description "Force field for nucleic acids." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> ;
-            sh:description "Force field for carbohydrates." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> ;
             sh:description "Force field for water molecules." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> ;
-            sh:description "Force field for proteins." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> ;
             sh:description "Force field for molecules (in general)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/general_potential> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> ;
+            sh:description "ML force field for molecules (in general)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> ;
             sh:description "Force field for polymers (excluding proteins and nucleic acids)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 5 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> ;
-            sh:description "ML force field for molecules (in general)." ;
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> ;
+            sh:description "Force field for carbohydrates." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential> ] ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> ;
+            sh:description "Force field for lipids." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> ;
+            sh:description "Force field for proteins." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
+    sh:property [ sh:description "Force field used to describe proteins." ;
+            sh:in ( "ff19SB" "ff99SB" "ff99SB-ILDN" "ff99SB-disp" "ff14SB" "ff14SBonlysc" "ff15ipq" "fb15" "ff03" "ff03ua" "phosaa10" "phosaa14SB" "phosaa19SB" "ff14SB_modAA" "ff19SB_modAA" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential_name> ],
+        [ sh:datatype xsd:boolean ;
             sh:description "Has the initial model been modified from the original?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ],
-        [ sh:description "Force field used to describe proteins." ;
-            sh:in ( "ff19SB" "ff99SB" "ff99SB-ILDN" "ff99SB-disp" "ff14SB" "ff14SBonlysc" "ff15ipq" "fb15" "ff03" "ff03ua" "phosaa10" "phosaa14SB" "phosaa19SB" "ff14SB_modAA" "ff19SB_modAA" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential_name> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> a sh:NodeShape ;
@@ -654,32 +654,32 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
-        [ sh:defaultValue "GB" ;
+    sh:property [ sh:defaultValue "GB" ;
             sh:in ( qudt:GigaBYTE qudt:MegaBYTE ) ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:defaultValue "M" ;
+            sh:in ( qudt:MOL-PER-M3 ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
+        [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
-        [ sh:defaultValue "M" ;
-            sh:in ( qudt:MOL-PER-M3 ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> a sh:NodeShape ;
@@ -716,17 +716,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "1/ps" ;
-            sh:in ( "1/ps" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
+        [ sh:defaultValue "1/ps" ;
+            sh:in ( "1/ps" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity> a sh:NodeShape ;
@@ -748,64 +748,48 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "g/mol" ;
-            sh:in ( qudt:GramPerMole qudt:Dalton ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
+        [ sh:defaultValue "g/mol" ;
+            sh:in ( qudt:GramPerMole qudt:Dalton ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "1/bar" ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ],
+        [ sh:defaultValue "1/bar" ;
             sh:in ( qudt:PER-BAR qudt:PER-PA ) ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "bar" ;
+    sh:property [ sh:datatype xsd:float ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ],
+        [ sh:defaultValue "bar" ;
             sh:in ( "bar" "Pa" ) ;
             sh:maxCount 1 ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "bar" ;
-            sh:in ( "bar" "Pa" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
-            sh:maxCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
-    sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> .
-
-<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
@@ -814,11 +798,27 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
-        [ sh:defaultValue "K" ;
-            sh:in ( "K" "°C" "°F" ) ;
+        [ sh:defaultValue "bar" ;
+            sh:in ( "bar" "Pa" ) ;
             sh:maxCount 1 ;
             sh:order 1 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
+    sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> .
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:defaultValue "K" ;
+            sh:in ( "K" "°C" "°F" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
+        [ sh:datatype xsd:float ;
+            sh:maxCount 1 ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> a sh:NodeShape ;
@@ -842,17 +842,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
     rdfs:comment "A quantity representing 3D lengths/dimensions" ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "nm" ;
-            sh:in ( qudt:ANGSTROM qudt:NanoM ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:maxCount 3 ;
             sh:minCount 3 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ],
+        [ sh:defaultValue "nm" ;
+            sh:in ( qudt:ANGSTROM qudt:NanoM ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> a sh:NodeShape ;
@@ -888,17 +888,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:defaultValue "nm" ;
-            sh:in ( qudt:ANGSTROM qudt:NanoM ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
-        [ sh:datatype xsd:float ;
+    sh:property [ sh:datatype xsd:float ;
             sh:maxCount 3 ;
             sh:minCount 3 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> ],
+        [ sh:defaultValue "nm" ;
+            sh:in ( qudt:ANGSTROM qudt:NanoM ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> a sh:NodeShape ;
@@ -920,18 +920,29 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
-            sh:description "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float." ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Step frequency to apply the barostat, given as an integer." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_time_constant> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_frequency> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> ;
             sh:description "Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure> ],
+        [ sh:description "List of coupling types for adjusting box vectors." ;
+            sh:in ( "isotropic" "semi-isotropic" "anisotropic" "surface tension" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_type> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
+            sh:description "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_time_constant> ],
         [ sh:description "List of barostat algorithms used in the simulation." ;
             sh:in ( "Berendsen" "Andersen" "Parrinello-Rahman" "Nose-Hoover" "Monte Carlo" "Martyna-Tuckerman-Tobias-Klein" ) ;
             sh:maxCount 1 ;
@@ -942,50 +953,34 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility> ],
-        [ sh:description "List of coupling types for adjusting box vectors." ;
-            sh:in ( "isotropic" "semi-isotropic" "anisotropic" "surface tension" ) ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_type> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Step frequency to apply the barostat, given as an integer." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_frequency> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:integer ;
+    sh:property [ sh:description "List of ensemble types used in the simulation." ;
+            sh:in ( "NPT" "NVT" "NVE" "μVT" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble_type> ],
+        [ sh:datatype xsd:integer ;
             sh:description "Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/random_seed> ],
-        [ sh:description "List of ensemble types used in the simulation." ;
-            sh:in ( "NPT" "NVT" "NVE" "μVT" ) ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble_type> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/random_seed> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "List of integrator algorithms used to integrate the simulation." ;
-            sh:in ( "Velocity-Verlet" "Leap-frog" "Verlet" "Euler" ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Number of integration steps performed in the simulation, given as an integer." ;
             sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator_algorithm> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
-            sh:description "Time between saved snapshots/frames in a simulation, given as a float." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/frame_step> ],
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/number_of_steps> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
             sh:description "Time between integration steps in a simulation, given as a float." ;
             sh:maxCount 1 ;
@@ -998,18 +993,28 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/simulation_time> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of integration steps performed in the simulation, given as an integer." ;
+        [ sh:description "List of integrator algorithms used to integrate the simulation." ;
+            sh:in ( "Velocity-Verlet" "Leap-frog" "Verlet" "Euler" ) ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/number_of_steps> ] ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator_algorithm> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ;
+            sh:description "Time between saved snapshots/frames in a simulation, given as a float." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/frame_step> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ;
+    sh:property [ sh:description "Method used to describe long-range interactions between particles." ;
+            sh:in ( "Cutoff" "Ewald" "PME" "P3M" "FMM" "RF" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/long_range_interaction_method> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ;
             sh:description "Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1021,22 +1026,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/electrostatic_cutoff_distance> ],
-        [ sh:description "Constraints applied to bonds between two particles in the simulated system." ;
-            sh:in ( "SHAKE" "RATTLE" "SETTLE" "LINCS" "CCMA" ) ;
-            sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/bond_length_constraints_algorithm> ],
-        [ sh:description "Method used to describe long-range interactions between particles." ;
-            sh:in ( "Cutoff" "Ewald" "PME" "P3M" "FMM" "RF" ) ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/long_range_interaction_method> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/restraints> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/restraints> ],
+        [ sh:description "Constraints applied to bonds between two particles in the simulated system." ;
+            sh:in ( "SHAKE" "RATTLE" "SETTLE" "LINCS" "CCMA" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/bond_length_constraints_algorithm> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> a sh:NodeShape ;
@@ -1048,133 +1048,124 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/interactions> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> ;
-            sh:description "Barostat information." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/barostat> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator> ;
             sh:description "Integrator information." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> ;
-            sh:description "thermostat information." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> ;
             sh:description "Ensemble information." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> ;
+            sh:description "Barostat information." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/barostat> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> ;
+            sh:description "thermostat information." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> ;
-            sh:description "Collision frequency for the integrator, given as a float." ;
+    sh:property [ sh:description "List of thermostat algorithms used in the simulation." ;
+            sh:in ( "Langevin" "Berendsen" "Andersen" "Nose-Hoover" "Bussi" ) ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/collision_frequency> ],
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat_algorithm> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> ;
             sh:description "Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature> ],
-        [ sh:datatype xsd:string ;
-            sh:description "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string" ;
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> ;
+            sh:description "Collision frequency for the integrator, given as a float." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/coupling_group> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer." ;
-            sh:maxCount 1 ;
-            sh:minInclusive 0 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/chain_length> ],
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/collision_frequency> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity> ;
             sh:description "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/temperature_time_constant> ],
+        [ sh:datatype xsd:string ;
+            sh:description "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/coupling_group> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity> ;
             sh:description "Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/friction_coefficient> ],
-        [ sh:description "List of thermostat algorithms used in the simulation." ;
-            sh:in ( "Langevin" "Berendsen" "Andersen" "Nose-Hoover" "Bussi" ) ;
+        [ sh:datatype xsd:integer ;
+            sh:description "Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer." ;
             sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat_algorithm> ] ;
+            sh:minInclusive 0 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/settings/chain_length> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis> a sh:NodeShape ;
+    rdfs:comment "Analysis stage of simulation workflow." ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Name of the tool used to analyse simulation." ;
-            sh:in ( "mdout_analyzer.py" "ambpdb" "CPPTRAJ" "PYTRAJ" "MMPBSA.py" "Free Energy Workflow (FEW)" "edgember" "SAX-RISM" "SAX-MD" "MoFT" "ndfes" "PLUMED" "MDanalysis" ) ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_tool> ],
+    sh:property [ sh:description "Name of software used to analyse simulation." ;
+            sh:in ( "VMD" "Schrodinger Maestro" "PyMOL" "Avogadro" ) ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_software> ],
         [ sh:description "Name of the method used to analyse simulation." ;
             sh:in ( "RMSD" "DSSP" "GIST" "Hydrogen Bonds" "Connolly surface" "Radius of Gyration" "BAR/PBSA" ) ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_method> ],
-        [ sh:description "Name of software used to analyse simulation." ;
-            sh:in ( "VMD" "Schrodinger Maestro" "PyMOL" "Avogadro" ) ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_software> ] ;
+        [ sh:description "Name of the tool used to analyse simulation." ;
+            sh:in ( "mdout_analyzer.py" "ambpdb" "CPPTRAJ" "PYTRAJ" "MMPBSA.py" "Free Energy Workflow (FEW)" "edgember" "SAX-RISM" "SAX-MD" "MoFT" "ndfes" "PLUMED" "MDanalysis" ) ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_tool> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Tool used to perform simulation." ;
-            sh:in ( "sander" "pmemd" "gem.pmemd" "mdrun" ) ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> ],
-        [ sh:description "Name of software used to perform simulation step." ;
+    sh:property [ sh:description "Name of software used to perform simulation step." ;
             sh:in ( "Amber" "GROMACS" "LAMMPS" "NAMD" "OpenMM" "CHARMM" "DL_POLY" "HOOMD-blue" "Desmond" "ACEMD" "CP2K" ) ;
             sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> ],
+        [ sh:description "Tool used to perform simulation." ;
+            sh:in ( "sander" "pmemd" "gem.pmemd" "mdrun" ) ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ;
+    sh:property [ sh:description "Name of the method used to minimise the molecular system." ;
+            sh:in ( "Steepest Descent" "Conjugate Gradient" "L-BFGS" "XMIN" "LMOD" ) ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_algorithm> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ;
             sh:description "The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float." ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_distance_step_size> ],
-        [ sh:description "Tool used to perform simulation." ;
-            sh:in ( "sander" "pmemd" "gem.pmemd" "mdrun" ) ;
-            sh:order 4 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of integration steps performed during minimisation of the system, given as an integer." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/number_of_minimisation_steps> ],
-        [ sh:description "Name of the method used to minimise the molecular system." ;
-            sh:in ( "Steepest Descent" "Conjugate Gradient" "L-BFGS" "XMIN" "LMOD" ) ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_algorithm> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> ;
             sh:description "Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float." ;
             sh:maxCount 1 ;
@@ -1185,30 +1176,40 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
         [ sh:description "Name of software used to perform simulation step." ;
             sh:in ( "Amber" "GROMACS" "LAMMPS" "NAMD" "OpenMM" "CHARMM" "DL_POLY" "HOOMD-blue" "Desmond" "ACEMD" "CP2K" ) ;
             sh:order 5 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Number of integration steps performed during minimisation of the system, given as an integer." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/number_of_minimisation_steps> ],
+        [ sh:description "Tool used to perform simulation." ;
+            sh:in ( "sander" "pmemd" "gem.pmemd" "mdrun" ) ;
+            sh:order 4 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Production> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:description "Method used to perform simulation." ;
+            sh:in ( "Self-guided Langevin Dynamics" "Accelerated Molecular Dynamics" "Gaussian Accelerated Molecular Dynamics" "Targeted Molecular Dynamics" "Nudged Elastic Band Calculations" "Adaptive String Method" "LMOD method" "DL-FIND Optimization" "Thermodynamic Integration (TI)" "Linear Interaction Energies (LIE)" "Replica Exchange Molecular Dynamics (REMD)" "Adaptively Biased Molecular Dynamics (ABMD)" "Steered Molecular Dynamics (SMD)" "Umbrella Sampling" "Metadynamics" "Swarms of Trajectories String Method" "Constant pH Molecular Dynamics" "Constant Redox Potential Molecular Dynamics" "Continuous Constant pH Molecular Dynamics" "NMR Refinement" "X-ray and CryoEM Refinement" "Locally Enhanced Sampling" ) ;
+            sh:order 3 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_method> ],
+        [ sh:description "Name of software used to perform simulation step." ;
+            sh:in ( "Amber" "GROMACS" "LAMMPS" "NAMD" "OpenMM" "CHARMM" "DL_POLY" "HOOMD-blue" "Desmond" "ACEMD" "CP2K" ) ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> ],
+        [ sh:datatype xsd:string ;
             sh:description "Version of software used to perform simulation step." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software_version> ],
-        [ sh:description "Method used to perform simulation." ;
-            sh:in ( "Self-guided Langevin Dynamics" "Accelerated Molecular Dynamics" "Gaussian Accelerated Molecular Dynamics" "Targeted Molecular Dynamics" "Nudged Elastic Band Calculations" "Adaptive String Method" "LMOD method" "DL-FIND Optimization" "Thermodynamic Integration (TI)" "Linear Interaction Energies (LIE)" "Replica Exchange Molecular Dynamics (REMD)" "Adaptively Biased Molecular Dynamics (ABMD)" "Steered Molecular Dynamics (SMD)" "Umbrella Sampling" "Metadynamics" "Swarms of Trajectories String Method" "Constant pH Molecular Dynamics" "Constant Redox Potential Molecular Dynamics" "Continuous Constant pH Molecular Dynamics" "NMR Refinement" "X-ray and CryoEM Refinement" "Locally Enhanced Sampling" ) ;
-            sh:order 3 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_method> ],
         [ sh:description "Tool used to perform simulation." ;
             sh:in ( "sander" "pmemd" "gem.pmemd" "mdrun" ) ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> ],
-        [ sh:description "Name of software used to perform simulation step." ;
-            sh:in ( "Amber" "GROMACS" "LAMMPS" "NAMD" "OpenMM" "CHARMM" "DL_POLY" "HOOMD-blue" "Desmond" "ACEMD" "CP2K" ) ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/stages/Production> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> a sh:NodeShape ;
@@ -1230,30 +1231,30 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> ;
-            sh:description "Minimisation stage of a simulation." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/Production> ;
             sh:description "Production stage of a simulation." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/production> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> ;
-            sh:description "Setup stage of a simulation." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/setup> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> ;
             sh:description "Equilibration stage of a simulation." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/equilibration> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/equilibration> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> ;
+            sh:description "Minimisation stage of a simulation." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> ;
+            sh:description "Setup stage of a simulation." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/stages/setup> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> a sh:NodeShape ;
@@ -1283,11 +1284,11 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:order 3 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/coarse_grained> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Are masses present in the topology?" ;
+            sh:description "Are fixed charges on atoms included in the topology?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/masses> ],
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/fixed_charges> ],
         [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ;
             sh:description "Total electrostatic charge of the system given by the elementary charge (e)." ;
             sh:maxCount 1 ;
@@ -1301,84 +1302,72 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:order 4 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/resolution> ],
         [ sh:datatype xsd:boolean ;
-            sh:description "Are fixed charges on atoms included in the topology?" ;
+            sh:description "Are masses present in the topology?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/fixed_charges> ] ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/masses> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> ;
-            sh:description "Particles information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/particles> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> ;
             sh:description "Particle connectivity information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/connectivity> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/connectivity> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> ;
+            sh:description "Particles information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/topology/particles> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> ;
-            sh:description "The angles of the box used to simulate the system." ;
+    sh:property [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> ;
+            sh:description "The lengths/dimensions of the box used to simulate the system." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_angles> ],
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_dimensions> ],
         [ sh:description "What directions in a simulation cell periodic boundaries are set if they are turned on." ;
             sh:in ( "None" "xyz" "xy" "xz" "yz" ) ;
             sh:maxCount 1 ;
             sh:order 3 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/periodic_boundary_conditions> ],
+        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> ;
+            sh:description "The angles of the box used to simulate the system." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_angles> ],
         [ sh:description "The type of box used to simuluate the system." ;
             sh:in ( "Cubic" "Tetragonal" "Orthorhombic" "Truncated Octahedron" "Triclinic" ) ;
             sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_type> ],
-        [ sh:class <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> ;
-            sh:description "The lengths/dimensions of the box used to simulate the system." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_dimensions> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_type> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:boolean ;
-            sh:description "Is this trajectory a replica of another provided trajectory?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/replica> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Are per-frame forces included in the trajectory?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/forces> ],
-        [ sh:datatype xsd:boolean ;
-            sh:description "Are per-frame positions included in the trajectory?" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/positions> ],
-        [ sh:datatype xsd:boolean ;
             sh:description "Are per-frame energies included in the trajectory?" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/energies> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Is this trajectory a replica of another provided trajectory?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/replica> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Are water molecules included in the trajectory?" ;
             sh:maxCount 1 ;
@@ -1398,6 +1387,18 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/velocities> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Are per-frame forces included in the trajectory?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/forces> ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "Are per-frame positions included in the trajectory?" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/trajectory/positions> ],
         [ sh:datatype xsd:boolean ;
             sh:description "Are per-frame polarizable charges included in the trajectory?" ;
             sh:maxCount 1 ;
@@ -1441,17 +1442,17 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:defaultValue "nm" ;
+            sh:in ( qudt:ANGSTROM qudt:NanoM ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
+        [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
-        [ sh:defaultValue "nm" ;
-            sh:in ( qudt:ANGSTROM qudt:NanoM ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> .
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> a sh:NodeShape ;
@@ -1473,15 +1474,15 @@ biosim_schema:SimulationMetadata a sh:NodeShape ;
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:defaultValue "ns" ;
+            sh:in ( qudt:SEC qudt:MilliSEC qudt:MicroSEC qudt:NanoSEC qudt:PicoSEC "fs" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ],
+        [ sh:datatype xsd:float ;
             sh:maxCount 1 ;
             sh:minInclusive 0 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ],
-        [ sh:defaultValue "ns" ;
-            sh:in ( qudt:SEC qudt:MilliSEC qudt:MicroSEC qudt:NanoSEC qudt:PicoSEC "fs" ) ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> ] ;
+            sh:path <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> ] ;
     sh:targetClass <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> .

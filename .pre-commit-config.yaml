@@ -4,7 +4,9 @@ repos:
     hooks:
       - id: ruff-check
         args: [--fix]
+        exclude: ^project/linkml/
       - id: ruff-format
+        exclude: ^project/linkml/
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0

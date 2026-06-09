@@ -2,7 +2,7 @@
     "$defs": {
         "Analysis": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Analysis stage of simulation workflow.",
             "properties": {
                 "analysis_method": {
                     "description": "Name of the method used to analyse simulation.",

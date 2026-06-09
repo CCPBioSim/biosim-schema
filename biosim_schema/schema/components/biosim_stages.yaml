@@ -41,6 +41,8 @@ classes:
       - simulation_method
 
   Analysis:
+    description:
+      Analysis stage of simulation workflow.
     slots:
       - analysis_tool
       - analysis_software

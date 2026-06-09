@@ -119,7 +119,7 @@
 -- # Class: Production
 --     * Slot: id
 --     * Slot: simulation_software_version Description: Version of software used to perform simulation step.
--- # Class: Analysis
+-- # Class: Analysis Description: Analysis stage of simulation workflow.
 --     * Slot: id
 -- # Class: SimulationSettings
 --     * Slot: id

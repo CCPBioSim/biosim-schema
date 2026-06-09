@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-08T15:02:08
+# Generation date: 2026-06-09T14:10:53
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -994,6 +994,10 @@ class Production(YAMLRoot):
 
 @dataclass(repr=False)
 class Analysis(YAMLRoot):
+    """
+    Analysis stage of simulation workflow.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = BIOSIM_SCHEMA["stages/Analysis"]

@@ -1,0 +1,2826 @@
+{
+    "$defs": {
+        "Analysis": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "analysis_method": {
+                    "description": "Name of the method used to analyse simulation.",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisMethod"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "analysis_software": {
+                    "description": "Name of software used to analyse simulation.",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisSoftware"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "analysis_tool": {
+                    "description": "Name of the tool used to analyse simulation.",
+                    "items": {
+                        "$ref": "#/$defs/AnalysisTool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Analysis",
+            "type": "object"
+        },
+        "AnalysisMethod": {
+            "description": "Methods used to analyse simulation outputs.",
+            "enum": [
+                "RMSD",
+                "DSSP",
+                "GIST",
+                "Hydrogen Bonds",
+                "Connolly surface",
+                "Radius of Gyration",
+                "BAR/PBSA"
+            ],
+            "title": "AnalysisMethod",
+            "type": "string"
+        },
+        "AnalysisSoftware": {
+            "description": "Software used to analyse simulation outputs.",
+            "enum": [
+                "VMD",
+                "Schrodinger Maestro",
+                "PyMOL",
+                "Avogadro"
+            ],
+            "title": "AnalysisSoftware",
+            "type": "string"
+        },
+        "AnalysisTool": {
+            "description": "Tools used to analyse simulation outputs.",
+            "enum": [
+                "mdout_analyzer.py",
+                "ambpdb",
+                "CPPTRAJ",
+                "PYTRAJ",
+                "MMPBSA.py",
+                "Free Energy Workflow (FEW)",
+                "edgember",
+                "SAX-RISM",
+                "SAX-MD",
+                "MoFT",
+                "ndfes",
+                "PLUMED",
+                "MDanalysis"
+            ],
+            "title": "AnalysisTool",
+            "type": "string"
+        },
+        "AngleQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/AngleUnit"
+                }
+            },
+            "title": "AngleQuantity",
+            "type": "object"
+        },
+        "AngleUnit": {
+            "description": "Units for angles.",
+            "enum": [
+                "degrees"
+            ],
+            "title": "AngleUnit",
+            "type": "string"
+        },
+        "Barostat": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "barostat_algorithm": {
+                    "$ref": "#/$defs/BarostatAlgorithm",
+                    "description": "List of barostat algorithms used in the simulation."
+                },
+                "compressibility": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MatrixCompressibilityQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Compressibility of the simulated system, given as a float."
+                },
+                "pressure_coupling_frequency": {
+                    "description": "Step frequency to apply the barostat, given as an integer.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pressure_coupling_type": {
+                    "$ref": "#/$defs/PressureCouplingType",
+                    "description": "List of coupling types for adjusting box vectors."
+                },
+                "pressure_time_constant": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float."
+                },
+                "target_pressure": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MatrixPressureQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1)."
+                }
+            },
+            "title": "Barostat",
+            "type": "object"
+        },
+        "BarostatAlgorithm": {
+            "description": "Barostat algorithm used to set the pressure in a simulation.",
+            "enum": [
+                "Berendsen",
+                "Andersen",
+                "Parrinello-Rahman",
+                "Nose-Hoover",
+                "Monte Carlo",
+                "Martyna-Tuckerman-Tobias-Klein"
+            ],
+            "title": "BarostatAlgorithm",
+            "type": "string"
+        },
+        "BondLengthConstraintsAlgorithm": {
+            "description": "Fix specific molecular degrees of freedom\u2014typically fast bond vibrations involving hydrogen atoms. By eliminating these high-frequency motions, constraints allow for larger integration time steps (e.g., 2 fs instead of 0.5 fs), significantly speeding up simulations without disrupting system dynamics.",
+            "enum": [
+                "SHAKE",
+                "RATTLE",
+                "SETTLE",
+                "LINCS",
+                "CCMA"
+            ],
+            "title": "BondLengthConstraintsAlgorithm",
+            "type": "string"
+        },
+        "BoxType": {
+            "description": "Types of box used to simulate the system.",
+            "enum": [
+                "Cubic",
+                "Tetragonal",
+                "Orthorhombic",
+                "Truncated Octahedron",
+                "Triclinic"
+            ],
+            "title": "BoxType",
+            "type": "string"
+        },
+        "ByteQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/ByteUnit"
+                }
+            },
+            "title": "ByteQuantity",
+            "type": "object"
+        },
+        "ByteUnit": {
+            "description": "Units for Bytes.",
+            "enum": [
+                "GB",
+                "MB"
+            ],
+            "title": "ByteUnit",
+            "type": "string"
+        },
+        "CarbohydratePotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "carbohydrate_potential_name": {
+                    "$ref": "#/$defs/CarbohydratePotentialName",
+                    "description": "Force field used to describe carbohydrate."
+                },
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "CarbohydratePotential",
+            "type": "object"
+        },
+        "CarbohydratePotentialName": {
+            "description": "Force fields used to parametrize carbohydrates in a simulation.",
+            "enum": [
+                "GLYCAM06",
+                "GLYCAM_06EP",
+                "GLYCAM_06j-1"
+            ],
+            "title": "CarbohydratePotentialName",
+            "type": "string"
+        },
+        "ChargeQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/ChargeUnit"
+                }
+            },
+            "title": "ChargeQuantity",
+            "type": "object"
+        },
+        "ChargeUnit": {
+            "description": "",
+            "enum": [
+                "e",
+                "C"
+            ],
+            "title": "ChargeUnit",
+            "type": "string"
+        },
+        "CompressibilityUnit": {
+            "description": "",
+            "enum": [
+                "1/bar",
+                "1/Pa"
+            ],
+            "title": "CompressibilityUnit",
+            "type": "string"
+        },
+        "ComputationalEnvironment": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "hardware": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Hardware"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "performance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Performance"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "software": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Software"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "title": "ComputationalEnvironment",
+            "type": "object"
+        },
+        "ConcentrationQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/ConcentrationUnit"
+                }
+            },
+            "title": "ConcentrationQuantity",
+            "type": "object"
+        },
+        "ConcentrationUnit": {
+            "description": "",
+            "enum": [
+                "M"
+            ],
+            "title": "ConcentrationUnit",
+            "type": "string"
+        },
+        "Connectivity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "bonds": {
+                    "description": "Are bond parameters present in the topology?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "dihedrals": {
+                    "description": "Are dihedral parameters present in the topology?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Connectivity",
+            "type": "object"
+        },
+        "ContainerRuntime": {
+            "description": "Container runtime used to package and run software.",
+            "enum": [
+                "Apptainer",
+                "Docker",
+                "Podman",
+                "None"
+            ],
+            "title": "ContainerRuntime",
+            "type": "string"
+        },
+        "CpuArchitecture": {
+            "description": "CPU architecture used by the compute nodes.",
+            "enum": [
+                "x86",
+                "ARM"
+            ],
+            "title": "CpuArchitecture",
+            "type": "string"
+        },
+        "CpuVendor": {
+            "description": "Vendor of the CPU used in the compute nodes.",
+            "enum": [
+                "AMD",
+                "Intel",
+                "ARM",
+                "Other"
+            ],
+            "title": "CpuVendor",
+            "type": "string"
+        },
+        "EnergyQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/EnergyUnit"
+                }
+            },
+            "title": "EnergyQuantity",
+            "type": "object"
+        },
+        "EnergyUnit": {
+            "description": "Units for energy.",
+            "enum": [
+                "kWh"
+            ],
+            "title": "EnergyUnit",
+            "type": "string"
+        },
+        "Ensemble": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "ensemble_type": {
+                    "$ref": "#/$defs/EnsembleType",
+                    "description": "List of ensemble types used in the simulation."
+                },
+                "random_seed": {
+                    "description": "Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Ensemble",
+            "type": "object"
+        },
+        "EnsembleType": {
+            "description": "Ensemble used in a simulation",
+            "enum": [
+                "NPT",
+                "NVT",
+                "NVE",
+                "\u03bcVT"
+            ],
+            "title": "EnsembleType",
+            "type": "string"
+        },
+        "Equilibration": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "simulation_software": {
+                    "description": "Name of software used to perform simulation step.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationSoftware"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "simulation_tool": {
+                    "description": "Tool used to perform simulation.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationTool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Equilibration",
+            "type": "object"
+        },
+        "ExecutionPlatform": {
+            "description": "Type of platform used to run the simulation.",
+            "enum": [
+                "HPC Cluster",
+                "Cloud VM",
+                "Local"
+            ],
+            "title": "ExecutionPlatform",
+            "type": "string"
+        },
+        "ForceQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "pattern": "^[+-]?\\d+(\\.\\d+)?$",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/ForceUnit"
+                }
+            },
+            "title": "ForceQuantity",
+            "type": "object"
+        },
+        "ForceUnit": {
+            "description": "",
+            "enum": [
+                "kJ/mol/nm",
+                "kcal/mol/\u00c5"
+            ],
+            "title": "ForceUnit",
+            "type": "string"
+        },
+        "FrequencyQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/FrequencyUnit"
+                }
+            },
+            "title": "FrequencyQuantity",
+            "type": "object"
+        },
+        "FrequencyUnit": {
+            "description": "Units used to describe frequency.",
+            "enum": [
+                "1/ps"
+            ],
+            "title": "FrequencyUnit",
+            "type": "string"
+        },
+        "FrictionCoefficientQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/FrictionCoefficientUnit"
+                }
+            },
+            "title": "FrictionCoefficientQuantity",
+            "type": "object"
+        },
+        "FrictionCoefficientUnit": {
+            "description": "",
+            "enum": [
+                "a/ps",
+                "kg/s"
+            ],
+            "title": "FrictionCoefficientUnit",
+            "type": "string"
+        },
+        "GeneralPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "general_potential_name": {
+                    "$ref": "#/$defs/GeneralPotentialName",
+                    "description": "Force field used to describe molecules."
+                },
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "GeneralPotential",
+            "type": "object"
+        },
+        "GeneralPotentialName": {
+            "description": "Force fields used to parametrize molecules in a simulation.",
+            "enum": [
+                "gem.pmemd",
+                "GAFF",
+                "GAFF2",
+                "OPLS",
+                "GROMOS",
+                "CHARMM"
+            ],
+            "title": "GeneralPotentialName",
+            "type": "string"
+        },
+        "GpuVendor": {
+            "description": "Vendor of the GPU used in the compute nodes.",
+            "enum": [
+                "Nvidia",
+                "AMD",
+                "Intel",
+                "None"
+            ],
+            "title": "GpuVendor",
+            "type": "string"
+        },
+        "Hardware": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "CPU_architecture": {
+                    "$ref": "#/$defs/CpuArchitecture",
+                    "description": "CPU instruction-set architecture of the compute nodes."
+                },
+                "CPU_vendor": {
+                    "$ref": "#/$defs/CpuVendor",
+                    "description": "CPU vendor used in the compute nodes."
+                },
+                "GPU_vendor": {
+                    "$ref": "#/$defs/GpuVendor",
+                    "description": "GPU vendor used by the compute nodes, if applicable."
+                },
+                "GPUs_per_node": {
+                    "description": "Number of GPUs present in each compute node.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cores_per_socket": {
+                    "description": "Number of physical CPU cores in each socket.",
+                    "minimum": 1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "execution_platform": {
+                    "$ref": "#/$defs/ExecutionPlatform",
+                    "description": "Broad type of system used to run the simulation workload."
+                },
+                "memory_per_node": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ByteQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Amount of memory installed per compute node."
+                },
+                "node_count": {
+                    "description": "Number of compute nodes used for the run.",
+                    "minimum": 1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "node_type": {
+                    "$ref": "#/$defs/NodeType",
+                    "description": "Compute node profile used for the simulation run."
+                },
+                "sockets_per_node": {
+                    "description": "Number of physical CPU sockets in each compute node.",
+                    "minimum": 1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "threads_per_core": {
+                    "description": "Number of hardware threads per physical core.",
+                    "minimum": 1,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Hardware",
+            "type": "object"
+        },
+        "Integrator": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "frame_step": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time between saved snapshots/frames in a simulation, given as a float."
+                },
+                "integrator_algorithm": {
+                    "$ref": "#/$defs/IntegratorAlgorithm",
+                    "description": "List of integrator algorithms used to integrate the simulation."
+                },
+                "number_of_steps": {
+                    "description": "Number of integration steps performed in the simulation, given as an integer.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "simulation_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float."
+                },
+                "time_step": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time between integration steps in a simulation, given as a float."
+                }
+            },
+            "title": "Integrator",
+            "type": "object"
+        },
+        "IntegratorAlgorithm": {
+            "description": "Algorithm used to integrate the simulation.",
+            "enum": [
+                "Velocity-Verlet",
+                "Leap-frog",
+                "Verlet",
+                "Euler"
+            ],
+            "title": "IntegratorAlgorithm",
+            "type": "string"
+        },
+        "Interactions": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "bond_length_constraints_algorithm": {
+                    "$ref": "#/$defs/BondLengthConstraintsAlgorithm",
+                    "description": "Constraints applied to bonds between two particles in the simulated system."
+                },
+                "electrostatic_cutoff_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LengthQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float."
+                },
+                "long_range_interaction_method": {
+                    "$ref": "#/$defs/LongRangeInteractionMethod",
+                    "description": "Method used to describe long-range interactions between particles."
+                },
+                "restraints": {
+                    "description": "Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "vdw_cutoff_distance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LengthQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on."
+                }
+            },
+            "title": "Interactions",
+            "type": "object"
+        },
+        "LengthQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/LengthUnit"
+                }
+            },
+            "title": "LengthQuantity",
+            "type": "object"
+        },
+        "LengthUnit": {
+            "description": "",
+            "enum": [
+                "\u00c5",
+                "nm"
+            ],
+            "title": "LengthUnit",
+            "type": "string"
+        },
+        "LipidPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "lipid_potential_name": {
+                    "$ref": "#/$defs/LipidPotentialName",
+                    "description": "Force field used to describe lipids."
+                },
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "LipidPotential",
+            "type": "object"
+        },
+        "LipidPotentialName": {
+            "description": "Force fields used to parametrize lipids in a simulation.",
+            "enum": [
+                "LIPID21"
+            ],
+            "title": "LipidPotentialName",
+            "type": "string"
+        },
+        "LongRangeInteractionMethod": {
+            "description": "Method used to implement long-range interactions of point charges in the simulation.",
+            "enum": [
+                "Cutoff",
+                "Ewald",
+                "PME",
+                "P3M",
+                "FMM",
+                "RF"
+            ],
+            "title": "LongRangeInteractionMethod",
+            "type": "string"
+        },
+        "MPILibrary": {
+            "description": "MPI implementation used for message passing.",
+            "enum": [
+                "OpenMPI",
+                "MPICH",
+                "IntelMPI",
+                "MVAPICH2",
+                "None"
+            ],
+            "title": "MPILibrary",
+            "type": "string"
+        },
+        "MachineLearnedPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "machine_learned_potential_name": {
+                    "$ref": "#/$defs/MachineLearnedPotentialName",
+                    "description": "ML force field used to describe molecules."
+                },
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MachineLearnedPotential",
+            "type": "object"
+        },
+        "MachineLearnedPotentialName": {
+            "description": "Machine learned potentials.",
+            "enum": [
+                "MACE",
+                "ANI",
+                "NequIP",
+                "UMA",
+                "AceFF"
+            ],
+            "title": "MachineLearnedPotentialName",
+            "type": "string"
+        },
+        "MassQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/MassUnit"
+                }
+            },
+            "title": "MassQuantity",
+            "type": "object"
+        },
+        "MassUnit": {
+            "description": "Units for mass/molecular weight",
+            "enum": [
+                "g/mol",
+                "Da"
+            ],
+            "title": "MassUnit",
+            "type": "string"
+        },
+        "MatrixCompressibilityQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/CompressibilityUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MatrixCompressibilityQuantity",
+            "type": "object"
+        },
+        "MatrixPressureQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/PressureUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MatrixPressureQuantity",
+            "type": "object"
+        },
+        "MatrixQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value_unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vector_value": {
+                    "items": {
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MatrixQuantity",
+            "type": "object"
+        },
+        "Minimisation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "energy_tolerance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ForceQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10\u22124kcal), given as a float.",
+                    "minimum": 0
+                },
+                "minimisation_algorithm": {
+                    "description": "Name of the method used to minimise the molecular system.",
+                    "items": {
+                        "$ref": "#/$defs/MinimisationAlgorithm"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "minimisation_distance_step_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LengthQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.",
+                    "minimum": 0
+                },
+                "number_of_minimisation_steps": {
+                    "description": "Number of integration steps performed during minimisation of the system, given as an integer.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "simulation_software": {
+                    "description": "Name of software used to perform simulation step.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationSoftware"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "simulation_tool": {
+                    "description": "Tool used to perform simulation.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationTool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Minimisation",
+            "type": "object"
+        },
+        "MinimisationAlgorithm": {
+            "description": "Algorithm used to minimise particle interactions.",
+            "enum": [
+                "Steepest Descent",
+                "Conjugate Gradient",
+                "L-BFGS",
+                "XMIN",
+                "LMOD"
+            ],
+            "title": "MinimisationAlgorithm",
+            "type": "string"
+        },
+        "ModelResolution": {
+            "description": "Resolution of simulated molecules.",
+            "enum": [
+                "All Atom",
+                "United Atom",
+                "Coarse-Grained",
+                "Mesoscale"
+            ],
+            "title": "ModelResolution",
+            "type": "string"
+        },
+        "MolarEnergyQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "pattern": "^[+-]?\\d+(\\.\\d+)?$",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/MolarEnergyUnit"
+                }
+            },
+            "title": "MolarEnergyQuantity",
+            "type": "object"
+        },
+        "MolarEnergyUnit": {
+            "description": "Units for molar energy.",
+            "enum": [
+                "kcal/mol",
+                "kJ/mol"
+            ],
+            "title": "MolarEnergyUnit",
+            "type": "string"
+        },
+        "MoleculeID": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "InChI": {
+                    "description": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
+                    "pattern": "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "InChIKey": {
+                    "description": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
+                    "pattern": "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PDB_ID": {
+                    "description": "Protein Data Bank identifier",
+                    "pattern": "^[0-9A-Za-z]{4}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PubChem_CID": {
+                    "description": "PubChem CID of chemical molecules and their activities against biological assays.",
+                    "pattern": "^\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SMILES": {
+                    "description": "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",
+                    "pattern": "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "UNIPROT_ID": {
+                    "description": "UniProt accession ID",
+                    "pattern": "^[A-Z0-9]{6,10}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "alphafold_ID": {
+                    "description": "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",
+                    "pattern": "^AF-[A-Z0-9]+-F1$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "atom_count": {
+                    "description": "Number of atoms in a molecule.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "molecular_formula": {
+                    "description": "The molecular formula of a molecule\\",
+                    "pattern": "^([A-Z][a-z]?\\d*)+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "molecular_weight": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MassQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The molecular weight of a molecule."
+                },
+                "molecule_charge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ChargeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Electrostatic charge of a molecule.",
+                    "pattern": "^[+-]?\\d+(\\.\\d+)?$"
+                },
+                "molecule_count": {
+                    "description": "Number of instances of a given molecule, defined as bonded atoms or beads.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "monomer_count": {
+                    "description": "Number of monomeric units in a polymer(e.g. protein or nucleic acid).",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "nucleic_sequence": {
+                    "description": "One letter sequence for nucleic acid nucleotides.",
+                    "pattern": "^[ACGTURYSWKMBDHVN]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "predicted_structure": {
+                    "description": "Are the molecule positions derived from a prediction?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "protein_sequence": {
+                    "description": "One letter sequence for protein amino acids.",
+                    "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MoleculeID",
+            "type": "object"
+        },
+        "NodeType": {
+            "description": "Type of compute node used in the system.",
+            "enum": [
+                "CPU only",
+                "GPU Accelerated",
+                "Hybrid CPU GPU"
+            ],
+            "title": "NodeType",
+            "type": "string"
+        },
+        "NucleicPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "nucleic_potential_name": {
+                    "$ref": "#/$defs/NucleicPotentialName",
+                    "description": "Force field used to describe nucleic acids."
+                }
+            },
+            "title": "NucleicPotential",
+            "type": "object"
+        },
+        "NucleicPotentialName": {
+            "description": "Force fields used to parametrize nucleic acids in a simulation.",
+            "enum": [
+                "ff99-bsc0",
+                "ff99OL3",
+                "LJbb",
+                "ROC",
+                "Shaw",
+                "OL15",
+                "OL21",
+                "OL24",
+                "OL3",
+                "bsc1",
+                "terminal_monophosphate"
+            ],
+            "title": "NucleicPotentialName",
+            "type": "string"
+        },
+        "OperatingSystem": {
+            "description": "List of operating systems installed on the hardware used to perform the simulation.",
+            "enum": [
+                "Linux",
+                "macOS",
+                "Windows"
+            ],
+            "title": "OperatingSystem",
+            "type": "string"
+        },
+        "Particles": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "coarse_grained": {
+                    "description": "Are atoms coarse-grained?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "fixed_charges": {
+                    "description": "Are fixed charges on atoms included in the topology?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "masses": {
+                    "description": "Are masses present in the topology?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "resolution": {
+                    "$ref": "#/$defs/ModelResolution",
+                    "description": "Resolution of simulated system."
+                },
+                "system_charge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ChargeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total electrostatic charge of the system given by the elementary charge (e).",
+                    "pattern": "^[+-]?\\d+(\\.\\d+)?$"
+                }
+            },
+            "title": "Particles",
+            "type": "object"
+        },
+        "Performance": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "energy_consumption": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EnergyQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total energy consumed by the simulation run."
+                },
+                "wall_time": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Total elapsed runtime of the simulation."
+                }
+            },
+            "title": "Performance",
+            "type": "object"
+        },
+        "PeriodicBoundaryConditions": {
+            "description": "What directions in a simulation cell periodic boundaries are set if they are turned on.",
+            "enum": [
+                "None",
+                "xyz",
+                "xy",
+                "xz",
+                "yz"
+            ],
+            "title": "PeriodicBoundaryConditions",
+            "type": "string"
+        },
+        "PolymerPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "polymer_potential_name": {
+                    "$ref": "#/$defs/PolymerPotentialName",
+                    "description": "Force field used to describe polymers (excluding proteins and nucleic acids)."
+                }
+            },
+            "title": "PolymerPotential",
+            "type": "object"
+        },
+        "PolymerPotentialName": {
+            "description": "Force fields used to parametrize polymers in a simulation.",
+            "enum": [
+                "LignAmb25"
+            ],
+            "title": "PolymerPotentialName",
+            "type": "string"
+        },
+        "PotentialMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "carbohydrate_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CarbohydratePotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for carbohydrates."
+                },
+                "general_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/GeneralPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for molecules (in general)."
+                },
+                "lipid_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LipidPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for lipids."
+                },
+                "machine_learned_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MachineLearnedPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ML force field for molecules (in general)."
+                },
+                "nucleic_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/NucleicPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for nucleic acids."
+                },
+                "polymer_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PolymerPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for polymers (excluding proteins and nucleic acids)."
+                },
+                "protein_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ProteinPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for proteins."
+                },
+                "water_potential": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/WaterPotential"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Force field for water molecules."
+                }
+            },
+            "title": "PotentialMetadata",
+            "type": "object"
+        },
+        "PressureCouplingType": {
+            "description": "Coupling type for adjusting box vectors.",
+            "enum": [
+                "isotropic",
+                "semi-isotropic",
+                "anisotropic",
+                "surface tension"
+            ],
+            "title": "PressureCouplingType",
+            "type": "string"
+        },
+        "PressureQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/PressureUnit"
+                }
+            },
+            "title": "PressureQuantity",
+            "type": "object"
+        },
+        "PressureUnit": {
+            "description": "",
+            "enum": [
+                "bar",
+                "Pa"
+            ],
+            "title": "PressureUnit",
+            "type": "string"
+        },
+        "Production": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "simulation_method": {
+                    "description": "Method used to perform simulation.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationMethod"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "simulation_software": {
+                    "description": "Name of software used to perform simulation step.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationSoftware"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "simulation_software_version": {
+                    "description": "Version of software used to perform simulation step.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulation_tool": {
+                    "description": "Tool used to perform simulation.",
+                    "items": {
+                        "$ref": "#/$defs/SimulationTool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Production",
+            "type": "object"
+        },
+        "ProteinPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "protein_potential_name": {
+                    "$ref": "#/$defs/ProteinPotentialName",
+                    "description": "Force field used to describe proteins."
+                }
+            },
+            "title": "ProteinPotential",
+            "type": "object"
+        },
+        "ProteinPotentialName": {
+            "description": "Force fields used to parametrize amino acids in proteins in a simulation.",
+            "enum": [
+                "ff19SB",
+                "ff99SB",
+                "ff99SB-ILDN",
+                "ff99SB-disp",
+                "ff14SB",
+                "ff14SBonlysc",
+                "ff15ipq",
+                "fb15",
+                "ff03",
+                "ff03ua",
+                "phosaa10",
+                "phosaa14SB",
+                "phosaa19SB",
+                "ff14SB_modAA",
+                "ff19SB_modAA"
+            ],
+            "title": "ProteinPotentialName",
+            "type": "string"
+        },
+        "Scheduler": {
+            "description": "Job scheduler used for simulation execution.",
+            "enum": [
+                "SLURM",
+                "PBS",
+                "LSF",
+                "SGE",
+                "None"
+            ],
+            "title": "Scheduler",
+            "type": "string"
+        },
+        "Setup": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "setup_tool": {
+                    "$ref": "#/$defs/SetupTool",
+                    "description": "Name of the tool used to setup simulation."
+                }
+            },
+            "title": "Setup",
+            "type": "object"
+        },
+        "SetupTool": {
+            "description": "Tool used to setup a system for simulation.",
+            "enum": [
+                "pdb4amber",
+                "prepareforleap",
+                "packmol",
+                "packmol_memgen",
+                "LEaP",
+                "antechamber",
+                "pyMSMT",
+                "mdgx",
+                "parmed"
+            ],
+            "title": "SetupTool",
+            "type": "string"
+        },
+        "SimulationAverages": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "average_enthalpy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MolarEnergyQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average enthalpy sampled from the simulation, given as a float."
+                },
+                "average_kinetic_energy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MolarEnergyQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average kinetic energy sampled from the simulation, given as a float."
+                },
+                "average_potential_energy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MolarEnergyQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average potential energy sampled from the simulation, given as a float."
+                },
+                "average_pressure": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PressureQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average pressure sampled from the simulation, given as a float."
+                },
+                "average_temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TemperatureQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average temperature sampled from the simulation, given as a float."
+                },
+                "average_volume": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VolumeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average volume sampled from the simulation, given as a float."
+                },
+                "average_volume_vector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VectorVolumeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10)."
+                }
+            },
+            "title": "SimulationAverages",
+            "type": "object"
+        },
+        "SimulationBox": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "box_angles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VectorAngleQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The angles of the box used to simulate the system."
+                },
+                "box_dimensions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VectorLengthQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The lengths/dimensions of the box used to simulate the system."
+                },
+                "box_type": {
+                    "$ref": "#/$defs/BoxType",
+                    "description": "The type of box used to simuluate the system."
+                },
+                "periodic_boundary_conditions": {
+                    "$ref": "#/$defs/PeriodicBoundaryConditions",
+                    "description": "What directions in a simulation cell periodic boundaries are set if they are turned on."
+                }
+            },
+            "title": "SimulationBox",
+            "type": "object"
+        },
+        "SimulationMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "composition": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SystemComposition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "compute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ComputationalEnvironment"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "observables": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SimulationObservables"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "potentials": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PotentialMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "settings": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SimulationSettings"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "stages": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SimulationStages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "topology": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TopologyMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "trajectory": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TrajectoryMetadata"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "title": "SimulationMetadata",
+            "type": "object"
+        },
+        "SimulationMethod": {
+            "description": "Options for simulation methods.",
+            "enum": [
+                "Self-guided Langevin Dynamics",
+                "Accelerated Molecular Dynamics",
+                "Gaussian Accelerated Molecular Dynamics",
+                "Targeted Molecular Dynamics",
+                "Nudged Elastic Band Calculations",
+                "Adaptive String Method",
+                "LMOD method",
+                "DL-FIND Optimization",
+                "Thermodynamic Integration (TI)",
+                "Linear Interaction Energies (LIE)",
+                "Replica Exchange Molecular Dynamics (REMD)",
+                "Adaptively Biased Molecular Dynamics (ABMD)",
+                "Steered Molecular Dynamics (SMD)",
+                "Umbrella Sampling",
+                "Metadynamics",
+                "Swarms of Trajectories String Method",
+                "Constant pH Molecular Dynamics",
+                "Constant Redox Potential Molecular Dynamics",
+                "Continuous Constant pH Molecular Dynamics",
+                "NMR Refinement",
+                "X-ray and CryoEM Refinement",
+                "Locally Enhanced Sampling"
+            ],
+            "title": "SimulationMethod",
+            "type": "string"
+        },
+        "SimulationObservables": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "simulation_averages": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SimulationAverages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Average values of observables outputted from the simulation."
+                }
+            },
+            "title": "SimulationObservables",
+            "type": "object"
+        },
+        "SimulationSettings": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "barostat": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Barostat"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Barostat information."
+                },
+                "ensemble": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Ensemble"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Ensemble information."
+                },
+                "integrator": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Integrator"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Integrator information."
+                },
+                "interactions": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Interactions"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Interaction information."
+                },
+                "thermostat": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Thermostat"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "thermostat information."
+                }
+            },
+            "title": "SimulationSettings",
+            "type": "object"
+        },
+        "SimulationSoftware": {
+            "description": "Simulation software used to perform molecular dynamics simulations and related functions.",
+            "enum": [
+                "Amber",
+                "GROMACS",
+                "LAMMPS",
+                "NAMD",
+                "OpenMM",
+                "CHARMM",
+                "DL_POLY",
+                "HOOMD-blue",
+                "Desmond",
+                "ACEMD",
+                "CP2K"
+            ],
+            "title": "SimulationSoftware",
+            "type": "string"
+        },
+        "SimulationStages": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "analysis": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Analysis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Analysis stage of a simulation."
+                },
+                "equilibration": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Equilibration"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Equilibration stage of a simulation."
+                },
+                "minimisation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Minimisation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Minimisation stage of a simulation."
+                },
+                "production": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Production"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Production stage of a simulation."
+                },
+                "setup": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Setup"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Setup stage of a simulation."
+                }
+            },
+            "title": "SimulationStages",
+            "type": "object"
+        },
+        "SimulationTool": {
+            "description": "Tools/utility used within simulation engines to perform simulations.",
+            "enum": [
+                "sander",
+                "pmemd",
+                "gem.pmemd",
+                "mdrun"
+            ],
+            "title": "SimulationTool",
+            "type": "string"
+        },
+        "Software": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "MPI_library": {
+                    "$ref": "#/$defs/MPILibrary",
+                    "description": "MPI implementation used for distributed parallel execution."
+                },
+                "container_runtime": {
+                    "$ref": "#/$defs/ContainerRuntime",
+                    "description": "Container runtime used to execute the simulation environment, if any."
+                },
+                "operating_system": {
+                    "$ref": "#/$defs/OperatingSystem",
+                    "description": "Operating system installed on the hardware used to perform the simulation."
+                },
+                "scheduler": {
+                    "$ref": "#/$defs/Scheduler",
+                    "description": "Workload manager or job scheduler used to launch the simulation."
+                }
+            },
+            "title": "Software",
+            "type": "object"
+        },
+        "SystemComposition": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "molecule_ID": {
+                    "description": "Persistent identifier of a molecule being simulated.",
+                    "items": {
+                        "$ref": "#/$defs/MoleculeID"
+                    },
+                    "maxItems": 20,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "system_counts": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SystemCounts"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "title": "SystemComposition",
+            "type": "object"
+        },
+        "SystemCounts": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "salt_concentration": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ConcentrationQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Concentration of salt in the solution."
+                },
+                "total_atom_count": {
+                    "description": "Total number of atoms in the simulation.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "total_molecule_count": {
+                    "description": "Total number of simulated molecules, defined as bonded atoms or beads.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "unique_molecule_count": {
+                    "description": "Number of unique simulated molecules, defined as bonded atoms or beads.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "title": "SystemCounts",
+            "type": "object"
+        },
+        "TemperatureQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/TemperatureUnit"
+                }
+            },
+            "title": "TemperatureQuantity",
+            "type": "object"
+        },
+        "TemperatureUnit": {
+            "description": "",
+            "enum": [
+                "K",
+                "\u00b0C",
+                "\u00b0F"
+            ],
+            "title": "TemperatureUnit",
+            "type": "string"
+        },
+        "Thermostat": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "chain_length": {
+                    "description": "Usually required in the Nos\u00e9-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "collision_frequency": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FrequencyQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Collision frequency for the integrator, given as a float."
+                },
+                "coupling_group": {
+                    "description": "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "friction_coefficient": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FrictionCoefficientQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float."
+                },
+                "target_temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VectorTemperatureQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300)."
+                },
+                "temperature_time_constant": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/VectorTimeQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300)."
+                },
+                "thermostat_algorithm": {
+                    "$ref": "#/$defs/ThermostatAlgorithm",
+                    "description": "List of thermostat algorithms used in the simulation."
+                }
+            },
+            "title": "Thermostat",
+            "type": "object"
+        },
+        "ThermostatAlgorithm": {
+            "description": "Thermostat algorithm used to set the temperature in a simulation.",
+            "enum": [
+                "Langevin",
+                "Berendsen",
+                "Andersen",
+                "Nose-Hoover",
+                "Bussi"
+            ],
+            "title": "ThermostatAlgorithm",
+            "type": "string"
+        },
+        "TimeQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/TimeUnit"
+                }
+            },
+            "title": "TimeQuantity",
+            "type": "object"
+        },
+        "TimeUnit": {
+            "description": "Units used to describe time.",
+            "enum": [
+                "s",
+                "ms",
+                "\u03bcs",
+                "ns",
+                "ps",
+                "fs"
+            ],
+            "title": "TimeUnit",
+            "type": "string"
+        },
+        "TopologyMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "connectivity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Connectivity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Particle connectivity information"
+                },
+                "particles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Particles"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Particles information"
+                }
+            },
+            "title": "TopologyMetadata",
+            "type": "object"
+        },
+        "Trajectories": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "energies": {
+                    "description": "Are per-frame energies included in the trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "forces": {
+                    "description": "Are per-frame forces included in the trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "frame_count": {
+                    "description": "Total number of snapshots that make up a trajectory.",
+                    "minimum": 0,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "polarizable_charges": {
+                    "description": "Are per-frame polarizable charges included in the trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "positions": {
+                    "description": "Are per-frame positions included in the trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "replica": {
+                    "description": "Is this trajectory a replica of another provided trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "velocities": {
+                    "description": "Are per-frame velocities included in the trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "water": {
+                    "description": "Are water molecules included in the trajectory?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Trajectories",
+            "type": "object"
+        },
+        "TrajectoryMetadata": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "simulation_box": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SimulationBox"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information about the simulation box."
+                },
+                "trajectory_output": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Trajectories"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information included in trajectory files."
+                }
+            },
+            "title": "TrajectoryMetadata",
+            "type": "object"
+        },
+        "VectorAngleQuantity": {
+            "additionalProperties": false,
+            "description": "A quantity representing 3D angles",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/AngleUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxItems": 3,
+                    "minItems": 3,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorAngleQuantity",
+            "type": "object"
+        },
+        "VectorCompressibilityQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/CompressibilityUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorCompressibilityQuantity",
+            "type": "object"
+        },
+        "VectorLengthQuantity": {
+            "additionalProperties": false,
+            "description": "A quantity representing 3D lengths/dimensions",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/LengthUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxItems": 3,
+                    "minItems": 3,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorLengthQuantity",
+            "type": "object"
+        },
+        "VectorPressureQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/PressureUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "maxItems": 3,
+                    "minItems": 3,
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorPressureQuantity",
+            "type": "object"
+        },
+        "VectorTemperatureQuantity": {
+            "additionalProperties": false,
+            "description": "Temperature values for multiple coupling groups",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/TemperatureUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorTemperatureQuantity",
+            "type": "object"
+        },
+        "VectorTimeQuantity": {
+            "additionalProperties": false,
+            "description": "Time values for multiple coupling groups",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/TimeUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorTimeQuantity",
+            "type": "object"
+        },
+        "VectorVolumeQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value_unit": {
+                    "$ref": "#/$defs/LengthUnit"
+                },
+                "vector_value": {
+                    "items": {
+                        "type": "number"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "VectorVolumeQuantity",
+            "type": "object"
+        },
+        "VolumeQuantity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "value": {
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/VolumeUnit"
+                }
+            },
+            "title": "VolumeQuantity",
+            "type": "object"
+        },
+        "VolumeUnit": {
+            "description": "",
+            "enum": [
+                "\u00c5\u00b3",
+                "nm\u00b3"
+            ],
+            "title": "VolumeUnit",
+            "type": "string"
+        },
+        "WaterPotential": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "modified": {
+                    "description": "Has the initial model been modified from the original?",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "water_potential_name": {
+                    "$ref": "#/$defs/WaterPotentialName",
+                    "description": "Force field used to describe water molecules."
+                }
+            },
+            "title": "WaterPotential",
+            "type": "object"
+        },
+        "WaterPotentialName": {
+            "description": "Force fields used to parametrize water molecules in a simulation.",
+            "enum": [
+                "OPC",
+                "OPC3",
+                "OPC3POL",
+                "POL3",
+                "TIP3P",
+                "TIP3PFB",
+                "TIP4PFB",
+                "TIP4P",
+                "TIP5P",
+                "TIP4PEW",
+                "SPCE",
+                "SPCEB",
+                "SPC/Fw",
+                "q-SPC/Fw"
+            ],
+            "title": "WaterPotentialName",
+            "type": "string"
+        }
+    },
+    "$id": "https://CCPBioSim.ac.uk/biosim-schema/",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "description": "",
+    "metamodel_version": "1.11.0",
+    "properties": {
+        "composition": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/SystemComposition"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "compute": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ComputationalEnvironment"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "observables": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/SimulationObservables"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "potentials": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/PotentialMetadata"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "settings": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/SimulationSettings"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "stages": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/SimulationStages"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "topology": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/TopologyMetadata"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "trajectory": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/TrajectoryMetadata"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "title": "biosim-schema",
+    "type": "object",
+    "version": null
+}

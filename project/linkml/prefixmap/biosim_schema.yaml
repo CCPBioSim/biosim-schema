@@ -1,0 +1,11 @@
+{
+   "ORCID": "https://orcid.org/",
+   "biolink": "https://w3id.org/biolink/",
+   "biosim_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
+   "example": "https://example.org/",
+   "linkml": "https://w3id.org/linkml/",
+   "pdb": "https://identifiers.org/pdb",
+   "qudt": "http://qudt.org/schema/qudt/",
+   "schema": "http://schema.org/",
+   "uniprot": "https://identifiers.org/uniprot"
+}

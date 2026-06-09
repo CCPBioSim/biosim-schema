@@ -1,0 +1,400 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.11.0
+message Analysis
+ {
+ repeated  analysisTool analysisTool = 0
+ repeated  analysisSoftware analysisSoftware = 0
+ repeated  analysisMethod analysisMethod = 0
+ }
+message AngleQuantity
+ {
+  float value = 0
+  angleUnit valueUnit = 0
+ }
+message Barostat
+ {
+  barostatAlgorithm barostatAlgorithm = 0
+  matrixCompressibilityQuantity compressibility = 0
+  matrixPressureQuantity targetPressure = 0
+  timeQuantity pressureTimeConstant = 0
+  integer pressureCouplingFrequency = 0
+  pressureCouplingType pressureCouplingType = 0
+ }
+message ByteQuantity
+ {
+  float value = 0
+  byteUnit valueUnit = 0
+ }
+message CarbohydratePotential
+ {
+  carbohydratePotentialName carbohydratePotentialName = 0
+  boolean modified = 0
+ }
+message ChargeQuantity
+ {
+  float value = 0
+  chargeUnit valueUnit = 0
+ }
+message ComputationalEnvironment
+ {
+  hardware hardware = 0
+  software software = 0
+  performance performance = 0
+ }
+message ConcentrationQuantity
+ {
+  float value = 0
+  concentrationUnit valueUnit = 0
+ }
+message Connectivity
+ {
+  boolean bonds = 0
+  boolean dihedrals = 0
+ }
+message EnergyQuantity
+ {
+  float value = 0
+  energyUnit valueUnit = 0
+ }
+message Ensemble
+ {
+  ensembleType ensembleType = 0
+  integer randomSeed = 0
+ }
+message Equilibration
+ {
+ repeated  simulationTool simulationTool = 0
+ repeated  simulationSoftware simulationSoftware = 0
+ }
+message ForceQuantity
+ {
+  float value = 0
+  forceUnit valueUnit = 0
+ }
+message FrequencyQuantity
+ {
+  float value = 0
+  frequencyUnit valueUnit = 0
+ }
+message FrictionCoefficientQuantity
+ {
+  float value = 0
+  frictionCoefficientUnit valueUnit = 0
+ }
+message GeneralPotential
+ {
+  generalPotentialName generalPotentialName = 0
+  boolean modified = 0
+ }
+message Hardware
+ {
+  executionPlatform executionPlatform = 0
+  nodeType nodeType = 0
+  integer nodeCount = 0
+  cpuVendor cPUVendor = 0
+  cpuArchitecture cPUArchitecture = 0
+  integer socketsPerNode = 0
+  integer coresPerSocket = 0
+  integer threadsPerCore = 0
+  gpuVendor gPUVendor = 0
+  integer gPUsPerNode = 0
+  byteQuantity memoryPerNode = 0
+ }
+message Integrator
+ {
+  integratorAlgorithm integratorAlgorithm = 0
+  timeQuantity frameStep = 0
+  timeQuantity timeStep = 0
+  integer numberOfSteps = 0
+  timeQuantity simulationTime = 0
+ }
+message Interactions
+ {
+  boolean restraints = 0
+  lengthQuantity electrostaticCutoffDistance = 0
+  lengthQuantity vdwCutoffDistance = 0
+  bondLengthConstraintsAlgorithm bondLengthConstraintsAlgorithm = 0
+  longRangeInteractionMethod longRangeInteractionMethod = 0
+ }
+message LengthQuantity
+ {
+  float value = 0
+  lengthUnit valueUnit = 0
+ }
+message LipidPotential
+ {
+  lipidPotentialName lipidPotentialName = 0
+  boolean modified = 0
+ }
+message MachineLearnedPotential
+ {
+  machineLearnedPotentialName machineLearnedPotentialName = 0
+  boolean modified = 0
+ }
+message MassQuantity
+ {
+  float value = 0
+  massUnit valueUnit = 0
+ }
+message MatrixCompressibilityQuantity
+ {
+ repeated  float vectorValue = 0
+  compressibilityUnit valueUnit = 0
+ }
+message MatrixPressureQuantity
+ {
+ repeated  float vectorValue = 0
+  pressureUnit valueUnit = 0
+ }
+message MatrixQuantity
+ {
+ repeated  float vectorValue = 0
+  string valueUnit = 0
+ }
+message Minimisation
+ {
+  forceQuantity energyTolerance = 0
+  integer numberOfMinimisationSteps = 0
+  lengthQuantity minimisationDistanceStepSize = 0
+ repeated  minimisationAlgorithm minimisationAlgorithm = 0
+ repeated  simulationTool simulationTool = 0
+ repeated  simulationSoftware simulationSoftware = 0
+ }
+message MolarEnergyQuantity
+ {
+  float value = 0
+  molarEnergyUnit valueUnit = 0
+ }
+message MoleculeID
+ {
+  string pDBID = 0
+  string uNIPROTID = 0
+  string sMILES = 0
+  string inChI = 0
+  string inChIKey = 0
+  string alphafoldID = 0
+  string pubChemCID = 0
+  string proteinSequence = 0
+  string nucleicSequence = 0
+  boolean predictedStructure = 0
+  boolean modified = 0
+  string molecularFormula = 0
+  massQuantity molecularWeight = 0
+  chargeQuantity moleculeCharge = 0
+  integer moleculeCount = 0
+  integer atomCount = 0
+  integer monomerCount = 0
+ }
+message NucleicPotential
+ {
+  nucleicPotentialName nucleicPotentialName = 0
+  boolean modified = 0
+ }
+message Particles
+ {
+  boolean masses = 0
+  boolean fixedCharges = 0
+  chargeQuantity systemCharge = 0
+  boolean coarseGrained = 0
+  modelResolution resolution = 0
+ }
+message Performance
+ {
+  timeQuantity wallTime = 0
+  energyQuantity energyConsumption = 0
+ }
+message PolymerPotential
+ {
+  polymerPotentialName polymerPotentialName = 0
+  boolean modified = 0
+ }
+message PotentialMetadata
+ {
+  waterPotential waterPotential = 0
+  proteinPotential proteinPotential = 0
+  lipidPotential lipidPotential = 0
+  nucleicPotential nucleicPotential = 0
+  carbohydratePotential carbohydratePotential = 0
+  polymerPotential polymerPotential = 0
+  generalPotential generalPotential = 0
+  machineLearnedPotential machineLearnedPotential = 0
+ }
+message PressureQuantity
+ {
+  float value = 0
+  pressureUnit valueUnit = 0
+ }
+message Production
+ {
+ repeated  simulationTool simulationTool = 0
+ repeated  simulationSoftware simulationSoftware = 0
+  string simulationSoftwareVersion = 0
+ repeated  simulationMethod simulationMethod = 0
+ }
+message ProteinPotential
+ {
+  proteinPotentialName proteinPotentialName = 0
+  boolean modified = 0
+ }
+message Setup
+ {
+  setupTool setupTool = 0
+ }
+message SimulationAverages
+ {
+  molarEnergyQuantity averageKineticEnergy = 0
+  molarEnergyQuantity averagePotentialEnergy = 0
+  molarEnergyQuantity averageEnthalpy = 0
+  pressureQuantity averagePressure = 0
+  temperatureQuantity averageTemperature = 0
+  volumeQuantity averageVolume = 0
+  vectorVolumeQuantity averageVolumeVector = 0
+ }
+message SimulationBox
+ {
+  vectorLengthQuantity boxDimensions = 0
+  vectorAngleQuantity boxAngles = 0
+  boxType boxType = 0
+  periodicBoundaryConditions periodicBoundaryConditions = 0
+ }
+message SimulationMetadata
+ {
+  simulationStages stages = 0
+  simulationSettings settings = 0
+  simulationObservables observables = 0
+  topologyMetadata topology = 0
+  trajectoryMetadata trajectory = 0
+  systemComposition composition = 0
+  potentialMetadata potentials = 0
+  computationalEnvironment compute = 0
+ }
+message SimulationObservables
+ {
+  simulationAverages simulationAverages = 0
+ }
+message SimulationSettings
+ {
+  ensemble ensemble = 0
+  integrator integrator = 0
+  barostat barostat = 0
+  thermostat thermostat = 0
+  interactions interactions = 0
+ }
+message SimulationStages
+ {
+  setup setup = 0
+  minimisation minimisation = 0
+  equilibration equilibration = 0
+  production production = 0
+  analysis analysis = 0
+ }
+message Software
+ {
+  operatingSystem operatingSystem = 0
+  scheduler scheduler = 0
+  mPILibrary mPILibrary = 0
+  containerRuntime containerRuntime = 0
+ }
+message SystemComposition
+ {
+  systemCounts systemCounts = 0
+ repeated  moleculeID moleculeID = 0
+ }
+message SystemCounts
+ {
+  integer totalMoleculeCount = 0
+  integer totalAtomCount = 0
+  integer uniqueMoleculeCount = 0
+  concentrationQuantity saltConcentration = 0
+ }
+message TemperatureQuantity
+ {
+  float value = 0
+  temperatureUnit valueUnit = 0
+ }
+message Thermostat
+ {
+  thermostatAlgorithm thermostatAlgorithm = 0
+  vectorTemperatureQuantity targetTemperature = 0
+  frequencyQuantity collisionFrequency = 0
+  vectorTimeQuantity temperatureTimeConstant = 0
+  string couplingGroup = 0
+  integer chainLength = 0
+  frictionCoefficientQuantity frictionCoefficient = 0
+ }
+message TimeQuantity
+ {
+  float value = 0
+  timeUnit valueUnit = 0
+ }
+message TopologyMetadata
+ {
+  connectivity connectivity = 0
+  particles particles = 0
+ }
+message Trajectories
+ {
+  boolean positions = 0
+  boolean forces = 0
+  boolean velocities = 0
+  boolean polarizableCharges = 0
+  boolean energies = 0
+  boolean water = 0
+  boolean replica = 0
+  integer frameCount = 0
+ }
+message TrajectoryMetadata
+ {
+  simulationBox simulationBox = 0
+  trajectories trajectoryOutput = 0
+ }
+// A quantity representing 3D angles
+message VectorAngleQuantity
+ {
+ repeated  float vectorValue = 0
+  angleUnit valueUnit = 0
+ }
+message VectorCompressibilityQuantity
+ {
+  float vectorValue = 0
+  compressibilityUnit valueUnit = 0
+ }
+// A quantity representing 3D lengths/dimensions
+message VectorLengthQuantity
+ {
+ repeated  float vectorValue = 0
+  lengthUnit valueUnit = 0
+ }
+message VectorPressureQuantity
+ {
+ repeated  float vectorValue = 0
+  pressureUnit valueUnit = 0
+ }
+// Temperature values for multiple coupling groups
+message VectorTemperatureQuantity
+ {
+ repeated  float vectorValue = 0
+  temperatureUnit valueUnit = 0
+ }
+// Time values for multiple coupling groups
+message VectorTimeQuantity
+ {
+ repeated  float vectorValue = 0
+  timeUnit valueUnit = 0
+ }
+message VectorVolumeQuantity
+ {
+ repeated  float vectorValue = 0
+  lengthUnit valueUnit = 0
+ }
+message VolumeQuantity
+ {
+  float value = 0
+  volumeUnit valueUnit = 0
+ }
+message WaterPotential
+ {
+  waterPotentialName waterPotentialName = 0
+  boolean modified = 0
+ }

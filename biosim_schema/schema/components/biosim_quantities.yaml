@@ -1,0 +1,610 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/quantities
+name: biosim-quantities
+
+imports:
+  - linkml:types
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  example: https://example.org/
+  ORCID: https://orcid.org/
+  qudt: http://qudt.org/schema/qudt/
+  uniprot: https://identifiers.org/uniprot
+  pdb: https://identifiers.org/pdb
+
+
+classes:
+
+  LengthQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: LengthUnit
+        ifabsent: string(nm) # default unit for this quantity
+
+  VolumeQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: VolumeUnit
+        ifabsent: string(nm³)
+
+  TimeQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: TimeUnit
+        ifabsent: string(ns)
+
+  FrequencyQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: FrequencyUnit
+        ifabsent: string(1/ps)
+
+  FrictionCoefficientQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: FrictionCoefficientUnit
+        ifabsent: string(a/ps)
+
+  MolarEnergyQuantity:
+    attributes:
+      value:
+        range: float
+        pattern: "^[+-]?\\d+(\\.\\d+)?$"
+      value_unit:
+        range: MolarEnergyUnit
+        ifabsent: string(kJ/mol)
+
+  EnergyQuantity:
+    attributes:
+      value:
+        range: float
+      value_unit:
+        range: EnergyUnit
+        ifabsent: string(kWh)
+
+  TemperatureQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: TemperatureUnit
+        ifabsent: string(K)
+
+  PressureQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: PressureUnit
+        ifabsent: string(bar)
+
+  MassQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: MassUnit
+        ifabsent: string(g/mol)
+
+  ConcentrationQuantity:
+    attributes:
+      value:
+        range: float
+        minimum_value: 0
+      value_unit:
+        range: ConcentrationUnit
+        ifabsent: string(M)
+
+  ForceQuantity:
+    attributes:
+      value:
+        range: float
+        pattern: "^[+-]?\\d+(\\.\\d+)?$"
+      value_unit:
+        range: ForceUnit
+        ifabsent: string(kJ/mol/nm)
+
+  ChargeQuantity:
+    attributes:
+      value:
+        range: float
+      value_unit:
+        range: ChargeUnit
+        ifabsent: string(e)
+
+  AngleQuantity:
+    attributes:
+      value:
+        range: float
+      value_unit:
+        range: AngleUnit
+        ifabsent: string(degrees)
+
+  ByteQuantity:
+    attributes:
+      value:
+        range: float
+      value_unit:
+        range: ByteUnit
+        ifabsent: string(GB)
+
+  VectorLengthQuantity:
+    description: A quantity representing 3D lengths/dimensions
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        maximum_cardinality: 3
+        minimum_cardinality: 3
+      value_unit:
+        range: LengthUnit
+        ifabsent: string(nm)
+
+  VectorAngleQuantity:
+    description: A quantity representing 3D angles
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        maximum_cardinality: 3
+        minimum_cardinality: 3
+      value_unit:
+        range: AngleUnit
+        ifabsent: string(degrees)
+
+  VectorVolumeQuantity:
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        exact_cardinality: 3
+      value_unit:
+        range: LengthUnit
+        ifabsent: string(nm)
+
+  VectorCompressibilityQuantity:
+    attributes:
+      vector_value:
+        range: float
+        array:
+          minimum_number_dimensions: 3
+          maximum_number_dimensions: 3
+      value_unit:
+        range: CompressibilityUnit
+        ifabsent: string(1/bar)
+
+  VectorPressureQuantity:
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        maximum_cardinality: 3
+        minimum_cardinality: 3
+      value_unit:
+        range: PressureUnit
+        ifabsent: string(bar)
+
+  VectorTemperatureQuantity:
+    description: Temperature values for multiple coupling groups
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+      value_unit:
+        range: TemperatureUnit
+        ifabsent: string(K)
+
+  VectorTimeQuantity:
+    description: Time values for multiple coupling groups
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+      value_unit:
+        range: TimeUnit
+        ifabsent: string(ns)
+
+  MatrixPressureQuantity:
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        array:
+          minimum_number_dimensions: 2
+          maximum_number_dimensions: 2
+          dimensions:
+            - alias: row
+              exact_cardinality: 3
+            - alias: column
+              exact_cardinality: 3
+      value_unit:
+        range: PressureUnit
+        ifabsent: string(bar)
+
+  MatrixCompressibilityQuantity:
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        array:
+          minimum_number_dimensions: 2
+          maximum_number_dimensions: 2
+          dimensions:
+            - alias: row
+              exact_cardinality: 3
+            - alias: column
+              exact_cardinality: 3
+      value_unit:
+        range: CompressibilityUnit
+        ifabsent: string(1/bar)
+
+  MatrixQuantity: # general matrix
+    attributes:
+      vector_value:
+        range: float
+        multivalued: true
+        array:
+          minimum_number_dimensions: 2
+          maximum_number_dimensions: 2
+      value_unit:
+
+slots:
+
+  value:
+    description: value for a given quantity.
+    range: float
+
+  value_unit:
+    description: unit for a given value.
+
+  vector_value:
+    description: vector value for a given quantity.
+
+
+enums:
+
+  LengthUnit:
+    permissible_values:
+      Å:
+        description:
+          "Length units in Angstrom."
+        aliases:
+          - Å
+          - Ang
+          - Angstrom
+        meaning: qudt:ANGSTROM
+        annotations:
+          ucum_code: Angstrom
+      nm:
+        description:
+          "Length units in nanometers."
+        aliases:
+          - nm
+        meaning: qudt:NanoM
+        annotations:
+          ucum_code: nm
+  # PositionUnit:
+
+  VolumeUnit:
+    permissible_values:
+      Å³:
+        description:
+          "Volume units in Angstrom^3."
+        aliases:
+          - Å³
+          - Å^3
+          - Ang^3
+          - Angstrom^3
+          - Å3
+          - Ang3
+          - Angstrom3
+        meaning: qudt:ANGSTROM3
+        annotations:
+          ucum_code: Angstrom3
+      nm³:
+        description:
+          "Volume units in nanometer^3."
+        aliases:
+          - nm³
+          - nm^3
+          - nanometer^3
+          - nm3
+          - nanometer3
+
+  ConcentrationUnit:
+    permissible_values:
+      M:
+        aliases:
+          - Molar
+          - mol/L
+          - "mol/m^3"
+          - "mol_per_m3"
+          - "mol/m³"
+          - "mol/m3"
+        meaning: qudt:MOL-PER-M3
+        unit:
+          ucum_code: MOL-PER-M3
+          has_quantity_kind: Concentration
+
+  ChargeUnit:
+    permissible_values:
+      e:
+      C:
+        unit:
+          ucum_code: C
+          has_quantity_kind: ChargeNumber
+
+  TimeUnit:
+    description:
+      "Units used to describe time."
+    permissible_values:
+      s:
+        description:
+          "Time units in seconds."
+        aliases:
+          - "s"
+        meaning: qudt:SEC
+        unit:
+          ucum_code: s
+          has_quantity_kind: Time
+      ms:
+        description:
+          "Time units in milliseconds."
+        aliases:
+          - "ms"
+        meaning: qudt:MilliSEC
+        unit:
+          ucum_code: ms
+          has_quantity_kind: Time
+      "μs":
+        description:
+          "Time units in microseconds."
+        aliases:
+          - "μs"
+          - us
+        meaning: qudt:MicroSEC
+        unit:
+          ucum_code: us
+          has_quantity_kind: Time
+      ns:
+        description:
+          "Time units in nanoseconds."
+        aliases:
+          - "ns"
+        meaning: qudt:NanoSEC
+        unit:
+          ucum_code: ns
+          has_quantity_kind: Time
+      ps:
+        description:
+          "Time units in picoseconds."
+        aliases:
+          - "ps"
+        meaning: qudt:PicoSEC
+        unit:
+          ucum_code: ps
+          has_quantity_kind: Time
+      fs:
+        description:
+          "Time units in femtoseconds."
+        aliases:
+          - "fs"
+        unit:
+          ucum_code: fs
+          has_quantity_kind: Time
+
+  FrequencyUnit:
+    description:
+      "Units used to describe frequency."
+    permissible_values:
+      1/ps:
+        description:
+          "Frequncy units in reciprocal picoseconds."
+        aliases:
+          - 1/ps
+          - "ps⁻¹"
+          - "ps^-1"
+          - "ps-1"
+        unit:
+          ucum_code: ps-1
+          has_quantity_kind: Frequency
+
+  FrictionCoefficientUnit:
+    permissible_values:
+      a/ps:
+        aliases:
+          - a/ps
+          - "a ps⁻¹"
+          - "amu ps-1"
+          - "amu ps^-1"
+      kg/s:
+        aliases:
+          - kg/s
+          - "kg s⁻¹"
+          - "kg s-1"
+          - "kg s^-1"
+
+  TemperatureUnit:
+    permissible_values:
+      K:
+        aliases:
+          - K
+          - Kelvin
+      "°C":
+        aliases:
+          - "°C"
+          - "C"
+          - "degrees Celsius"
+      "°F":
+        aliases:
+          - "°F"
+          - "F"
+          - "degrees Fahrenheit"
+
+  PressureUnit:
+    permissible_values:
+      bar:
+        aliases:
+          - Bar
+      Pa:
+        aliases:
+          - Pascal
+
+  CompressibilityUnit:
+    permissible_values:
+      1/bar:
+        aliases:
+          - 1/bar
+          - Bar^-1
+          - Bar-1
+        meaning: qudt:PER-BAR
+        annotations:
+          ucum_code: bar-1
+      1/Pa:
+        aliases:
+          - 1/Pa
+          - Pascal^-1
+          - Pascal-1
+        meaning: qudt:PER-PA
+        annotations:
+          ucum_code: Pa-1
+
+  AngleUnit:
+    description:
+      Units for angles.
+    permissible_values:
+      degrees:
+        aliases:
+          - degrees
+          - "°"
+        description:
+          Angle units in degree.
+
+  MolarEnergyUnit:
+    description:
+      Units for molar energy.
+    permissible_values:
+      kcal/mol:
+        aliases:
+          - "kcal/mol"
+          - kcal_per_mol
+        description:
+          "kcal/mol"
+        meaning: qudt:KiloCAL-PER-MOL
+        annotations:
+          ucum_code: KiloCAL-PER-MOL
+          has_quantity_kind: MolarEnergy
+      kJ/mol:
+        aliases:
+          - "kJ/mol"
+          - kJ_per_mol
+        description:
+            "kJ/mol"
+        meaning: qudt:KiloJ-PER-MOL
+        unit:
+          ucum_code: KiloJ-PER-MOL
+          has_quantity_kind: MolarEnergy
+
+
+  EnergyUnit:
+    description:
+      Units for energy.
+    permissible_values:
+      kWh:
+        aliases:
+          - kWh
+        description:
+          "kilowatt-hour"
+        meaning: qudt:KiloW-HR
+        unit:
+          ucum_code: KiloW-HR
+          has_quantity_kind: Energy
+
+
+  ForceUnit:
+    permissible_values:
+      kJ/mol/nm:
+        aliases:
+          - "kJ/mol/nm"
+          - kJ_per_mol_nm
+        description: kilojoules per mole per nanometer
+        meaning: qudt:KiloJoulePerMoleNanometer
+        unit:
+          ucum_code: kJ/mol/nm
+
+      kcal/mol/Å:
+        aliases:
+          - "kcal/mol/Å"
+          - "kcal/mol/Ang"
+          - kcal/mol/Angstrom
+          - kcal_per_mol_Ang
+        description: kilocalories per mole per angstrom
+        meaning: qudt:KiloCAL-PER-MOL-ANGSTROM
+        unit:
+          ucum_code: kcal/mol/Angstrom
+
+  MassUnit:
+    description: Units for mass/molecular weight
+    permissible_values:
+      g/mol:
+        aliases:
+          - g/mol
+          - g_per_mol
+        description: grams per mole
+        meaning: qudt:GramPerMole
+        annotations:
+          ucum_code: g/mol
+      Da:
+        aliases:
+          - "Da"
+          - "dalton"
+        description: daltons
+        meaning: qudt:Dalton
+
+  ByteUnit:
+    description:
+      Units for Bytes.
+    permissible_values:
+      GB:
+        aliases:
+          - GB
+          - GigaByte
+          - gigabyte
+          - Gigabyte
+        description:
+          Digital information storage units in GB.
+        meaning: qudt:GigaBYTE
+        annotations:
+          ucum_code: GBy
+      MB:
+        aliases:
+          - MB
+          - MegaByte
+          - megabyte
+          - Megabyte
+        description:
+          Digital information storage units in MB.
+        meaning: qudt:MegaBYTE
+        annotations:
+          ucum_code: MBy

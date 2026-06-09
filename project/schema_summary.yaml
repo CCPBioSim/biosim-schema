@@ -1,0 +1,707 @@
+composition:
+  fields:
+    molecule_ID:
+      fields:
+        InChI:
+          hint: The International Chemical Identifier (InChi) is a textual identifier
+            for chemical substances, designed to provide a standard way to encode
+            molecular information
+          label: InChI
+          placeholder: InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3
+          typehint: string
+        InChIKey:
+          hint: The condensed, 27 character InChIKey, which is a hashed version of
+            the full InChI (using the SHA-256 algorithm), designed to allow for easy
+            web searches of chemical compounds.
+          label: InChIKey
+          placeholder: RYYVLZVUVIJVGH-UHFFFAOYSA-N
+          typehint: string
+        PDB_ID:
+          hint: Protein Data Bank identifier
+          label: PDB ID
+          placeholder: 2VB1
+          typehint: string
+        PubChem_CID:
+          hint: PubChem CID of chemical molecules and their activities against biological
+            assays.
+          label: PubChem CID
+          placeholder: '100101'
+          typehint: string
+        SMILES:
+          hint: Simplified Molecular Input Line Entry System (SMILES) ASCII-based
+            line notation used to describe chemical structures. It represents molecular
+            graphs with atoms and bonds, allowing software to convert these short
+            strings into 2D or 3D models.
+          label: SMILES
+          placeholder: CN1C=NC2=C1C(=O)N(C(=O)N2C)C
+          typehint: string
+        UNIPROT_ID:
+          hint: UniProt accession ID
+          label: UNIPROT ID
+          placeholder: P0DP23
+          typehint: string
+        alphafold_ID:
+          hint: AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)
+          label: AlphaFold ID
+          placeholder: AF-P12345-F1
+          typehint: string
+        atom_count:
+          hint: Number of atoms in a molecule.
+          label: Atom Count
+          placeholder: '1'
+          typehint: integer
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+        molecular_formula:
+          hint: The molecular formula of a molecule\
+          label: Molecular Formula
+          placeholder: C8H10N4O2
+          typehint: string
+        molecular_weight:
+          default_unit: g/mol
+          hint: The molecular weight of a molecule.
+          label: Molecular Weight
+          typehint: float
+        molecule_charge:
+          default_unit: e
+          hint: Electrostatic charge of a molecule.
+          label: Molecule Charge
+          typehint: float
+        molecule_count:
+          hint: Number of instances of a given molecule, defined as bonded atoms or
+            beads.
+          label: Molecule Count
+          placeholder: '1'
+          typehint: integer
+        monomer_count:
+          hint: Number of monomeric units in a polymer(e.g. protein or nucleic acid).
+          label: Monomer Count
+          placeholder: '1'
+          typehint: integer
+        nucleic_sequence:
+          hint: One letter sequence for nucleic acid nucleotides.
+          label: Nucleic Sequence
+          placeholder: ATGCATCGATCGATCGATCG
+          typehint: string
+        predicted_structure:
+          hint: Are the molecule positions derived from a prediction?
+          label: Predicted Structure?
+          typehint: boolean
+        protein_sequence:
+          hint: One letter sequence for protein amino acids.
+          label: Protein Sequence
+          placeholder: DRVYIHPF
+          typehint: string
+      hint: Persistent identifier of a molecule being simulated.
+      label: Molecule ID
+    system_counts:
+      fields:
+        salt_concentration:
+          default_unit: M
+          hint: Concentration of salt in the solution.
+          label: Salt Concentration
+          typehint: float
+        total_atom_count:
+          hint: Total number of atoms in the simulation.
+          label: Total Atom Count
+          placeholder: '1'
+          typehint: integer
+        total_molecule_count:
+          hint: Total number of simulated molecules, defined as bonded atoms or beads.
+          label: Total Molecule Count
+          placeholder: '1'
+          typehint: integer
+        unique_molecule_count:
+          hint: Number of unique simulated molecules, defined as bonded atoms or beads.
+          label: Unique Molecule Count
+          placeholder: '1'
+          typehint: integer
+      label: System Counts
+  label: Composition
+compute:
+  fields:
+    hardware:
+      fields:
+        CPU_architecture:
+          hint: CPU architecture used by the compute nodes.
+          label: CPU Architecture
+          typehint: string
+        CPU_vendor:
+          hint: Vendor of the CPU used in the compute nodes.
+          label: CPU Vendor
+          typehint: string
+        GPU_vendor:
+          hint: Vendor of the GPU used in the compute nodes.
+          label: GPU Vendor
+          typehint: string
+        GPUs_per_node:
+          hint: Number of GPUs present in each compute node.
+          label: GPUs Per Node
+          typehint: integer
+        cores_per_socket:
+          hint: Number of physical CPU cores in each socket.
+          label: Cores Per Socket
+          typehint: integer
+        execution_platform:
+          hint: Type of platform used to run the simulation.
+          label: Execution Platform
+          typehint: string
+        memory_per_node:
+          default_unit: GB
+          hint: Amount of memory installed per compute node.
+          label: Memory Per Node
+          typehint: float
+        node_count:
+          hint: Number of compute nodes used for the run.
+          label: Node Count
+          typehint: integer
+        node_type:
+          hint: Type of compute node used in the system.
+          label: Node Type
+          typehint: string
+        sockets_per_node:
+          hint: Number of physical CPU sockets in each compute node.
+          label: Sockets Per Node
+          typehint: integer
+        threads_per_core:
+          hint: Number of hardware threads per physical core.
+          label: Threads Per Core
+          typehint: integer
+      label: Hardware
+    performance:
+      fields:
+        energy_consumption:
+          default_unit: kWh
+          hint: Total energy consumed by the simulation run.
+          label: Energy Consumption
+          typehint: float
+        wall_time:
+          default_unit: ns
+          hint: Total elapsed runtime of the simulation.
+          label: Wall Time
+          typehint: float
+      label: Performance
+    software:
+      fields:
+        MPI_library:
+          hint: MPI implementation used for message passing.
+          label: MPI Library
+          typehint: string
+        container_runtime:
+          hint: Container runtime used to package and run software.
+          label: Container Runtime
+          typehint: string
+        operating_system:
+          hint: List of operating systems installed on the hardware used to perform
+            the simulation.
+          label: Operating System
+          typehint: string
+        scheduler:
+          hint: Job scheduler used for simulation execution.
+          label: Scheduler
+          typehint: string
+      label: Software
+  label: Compute
+observables:
+  fields:
+    simulation_averages:
+      fields:
+        average_enthalpy:
+          default_unit: kJ/mol
+          hint: Average enthalpy sampled from the simulation, given as a float.
+          label: Average Enthalpy
+          typehint: float
+        average_kinetic_energy:
+          default_unit: kJ/mol
+          hint: Average kinetic energy sampled from the simulation, given as a float.
+          label: Average Kinetic Energy
+          typehint: float
+        average_potential_energy:
+          default_unit: kJ/mol
+          hint: Average potential energy sampled from the simulation, given as a float.
+          label: Average Potential Energy
+          typehint: float
+        average_pressure:
+          default_unit: bar
+          hint: Average pressure sampled from the simulation, given as a float.
+          label: Average Pressure
+          typehint: float
+        average_temperature:
+          default_unit: K
+          hint: Average temperature sampled from the simulation, given as a float.
+          label: Average Temperature
+          typehint: float
+        average_volume:
+          default_unit: nm³
+          hint: Average volume sampled from the simulation, given as a float.
+          label: Average Volume
+          typehint: float
+        average_volume_vector:
+          default_unit: nm
+          hint: Average volume sampled from the simulation, given as a list, (e.g.
+            10, 10, 10).
+          label: Average Volume Vector
+          typehint: list
+      hint: Average values of observables outputted from the simulation.
+      label: Simulation Averages
+  label: Observables
+potentials:
+  fields:
+    carbohydrate_potential:
+      fields:
+        carbohydrate_potential_name:
+          hint: Force fields used to parametrize carbohydrates in a simulation.
+          label: Carbohydrate Potential Name
+          typehint: string
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+      hint: Force field for carbohydrates.
+      label: Carbohydrate Potential
+    general_potential:
+      fields:
+        general_potential_name:
+          hint: Force fields used to parametrize molecules in a simulation.
+          label: General Potential Name
+          typehint: string
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+      hint: Force field for molecules (in general).
+      label: General Potential
+    lipid_potential:
+      fields:
+        lipid_potential_name:
+          hint: Force fields used to parametrize lipids in a simulation.
+          label: Lipid Potential Name
+          typehint: string
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+      hint: Force field for lipids.
+      label: Lipid Potential
+    machine_learned_potential:
+      fields:
+        machine_learned_potential_name:
+          hint: Machine learned potentials.
+          label: Machine Learned Potential Name
+          typehint: string
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+      hint: ML force field for molecules (in general).
+      label: Machine Learned Potential
+    nucleic_potential:
+      fields:
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+        nucleic_potential_name:
+          hint: Force fields used to parametrize nucleic acids in a simulation.
+          label: Nucleic Potential Name
+          typehint: string
+      hint: Force field for nucleic acids.
+      label: Nucleic Potential
+    polymer_potential:
+      fields:
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+        polymer_potential_name:
+          hint: Force fields used to parametrize polymers in a simulation.
+          label: Polymer Potential Name
+          typehint: string
+      hint: Force field for polymers (excluding proteins and nucleic acids).
+      label: Polymer Potential
+    protein_potential:
+      fields:
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+        protein_potential_name:
+          hint: Force fields used to parametrize amino acids in proteins in a simulation.
+          label: Protein Potential Name
+          typehint: string
+      hint: Force field for proteins.
+      label: Protein Potential
+    water_potential:
+      fields:
+        modified:
+          hint: Has the initial model been modified from the original?
+          label: Modified?
+          typehint: boolean
+        water_potential_name:
+          hint: Force fields used to parametrize water molecules in a simulation.
+          label: Water Potential Name
+          typehint: string
+      hint: Force field for water molecules.
+      label: Water Potential
+  label: Potentials
+settings:
+  fields:
+    barostat:
+      fields:
+        barostat_algorithm:
+          hint: Barostat algorithm used to set the pressure in a simulation.
+          label: Barostat Algorithm
+          typehint: string
+        compressibility:
+          default_unit: 1/bar
+          hint: Compressibility of the simulated system, given as a float.
+          label: Compressibility
+          typehint: list
+        pressure_coupling_frequency:
+          hint: Step frequency to apply the barostat, given as an integer.
+          label: Pressure Coupling Frequency
+          typehint: integer
+        pressure_coupling_type:
+          hint: Coupling type for adjusting box vectors.
+          label: Pressure Coupling Type
+          typehint: string
+        pressure_time_constant:
+          default_unit: ns
+          hint: Time constant/step (relaxation time of pressure) used for coupling
+            the system pressure, given as a float.
+          label: Pressure Time Constant
+          typehint: float
+        target_pressure:
+          default_unit: bar
+          hint: Target/reference pressure set to reach in the simulation, given as
+            a float or a list (e.g. 1, 1).
+          label: Target Pressure
+          typehint: list
+      hint: Barostat information.
+      label: Barostat
+    ensemble:
+      fields:
+        ensemble_type:
+          hint: Ensemble used in a simulation
+          label: Ensemble Type
+          typehint: string
+        random_seed:
+          hint: Random number used to set (a) distribution of velocities across particles
+            at the start of a simulation and (b) pseudo-random values for dynamics/couplings,
+            given as an integer.
+          label: Random Seed
+          typehint: integer
+      hint: Ensemble information.
+      label: Ensemble
+    integrator:
+      fields:
+        frame_step:
+          default_unit: ns
+          hint: Time between saved snapshots/frames in a simulation, given as a float.
+          label: Frame Step
+          typehint: float
+        integrator_algorithm:
+          hint: Algorithm used to integrate the simulation.
+          label: Integrator Algorithm
+          typehint: string
+        number_of_steps:
+          hint: Number of integration steps performed in the simulation, given as
+            an integer.
+          label: Number Of Steps
+          typehint: integer
+        simulation_time:
+          default_unit: ns
+          hint: Total time molecular dynamics have been sampled in a simulation trajectory,
+            often given by the number of integration steps multiplied by the simulation
+            time step used by the integrator, given as a float.
+          label: Simulation Time
+          typehint: float
+        time_step:
+          default_unit: ns
+          hint: Time between integration steps in a simulation, given as a float.
+          label: Integration Step
+          typehint: float
+      hint: Integrator information.
+      label: Integrator
+    interactions:
+      fields:
+        bond_length_constraints_algorithm:
+          hint: Fix specific molecular degrees of freedom—typically fast bond vibrations
+            involving hydrogen atoms. By eliminating these high-frequency motions,
+            constraints allow for larger integration time steps (e.g., 2 fs instead
+            of 0.5 fs), significantly speeding up simulations without disrupting system
+            dynamics.
+          label: Bond Length Constraints Algorithm
+          typehint: string
+        electrostatic_cutoff_distance:
+          default_unit: nm
+          hint: Distance in Angstrom at which a electrostatic interaction is turned
+            off and a long-range non-bonded method is turned on, given as a float.
+          label: Electrostatic Cutoff Distance
+          typehint: float
+        long_range_interaction_method:
+          hint: Method used to implement long-range interactions of point charges
+            in the simulation.
+          label: Long Range Interaction Method
+          typehint: string
+        restraints:
+          hint: Are any positional restraints applied to molecule dynamics? (Restraints
+            usually use harmonic potentials to keep a value near a target).
+          label: Restraints?
+          typehint: boolean
+        vdw_cutoff_distance:
+          default_unit: nm
+          hint: Distance in Angstrom at which a Van der Waals interaction is turned
+            off and a long-range non-bonded method is turned on.
+          label: Vdw Cutoff Distance
+          typehint: float
+      hint: Interaction information.
+      label: Interactions
+    thermostat:
+      fields:
+        chain_length:
+          hint: Usually required in the Nosé-Hoover thermostat, the chain length (e.g.,
+            nh-chain-length in GROMACS) is used to maintain canonical distribution,
+            given as an integer.
+          label: Chain Length
+          typehint: integer
+        collision_frequency:
+          default_unit: 1/ps
+          hint: Collision frequency for the integrator, given as a float.
+          label: Collision Frequency
+          typehint: float
+        coupling_group:
+          hint: A subset of atoms for which temperature is controlled, often needed
+            for simulating complex systems (e.g., protein in water), used in gromacs,
+            given as a string
+          label: Coupling Group
+          typehint: string
+        friction_coefficient:
+          default_unit: a/ps
+          hint: Usually used in the Langevin thermostat, the friction coefficient
+            determines the strength of coupling between a system and a heat bath,
+            given as a float.
+          label: Friction Coefficient
+          typehint: float
+        target_temperature:
+          default_unit: K
+          hint: Target/reference temperature set to reach in the simulation, given
+            as a list (e.g. 300, 300).
+          label: Target Temperature
+          typehint: list
+        temperature_time_constant:
+          default_unit: ns
+          hint: Time constant for coupling the system temperature in seconds units,
+            given as a list (e.g. 300, 300).
+          label: Temperature Time Constant
+          typehint: list
+        thermostat_algorithm:
+          hint: Thermostat algorithm used to set the temperature in a simulation.
+          label: Thermostat Algorithm
+          typehint: string
+      hint: thermostat information.
+      label: Thermostat
+  label: Settings
+stages:
+  fields:
+    analysis:
+      fields:
+        analysis_method:
+          hint: Methods used to analyse simulation outputs.
+          label: Analysis Method
+          typehint: string
+        analysis_software:
+          hint: Software used to analyse simulation outputs.
+          label: Analysis Software
+          typehint: string
+        analysis_tool:
+          hint: Tools used to analyse simulation outputs.
+          label: Analysis Tool
+          typehint: string
+      hint: Analysis stage of a simulation.
+      label: Analysis
+    equilibration:
+      fields:
+        simulation_software:
+          hint: Simulation software used to perform molecular dynamics simulations
+            and related functions.
+          label: Simulation Software
+          typehint: string
+        simulation_tool:
+          hint: Tools/utility used within simulation engines to perform simulations.
+          label: Simulation Tool
+          typehint: string
+      hint: Equilibration stage of a simulation.
+      label: Equilibration
+    minimisation:
+      fields:
+        energy_tolerance:
+          default_unit: kJ/mol/nm
+          hint: Tolerance energy for when minimization stops, this is when the maximum
+            force on any atom is less than this value (default is often 1000 kJ/mol/nm
+            or 10−4kcal), given as a float.
+          label: Energy Tolerance
+          typehint: float
+        minimisation_algorithm:
+          hint: Algorithm used to minimise particle interactions.
+          label: Minimisation Algorithm
+          typehint: string
+        minimisation_distance_step_size:
+          default_unit: nm
+          hint: The distance the algorithm moves in a single step, controls how large
+            a step the optimizer takes during the initial phase of minimizing the
+            potential energy of a structure, given as a float.
+          label: Minimisation Distance Step Size
+          typehint: float
+        number_of_minimisation_steps:
+          hint: Number of integration steps performed during minimisation of the system,
+            given as an integer.
+          label: Number Of Minimisation Steps
+          typehint: integer
+        simulation_software:
+          hint: Simulation software used to perform molecular dynamics simulations
+            and related functions.
+          label: Simulation Software
+          typehint: string
+        simulation_tool:
+          hint: Tools/utility used within simulation engines to perform simulations.
+          label: Simulation Tool
+          typehint: string
+      hint: Minimisation stage of a simulation.
+      label: Minimisation
+    production:
+      fields:
+        simulation_method:
+          hint: Options for simulation methods.
+          label: Simulation Method
+          typehint: string
+        simulation_software:
+          hint: Simulation software used to perform molecular dynamics simulations
+            and related functions.
+          label: Simulation Software
+          typehint: string
+        simulation_software_version:
+          hint: Version of software used to perform simulation step.
+          label: Simulation Software Version
+          typehint: string
+        simulation_tool:
+          hint: Tools/utility used within simulation engines to perform simulations.
+          label: Simulation Tool
+          typehint: string
+      hint: Production stage of a simulation.
+      label: Production
+    setup:
+      fields:
+        setup_tool:
+          hint: Tool used to setup a system for simulation.
+          label: Setup Tool
+          typehint: string
+      hint: Setup stage of a simulation.
+      label: Setup
+  label: Stages
+topology:
+  fields:
+    connectivity:
+      fields:
+        bonds:
+          hint: Are bond parameters present in the topology?
+          label: Bonds?
+          typehint: boolean
+        dihedrals:
+          hint: Are dihedral parameters present in the topology?
+          label: Dihedrals?
+          typehint: boolean
+      hint: Particle connectivity information
+      label: Connectivity
+    particles:
+      fields:
+        coarse_grained:
+          hint: Are atoms coarse-grained?
+          label: Coarse Grained?
+          typehint: boolean
+        fixed_charges:
+          hint: Are fixed charges on atoms included in the topology?
+          label: Fixed Charges?
+          typehint: boolean
+        masses:
+          hint: Are masses present in the topology?
+          label: Masses?
+          typehint: boolean
+        resolution:
+          hint: Resolution of simulated molecules.
+          label: Resolution
+          typehint: string
+        system_charge:
+          default_unit: e
+          hint: Total electrostatic charge of the system given by the elementary charge
+            (e).
+          label: System Charge
+          typehint: float
+      hint: Particles information
+      label: Particles
+  label: Topology
+trajectory:
+  fields:
+    simulation_box:
+      fields:
+        box_angles:
+          default_unit: degrees
+          hint: The angles of the box used to simulate the system.
+          label: Box Angles
+          typehint: list
+        box_dimensions:
+          default_unit: nm
+          hint: The lengths/dimensions of the box used to simulate the system.
+          label: Box Dimensions
+          typehint: list
+        box_type:
+          hint: Types of box used to simulate the system.
+          label: Box Type
+          typehint: string
+        periodic_boundary_conditions:
+          hint: What directions in a simulation cell periodic boundaries are set if
+            they are turned on.
+          label: Periodic Boundary Conditions
+          typehint: string
+      hint: Information about the simulation box.
+      label: Simulation Box
+    trajectory_output:
+      fields:
+        energies:
+          hint: Are per-frame energies included in the trajectory?
+          label: Energies?
+          typehint: boolean
+        forces:
+          hint: Are per-frame forces included in the trajectory?
+          label: Forces?
+          typehint: boolean
+        frame_count:
+          hint: Total number of snapshots that make up a trajectory.
+          label: Frame Count
+          placeholder: '1'
+          typehint: integer
+        polarizable_charges:
+          hint: Are per-frame polarizable charges included in the trajectory?
+          label: Polarizable Charges?
+          typehint: boolean
+        positions:
+          hint: Are per-frame positions included in the trajectory?
+          label: Positions?
+          typehint: boolean
+        replica:
+          hint: Is this trajectory a replica of another provided trajectory?
+          label: Replica?
+          typehint: boolean
+        velocities:
+          hint: Are per-frame velocities included in the trajectory?
+          label: Velocities?
+          typehint: boolean
+        water:
+          hint: Are water molecules included in the trajectory?
+          label: Water?
+          typehint: boolean
+      hint: Information included in trajectory files.
+      label: Trajectory Output
+  label: Trajectory

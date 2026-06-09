@@ -1,0 +1,338 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/composition
+name: biosim-composition
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+  uniprot: https://identifiers.org/uniprot
+  pdb: https://identifiers.org/pdb
+  emdb: https://identifiers.org/emdb/
+  pubchem.compound: https://identifiers.org/pubchem.compound/
+  inchikey: https://identifiers.org/inchikey/
+
+
+classes:
+
+  SystemComposition:
+    slots:
+      - system_counts # class
+      - molecule_ID # class
+
+  SystemCounts:
+    slots:
+      - total_molecule_count # int
+      - total_atom_count # int
+      - unique_molecule_count # int
+      - salt_concentration # float
+
+  MoleculeID:
+    slots:
+      - PDB_ID # string
+      - UNIPROT_ID # string
+      - SMILES # string
+      - InChI # string
+      - InChIKey # string
+      - alphafold_ID # string
+      - PubChem_CID # string
+      - protein_sequence # string
+      - nucleic_sequence # string
+      - predicted_structure # bool
+      - modified # bool
+      - molecular_formula # string
+      - molecular_weight # float
+      - molecule_charge # float
+      - molecule_count # int
+      - atom_count # int
+      - monomer_count # int
+
+
+
+slots:
+
+  salt_concentration:
+    description:
+      Concentration of salt in the solution.
+    range: ConcentrationQuantity # class
+    examples:
+        - value: 1
+
+  total_atom_count:
+    description:
+      Total number of atoms in the simulation.
+    range: integer
+    examples:
+        - value: 1
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: total_atom_count
+
+  total_molecule_count:
+    description:
+      Total number of simulated molecules, defined as bonded atoms or beads.
+    examples:
+        - value: 1
+    range: integer
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: total_molecule_count
+
+  atom_count:
+    description:
+      Number of atoms in a molecule.
+    range: integer
+    examples:
+        - value: 1
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: atom_count
+
+  molecule_count:
+    description:
+      Number of instances of a given molecule, defined as bonded atoms or beads.
+    range: integer
+    examples:
+        - value: 1
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: molecule_count
+
+  monomer_count:
+    description:
+      Number of monomeric units in a polymer(e.g. protein or nucleic acid).
+    range: integer
+    examples:
+        - value: 1
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: monomer_count
+
+  molecular_weight:
+    description:
+      The molecular weight of a molecule.
+    range: MassQuantity # class
+    examples:
+        - value: 18.0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: molecular_weight
+          unit: g/mol
+
+  molecule_charge:
+    description:
+      Electrostatic charge of a molecule.
+    range: ChargeQuantity # class
+    examples:
+        - value: -1.0
+    pattern: "^[+-]?\\d+(\\.\\d+)?$"
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: molecule_charge
+          unit: e
+
+  unique_molecule_count:
+    description:
+      Number of unique simulated molecules, defined as bonded atoms or beads.
+    examples:
+        - value: 1
+    range: integer
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: unique_molecule_count
+
+  system_counts:
+    range: SystemCounts # class
+    aliases:
+      - "System Counts"
+    inlined: true
+
+  molecule_ID:
+    multivalued: true
+    description:
+      Persistent identifier of a molecule being simulated.
+    range: MoleculeID # class
+    aliases:
+      - "Molecule ID"
+    inlined: true
+    maximum_cardinality: 20 # how many times a molecule can be added manually in the GUI
+
+  identifier: # used for IDs in external databases
+    description: External database identifier
+    range: uriorcurie
+    slot_uri: schema:identifier
+
+  PDB_ID:
+    is_a: identifier
+    range: string
+    aliases:
+      - "PDB ID"
+    pattern: "^[0-9A-Za-z]{4}$"
+    description: Protein Data Bank identifier
+    examples:
+        - value: "2VB1"
+    annotations:
+      database: "PDB"
+      prefix: "pdb"
+      base_uri: "https://identifiers.org/pdb:"
+
+  UNIPROT_ID:
+    is_a: identifier
+    range: string
+    aliases:
+      - "UNIPROT ID"
+    pattern: "^[A-Z0-9]{6,10}$"
+    description: UniProt accession ID
+    examples:
+      - value: "P0DP23"
+    annotations:
+      database: "UNIPROT"
+      prefix: "uniprot"
+      base_uri: "https://identifiers.org/uniprot:"
+
+  EMDB_ID:
+    is_a: identifier
+    range: string
+    aliases:
+      - "EMDB ID"
+    pattern: "^EMD-\\d{4,5}$"
+    description: Electron Microscopy Data Bank ID
+    examples:
+      - value: "EMD-1001"
+    annotations:
+      database: "EMDB"
+      prefix: "emdb"
+      base_uri: "https://identifiers.org/emdb:"
+
+  alphafold_ID:
+    is_a: identifier
+    pattern: "^AF-[A-Z0-9]+-F1$"
+    description: AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)
+    range: string
+    aliases:
+      - "AlphaFold ID"
+    examples:
+      - value: "AF-P12345-F1"
+    annotations:
+      database: "AlphaFoldDB"
+      base_uri: "https://alphafold.ebi.ac.uk/entry/"
+
+  PubChem_CID:
+    is_a: identifier
+    pattern: "^\\d+$"
+    description:
+      PubChem CID of chemical molecules and their activities against biological assays.
+    range: string
+    aliases:
+      - "PubChem CID"
+    examples:
+      - value: "100101"
+    annotations:
+      database: "PubChem"
+      prefix: "pubchem.compound"
+      base_uri: "https://identifiers.org/pubchem.compound:"
+
+  InChIKey:
+    is_a: identifier
+    pattern: "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$"
+    description:
+      The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.
+    range: string
+    examples:
+      - value: "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
+    aliases:
+      - "InChIKey"
+    annotations:
+      database: "IUPAC"
+      prefix: "inchikey"
+      base_uri: "https://identifiers.org/inchikey:"
+      engine_mapping:
+        - engine: toptrajparser
+          key: InChIKey
+
+  SMILES:
+    description:
+      Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.
+    range: string
+    pattern: "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$"
+    examples:
+      - value: "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+    aliases:
+      - "SMILES"
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: SMILES
+
+  InChI:
+    description:
+      The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information
+    pattern: "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$"
+    examples:
+      - value: "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
+    range: string
+    aliases:
+      - "InChI"
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: InChI
+
+  molecular_formula:
+    description:
+      The molecular formula of a molecule\
+    pattern: "^([A-Z][a-z]?\\d*)+$"
+    examples:
+      - value: "C8H10N4O2"
+    range: string
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: molecular_formula
+
+  predicted_structure:
+    description:
+      Are the molecule positions derived from a prediction?
+    range: boolean
+
+  modified:
+    description:
+      Has the initial model been modified from the original?
+    range: boolean
+
+  protein_sequence:
+    description:
+      One letter sequence for protein amino acids.
+    range: string
+    pattern: "^[ACDEFGHIKLMNPQRSTVWY]+$"
+    examples:
+      - value: "DRVYIHPF"
+    annotations:
+      textarea: true
+      engine_mapping:
+        - engine: toptrajparser
+          key: protein_sequence
+
+  nucleic_sequence:
+    description:
+      One letter sequence for nucleic acid nucleotides.
+    range: string
+    pattern: "^[ACGTURYSWKMBDHVN]+$"
+    examples:
+      - value: "ATGCATCGATCGATCGATCG"
+    annotations:
+      textarea: true
+      engine_mapping:
+        - engine: toptrajparser
+          key: nucleic_sequence

@@ -1,0 +1,115 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/topology
+name: biosim-topology
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+
+classes:
+
+  TopologyMetadata:
+    slots:
+      - connectivity
+      - particles
+
+  Connectivity:
+    slots:
+      - bonds # bool
+      - dihedrals # bool
+
+  Particles:
+    slots:
+      - masses # bool
+      - fixed_charges # bool
+      - system_charge # float
+      - coarse_grained # bool, redundant?
+      - resolution # enum
+
+slots:
+
+  connectivity:
+    description: Particle connectivity information
+    range: Connectivity
+
+  particles:
+    description: Particles information
+    range: Particles
+
+  masses:
+    description:
+      Are masses present in the topology?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: masses
+
+  bonds:
+    description:
+      Are bond parameters present in the topology?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: bonds
+
+  dihedrals:
+    description:
+      Are dihedral parameters present in the topology?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: dihedrals
+
+  fixed_charges:
+    description:
+      Are fixed charges on atoms included in the topology?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: fixed_charges
+
+  coarse_grained:
+    description:
+      Are atoms coarse-grained?
+    range: boolean
+
+  system_charge:
+    description:
+      Total electrostatic charge of the system given by the elementary charge (e).
+    range: ChargeQuantity
+    pattern: "^[+-]?\\d+(\\.\\d+)?$"
+    # unit:
+    #   symbol: "e"
+    #   ucum_code: E
+    #   has_quantity_kind: ElectricCharge
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: system_charge
+          unit: e
+
+  resolution:
+    description:
+      Resolution of simulated system.
+    range: ModelResolution # enum
+
+enums:
+
+  ModelResolution:
+    description:
+      Resolution of simulated molecules.
+    permissible_values:
+      "All Atom":
+        description:
+          All atom dynamics modelled in the simulation.
+      "United Atom":
+        description:
+          Treats non-polar hydrogen atoms as part of the heavier atoms they are bonded to.
+      "Coarse-Grained":
+        description:
+          Groups atoms into beads (often 4:1 mapping) as a single entity.
+      Mesoscale:
+        description:
+          Larger beads of grouped molecules represented as a single entity.

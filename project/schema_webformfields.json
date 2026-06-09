@@ -1,0 +1,1978 @@
+{
+  "stages": {
+    "type": "class",
+    "label": "Stages",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "setup": {
+        "type": "class",
+        "label": "Setup",
+        "hint": "Setup stage of a simulation.",
+        "multiple": false,
+        "fields": {
+          "setup_tool": {
+            "type": "select",
+            "label": "Setup Tool",
+            "hint": "Tool used to setup a system for simulation.",
+            "options": [
+              "pdb4amber",
+              "prepareforleap",
+              "packmol",
+              "packmol_memgen",
+              "LEaP",
+              "antechamber",
+              "pyMSMT",
+              "mdgx",
+              "parmed"
+            ],
+            "multiple": false
+          }
+        }
+      },
+      "minimisation": {
+        "type": "class",
+        "label": "Minimisation",
+        "hint": "Minimisation stage of a simulation.",
+        "multiple": false,
+        "fields": {
+          "energy_tolerance": {
+            "type": "quantity",
+            "label": "Energy Tolerance",
+            "hint": "Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": null,
+                "pattern": "^[+-]?\\d+(\\.\\d+)?$"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "kJ/mol/nm",
+                  "kcal/mol/Å"
+                ],
+                "multiple": false,
+                "default": "kJ/mol/nm"
+              }
+            }
+          },
+          "number_of_minimisation_steps": {
+            "type": "text",
+            "label": "Number Of Minimisation Steps",
+            "typehint": "integer",
+            "hint": "Number of integration steps performed during minimisation of the system, given as an integer."
+          },
+          "minimisation_distance_step_size": {
+            "type": "quantity",
+            "label": "Minimisation Distance Step Size",
+            "hint": "The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Å",
+                  "nm"
+                ],
+                "multiple": false,
+                "default": "nm"
+              }
+            }
+          },
+          "minimisation_algorithm": {
+            "type": "select",
+            "label": "Minimisation Algorithm",
+            "hint": "Algorithm used to minimise particle interactions.",
+            "options": [
+              "Steepest Descent",
+              "Conjugate Gradient",
+              "L-BFGS",
+              "XMIN",
+              "LMOD"
+            ],
+            "multiple": true
+          },
+          "simulation_tool": {
+            "type": "select",
+            "label": "Simulation Tool",
+            "hint": "Tools/utility used within simulation engines to perform simulations.",
+            "options": [
+              "sander",
+              "pmemd",
+              "gem.pmemd",
+              "mdrun"
+            ],
+            "multiple": true
+          },
+          "simulation_software": {
+            "type": "select",
+            "label": "Simulation Software",
+            "hint": "Simulation software used to perform molecular dynamics simulations and related functions.",
+            "options": [
+              "Amber",
+              "GROMACS",
+              "LAMMPS",
+              "NAMD",
+              "OpenMM",
+              "CHARMM",
+              "DL_POLY",
+              "HOOMD-blue",
+              "Desmond",
+              "ACEMD",
+              "CP2K"
+            ],
+            "multiple": true
+          }
+        }
+      },
+      "equilibration": {
+        "type": "class",
+        "label": "Equilibration",
+        "hint": "Equilibration stage of a simulation.",
+        "multiple": false,
+        "fields": {
+          "simulation_tool": {
+            "type": "select",
+            "label": "Simulation Tool",
+            "hint": "Tools/utility used within simulation engines to perform simulations.",
+            "options": [
+              "sander",
+              "pmemd",
+              "gem.pmemd",
+              "mdrun"
+            ],
+            "multiple": true
+          },
+          "simulation_software": {
+            "type": "select",
+            "label": "Simulation Software",
+            "hint": "Simulation software used to perform molecular dynamics simulations and related functions.",
+            "options": [
+              "Amber",
+              "GROMACS",
+              "LAMMPS",
+              "NAMD",
+              "OpenMM",
+              "CHARMM",
+              "DL_POLY",
+              "HOOMD-blue",
+              "Desmond",
+              "ACEMD",
+              "CP2K"
+            ],
+            "multiple": true
+          }
+        }
+      },
+      "production": {
+        "type": "class",
+        "label": "Production",
+        "hint": "Production stage of a simulation.",
+        "multiple": false,
+        "fields": {
+          "simulation_tool": {
+            "type": "select",
+            "label": "Simulation Tool",
+            "hint": "Tools/utility used within simulation engines to perform simulations.",
+            "options": [
+              "sander",
+              "pmemd",
+              "gem.pmemd",
+              "mdrun"
+            ],
+            "multiple": true
+          },
+          "simulation_software": {
+            "type": "select",
+            "label": "Simulation Software",
+            "hint": "Simulation software used to perform molecular dynamics simulations and related functions.",
+            "options": [
+              "Amber",
+              "GROMACS",
+              "LAMMPS",
+              "NAMD",
+              "OpenMM",
+              "CHARMM",
+              "DL_POLY",
+              "HOOMD-blue",
+              "Desmond",
+              "ACEMD",
+              "CP2K"
+            ],
+            "multiple": true
+          },
+          "simulation_software_version": {
+            "type": "text",
+            "label": "Simulation Software Version",
+            "typehint": "string",
+            "hint": "Version of software used to perform simulation step.",
+            "extracted_only": true,
+            "readonly": true
+          },
+          "simulation_method": {
+            "type": "select",
+            "label": "Simulation Method",
+            "hint": "Options for simulation methods.",
+            "options": [
+              "Self-guided Langevin Dynamics",
+              "Accelerated Molecular Dynamics",
+              "Gaussian Accelerated Molecular Dynamics",
+              "Targeted Molecular Dynamics",
+              "Nudged Elastic Band Calculations",
+              "Adaptive String Method",
+              "LMOD method",
+              "DL-FIND Optimization",
+              "Thermodynamic Integration (TI)",
+              "Linear Interaction Energies (LIE)",
+              "Replica Exchange Molecular Dynamics (REMD)",
+              "Adaptively Biased Molecular Dynamics (ABMD)",
+              "Steered Molecular Dynamics (SMD)",
+              "Umbrella Sampling",
+              "Metadynamics",
+              "Swarms of Trajectories String Method",
+              "Constant pH Molecular Dynamics",
+              "Constant Redox Potential Molecular Dynamics",
+              "Continuous Constant pH Molecular Dynamics",
+              "NMR Refinement",
+              "X-ray and CryoEM Refinement",
+              "Locally Enhanced Sampling"
+            ],
+            "multiple": true
+          }
+        }
+      },
+      "analysis": {
+        "type": "class",
+        "label": "Analysis",
+        "hint": "Analysis stage of a simulation.",
+        "multiple": false,
+        "fields": {
+          "analysis_tool": {
+            "type": "select",
+            "label": "Analysis Tool",
+            "hint": "Tools used to analyse simulation outputs.",
+            "options": [
+              "mdout_analyzer.py",
+              "ambpdb",
+              "CPPTRAJ",
+              "PYTRAJ",
+              "MMPBSA.py",
+              "Free Energy Workflow (FEW)",
+              "edgember",
+              "SAX-RISM",
+              "SAX-MD",
+              "MoFT",
+              "ndfes",
+              "PLUMED",
+              "MDanalysis"
+            ],
+            "multiple": true
+          },
+          "analysis_software": {
+            "type": "select",
+            "label": "Analysis Software",
+            "hint": "Software used to analyse simulation outputs.",
+            "options": [
+              "VMD",
+              "Schrodinger Maestro",
+              "PyMOL",
+              "Avogadro"
+            ],
+            "multiple": true
+          },
+          "analysis_method": {
+            "type": "select",
+            "label": "Analysis Method",
+            "hint": "Methods used to analyse simulation outputs.",
+            "options": [
+              "RMSD",
+              "DSSP",
+              "GIST",
+              "Hydrogen Bonds",
+              "Connolly surface",
+              "Radius of Gyration",
+              "BAR/PBSA"
+            ],
+            "multiple": true
+          }
+        }
+      }
+    }
+  },
+  "settings": {
+    "type": "class",
+    "label": "Settings",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "ensemble": {
+        "type": "class",
+        "label": "Ensemble",
+        "hint": "Ensemble information.",
+        "multiple": false,
+        "fields": {
+          "ensemble_type": {
+            "type": "select",
+            "label": "Ensemble Type",
+            "hint": "Ensemble used in a simulation",
+            "options": [
+              "NPT",
+              "NVT",
+              "NVE",
+              "μVT"
+            ],
+            "multiple": false
+          },
+          "random_seed": {
+            "type": "text",
+            "label": "Random Seed",
+            "typehint": "integer",
+            "hint": "Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer."
+          }
+        }
+      },
+      "integrator": {
+        "type": "class",
+        "label": "Integrator",
+        "hint": "Integrator information.",
+        "multiple": false,
+        "fields": {
+          "integrator_algorithm": {
+            "type": "select",
+            "label": "Integrator Algorithm",
+            "hint": "Algorithm used to integrate the simulation.",
+            "options": [
+              "Velocity-Verlet",
+              "Leap-frog",
+              "Verlet",
+              "Euler"
+            ],
+            "multiple": false
+          },
+          "frame_step": {
+            "type": "quantity",
+            "label": "Frame Step",
+            "hint": "Time between saved snapshots/frames in a simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe time.",
+                "options": [
+                  "s",
+                  "ms",
+                  "μs",
+                  "ns",
+                  "ps",
+                  "fs"
+                ],
+                "multiple": false,
+                "default": "ns"
+              }
+            }
+          },
+          "time_step": {
+            "type": "quantity",
+            "label": "Integration Step",
+            "hint": "Time between integration steps in a simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe time.",
+                "options": [
+                  "s",
+                  "ms",
+                  "μs",
+                  "ns",
+                  "ps",
+                  "fs"
+                ],
+                "multiple": false,
+                "default": "ns"
+              }
+            }
+          },
+          "number_of_steps": {
+            "type": "text",
+            "label": "Number Of Steps",
+            "typehint": "integer",
+            "hint": "Number of integration steps performed in the simulation, given as an integer."
+          },
+          "simulation_time": {
+            "type": "quantity",
+            "label": "Simulation Time",
+            "hint": "Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe time.",
+                "options": [
+                  "s",
+                  "ms",
+                  "μs",
+                  "ns",
+                  "ps",
+                  "fs"
+                ],
+                "multiple": false,
+                "default": "ns"
+              }
+            }
+          }
+        }
+      },
+      "barostat": {
+        "type": "class",
+        "label": "Barostat",
+        "hint": "Barostat information.",
+        "multiple": false,
+        "fields": {
+          "barostat_algorithm": {
+            "type": "select",
+            "label": "Barostat Algorithm",
+            "hint": "Barostat algorithm used to set the pressure in a simulation.",
+            "options": [
+              "Berendsen",
+              "Andersen",
+              "Parrinello-Rahman",
+              "Nose-Hoover",
+              "Monte Carlo",
+              "Martyna-Tuckerman-Tobias-Klein"
+            ],
+            "multiple": false
+          },
+          "compressibility": {
+            "type": "quantity",
+            "label": "Compressibility",
+            "hint": "Compressibility of the simulated system, given as a float.",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": "44.6 1e10-6 1/bar"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "1/bar",
+                  "1/Pa"
+                ],
+                "multiple": false,
+                "default": "1/bar"
+              }
+            }
+          },
+          "target_pressure": {
+            "type": "quantity",
+            "label": "Target Pressure",
+            "hint": "Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Bar",
+                  "Pascal"
+                ],
+                "multiple": false,
+                "default": "bar"
+              }
+            }
+          },
+          "pressure_time_constant": {
+            "type": "quantity",
+            "label": "Pressure Time Constant",
+            "hint": "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0,
+                "placeholder": "1.0"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe time.",
+                "options": [
+                  "s",
+                  "ms",
+                  "μs",
+                  "ns",
+                  "ps",
+                  "fs"
+                ],
+                "multiple": false,
+                "default": "ns"
+              }
+            }
+          },
+          "pressure_coupling_frequency": {
+            "type": "text",
+            "label": "Pressure Coupling Frequency",
+            "typehint": "integer",
+            "hint": "Step frequency to apply the barostat, given as an integer."
+          },
+          "pressure_coupling_type": {
+            "type": "select",
+            "label": "Pressure Coupling Type",
+            "hint": "Coupling type for adjusting box vectors.",
+            "options": [
+              "isotropic",
+              "semi-isotropic",
+              "anisotropic",
+              "surface tension"
+            ],
+            "multiple": false
+          }
+        }
+      },
+      "thermostat": {
+        "type": "class",
+        "label": "Thermostat",
+        "hint": "thermostat information.",
+        "multiple": false,
+        "fields": {
+          "thermostat_algorithm": {
+            "type": "select",
+            "label": "Thermostat Algorithm",
+            "hint": "Thermostat algorithm used to set the temperature in a simulation.",
+            "options": [
+              "Langevin",
+              "Berendsen",
+              "Andersen",
+              "Nose-Hoover",
+              "Bussi"
+            ],
+            "multiple": false
+          },
+          "target_temperature": {
+            "type": "quantity",
+            "label": "Target Temperature",
+            "hint": "Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "K",
+                  "°C",
+                  "°F"
+                ],
+                "multiple": false,
+                "default": "K"
+              }
+            }
+          },
+          "collision_frequency": {
+            "type": "quantity",
+            "label": "Collision Frequency",
+            "hint": "Collision frequency for the integrator, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe frequency.",
+                "options": [
+                  "1/ps"
+                ],
+                "multiple": false,
+                "default": "1/ps"
+              }
+            }
+          },
+          "temperature_time_constant": {
+            "type": "quantity",
+            "label": "Temperature Time Constant",
+            "hint": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe time.",
+                "options": [
+                  "s",
+                  "ms",
+                  "μs",
+                  "ns",
+                  "ps",
+                  "fs"
+                ],
+                "multiple": false,
+                "default": "ns"
+              }
+            }
+          },
+          "coupling_group": {
+            "type": "text",
+            "label": "Coupling Group",
+            "typehint": "string",
+            "hint": "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string"
+          },
+          "chain_length": {
+            "type": "text",
+            "label": "Chain Length",
+            "typehint": "integer",
+            "hint": "Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.",
+            "min": 0
+          },
+          "friction_coefficient": {
+            "type": "quantity",
+            "label": "Friction Coefficient",
+            "hint": "Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "a/ps",
+                  "kg/s"
+                ],
+                "multiple": false,
+                "default": "a/ps"
+              }
+            }
+          }
+        }
+      },
+      "interactions": {
+        "type": "class",
+        "label": "Interactions",
+        "hint": "Interaction information.",
+        "multiple": false,
+        "fields": {
+          "restraints": {
+            "type": "checkbox",
+            "label": "Restraints?",
+            "typehint": "boolean",
+            "hint": "Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target)."
+          },
+          "electrostatic_cutoff_distance": {
+            "type": "quantity",
+            "label": "Electrostatic Cutoff Distance",
+            "hint": "Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0,
+                "placeholder": "10"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Å",
+                  "nm"
+                ],
+                "multiple": false,
+                "default": "nm"
+              }
+            }
+          },
+          "vdw_cutoff_distance": {
+            "type": "quantity",
+            "label": "Vdw Cutoff Distance",
+            "hint": "Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0,
+                "placeholder": "10"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Å",
+                  "nm"
+                ],
+                "multiple": false,
+                "default": "nm"
+              }
+            }
+          },
+          "bond_length_constraints_algorithm": {
+            "type": "select",
+            "label": "Bond Length Constraints Algorithm",
+            "hint": "Fix specific molecular degrees of freedom—typically fast bond vibrations involving hydrogen atoms. By eliminating these high-frequency motions, constraints allow for larger integration time steps (e.g., 2 fs instead of 0.5 fs), significantly speeding up simulations without disrupting system dynamics.",
+            "options": [
+              "SHAKE",
+              "RATTLE",
+              "SETTLE",
+              "LINCS",
+              "CCMA"
+            ],
+            "multiple": false
+          },
+          "long_range_interaction_method": {
+            "type": "select",
+            "label": "Long Range Interaction Method",
+            "hint": "Method used to implement long-range interactions of point charges in the simulation.",
+            "options": [
+              "Cutoff",
+              "Ewald",
+              "PME",
+              "P3M",
+              "FMM",
+              "RF"
+            ],
+            "multiple": false
+          }
+        }
+      }
+    }
+  },
+  "observables": {
+    "type": "class",
+    "label": "Observables",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "simulation_averages": {
+        "type": "class",
+        "label": "Simulation Averages",
+        "hint": "Average values of observables outputted from the simulation.",
+        "multiple": false,
+        "fields": {
+          "average_kinetic_energy": {
+            "type": "quantity",
+            "label": "Average Kinetic Energy",
+            "hint": "Average kinetic energy sampled from the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": null,
+                "pattern": "^[+-]?\\d+(\\.\\d+)?$"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for molar energy.",
+                "options": [
+                  "kcal/mol",
+                  "kJ/mol"
+                ],
+                "multiple": false,
+                "default": "kJ/mol"
+              }
+            }
+          },
+          "average_potential_energy": {
+            "type": "quantity",
+            "label": "Average Potential Energy",
+            "hint": "Average potential energy sampled from the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": null,
+                "pattern": "^[+-]?\\d+(\\.\\d+)?$"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for molar energy.",
+                "options": [
+                  "kcal/mol",
+                  "kJ/mol"
+                ],
+                "multiple": false,
+                "default": "kJ/mol"
+              }
+            }
+          },
+          "average_enthalpy": {
+            "type": "quantity",
+            "label": "Average Enthalpy",
+            "hint": "Average enthalpy sampled from the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": null,
+                "pattern": "^[+-]?\\d+(\\.\\d+)?$"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for molar energy.",
+                "options": [
+                  "kcal/mol",
+                  "kJ/mol"
+                ],
+                "multiple": false,
+                "default": "kJ/mol"
+              }
+            }
+          },
+          "average_pressure": {
+            "type": "quantity",
+            "label": "Average Pressure",
+            "hint": "Average pressure sampled from the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Bar",
+                  "Pascal"
+                ],
+                "multiple": false,
+                "default": "bar"
+              }
+            }
+          },
+          "average_temperature": {
+            "type": "quantity",
+            "label": "Average Temperature",
+            "hint": "Average temperature sampled from the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "K",
+                  "°C",
+                  "°F"
+                ],
+                "multiple": false,
+                "default": "K"
+              }
+            }
+          },
+          "average_volume": {
+            "type": "quantity",
+            "label": "Average Volume",
+            "hint": "Average volume sampled from the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Å³",
+                  "nm³"
+                ],
+                "multiple": false,
+                "default": "nm³"
+              }
+            }
+          },
+          "average_volume_vector": {
+            "type": "quantity",
+            "label": "Average Volume Vector",
+            "hint": "Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10).",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Å",
+                  "nm"
+                ],
+                "multiple": false,
+                "default": "nm"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "topology": {
+    "type": "class",
+    "label": "Topology",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "connectivity": {
+        "type": "class",
+        "label": "Connectivity",
+        "hint": "Particle connectivity information",
+        "multiple": false,
+        "fields": {
+          "bonds": {
+            "type": "checkbox",
+            "label": "Bonds?",
+            "typehint": "boolean",
+            "hint": "Are bond parameters present in the topology?"
+          },
+          "dihedrals": {
+            "type": "checkbox",
+            "label": "Dihedrals?",
+            "typehint": "boolean",
+            "hint": "Are dihedral parameters present in the topology?"
+          }
+        }
+      },
+      "particles": {
+        "type": "class",
+        "label": "Particles",
+        "hint": "Particles information",
+        "multiple": false,
+        "fields": {
+          "masses": {
+            "type": "checkbox",
+            "label": "Masses?",
+            "typehint": "boolean",
+            "hint": "Are masses present in the topology?"
+          },
+          "fixed_charges": {
+            "type": "checkbox",
+            "label": "Fixed Charges?",
+            "typehint": "boolean",
+            "hint": "Are fixed charges on atoms included in the topology?"
+          },
+          "system_charge": {
+            "type": "quantity",
+            "label": "System Charge",
+            "hint": "Total electrostatic charge of the system given by the elementary charge (e).",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "e",
+                  "C"
+                ],
+                "multiple": false,
+                "default": "e"
+              }
+            }
+          },
+          "coarse_grained": {
+            "type": "checkbox",
+            "label": "Coarse Grained?",
+            "typehint": "boolean",
+            "hint": "Are atoms coarse-grained?"
+          },
+          "resolution": {
+            "type": "select",
+            "label": "Resolution",
+            "hint": "Resolution of simulated molecules.",
+            "options": [
+              "All Atom",
+              "United Atom",
+              "Coarse-Grained",
+              "Mesoscale"
+            ],
+            "multiple": false
+          }
+        }
+      }
+    }
+  },
+  "trajectory": {
+    "type": "class",
+    "label": "Trajectory",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "simulation_box": {
+        "type": "class",
+        "label": "Simulation Box",
+        "hint": "Information about the simulation box.",
+        "multiple": false,
+        "fields": {
+          "box_dimensions": {
+            "type": "quantity",
+            "label": "Box Dimensions",
+            "hint": "The lengths/dimensions of the box used to simulate the system.",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": "10, 10, 10"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Å",
+                  "nm"
+                ],
+                "multiple": false,
+                "default": "nm"
+              }
+            }
+          },
+          "box_angles": {
+            "type": "quantity",
+            "label": "Box Angles",
+            "hint": "The angles of the box used to simulate the system.",
+            "fields": {
+              "vector_value": {
+                "type": "text",
+                "label": "Vector Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": "90, 90, 90"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for angles.",
+                "options": [
+                  "degrees"
+                ],
+                "multiple": false,
+                "default": "degrees"
+              }
+            }
+          },
+          "box_type": {
+            "type": "select",
+            "label": "Box Type",
+            "hint": "Types of box used to simulate the system.",
+            "options": [
+              "Cubic",
+              "Tetragonal",
+              "Orthorhombic",
+              "Truncated Octahedron",
+              "Triclinic"
+            ],
+            "multiple": false
+          },
+          "periodic_boundary_conditions": {
+            "type": "select",
+            "label": "Periodic Boundary Conditions",
+            "hint": "What directions in a simulation cell periodic boundaries are set if they are turned on.",
+            "options": [
+              "None",
+              "xyz",
+              "xy",
+              "xz",
+              "yz"
+            ],
+            "multiple": false
+          }
+        }
+      },
+      "trajectory_output": {
+        "type": "class",
+        "label": "Trajectory Output",
+        "hint": "Information included in trajectory files.",
+        "multiple": false,
+        "fields": {
+          "positions": {
+            "type": "checkbox",
+            "label": "Positions?",
+            "typehint": "boolean",
+            "hint": "Are per-frame positions included in the trajectory?"
+          },
+          "forces": {
+            "type": "checkbox",
+            "label": "Forces?",
+            "typehint": "boolean",
+            "hint": "Are per-frame forces included in the trajectory?"
+          },
+          "velocities": {
+            "type": "checkbox",
+            "label": "Velocities?",
+            "typehint": "boolean",
+            "hint": "Are per-frame velocities included in the trajectory?"
+          },
+          "polarizable_charges": {
+            "type": "checkbox",
+            "label": "Polarizable Charges?",
+            "typehint": "boolean",
+            "hint": "Are per-frame polarizable charges included in the trajectory?"
+          },
+          "energies": {
+            "type": "checkbox",
+            "label": "Energies?",
+            "typehint": "boolean",
+            "hint": "Are per-frame energies included in the trajectory?"
+          },
+          "water": {
+            "type": "checkbox",
+            "label": "Water?",
+            "typehint": "boolean",
+            "hint": "Are water molecules included in the trajectory?"
+          },
+          "replica": {
+            "type": "checkbox",
+            "label": "Replica?",
+            "typehint": "boolean",
+            "hint": "Is this trajectory a replica of another provided trajectory?"
+          },
+          "frame_count": {
+            "type": "text",
+            "label": "Frame Count",
+            "typehint": "integer",
+            "hint": "Total number of snapshots that make up a trajectory.",
+            "placeholder": "1",
+            "min": 0
+          }
+        }
+      }
+    }
+  },
+  "composition": {
+    "type": "class",
+    "label": "Composition",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "system_counts": {
+        "type": "class",
+        "label": "System Counts",
+        "hint": null,
+        "multiple": false,
+        "fields": {
+          "total_molecule_count": {
+            "type": "text",
+            "label": "Total Molecule Count",
+            "typehint": "integer",
+            "hint": "Total number of simulated molecules, defined as bonded atoms or beads.",
+            "placeholder": "1",
+            "min": 0
+          },
+          "total_atom_count": {
+            "type": "text",
+            "label": "Total Atom Count",
+            "typehint": "integer",
+            "hint": "Total number of atoms in the simulation.",
+            "placeholder": "1",
+            "min": 0
+          },
+          "unique_molecule_count": {
+            "type": "text",
+            "label": "Unique Molecule Count",
+            "typehint": "integer",
+            "hint": "Number of unique simulated molecules, defined as bonded atoms or beads.",
+            "placeholder": "1",
+            "min": 0
+          },
+          "salt_concentration": {
+            "type": "quantity",
+            "label": "Salt Concentration",
+            "hint": "Concentration of salt in the solution.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0,
+                "placeholder": "1"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "Molar"
+                ],
+                "multiple": false,
+                "default": "M"
+              }
+            }
+          }
+        }
+      },
+      "molecule_ID": {
+        "type": "class",
+        "label": "Molecule ID",
+        "hint": "Persistent identifier of a molecule being simulated.",
+        "multiple": true,
+        "fields": {
+          "PDB_ID": {
+            "type": "text",
+            "label": "PDB ID",
+            "typehint": "string",
+            "hint": "Protein Data Bank identifier",
+            "placeholder": "2VB1",
+            "pattern": "^[0-9A-Za-z]{4}$",
+            "base_uri": "https://identifiers.org/pdb:"
+          },
+          "UNIPROT_ID": {
+            "type": "text",
+            "label": "UNIPROT ID",
+            "typehint": "string",
+            "hint": "UniProt accession ID",
+            "placeholder": "P0DP23",
+            "pattern": "^[A-Z0-9]{6,10}$",
+            "base_uri": "https://identifiers.org/uniprot:"
+          },
+          "SMILES": {
+            "type": "text",
+            "label": "SMILES",
+            "typehint": "string",
+            "hint": "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",
+            "placeholder": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+            "pattern": "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$"
+          },
+          "InChI": {
+            "type": "text",
+            "label": "InChI",
+            "typehint": "string",
+            "hint": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
+            "placeholder": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",
+            "pattern": "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$"
+          },
+          "InChIKey": {
+            "type": "text",
+            "label": "InChIKey",
+            "typehint": "string",
+            "hint": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
+            "placeholder": "RYYVLZVUVIJVGH-UHFFFAOYSA-N",
+            "pattern": "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$",
+            "base_uri": "https://identifiers.org/inchikey:"
+          },
+          "alphafold_ID": {
+            "type": "text",
+            "label": "AlphaFold ID",
+            "typehint": "string",
+            "hint": "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",
+            "placeholder": "AF-P12345-F1",
+            "pattern": "^AF-[A-Z0-9]+-F1$",
+            "base_uri": "https://alphafold.ebi.ac.uk/entry/"
+          },
+          "PubChem_CID": {
+            "type": "text",
+            "label": "PubChem CID",
+            "typehint": "string",
+            "hint": "PubChem CID of chemical molecules and their activities against biological assays.",
+            "placeholder": "100101",
+            "pattern": "^\\d+$",
+            "base_uri": "https://identifiers.org/pubchem.compound:"
+          },
+          "protein_sequence": {
+            "type": "textarea",
+            "label": "Protein Sequence",
+            "typehint": "string",
+            "hint": "One letter sequence for protein amino acids.",
+            "placeholder": "DRVYIHPF",
+            "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$"
+          },
+          "nucleic_sequence": {
+            "type": "textarea",
+            "label": "Nucleic Sequence",
+            "typehint": "string",
+            "hint": "One letter sequence for nucleic acid nucleotides.",
+            "placeholder": "ATGCATCGATCGATCGATCG",
+            "pattern": "^[ACGTURYSWKMBDHVN]+$"
+          },
+          "predicted_structure": {
+            "type": "checkbox",
+            "label": "Predicted Structure?",
+            "typehint": "boolean",
+            "hint": "Are the molecule positions derived from a prediction?"
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          },
+          "molecular_formula": {
+            "type": "text",
+            "label": "Molecular Formula",
+            "typehint": "string",
+            "hint": "The molecular formula of a molecule\\",
+            "placeholder": "C8H10N4O2",
+            "pattern": "^([A-Z][a-z]?\\d*)+$"
+          },
+          "molecular_weight": {
+            "type": "quantity",
+            "label": "Molecular Weight",
+            "hint": "The molecular weight of a molecule.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0,
+                "placeholder": "18.0"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for mass/molecular weight",
+                "options": [
+                  "g/mol",
+                  "Da"
+                ],
+                "multiple": false,
+                "default": "g/mol"
+              }
+            }
+          },
+          "molecule_charge": {
+            "type": "quantity",
+            "label": "Molecule Charge",
+            "hint": "Electrostatic charge of a molecule.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": "-1.0"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": null,
+                "options": [
+                  "e",
+                  "C"
+                ],
+                "multiple": false,
+                "default": "e"
+              }
+            }
+          },
+          "molecule_count": {
+            "type": "text",
+            "label": "Molecule Count",
+            "typehint": "integer",
+            "hint": "Number of instances of a given molecule, defined as bonded atoms or beads.",
+            "placeholder": "1",
+            "min": 0
+          },
+          "atom_count": {
+            "type": "text",
+            "label": "Atom Count",
+            "typehint": "integer",
+            "hint": "Number of atoms in a molecule.",
+            "placeholder": "1",
+            "min": 0
+          },
+          "monomer_count": {
+            "type": "text",
+            "label": "Monomer Count",
+            "typehint": "integer",
+            "hint": "Number of monomeric units in a polymer(e.g. protein or nucleic acid).",
+            "placeholder": "1",
+            "min": 0
+          }
+        },
+        "max": 20
+      }
+    }
+  },
+  "potentials": {
+    "type": "class",
+    "label": "Potentials",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "water_potential": {
+        "type": "class",
+        "label": "Water Potential",
+        "hint": "Force field for water molecules.",
+        "multiple": false,
+        "fields": {
+          "water_potential_name": {
+            "type": "select",
+            "label": "Water Potential Name",
+            "hint": "Force fields used to parametrize water molecules in a simulation.",
+            "options": [
+              "OPC",
+              "OPC3",
+              "OPC3POL",
+              "POL3",
+              "TIP3P",
+              "TIP3PFB",
+              "TIP4PFB",
+              "TIP4P",
+              "TIP5P",
+              "TIP4PEW",
+              "SPCE",
+              "SPCEB",
+              "SPC/Fw",
+              "q-SPC/Fw"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "protein_potential": {
+        "type": "class",
+        "label": "Protein Potential",
+        "hint": "Force field for proteins.",
+        "multiple": false,
+        "fields": {
+          "protein_potential_name": {
+            "type": "select",
+            "label": "Protein Potential Name",
+            "hint": "Force fields used to parametrize amino acids in proteins in a simulation.",
+            "options": [
+              "ff19SB",
+              "ff99SB",
+              "ff99SB-ILDN",
+              "ff99SB-disp",
+              "ff14SB",
+              "ff14SBonlysc",
+              "ff15ipq",
+              "fb15",
+              "ff03",
+              "ff03ua",
+              "phosaa10",
+              "phosaa14SB",
+              "phosaa19SB",
+              "ff14SB_modAA",
+              "ff19SB_modAA"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "lipid_potential": {
+        "type": "class",
+        "label": "Lipid Potential",
+        "hint": "Force field for lipids.",
+        "multiple": false,
+        "fields": {
+          "lipid_potential_name": {
+            "type": "select",
+            "label": "Lipid Potential Name",
+            "hint": "Force fields used to parametrize lipids in a simulation.",
+            "options": [
+              "LIPID21"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "nucleic_potential": {
+        "type": "class",
+        "label": "Nucleic Potential",
+        "hint": "Force field for nucleic acids.",
+        "multiple": false,
+        "fields": {
+          "nucleic_potential_name": {
+            "type": "select",
+            "label": "Nucleic Potential Name",
+            "hint": "Force fields used to parametrize nucleic acids in a simulation.",
+            "options": [
+              "ff99-bsc0",
+              "ff99OL3",
+              "LJbb",
+              "ROC",
+              "Shaw",
+              "OL15",
+              "OL21",
+              "OL24",
+              "OL3",
+              "bsc1",
+              "terminal_monophosphate"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "carbohydrate_potential": {
+        "type": "class",
+        "label": "Carbohydrate Potential",
+        "hint": "Force field for carbohydrates.",
+        "multiple": false,
+        "fields": {
+          "carbohydrate_potential_name": {
+            "type": "select",
+            "label": "Carbohydrate Potential Name",
+            "hint": "Force fields used to parametrize carbohydrates in a simulation.",
+            "options": [
+              "GLYCAM06",
+              "GLYCAM_06EP",
+              "GLYCAM_06j-1"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "polymer_potential": {
+        "type": "class",
+        "label": "Polymer Potential",
+        "hint": "Force field for polymers (excluding proteins and nucleic acids).",
+        "multiple": false,
+        "fields": {
+          "polymer_potential_name": {
+            "type": "select",
+            "label": "Polymer Potential Name",
+            "hint": "Force fields used to parametrize polymers in a simulation.",
+            "options": [
+              "LignAmb25"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "general_potential": {
+        "type": "class",
+        "label": "General Potential",
+        "hint": "Force field for molecules (in general).",
+        "multiple": false,
+        "fields": {
+          "general_potential_name": {
+            "type": "select",
+            "label": "General Potential Name",
+            "hint": "Force fields used to parametrize molecules in a simulation.",
+            "options": [
+              "gem.pmemd",
+              "GAFF",
+              "GAFF2",
+              "OPLS",
+              "GROMOS",
+              "CHARMM"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      },
+      "machine_learned_potential": {
+        "type": "class",
+        "label": "Machine Learned Potential",
+        "hint": "ML force field for molecules (in general).",
+        "multiple": false,
+        "fields": {
+          "machine_learned_potential_name": {
+            "type": "select",
+            "label": "Machine Learned Potential Name",
+            "hint": "Machine learned potentials.",
+            "options": [
+              "MACE",
+              "ANI",
+              "NequIP",
+              "UMA",
+              "AceFF"
+            ],
+            "multiple": false
+          },
+          "modified": {
+            "type": "checkbox",
+            "label": "Modified?",
+            "typehint": "boolean",
+            "hint": "Has the initial model been modified from the original?"
+          }
+        }
+      }
+    }
+  },
+  "compute": {
+    "type": "class",
+    "label": "Compute",
+    "hint": null,
+    "multiple": false,
+    "fields": {
+      "hardware": {
+        "type": "class",
+        "label": "Hardware",
+        "hint": null,
+        "multiple": false,
+        "fields": {
+          "execution_platform": {
+            "type": "select",
+            "label": "Execution Platform",
+            "hint": "Type of platform used to run the simulation.",
+            "options": [
+              "HPC Cluster",
+              "Cloud VM",
+              "Local"
+            ],
+            "multiple": false
+          },
+          "node_type": {
+            "type": "select",
+            "label": "Node Type",
+            "hint": "Type of compute node used in the system.",
+            "options": [
+              "CPU only",
+              "GPU Accelerated",
+              "Hybrid CPU GPU"
+            ],
+            "multiple": false
+          },
+          "node_count": {
+            "type": "text",
+            "label": "Node Count",
+            "typehint": "integer",
+            "hint": "Number of compute nodes used for the run.",
+            "min": 1
+          },
+          "CPU_vendor": {
+            "type": "select",
+            "label": "CPU Vendor",
+            "hint": "Vendor of the CPU used in the compute nodes.",
+            "options": [
+              "AMD",
+              "Intel",
+              "ARM",
+              "Other"
+            ],
+            "multiple": false
+          },
+          "CPU_architecture": {
+            "type": "select",
+            "label": "CPU Architecture",
+            "hint": "CPU architecture used by the compute nodes.",
+            "options": [
+              "x86",
+              "ARM"
+            ],
+            "multiple": false
+          },
+          "sockets_per_node": {
+            "type": "text",
+            "label": "Sockets Per Node",
+            "typehint": "integer",
+            "hint": "Number of physical CPU sockets in each compute node.",
+            "min": 1
+          },
+          "cores_per_socket": {
+            "type": "text",
+            "label": "Cores Per Socket",
+            "typehint": "integer",
+            "hint": "Number of physical CPU cores in each socket.",
+            "min": 1
+          },
+          "threads_per_core": {
+            "type": "text",
+            "label": "Threads Per Core",
+            "typehint": "integer",
+            "hint": "Number of hardware threads per physical core.",
+            "min": 1
+          },
+          "GPU_vendor": {
+            "type": "select",
+            "label": "GPU Vendor",
+            "hint": "Vendor of the GPU used in the compute nodes.",
+            "options": [
+              "Nvidia",
+              "AMD",
+              "Intel",
+              "None"
+            ],
+            "multiple": false
+          },
+          "GPUs_per_node": {
+            "type": "text",
+            "label": "GPUs Per Node",
+            "typehint": "integer",
+            "hint": "Number of GPUs present in each compute node.",
+            "min": 0
+          },
+          "memory_per_node": {
+            "type": "quantity",
+            "label": "Memory Per Node",
+            "hint": "Amount of memory installed per compute node.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for Bytes.",
+                "options": [
+                  "GB",
+                  "MB"
+                ],
+                "multiple": false,
+                "default": "GB"
+              }
+            }
+          }
+        }
+      },
+      "software": {
+        "type": "class",
+        "label": "Software",
+        "hint": null,
+        "multiple": false,
+        "fields": {
+          "operating_system": {
+            "type": "select",
+            "label": "Operating System",
+            "hint": "List of operating systems installed on the hardware used to perform the simulation.",
+            "options": [
+              "Linux",
+              "macOS",
+              "Windows"
+            ],
+            "multiple": false
+          },
+          "scheduler": {
+            "type": "select",
+            "label": "Scheduler",
+            "hint": "Job scheduler used for simulation execution.",
+            "options": [
+              "SLURM",
+              "PBS",
+              "LSF",
+              "SGE",
+              "None"
+            ],
+            "multiple": false
+          },
+          "MPI_library": {
+            "type": "select",
+            "label": "MPI Library",
+            "hint": "MPI implementation used for message passing.",
+            "options": [
+              "OpenMPI",
+              "MPICH",
+              "IntelMPI",
+              "MVAPICH2",
+              "None"
+            ],
+            "multiple": false
+          },
+          "container_runtime": {
+            "type": "select",
+            "label": "Container Runtime",
+            "hint": "Container runtime used to package and run software.",
+            "options": [
+              "Apptainer",
+              "Docker",
+              "Podman",
+              "None"
+            ],
+            "multiple": false
+          }
+        }
+      },
+      "performance": {
+        "type": "class",
+        "label": "Performance",
+        "hint": null,
+        "multiple": false,
+        "fields": {
+          "wall_time": {
+            "type": "quantity",
+            "label": "Wall Time",
+            "hint": "Total elapsed runtime of the simulation.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe time.",
+                "options": [
+                  "s",
+                  "ms",
+                  "μs",
+                  "ns",
+                  "ps",
+                  "fs"
+                ],
+                "multiple": false,
+                "default": "ns"
+              }
+            }
+          },
+          "energy_consumption": {
+            "type": "quantity",
+            "label": "Energy Consumption",
+            "hint": "Total energy consumed by the simulation run.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units for energy.",
+                "options": [
+                  "kWh"
+                ],
+                "multiple": false,
+                "default": "kWh"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

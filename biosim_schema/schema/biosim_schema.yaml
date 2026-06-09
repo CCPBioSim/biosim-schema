@@ -1,0 +1,101 @@
+---
+id: https://CCPBioSim.ac.uk/biosim-schema/
+name: biosim-schema
+title: biosim-schema
+description: |-
+  Schema for Biomolecular Simulation Data
+license: MIT
+see_also:
+  - https://CCPBioSim.github.io/biosim-schema
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  example: https://example.org/
+  ORCID: https://orcid.org/
+  qudt: http://qudt.org/schema/qudt/ # https://qudt.org/doc/2023/01/DOC_VOCAB-UNITS-ALL-v2.1.html
+  uniprot: https://identifiers.org/uniprot
+  pdb: https://identifiers.org/pdb
+
+default_prefix: biosim_schema
+default_range: string
+
+default_curi_maps:
+  - semweb_context
+imports:
+  - linkml:types
+  - ./components/biosim_quantities
+  - ./components/biosim_stages
+  - ./components/biosim_settings
+  - ./components/biosim_composition
+  - ./components/biosim_observables
+  - ./components/biosim_topology
+  - ./components/biosim_trajectory
+  - ./components/biosim_potentials
+  - ./components/biosim_compute
+
+classes:
+
+  # PICK ONE OF THE BELOW ROOT CLASS
+  SimulationMetadata:  # root class
+    tree_root: true
+    slots:
+      - stages # class
+      - settings # class
+      - observables # class
+      - topology # class
+      - trajectory # class
+      - composition # class
+      - potentials # class
+      - compute # class
+
+
+# slots with units initially in SI where possible
+slots:
+
+  stages:
+    range: SimulationStages # class
+
+  settings:
+    range: SimulationSettings # class
+
+  composition:
+    range: SystemComposition # class
+
+  observables:
+    range: SimulationObservables # class
+
+  topology:
+    range: TopologyMetadata # class
+
+  trajectory:
+    range: TrajectoryMetadata # class
+
+  potentials:
+    range: PotentialMetadata # class
+
+  compute:
+    range: ComputationalEnvironment # class
+
+
+  engine_mapping:
+    description: Mapping from engine-specific parameter names to schema slots
+    multivalued: true
+
+
+  # polarizable_force_field:
+  # implicit_solvent_model:
+  # _3drism_site_model:
+  # particle_mesh_ewald_method:
+  #   description:
+  #     Fast implementation of the Ewald summation method for calculating the full electrostatic energy of a unit cell (periodic box) in a macroscopic lattice of repeating images.
+  # dielectric_constant:
+
+  # qmmm:
+  # generalized_born:
+  # integration_method:
+  # collective_variable:
+  # enthalpy:
+  # entropy:

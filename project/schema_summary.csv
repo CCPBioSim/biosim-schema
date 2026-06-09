@@ -1,0 +1,122 @@
+section,subsection_1,field,field_name,help_text,placeholder_text,default_unit,data_type
+stages,setup,setup_tool,Setup Tool,Tool used to setup a system for simulation.,,,string
+stages,minimisation,energy_tolerance,Energy Tolerance,"Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float.",,kJ/mol/nm,float
+stages,minimisation,number_of_minimisation_steps,Number Of Minimisation Steps,"Number of integration steps performed during minimisation of the system, given as an integer.",,,integer
+stages,minimisation,minimisation_distance_step_size,Minimisation Distance Step Size,"The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.",,nm,float
+stages,minimisation,minimisation_algorithm,Minimisation Algorithm,Algorithm used to minimise particle interactions.,,,string
+stages,minimisation,simulation_tool,Simulation Tool,Tools/utility used within simulation engines to perform simulations.,,,string
+stages,minimisation,simulation_software,Simulation Software,Simulation software used to perform molecular dynamics simulations and related functions.,,,string
+stages,equilibration,simulation_tool,Simulation Tool,Tools/utility used within simulation engines to perform simulations.,,,string
+stages,equilibration,simulation_software,Simulation Software,Simulation software used to perform molecular dynamics simulations and related functions.,,,string
+stages,production,simulation_tool,Simulation Tool,Tools/utility used within simulation engines to perform simulations.,,,string
+stages,production,simulation_software,Simulation Software,Simulation software used to perform molecular dynamics simulations and related functions.,,,string
+stages,production,simulation_software_version,Simulation Software Version,Version of software used to perform simulation step.,,,string
+stages,production,simulation_method,Simulation Method,Options for simulation methods.,,,string
+stages,analysis,analysis_tool,Analysis Tool,Tools used to analyse simulation outputs.,,,string
+stages,analysis,analysis_software,Analysis Software,Software used to analyse simulation outputs.,,,string
+stages,analysis,analysis_method,Analysis Method,Methods used to analyse simulation outputs.,,,string
+settings,ensemble,ensemble_type,Ensemble Type,Ensemble used in a simulation,,,string
+settings,ensemble,random_seed,Random Seed,"Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer.",,,integer
+settings,integrator,integrator_algorithm,Integrator Algorithm,Algorithm used to integrate the simulation.,,,string
+settings,integrator,frame_step,Frame Step,"Time between saved snapshots/frames in a simulation, given as a float.",,ns,float
+settings,integrator,time_step,Integration Step,"Time between integration steps in a simulation, given as a float.",,ns,float
+settings,integrator,number_of_steps,Number Of Steps,"Number of integration steps performed in the simulation, given as an integer.",,,integer
+settings,integrator,simulation_time,Simulation Time,"Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.",,ns,float
+settings,barostat,barostat_algorithm,Barostat Algorithm,Barostat algorithm used to set the pressure in a simulation.,,,string
+settings,barostat,compressibility,Compressibility,"Compressibility of the simulated system, given as a float.",,1/bar,list
+settings,barostat,target_pressure,Target Pressure,"Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).",,bar,list
+settings,barostat,pressure_time_constant,Pressure Time Constant,"Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.",,ns,float
+settings,barostat,pressure_coupling_frequency,Pressure Coupling Frequency,"Step frequency to apply the barostat, given as an integer.",,,integer
+settings,barostat,pressure_coupling_type,Pressure Coupling Type,Coupling type for adjusting box vectors.,,,string
+settings,thermostat,thermostat_algorithm,Thermostat Algorithm,Thermostat algorithm used to set the temperature in a simulation.,,,string
+settings,thermostat,target_temperature,Target Temperature,"Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",,K,list
+settings,thermostat,collision_frequency,Collision Frequency,"Collision frequency for the integrator, given as a float.",,1/ps,float
+settings,thermostat,temperature_time_constant,Temperature Time Constant,"Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).",,ns,list
+settings,thermostat,coupling_group,Coupling Group,"A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string",,,string
+settings,thermostat,chain_length,Chain Length,"Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.",,,integer
+settings,thermostat,friction_coefficient,Friction Coefficient,"Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.",,a/ps,float
+settings,interactions,restraints,Restraints?,Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).,,,boolean
+settings,interactions,electrostatic_cutoff_distance,Electrostatic Cutoff Distance,"Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.",,nm,float
+settings,interactions,vdw_cutoff_distance,Vdw Cutoff Distance,Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.,,nm,float
+settings,interactions,bond_length_constraints_algorithm,Bond Length Constraints Algorithm,"Fix specific molecular degrees of freedom—typically fast bond vibrations involving hydrogen atoms. By eliminating these high-frequency motions, constraints allow for larger integration time steps (e.g., 2 fs instead of 0.5 fs), significantly speeding up simulations without disrupting system dynamics.",,,string
+settings,interactions,long_range_interaction_method,Long Range Interaction Method,Method used to implement long-range interactions of point charges in the simulation.,,,string
+observables,simulation_averages,average_kinetic_energy,Average Kinetic Energy,"Average kinetic energy sampled from the simulation, given as a float.",,kJ/mol,float
+observables,simulation_averages,average_potential_energy,Average Potential Energy,"Average potential energy sampled from the simulation, given as a float.",,kJ/mol,float
+observables,simulation_averages,average_enthalpy,Average Enthalpy,"Average enthalpy sampled from the simulation, given as a float.",,kJ/mol,float
+observables,simulation_averages,average_pressure,Average Pressure,"Average pressure sampled from the simulation, given as a float.",,bar,float
+observables,simulation_averages,average_temperature,Average Temperature,"Average temperature sampled from the simulation, given as a float.",,K,float
+observables,simulation_averages,average_volume,Average Volume,"Average volume sampled from the simulation, given as a float.",,nm³,float
+observables,simulation_averages,average_volume_vector,Average Volume Vector,"Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10).",,nm,list
+topology,connectivity,bonds,Bonds?,Are bond parameters present in the topology?,,,boolean
+topology,connectivity,dihedrals,Dihedrals?,Are dihedral parameters present in the topology?,,,boolean
+topology,particles,masses,Masses?,Are masses present in the topology?,,,boolean
+topology,particles,fixed_charges,Fixed Charges?,Are fixed charges on atoms included in the topology?,,,boolean
+topology,particles,system_charge,System Charge,Total electrostatic charge of the system given by the elementary charge (e).,,e,float
+topology,particles,coarse_grained,Coarse Grained?,Are atoms coarse-grained?,,,boolean
+topology,particles,resolution,Resolution,Resolution of simulated molecules.,,,string
+trajectory,simulation_box,box_dimensions,Box Dimensions,The lengths/dimensions of the box used to simulate the system.,,nm,list
+trajectory,simulation_box,box_angles,Box Angles,The angles of the box used to simulate the system.,,degrees,list
+trajectory,simulation_box,box_type,Box Type,Types of box used to simulate the system.,,,string
+trajectory,simulation_box,periodic_boundary_conditions,Periodic Boundary Conditions,What directions in a simulation cell periodic boundaries are set if they are turned on.,,,string
+trajectory,trajectory_output,positions,Positions?,Are per-frame positions included in the trajectory?,,,boolean
+trajectory,trajectory_output,forces,Forces?,Are per-frame forces included in the trajectory?,,,boolean
+trajectory,trajectory_output,velocities,Velocities?,Are per-frame velocities included in the trajectory?,,,boolean
+trajectory,trajectory_output,polarizable_charges,Polarizable Charges?,Are per-frame polarizable charges included in the trajectory?,,,boolean
+trajectory,trajectory_output,energies,Energies?,Are per-frame energies included in the trajectory?,,,boolean
+trajectory,trajectory_output,water,Water?,Are water molecules included in the trajectory?,,,boolean
+trajectory,trajectory_output,replica,Replica?,Is this trajectory a replica of another provided trajectory?,,,boolean
+trajectory,trajectory_output,frame_count,Frame Count,Total number of snapshots that make up a trajectory.,1,,integer
+composition,system_counts,total_molecule_count,Total Molecule Count,"Total number of simulated molecules, defined as bonded atoms or beads.",1,,integer
+composition,system_counts,total_atom_count,Total Atom Count,Total number of atoms in the simulation.,1,,integer
+composition,system_counts,unique_molecule_count,Unique Molecule Count,"Number of unique simulated molecules, defined as bonded atoms or beads.",1,,integer
+composition,system_counts,salt_concentration,Salt Concentration,Concentration of salt in the solution.,,M,float
+composition,molecule_ID,PDB_ID,PDB ID,Protein Data Bank identifier,2VB1,,string
+composition,molecule_ID,UNIPROT_ID,UNIPROT ID,UniProt accession ID,P0DP23,,string
+composition,molecule_ID,SMILES,SMILES,"Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",CN1C=NC2=C1C(=O)N(C(=O)N2C)C,,string
+composition,molecule_ID,InChI,InChI,"The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information","InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",,string
+composition,molecule_ID,InChIKey,InChIKey,"The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",RYYVLZVUVIJVGH-UHFFFAOYSA-N,,string
+composition,molecule_ID,alphafold_ID,AlphaFold ID,"AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",AF-P12345-F1,,string
+composition,molecule_ID,PubChem_CID,PubChem CID,PubChem CID of chemical molecules and their activities against biological assays.,100101,,string
+composition,molecule_ID,protein_sequence,Protein Sequence,One letter sequence for protein amino acids.,DRVYIHPF,,string
+composition,molecule_ID,nucleic_sequence,Nucleic Sequence,One letter sequence for nucleic acid nucleotides.,ATGCATCGATCGATCGATCG,,string
+composition,molecule_ID,predicted_structure,Predicted Structure?,Are the molecule positions derived from a prediction?,,,boolean
+composition,molecule_ID,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+composition,molecule_ID,molecular_formula,Molecular Formula,The molecular formula of a molecule\,C8H10N4O2,,string
+composition,molecule_ID,molecular_weight,Molecular Weight,The molecular weight of a molecule.,,g/mol,float
+composition,molecule_ID,molecule_charge,Molecule Charge,Electrostatic charge of a molecule.,,e,float
+composition,molecule_ID,molecule_count,Molecule Count,"Number of instances of a given molecule, defined as bonded atoms or beads.",1,,integer
+composition,molecule_ID,atom_count,Atom Count,Number of atoms in a molecule.,1,,integer
+composition,molecule_ID,monomer_count,Monomer Count,Number of monomeric units in a polymer(e.g. protein or nucleic acid).,1,,integer
+potentials,water_potential,water_potential_name,Water Potential Name,Force fields used to parametrize water molecules in a simulation.,,,string
+potentials,water_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,protein_potential,protein_potential_name,Protein Potential Name,Force fields used to parametrize amino acids in proteins in a simulation.,,,string
+potentials,protein_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,lipid_potential,lipid_potential_name,Lipid Potential Name,Force fields used to parametrize lipids in a simulation.,,,string
+potentials,lipid_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,nucleic_potential,nucleic_potential_name,Nucleic Potential Name,Force fields used to parametrize nucleic acids in a simulation.,,,string
+potentials,nucleic_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,carbohydrate_potential,carbohydrate_potential_name,Carbohydrate Potential Name,Force fields used to parametrize carbohydrates in a simulation.,,,string
+potentials,carbohydrate_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,polymer_potential,polymer_potential_name,Polymer Potential Name,Force fields used to parametrize polymers in a simulation.,,,string
+potentials,polymer_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,general_potential,general_potential_name,General Potential Name,Force fields used to parametrize molecules in a simulation.,,,string
+potentials,general_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+potentials,machine_learned_potential,machine_learned_potential_name,Machine Learned Potential Name,Machine learned potentials.,,,string
+potentials,machine_learned_potential,modified,Modified?,Has the initial model been modified from the original?,,,boolean
+compute,hardware,execution_platform,Execution Platform,Type of platform used to run the simulation.,,,string
+compute,hardware,node_type,Node Type,Type of compute node used in the system.,,,string
+compute,hardware,node_count,Node Count,Number of compute nodes used for the run.,,,integer
+compute,hardware,CPU_vendor,CPU Vendor,Vendor of the CPU used in the compute nodes.,,,string
+compute,hardware,CPU_architecture,CPU Architecture,CPU architecture used by the compute nodes.,,,string
+compute,hardware,sockets_per_node,Sockets Per Node,Number of physical CPU sockets in each compute node.,,,integer
+compute,hardware,cores_per_socket,Cores Per Socket,Number of physical CPU cores in each socket.,,,integer
+compute,hardware,threads_per_core,Threads Per Core,Number of hardware threads per physical core.,,,integer
+compute,hardware,GPU_vendor,GPU Vendor,Vendor of the GPU used in the compute nodes.,,,string
+compute,hardware,GPUs_per_node,GPUs Per Node,Number of GPUs present in each compute node.,,,integer
+compute,hardware,memory_per_node,Memory Per Node,Amount of memory installed per compute node.,,GB,float
+compute,software,operating_system,Operating System,List of operating systems installed on the hardware used to perform the simulation.,,,string
+compute,software,scheduler,Scheduler,Job scheduler used for simulation execution.,,,string
+compute,software,MPI_library,MPI Library,MPI implementation used for message passing.,,,string
+compute,software,container_runtime,Container Runtime,Container runtime used to package and run software.,,,string
+compute,performance,wall_time,Wall Time,Total elapsed runtime of the simulation.,,ns,float
+compute,performance,energy_consumption,Energy Consumption,Total energy consumed by the simulation run.,,kWh,float

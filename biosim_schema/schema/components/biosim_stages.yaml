@@ -1,0 +1,658 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/stages
+name: biosim-stages
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+
+
+classes:
+
+  SimulationStages:
+    slots:
+      - setup # class
+      - minimisation # class
+      - equilibration # class
+      - production # class
+      - analysis # class
+
+  Setup:
+    slots:
+      - setup_tool # enum
+
+  Minimisation:
+    slots:
+      - energy_tolerance # float
+      - number_of_minimisation_steps # int, from settings
+      - minimisation_distance_step_size # int
+      - minimisation_algorithm # enum
+      - simulation_tool
+      - simulation_software # enum
+
+  Equilibration:
+    slots:
+      - simulation_tool
+      - simulation_software # enum
+
+  Production:
+    slots:
+      - simulation_tool
+      - simulation_software # enum
+      - simulation_software_version
+      - simulation_method
+
+  Analysis:
+    slots:
+      - analysis_tool
+      - analysis_software
+      - analysis_method
+
+slots:
+
+  setup:
+    description:
+      Setup stage of a simulation.
+    range: Setup # class
+
+  minimisation:
+    description:
+      Minimisation stage of a simulation.
+    range: Minimisation # class
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: imin
+          value: 1
+
+  number_of_minimisation_steps:
+    range: integer
+    description:
+      Number of integration steps performed during minimisation of the system, given as an integer.
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: maxcyc
+        - engine: gromacs
+          key: nsteps
+
+  equilibration:
+    description:
+      Equilibration stage of a simulation.
+    range: Equilibration # class
+
+  production:
+    description:
+      Production stage of a simulation.
+    range: Production # class
+
+  analysis:
+    description:
+      Analysis stage of a simulation.
+    range: Analysis # class
+
+  setup_tool:
+    description:
+      Name of the tool used to setup simulation.
+    range: SetupTool # enum
+
+  energy_tolerance:
+    description:
+      Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float.
+    range: ForceQuantity # class
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: emtol
+          unit: "kJ/mol/nm"
+        - engine: amber
+          key: drms
+          unit: "10−4 kcal/mol/Å"
+
+  minimisation_distance_step_size:
+    description:
+      The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.
+    range: LengthQuantity
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: dx0
+          unit: "Å"
+        - engine: gromacs
+          key: emstep
+          unit: nm
+
+  minimisation_algorithm:
+    description:
+      Name of the method used to minimise the molecular system.
+    range: MinimisationAlgorithm # enum
+    multivalued: true
+
+  simulation_software:
+    description:
+      Name of software used to perform simulation step.
+    range: SimulationSoftware # enum
+    multivalued: true
+
+  simulation_software_version:
+    description:
+      Version of software used to perform simulation step.
+    range: string
+    annotations:
+      extracted_only: true
+      ui_readonly: true
+
+  simulation_method:
+    description:
+      Method used to perform simulation.
+    range: SimulationMethod # enum
+    multivalued: true
+
+  simulation_tool:
+    description:
+      Tool used to perform simulation.
+    range: SimulationTool # enum
+    multivalued: true
+
+  analysis_software:
+    description:
+      Name of software used to analyse simulation.
+    range: AnalysisSoftware # enum
+    multivalued: true
+
+  analysis_method:
+    description:
+      Name of the method used to analyse simulation.
+    range: AnalysisMethod # enum
+    multivalued: true
+
+  analysis_tool:
+    description:
+      Name of the tool used to analyse simulation.
+    range: AnalysisTool # enum
+    multivalued: true
+
+enums:
+
+  SetupTool:
+    description:
+      Tool used to setup a system for simulation.
+    permissible_values:
+      pdb4amber:
+        description:
+          Helps in preparing pdb-format files coming from other places to be compatible with LEaP.
+      prepareforleap:
+        description:
+          An action inside cpptraj, that also helps make pdb-format files compatible with LEaP. It is particularly useful for carbohydrates.
+      packmol:
+      packmol_memgen:
+        description:
+           Packmol-memgen provides a way to generate membrane systems, with or without protein, by orienting input proteins with Memembed and using Packmol as the packing engine.
+      LEaP:
+        description:
+          The primary program to create a new system in Amber, or to modify existing systems.
+      antechamber:
+        description:
+          The main program to develop force fields for small organic molecules using a version of the general Amber force field (GAFF).
+      pyMSMT:
+        description:
+          A way to build, prototype and validate MM models of metalloproteins and organometallic compounds.
+      mdgx:
+        description:
+          Allows the generation of bonded force field parameters for any molecule by fitting to quantum data.
+      parmed:
+        description:
+          Provides a way to extract information about parameters defined in a parameter-topology file.
+
+
+  MinimisationAlgorithm:
+    description:
+      Algorithm used to minimise particle interactions.
+    permissible_values:
+      "Steepest Descent":
+        aliases:
+          - "Steepest Descent"
+          - steepest_descent
+        description:
+          Moves atoms in the opposite direction of the energy gradient (forces).
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: integrator
+              value: steep
+            - engine: amber
+              key: ntmin
+              value: [1, 2]
+      "Conjugate Gradient":
+        aliases:
+          - "Conjugate Gradient"
+          - conjugate_gradient
+        description:
+          Uses both current gradient information and previous search directions to find a more efficient path to the minimum.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: integrator
+              value: cg
+            - engine: amber
+              key: ntmin
+              value: [0, 1]
+      "L-BFGS":
+        aliases:
+          - "L-BFGS"
+        description:
+          L-BFGS (Limited-memory Broyden–Fletcher–Goldfarb–Shanno) approximates the inverse Hessian matrix (second derivatives) using a limited number of previous steps, making it memory-efficient.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: integrator
+              value: l-bfgs
+      XMIN:
+        aliases:
+          - "XMIN"
+          - xmin
+        description:
+          Minimization algorithm used to relax molecular structures to their lowest potential energy state, particularly for finding very deep local minima. It is a quasi-Newton method that typically provides quadratically convergent minimization.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntmin
+              value: 3
+      LMOD:
+        aliases:
+          - "LMOD"
+          - lmod
+        description:
+          LMOD (Low-Mode) minimization is a specialized conformational search and energy minimization method designed to efficiently find low-energy structures by navigating along the low-frequency vibrational modes of a system.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntmin
+              value: 4
+
+  SimulationMethod:
+    description:
+      Options for simulation methods.
+    permissible_values:
+      "Self-guided Langevin Dynamics":
+        aliases:
+          - "Self-guided Langevin Dynamics"
+          - selfguided_langevin_dynamics
+        description:
+          Method that accelerates low frequency motion to enhance conformational sampling.
+      "Accelerated Molecular Dynamics":
+        aliases:
+          - "Accelerated Molecular Dynamics"
+          - accelerated_molecular_dynamics
+        description:
+          Method where a bias potential that reduces the height of local barriers, allowing the faster evolution of a calculation.
+      "Gaussian Accelerated Molecular Dynamics":
+        aliases:
+          - "Gaussian Accelerated Molecular Dynamics"
+          - Gaussian_accelerated_molecular_dynamics
+        description:
+          Method that adds a harmonic boost potential (following a Gaussian distribution) to smooth the system potential energy surface.
+
+      "Targeted Molecular Dynamics":
+        aliases:
+          - "Targeted Molecular Dynamics"
+          - targeted_molecular_dynamics
+        description:
+          Method that adds an additional term to the energy function based on the mass-wieghted root mean square deviation of a set of atoms in the current structure compared to a reference structure.
+
+      "Nudged Elastic Band Calculations":
+        aliases:
+          - "Nudged Elastic Band Calculations"
+          - nudged_elastic_band_calculations
+        description:
+          Method where the path for a conformational change is approximated with a series of images describing the molecule at discrete points along the path.
+
+      "Adaptive String Method":
+        aliases:
+          - "Adaptive String Method"
+          - adaptive_string_method
+        description:
+          Method to find the Minimum Free Energy Path (MFEP) in the space of selected collective variables connecting initial and final stages of a given process.
+
+      "LMOD method":
+        aliases:
+          - "LMOD method"
+          - LMOD_method
+        description:
+          Conformational search algorithm based on eigenvector following of low frequency vibrational modes.
+
+      "DL-FIND Optimization":
+        aliases:
+          - "DL-FIND Optimization"
+          - DLFind_optimization
+        description:
+          Method to search for potential energy stationary points along a chemical reaction in a QM/MM simulation.
+
+      "Thermodynamic Integration (TI)":
+        aliases:
+          - "Thermodynamic Integration (TI)"
+          - thermodynamic_integration
+        description:
+          Method to calculate ensemble-averaged energies "on-the-fly" along a path as the simulation progresses between two states.
+
+      "Linear Interaction Energies (LIE)":
+        aliases:
+          - "Linear Interaction Energies (LIE)"
+          - linear_interaction_energies
+        description:
+          Method to compute binding free energies using the linear interaction energy model.
+
+      "Replica Exchange Molecular Dynamics (REMD)":
+        aliases:
+          - "Replica Exchange Molecular Dynamics (REMD)"
+          - replica_exchange_molecular_dynamics
+        description:
+          An expanded ensemble energy method that samples from an ensemble larger than a typical statistical mechanical ensemble defined by the Hamiltonian governing the system.
+
+      "Adaptively Biased Molecular Dynamics (ABMD)":
+        aliases:
+          - "Adaptively Biased Molecular Dynamics (ABMD)"
+          - adaptively_biased_molecular_dynamics
+        description:
+          Method for calculating free energy landscapes as a function of a small number of collective variables.
+
+      "Steered Molecular Dynamics (SMD)":
+        aliases:
+          - "Steered Molecular Dynamics (SMD)"
+          - steered_molecular_dynamics
+        description:
+          Method that applies an external force onto a physical system, and drives a change in coordinates within a certain time. The moethod should be thought of as umbrella sampling where the center of the restraint is time-dependent.
+
+      "Umbrella Sampling":
+        aliases:
+          - "Umbrella Sampling"
+          - umbrella_sampling
+        description:
+          A method that enhances sampling of rare events by applying a biasing potential to restrain the system along a chosen coordinate, allowing for the calculation of free energy profiles.
+
+      Metadynamics:
+        aliases:
+          - Metadynamics
+          - metadynamics
+        description:
+          An enhanced sampling technique that adds a history-dependent bias to the potential energy surface, encouraging the system to escape local minima and explore new configurations, often used to reconstruct free energy landscapes.
+
+      "Swarms of Trajectories String Method":
+        aliases:
+          - "Swarms of Trajectories String Method"
+          - swarms_of_trajectories_string_method
+        description:
+          A version of the string method, a path-finding algorithm that refines a punative transition pathway iteratively until the path is deemed to have been converged.
+
+      "Constant pH Molecular Dynamics":
+        aliases:
+          - "Constant pH Molecular Dynamics"
+          - constant_pH_molecular_dynamics
+        description:
+          Method that uses Monte Carlo sampling of the Boltzmann distribution of discrete protonation states concurrent with the molecular dynamics simulation.
+
+      "Constant Redox Potential Molecular Dynamics":
+        aliases:
+          - "Constant Redox Potential Molecular Dynamics"
+          - constant_redox_potential_molecular_dynamics
+        description:
+          Method that uses Monte Carlo sampling of the Boltzmann distribution of discrete redox sates concurrent with the molecular dynamics simulation.
+
+      "Continuous Constant pH Molecular Dynamics":
+        aliases:
+          - "Continuous Constant pH Molecular Dynamics"
+          - continuous_constant_pH_molecular_dynamics
+        description:
+          A method that is an alternative to the Monte-Carlo based constant pH methods where particles with fictitious mass and coordinates bound between 0 (protonated) and 1 (deprotonated) are added to the system to present protonation states of titratable sites.
+
+      "NMR Refinement":
+        aliases:
+          - "NMR Refinement"
+          - NMR_refinement
+        description:
+          Method to incorporate a variety of restraints (e.g. NMR restraints derived from NOE and J-coupling data) into an optimization procedure.
+
+      "X-ray and CryoEM Refinement":
+        aliases:
+          - "X-ray and CryoEM Refinement"
+          - Xray_and_cryoEM_refinement
+        description:
+          Method to incorporate electron microscopy (EM) image information into macromolecular structure determination, by applying restraints for rigid and flexible fitting into EM maps.
+
+      "Locally Enhanced Sampling":
+        aliases:
+          - "Locally Enhanced Sampling"
+          - locally_enhanced_sampling
+        description:
+          A method to allow for multiple local copies of regions within a larger biomolecule, e.g. to allow sidechains in a protein to be "disordered", while the backbone is represented as a single configuration.
+
+  SimulationTool:
+    description:
+      Tools/utility used within simulation engines to perform simulations.
+    permissible_values:
+      sander:
+        description:
+          A tool with AmberTools that is a basic energy minimizer and molecular dynamics program.
+      pmemd:
+        description:
+          Part of Amber and is a version of the sander simulation tool that is optimized for speed and for parallel scaling.
+      "gem.pmemd":
+        aliases:
+          - "gem.pmemd"
+          - gem_pmemd
+        description:
+          gem.pmemd is a part of AmberTools that is a CPI-only variant of the pmemd program that is designed for calculations using "advanced" force fields, such as AMOEBA and GEM.
+      mdrun:
+        description:
+          The main molecular dynamics engine of GROMACS, used to perform energy minimization, molecular dynamics simulations, and analysis. It executes the simulation based on input files prepared by other GROMACS tools, supporting a wide range of simulation types and parallelization options.
+
+  SimulationSoftware:
+    description:
+      Simulation software used to perform molecular dynamics simulations and related functions.
+    permissible_values:
+      "Amber":
+        aliases:
+          - "Amber"
+          - "amber"
+        description:
+          A collective name for a suite of programs that allo users to carry out molecular dynamics simulations, particulary on biomolecules.
+      "GROMACS":
+        aliases:
+          - "GROMACS"
+          - "gromacs"
+        description:
+          GROMACS (GROningen Machine for Chemical Simulations) is a free, open-source, high-performance MD software package designed for simulating biochemical molecules like proteins, lipids, and nucleic acids.
+      "LAMMPS":
+        aliases:
+          - "LAMMPS"
+          - "lammps"
+        description:
+          LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) is an open-source classical molecular dynamics code designed for material modeling, including solids, soft matter, and coarse-grained systems.
+      "NAMD":
+        aliases:
+          - "NAMD"
+          - namd
+        description:
+          NAMD (Nanoscale Molecular Dynamics, formerly Not Another Molecular Dynamics Program) is computer software for molecular dynamics simulation, written using the Charm++ parallel programming model.
+      "OpenMM":
+        aliases:
+          - "OpenMM"
+          - "openmm"
+        description:
+          OpenMM is a library for performing molecular dynamics simulations on a wide variety of hardware architectures.
+      "CHARMM":
+        aliases:
+          - "CHARMM"
+          - charmm
+        description:
+          CHARMM (Chemistry at HARvard Macromolecular Mechanics) is a molecular simulation program with broad application to many-particle systems with a comprehensive set of energy functions, a variety of enhanced sampling methods, and support for multi-scale techniques including QM/MM, MM/CG, and a range of implicit solvent models.
+      "DL_POLY":
+        aliases:
+          - "DL_POLY"
+          - "dl_poly"
+        description:
+          DL_POLY is a general purpose classical molecular dynamics (MD) simulation software developed at Daresbury Laboratory since 1992.
+      "HOOMD-blue":
+        aliases:
+          - "HOOMD-blue"
+          - "hoomd_blue"
+        description:
+          HOOMD-blue is a Python package that runs simulations of particle systems on CPUs and GPUs.
+      "Desmond":
+        aliases:
+          - "Desmond"
+          - "desmond"
+        description:
+          Desmond is a software package developed at D. E. Shaw Research to perform high-speed molecular dynamics simulations of biological systems on conventional computer clusters.
+      "ACEMD":
+        aliases:
+          - "ACEMD"
+          - acemd
+        description:
+          A software framework for molecular dynamics-based discovery.
+      "CP2K":
+        aliases:
+          - "CP2K"
+          - "cp2k"
+        description:
+          CP2K is a quantum chemistry and solid state physics software package that can perform atomistic simulations of solid state, liquid, molecular, periodic, material, crystal, and biological systems.
+
+
+  AnalysisTool:
+    description:
+      Tools used to analyse simulation outputs.
+    permissible_values:
+      "mdout_analyzer.py":
+        aliases:
+          - "mdout_analyzer.py"
+          - "mdout_analyzer_py"
+        description:
+          A Python script designed to help parse and analyze the energy components printed in the output files from sander and pmemd.
+      ambpdb:
+        description:
+          Convert amber-format coordinate files to pdb format.
+      CPPTRAJ:
+        aliases:
+          - CPPTRAJ
+          - "cpptraj"
+        description:
+          Main program in Amber for processing coordinate trajectories and data files.
+      PYTRAJ:
+        aliases:
+          - PYTRAJ
+          - "pytraj"
+        description:
+          The Python front end of cpptraj.
+      "MMPBSA.py":
+        aliases:
+          - "MMPBSA.py"
+          - "mmpbsa"
+        description:
+          Molecular Mechanics / Poisson Boltzmann (or Generalized Born) Surface Area (MM/PB(GB)SA) calculations is a Python-based post-processing method, where representative snapshots from an ensemble of conformations are used to calculate the free energy change between two states.
+      "Free Energy Workflow (FEW)":
+        aliases:
+          - "Free Energy Workflow (FEW)"
+          - free_energy_workflow
+        description:
+          The Free Energy Workflow (FEW) is a tool for automated calculation of the binding free energy of a set of ligands binding to the same receptor using modules provided in the AMBER suite of programs.
+      edgember:
+        description:
+          Calculates the free energy of an alchemical transformation in 1- or 2-environments using the MBAR and thermodynamic integration methods.
+      "SAX-RISM":
+        aliases:
+          - "SAX-RISM"
+          - sax_rism
+        description:
+          Calculates small angle X-ray scattering (SAXS) from distribution function of solvent in grid format (dx files) from 3D-RISM.
+      "SAX-MD":
+        aliases:
+          - "SAX-MD"
+          - sax_md
+        description:
+          Takes input as two sets of coordinates extracted from snapshots of "sample" and "blank" MD simulations (the “sample” MD contains the biomolecule plus water and ions, while the “blank” MD only has pure water + salt).
+      "MoFT":
+        aliases:
+          - "MoFT"
+          - moft
+        description:
+          A series of computational programs and libraries for analysis of volumentric data generated by theoretical models (MD, MC simulations, 3D-RISM, NLPB) or derived from experimental measurement (e.g X-ray crystallography, cryo-EM).
+      ndfes:
+        description:
+          Program that reads an input file that describes the biased umbrella sampling, performs the variational free energy profile (vFEP), multistate Bennett acceptance ratio (MBAR), weighted thermodynamic perturbation theory (wTP), or generalized weighted thermodynamic perturbation theory (gwTP) methods to obtain an unbiased free energy surface (FES).
+      PLUMED:
+        aliases:
+          - PLUMED
+          - "plumed"
+      MDanalysis:
+        aliases:
+          - MDanalysis
+          - "mdanalysis"
+
+
+  AnalysisSoftware:
+    description:
+      Software used to analyse simulation outputs.
+    permissible_values:
+      VMD:
+        aliases:
+          - VMD
+          - "vmd"
+      "Schrodinger Maestro":
+        aliases:
+          - "Schrodinger Maestro"
+          - "schrodinger_maestro"
+      PyMOL:
+        aliases:
+          - PyMOL
+          - "pymol"
+      Avogadro:
+        aliases:
+          - Avogadro
+          - "avogadro"
+
+  AnalysisMethod:
+    description:
+      Methods used to analyse simulation outputs.
+    permissible_values:
+      "RMSD":
+        aliases:
+          - "RMSD"
+          - "root_mean_square_deviation"
+        description:
+          Calculate the root mean square deviation (RMSD) between distance pairs within selected points, perform best of fit of coordinates to a reference first.
+      "DSSP":
+        aliases:
+          - "DSSP"
+          - "define_secondary_structure_of_proteins"
+        description:
+          Calculate the secondary structure content using the Define Secondary Structure of Proteins (DSSP) algorithm.
+      "GIST":
+        aliases:
+          - "GIST"
+          - "grid_inhomogenous_solvation_theory"
+        description:
+          Perform the grid inhomogenous solvation theory (GIST), a method for analyzing the strutre and dyanmics of solvent in the vicinity of a solute molecule.
+      "Hydrogen Bonds":
+        aliases:
+          - "Hydrogen Bonds"
+          - hydrogen_bonds
+        description:
+          Calculate hydrogen bonds using geometric criteria.
+      "Connolly surface":
+        aliases:
+          - "Connolly surface"
+          - connolly_surface
+        description:
+          Calculate the Connolly surface area of specified atoms.
+      "Radius of Gyration":
+        aliases:
+          - "Radius of Gyration"
+          - radius_of_gyration
+        description:
+          Calculate the radius of gyration for specified atoms.
+      "BAR/PBSA":
+        aliases:
+          - "BAR/PBSA"
+          - "bar_pbsa"
+        description:
+          BAR/PBSA is a method developed to address inability of alchemical simulations to handle elecronic polarization effects upon ligand transfer from water to the protein interior. Used to post-process alchemical simulation trajectories to incorporate the polarization effects in a continuum manner.

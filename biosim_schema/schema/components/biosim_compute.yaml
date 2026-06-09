@@ -1,0 +1,317 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/compute
+name: biosim-compute
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+
+classes:
+
+
+  ComputationalEnvironment:
+    slots:
+      - hardware
+      - software
+      - performance
+
+      # - simulation_software_name # enum
+      # - analysis_software_name # enum
+      # - sofware_version # string
+      # - hardware # string
+      # - computer_cluster # enum
+
+  Hardware:
+    slots:
+      - execution_platform
+      - node_type
+      - node_count
+      - CPU_vendor
+      - CPU_architecture
+      - sockets_per_node
+      - cores_per_socket
+      - threads_per_core
+      - GPU_vendor
+      - GPUs_per_node
+      - memory_per_node
+
+  Software:
+    slots:
+      - operating_system
+      - scheduler
+      - MPI_library
+      - container_runtime
+
+  Performance:
+    slots:
+      - wall_time # time
+      - energy_consumption
+
+
+  # File:
+  #   attributes:
+  #     file_name:
+  #       required: true
+  #       description:
+  #         Name of the file, including the extension.
+  #       pattern: "^[\\w]*[.][\\w]*$"
+  #     file_size_in_MB:
+  #       range: integer
+  #       description:
+  #         Size of the file in kilobytes.
+  #       unit:
+  #         ucum_code: MegaBYTE
+  #         has_quantity_kind: InformationContent
+  #     file_location:
+  #       description:
+  #         Location of the file.
+
+
+slots:
+
+  hardware:
+    range: Hardware # class
+
+  software:
+    range: Software # class
+
+  performance:
+    range: Performance # class
+
+
+  operating_system:
+    description:
+      Operating system installed on the hardware used to perform the simulation.
+    range: OperatingSystem
+
+  scheduler:
+    description:
+      Workload manager or job scheduler used to launch the simulation.
+    range: Scheduler
+
+  MPI_library:
+    description:
+      MPI implementation used for distributed parallel execution.
+    range: MPILibrary
+
+  container_runtime:
+    description:
+      Container runtime used to execute the simulation environment, if any.
+    range: ContainerRuntime
+
+
+  wall_time:
+    description:
+      Total elapsed runtime of the simulation.
+    range: TimeQuantity
+
+  energy_consumption:
+    description:
+      Total energy consumed by the simulation run.
+    range: EnergyQuantity
+
+
+  execution_platform:
+    description:
+      Broad type of system used to run the simulation workload.
+    range: ExecutionPlatform
+
+  node_type:
+    description:
+      Compute node profile used for the simulation run.
+    range: NodeType
+
+  node_count:
+    description:
+      Number of compute nodes used for the run.
+    range: integer
+    minimum_value: 1
+
+  CPU_vendor:
+    description:
+      CPU vendor used in the compute nodes.
+    range: CpuVendor
+
+  CPU_architecture:
+    description:
+      CPU instruction-set architecture of the compute nodes.
+    range: CpuArchitecture
+
+  sockets_per_node:
+    description:
+      Number of physical CPU sockets in each compute node.
+    range: integer
+    minimum_value: 1
+
+  cores_per_socket:
+    description:
+      Number of physical CPU cores in each socket.
+    range: integer
+    minimum_value: 1
+
+  threads_per_core:
+    description:
+      Number of hardware threads per physical core.
+    range: integer
+    minimum_value: 1
+
+  GPU_vendor:
+    description:
+      GPU vendor used by the compute nodes, if applicable.
+    range: GpuVendor
+
+  GPUs_per_node:
+    description:
+      Number of GPUs present in each compute node.
+    range: integer
+    minimum_value: 0
+
+  memory_per_node:
+    description:
+      Amount of memory installed per compute node.
+    range: ByteQuantity
+
+enums:
+
+  OperatingSystem:
+    description:
+      List of operating systems installed on the hardware used to perform the simulation.
+    permissible_values:
+      "Linux":
+        description:
+          Unix-like operating systems commonly used for molecular dynamics on workstations, HPC clusters, and cloud environments.
+      "macOS":
+        description:
+          Apple Unix-based operating system, often used for local development, testing, and smaller-scale molecular dynamics workflows.
+      "Windows":
+        description:
+          Microsoft operating system used for desktop workflows; molecular dynamics tools are often run via native builds, virtual machines, or Linux compatibility layers.
+
+  Scheduler:
+    description:
+      Job scheduler used for simulation execution.
+    permissible_values:
+      SLURM:
+        description:
+          Slurm Workload Manager.
+      PBS:
+        description:
+          Portable Batch System family (PBS Pro/OpenPBS).
+      LSF:
+        description:
+          IBM Spectrum LSF.
+      SGE:
+        description:
+          Sun/Grid Engine family.
+      None:
+        description:
+          No batch scheduler used.
+
+  MPILibrary:
+    description:
+      MPI implementation used for message passing.
+    permissible_values:
+      OpenMPI:
+        description:
+          Open source MPI implementation.
+      MPICH:
+        description:
+          MPICH MPI implementation.
+      IntelMPI:
+        description:
+          Intel MPI implementation.
+      MVAPICH2:
+        description:
+          MVAPICH2 MPI implementation.
+      None:
+        description:
+          No MPI library used.
+
+  ContainerRuntime:
+    description:
+      Container runtime used to package and run software.
+    permissible_values:
+      Apptainer:
+        description:
+          Apptainer/Singularity runtime common on HPC systems.
+      Docker:
+        description:
+          Docker container runtime.
+      Podman:
+        description:
+          Podman container runtime.
+      None:
+        description:
+          No container runtime used.
+
+
+  ExecutionPlatform:
+    description:
+      Type of platform used to run the simulation.
+    permissible_values:
+      "HPC Cluster":
+        description:
+          Shared high-performance computing cluster.
+      "Cloud VM":
+        description:
+          Cloud-hosted virtual machine.
+      "Local":
+        description:
+          Local desktop, laptop or portable workstation.
+
+  NodeType:
+    description:
+      Type of compute node used in the system.
+    permissible_values:
+      "CPU only":
+        description:
+          Node with CPUs only.
+      "GPU Accelerated":
+        description:
+          Node with one or more GPUs available.
+      "Hybrid CPU GPU":
+        description:
+          Node combining CPU and GPU resources.
+
+  CpuVendor:
+    description:
+      Vendor of the CPU used in the compute nodes.
+    permissible_values:
+      "AMD":
+        description:
+          AMD processor.
+      "Intel":
+        description:
+          Intel processor.
+      "ARM":
+        description:
+          ARM-based processor.
+      "Other":
+        description:
+          Other CPU vendor.
+
+  CpuArchitecture:
+    description:
+      CPU architecture used by the compute nodes.
+    permissible_values:
+      x86:
+        description:
+          x86 architecture.
+      "ARM":
+        description:
+          ARM architecture.
+
+  GpuVendor:
+    description:
+      Vendor of the GPU used in the compute nodes.
+    permissible_values:
+      "Nvidia":
+        description:
+          Nvidia GPU.
+      "AMD":
+        description:
+          AMD GPU.
+      "Intel":
+        description:
+          Intel GPU.
+      "None":
+        description:
+          No GPU present.

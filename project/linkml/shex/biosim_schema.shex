@@ -1,0 +1,996 @@
+# metamodel_version: 1.11.0
+BASE <https://CCPBioSim.ac.uk/biosim-schema/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis_tes> (  <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_tool>
+          [ <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#mdout_analyzer.py>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#ambpdb>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#CPPTRAJ>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#PYTRAJ>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#MMPBSA.py>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#Free%20Energy%20Workflow%20%28FEW%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#edgember>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#SAX-RISM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#SAX-MD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#MoFT>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#ndfes>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#PLUMED>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#MDanalysis> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_software> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#VMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#Schrodinger%20Maestro>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#PyMOL>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#Avogadro> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_method> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#RMSD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#DSSP>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#GIST>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#Hydrogen%20Bonds>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#Connolly%20surface>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#Radius%20of%20Gyration>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisMethod#BAR/PBSA> ] *
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleUnit#degrees> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/barostat_algorithm> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Berendsen>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Andersen>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Parrinello-Rahman>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Nose-Hoover>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Monte%20Carlo>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Martyna-Tuckerman-Tobias-Klein> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_time_constant>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_frequency> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_type> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/PressureCouplingType#isotropic>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/PressureCouplingType#semi-isotropic>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/PressureCouplingType#anisotropic>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/PressureCouplingType#surface%20tension> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:GigaBYTE qudt:MegaBYTE ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotentialName#GLYCAM06>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotentialName#GLYCAM_06EP>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotentialName#GLYCAM_06j-1> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeUnit#e>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeUnit#C> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/hardware> @<https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/software> @<https://CCPBioSim.ac.uk/biosim-schema/compute/Software> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/performance> @<https://CCPBioSim.ac.uk/biosim-schema/compute/Performance>
+          ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:MOL-PER-M3 ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity_tes> (  <https://CCPBioSim.ac.uk/biosim-schema/topology/bonds>
+          @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/dihedrals> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:KiloW-HR ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble_type> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/EnsembleType#NPT>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/EnsembleType#NVT>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/EnsembleType#NVE>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/EnsembleType#%CE%BCVT> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/random_seed> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#sander>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#gem.pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#mdrun> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#Amber>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#GROMACS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#LAMMPS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#NAMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#OpenMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#CHARMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#DL_POLY>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#HOOMD-blue>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#Desmond>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#ACEMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#CP2K> ] *
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:KiloJoulePerMoleNanometer
+             qudt:KiloCAL-PER-MOL-ANGSTROM ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyUnit#1/ps> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientUnit#a/ps>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientUnit#kg/s> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/general_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#gem.pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#GAFF>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#GAFF2>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#OPLS>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#GROMOS>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#CHARMM> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/execution_platform> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ExecutionPlatform#HPC%20Cluster>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ExecutionPlatform#Cloud%20VM>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ExecutionPlatform#Local> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/node_type> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/NodeType#CPU%20only>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/NodeType#GPU%20Accelerated>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/NodeType#Hybrid%20CPU%20GPU> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/node_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_vendor> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/CpuVendor#AMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/CpuVendor#Intel>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/CpuVendor#ARM>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/CpuVendor#Other> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_architecture> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/CpuArchitecture#x86>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/CpuArchitecture#ARM> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/sockets_per_node> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/cores_per_socket> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/threads_per_core> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/GPU_vendor> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/GpuVendor#Nvidia>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/GpuVendor#AMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/GpuVendor#Intel>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/GpuVendor#None> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/GPUs_per_node> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/memory_per_node>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator_algorithm> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/IntegratorAlgorithm#Velocity-Verlet>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/IntegratorAlgorithm#Leap-frog>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/IntegratorAlgorithm#Verlet>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/IntegratorAlgorithm#Euler> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/frame_step>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/time_step>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/number_of_steps> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/simulation_time>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/restraints> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/electrostatic_cutoff_distance>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/vdw_cutoff_distance>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/bond_length_constraints_algorithm> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BondLengthConstraintsAlgorithm#SHAKE>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BondLengthConstraintsAlgorithm#RATTLE>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BondLengthConstraintsAlgorithm#SETTLE>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BondLengthConstraintsAlgorithm#LINCS>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/BondLengthConstraintsAlgorithm#CCMA> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/long_range_interaction_method> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/LongRangeInteractionMethod#Cutoff>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/LongRangeInteractionMethod#Ewald>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/LongRangeInteractionMethod#PME>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/LongRangeInteractionMethod#P3M>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/LongRangeInteractionMethod#FMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/LongRangeInteractionMethod#RF> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM qudt:NanoM ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotentialName#LIPID21> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#MACE>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#ANI>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#NequIP>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#UMA>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#AceFF> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:GramPerMole qudt:Dalton ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:PER-BAR qudt:PER-PA ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#Pa> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> @linkml:String ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/energy_tolerance>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/number_of_minimisation_steps> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_distance_step_size>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_algorithm> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#Steepest%20Descent>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#Conjugate%20Gradient>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#L-BFGS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#XMIN>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#LMOD> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#sander>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#gem.pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#mdrun> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#Amber>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#GROMACS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#LAMMPS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#NAMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#OpenMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#CHARMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#DL_POLY>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#HOOMD-blue>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#Desmond>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#ACEMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#CP2K> ] *
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:KiloCAL-PER-MOL qudt:KiloJ-PER-MOL ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/PDB_ID> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/UNIPROT_ID> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/SMILES> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/InChI> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/InChIKey> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/alphafold_ID> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/PubChem_CID> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/protein_sequence> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/nucleic_sequence> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/predicted_structure> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/molecular_formula> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/molecular_weight>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_charge>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/atom_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/monomer_count> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#ff99-bsc0>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#ff99OL3>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#LJbb>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#ROC>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#Shaw>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#OL15>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#OL21>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#OL24>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#OL3>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#bsc1>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#terminal_monophosphate> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/topology/Particles_tes> (  <https://CCPBioSim.ac.uk/biosim-schema/topology/masses>
+          @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/fixed_charges> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/system_charge>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/coarse_grained> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/resolution> [
+             <https://CCPBioSim.ac.uk/biosim-schema/topology/ModelResolution#All%20Atom>
+             <https://CCPBioSim.ac.uk/biosim-schema/topology/ModelResolution#United%20Atom>
+             <https://CCPBioSim.ac.uk/biosim-schema/topology/ModelResolution#Coarse-Grained>
+             <https://CCPBioSim.ac.uk/biosim-schema/topology/ModelResolution#Mesoscale> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/compute/Performance> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Performance_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/wall_time>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/energy_consumption>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/compute/Performance> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotentialName#LignAmb25> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/general_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential>
+          @<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#Pa> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/stages/Production> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Production_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#sander>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#gem.pmemd>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#mdrun> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#Amber>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#GROMACS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#LAMMPS>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#NAMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#OpenMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#CHARMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#DL_POLY>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#HOOMD-blue>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#Desmond>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#ACEMD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationSoftware#CP2K> ] * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software_version> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_method> [
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Self-guided%20Langevin%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Accelerated%20Molecular%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Gaussian%20Accelerated%20Molecular%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Targeted%20Molecular%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Nudged%20Elastic%20Band%20Calculations>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Adaptive%20String%20Method>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#LMOD%20method>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#DL-FIND%20Optimization>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Thermodynamic%20Integration%20%28TI%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Linear%20Interaction%20Energies%20%28LIE%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Replica%20Exchange%20Molecular%20Dynamics%20%28REMD%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Adaptively%20Biased%20Molecular%20Dynamics%20%28ABMD%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Steered%20Molecular%20Dynamics%20%28SMD%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Umbrella%20Sampling>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Metadynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Swarms%20of%20Trajectories%20String%20Method>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Constant%20pH%20Molecular%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Constant%20Redox%20Potential%20Molecular%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Continuous%20Constant%20pH%20Molecular%20Dynamics>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#NMR%20Refinement>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#X-ray%20and%20CryoEM%20Refinement>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationMethod#Locally%20Enhanced%20Sampling> ] *
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/Production> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff19SB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff99SB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff99SB-ILDN>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff99SB-disp>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff14SB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff14SBonlysc>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff15ipq>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#fb15>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff03>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff03ua>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#phosaa10>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#phosaa14SB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#phosaa19SB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff14SB_modAA>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff19SB_modAA> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Setup_tes> <https://CCPBioSim.ac.uk/biosim-schema/stages/setup_tool> [
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#pdb4amber>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#prepareforleap>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#packmol>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#packmol_memgen>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#LEaP>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#antechamber>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#pyMSMT>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#mdgx>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#parmed> ] ? ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_kinetic_energy>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_potential_energy>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_enthalpy>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_pressure>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_temperature>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_volume>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/observables/average_volume_vector>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_dimensions>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_angles>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_type> [
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/BoxType#Cubic>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/BoxType#Tetragonal>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/BoxType#Orthorhombic>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/BoxType#Truncated%20Octahedron>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/BoxType#Triclinic> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/periodic_boundary_conditions> [
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/PeriodicBoundaryConditions#None>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/PeriodicBoundaryConditions#xyz>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/PeriodicBoundaryConditions#xy>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/PeriodicBoundaryConditions#xz>
+             <https://CCPBioSim.ac.uk/biosim-schema/trajectory/PeriodicBoundaryConditions#yz> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> ] ?
+    )
+}
+
+<SimulationMetadata> CLOSED {
+    (  $<SimulationMetadata_tes> (  <stages> @<https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> ? ;
+          <settings> @<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> ? ;
+          <observables> @<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables> ? ;
+          <topology> @<https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> ? ;
+          <trajectory> @<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata> ? ;
+          <composition> @<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> ? ;
+          <potentials> @<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> ? ;
+          <compute> @<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> ?
+       ) ;
+       rdf:type [ <SimulationMetadata> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables_tes>
+       <https://CCPBioSim.ac.uk/biosim-schema/observables/simulation_averages>
+       @<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages> ? ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble> @<https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator> @<https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator>
+          ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/barostat> @<https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat> @<https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat>
+          ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/interactions>
+          @<https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages_tes> (  <https://CCPBioSim.ac.uk/biosim-schema/stages/setup>
+          @<https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation> @<https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation>
+          ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/equilibration>
+          @<https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/production> @<https://CCPBioSim.ac.uk/biosim-schema/stages/Production> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis> @<https://CCPBioSim.ac.uk/biosim-schema/stages/Analysis> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/compute/Software> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Software_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/operating_system> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/OperatingSystem#Linux>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/OperatingSystem#macOS>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/OperatingSystem#Windows> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/scheduler> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/Scheduler#SLURM>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/Scheduler#PBS>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/Scheduler#LSF>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/Scheduler#SGE>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/Scheduler#None> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/MPI_library> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/MPILibrary#OpenMPI>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/MPILibrary#MPICH>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/MPILibrary#IntelMPI>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/MPILibrary#MVAPICH2>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/MPILibrary#None> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/compute/container_runtime> [
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ContainerRuntime#Apptainer>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ContainerRuntime#Docker>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ContainerRuntime#Podman>
+             <https://CCPBioSim.ac.uk/biosim-schema/compute/ContainerRuntime#None> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/compute/Software> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/system_counts>
+          @<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_ID>
+          @<https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> *
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/total_molecule_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/total_atom_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/unique_molecule_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/salt_concentration>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#K>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#%C2%B0C>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#%C2%B0F> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat_algorithm> [
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Langevin>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Berendsen>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Andersen>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Nose-Hoover>
+             <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Bussi> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/collision_frequency>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/temperature_time_constant>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/coupling_group> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/chain_length> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/friction_coefficient>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:SEC qudt:MilliSEC qudt:MicroSEC qudt:NanoSEC
+             qudt:PicoSEC <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeUnit#fs> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/connectivity>
+          @<https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/topology/particles> @<https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/positions> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/forces> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/velocities> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/polarizable_charges> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/energies> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/water> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/replica> @linkml:Boolean ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/frame_count> @linkml:Integer ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/simulation_box>
+          @<https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/trajectory/trajectory_output>
+          @<https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories> ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleUnit#degrees> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:PER-BAR qudt:PER-PA ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM qudt:NanoM ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#Pa> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#K>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#%C2%B0C>
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#%C2%B0F> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:SEC qudt:MilliSEC qudt:MicroSEC qudt:NanoSEC
+             qudt:PicoSEC <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeUnit#fs> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM qudt:NanoM ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM3
+             <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeUnit#nm%C2%B3> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> ] ?
+    )
+}
+
+<https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential_tes> (
+          <https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential_name> [
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#OPC>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#OPC3>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#OPC3POL>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#POL3>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#TIP3P>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#TIP3PFB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#TIP4PFB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#TIP4P>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#TIP5P>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#TIP4PEW>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#SPCE>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#SPCEB>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#SPC/Fw>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#q-SPC/Fw> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> ] ?
+    )
+}

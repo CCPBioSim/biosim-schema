@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.8
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-case-conflict
+      - id: check-ast
+
+  - repo: local
+    hooks:
+      - id: biosim-schema-generate-derived
+        name: Generate biosim-schema derived artefacts
+        entry: biosim-schema-generate derived
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: biosim-schema-verify-generated
+        name: Verify biosim-schema generated artefacts
+        entry: biosim-schema-generate verify
+        language: system
+        pass_filenames: false
+        always_run: true

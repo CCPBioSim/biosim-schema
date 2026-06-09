@@ -1,0 +1,110 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/observables
+name: biosim-observables
+
+classes:
+
+  SimulationObservables:
+    slots:
+      - simulation_averages
+
+  SimulationAverages:
+    slots:
+      - average_kinetic_energy # float
+      - average_potential_energy # float
+      - average_enthalpy # float
+      - average_pressure # float
+      - average_temperature # float
+      - average_volume # float
+      - average_volume_vector # vector
+
+slots:
+
+  simulation_averages:
+    description:
+      Average values of observables outputted from the simulation.
+    range: SimulationAverages # class
+
+  average_temperature:
+    description:
+      Average temperature sampled from the simulation, given as a float.
+    range: TemperatureQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: Temperature
+          unit: "K"
+        - engine: amber
+          key: "TEMP(K)"
+          unit: K
+
+  average_pressure:
+    description:
+      Average pressure sampled from the simulation, given as a float.
+    range: PressureQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: Pressure (bar)
+          unit: bar
+        - engine: amber
+          key: PRESS
+          unit: bar
+
+  average_volume:
+    description:
+      Average volume sampled from the simulation, given as a float.
+    range: VolumeQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: VOLUME
+          unit: A^3
+
+  average_volume_vector:
+    description:
+      Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10).
+    range: VectorVolumeQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: ["Box-X", "Box-Y", "Box-Z"]
+          unit: "nm"
+
+  average_potential_energy:
+    description:
+      Average potential energy sampled from the simulation, given as a float.
+    range: MolarEnergyQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: Potential
+          unit: "kJ/mol"
+        - engine: amber
+          key: EPtot
+          unit: kcal/mol
+
+  average_kinetic_energy:
+    description:
+      Average kinetic energy sampled from the simulation, given as a float.
+    range: MolarEnergyQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: Kinetic En.
+          unit: "kJ/mol"
+        - engine: amber
+          key: EKtot
+          unit: kcal/mol
+
+  average_enthalpy:
+    description:
+      Average enthalpy sampled from the simulation, given as a float.
+    range: MolarEnergyQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: Total Energy
+          unit: "kJ/mol"
+        - engine: amber
+          key: Etot
+          unit: kcal/mol

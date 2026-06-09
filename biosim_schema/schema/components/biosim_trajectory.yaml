@@ -1,0 +1,218 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/trajectory
+name: biosim-trajectory
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+
+classes:
+
+  TrajectoryMetadata:
+    slots:
+      - simulation_box # class
+      - trajectory_output # class
+
+  SimulationBox:
+    slots:
+      - box_dimensions # list of floats
+      - box_angles # list of floats
+      - box_type # enum
+      - periodic_boundary_conditions # enum xyz,xy,xz,yz
+
+  Trajectories:
+    slots:
+      - positions # bool
+      - forces # bool
+      - velocities # bool
+      - polarizable_charges # bool
+      - energies # bool
+      - water # bool
+      - replica # bool
+      - frame_count # int
+
+
+slots:
+
+  simulation_box:
+    description:
+      Information about the simulation box.
+    range: SimulationBox
+
+  trajectory_output:
+    description:
+      Information included in trajectory files.
+    range: Trajectories
+
+  frame_count:
+    description:
+      Total number of snapshots that make up a trajectory.
+    range: integer
+    minimum_value: 0
+    examples:
+      - value: 1
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: frame_count
+
+  periodic_boundary_conditions:
+    # multivalued: true
+    description:
+      What directions in a simulation cell periodic boundaries are set if they are turned on.
+    range: PeriodicBoundaryConditions
+
+  box_dimensions:
+    range: VectorLengthQuantity # LengthQuantity #
+    description:
+      The lengths/dimensions of the box used to simulate the system.
+    examples:
+      - value: [10, 10, 10]
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: box_dimensions
+          unit: Ang
+
+  box_angles:
+    range: VectorAngleQuantity # AngleQuantity #
+    description:
+      The angles of the box used to simulate the system.
+    examples:
+      - value: [90, 90, 90]
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: box_angles
+          unit: degrees
+
+  box_type:
+    description:
+      The type of box used to simuluate the system.
+    range: BoxType # enum
+
+  positions:
+    description:
+      Are per-frame positions included in the trajectory?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: positions
+  forces:
+    description:
+      Are per-frame forces included in the trajectory?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: forces
+  velocities:
+    description:
+      Are per-frame velocities included in the trajectory?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: velocities
+  energies:
+    description:
+      Are per-frame energies included in the trajectory?
+    range: boolean
+  polarizable_charges:
+    description:
+      Are per-frame polarizable charges included in the trajectory?
+    range: boolean
+  water:
+    description:
+      Are water molecules included in the trajectory?
+    range: boolean
+    annotations:
+      engine_mapping:
+        - engine: toptrajparser
+          key: water
+
+  replica:
+    description:
+      Is this trajectory a replica of another provided trajectory?
+    range: boolean
+
+enums:
+
+  PeriodicBoundaryConditions:
+    description:
+      What directions in a simulation cell periodic boundaries are set if they are turned on.
+    permissible_values:
+      None:
+        description: No PBC
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pbc
+              value: no
+      xyz:
+        description: all axes
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pbc
+              value: xyz
+      xy:
+        description: only xy plane
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pbc
+              value: xy
+      xz:
+        description:  only xz plane
+      yz:
+        description: only yz plane
+
+  BoxType:
+    description:
+      Types of box used to simulate the system.
+    permissible_values:
+      Cubic:
+        aliases:
+          - Cubic
+          - cubic
+        annotations:
+          engine_mapping:
+            - engine: toptrajparser
+              key: box_type
+              value: cubic
+      Tetragonal:
+        aliases:
+          - Tetragonal
+          - tetragonal
+        annotations:
+          engine_mapping:
+            - engine: toptrajparser
+              key: box_type
+              value: tetragonal
+      Orthorhombic:
+        aliases:
+          - Orthorhombic
+          - orthorhombic
+        annotations:
+          engine_mapping:
+            - engine: toptrajparser
+              key: box_type
+              value: orthorhombic
+      "Truncated Octahedron":
+        aliases:
+          - "Truncated Octahedron"
+          - truncated_octahedron
+        annotations:
+          engine_mapping:
+            - engine: toptrajparser
+              key: box_type
+              value: "truncated octahedron"
+      Triclinic:
+        aliases:
+          - Triclinic
+          - triclinic
+        annotations:
+          engine_mapping:
+            - engine: toptrajparser
+              key: box_type
+              value: triclinic

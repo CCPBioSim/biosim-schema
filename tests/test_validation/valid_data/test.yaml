@@ -1,0 +1,138 @@
+# Simple valid example for biosim schema validation
+
+# Root class: SimulationMetadata
+stages:
+  setup:
+    setup_tool: LEaP
+  minimisation:
+    energy_tolerance:
+      value: 10.0
+      value_unit: kJ/mol/nm
+    number_of_minimisation_steps: 1000
+    minimisation_algorithm: steepest_descent
+    simulation_software: amber
+  equilibration:
+    simulation_software: amber
+  production:
+    simulation_software: amber
+    simulation_method: replica_exchange_molecular_dynamics
+  analysis:
+    analysis_software: vmd
+
+settings:
+  ensemble_type: isothermal_isothermic_ensemble
+  restraints: false
+  electrostatic_cutoff_distance:
+    value: 1.0
+    value_unit: nm
+  vdw_cutoff_distance:
+    value: 1.0
+    value_unit: nm
+  random_seed: 12345
+  integrator:
+    integrator_algorithm: Verlet
+  thermostat:
+    thermostat_algorithm: Langevin
+    target_temperature: 300.0
+    collision_frequency: 1
+  barostat:
+    barostat_algorithm: Berendsen
+    target_pressure: 1.0
+    compressibility: 4.5e-5
+
+composition:
+  total_atom_count: 10000
+  total_molecule_count: 3000
+  unique_molecule_count: 3
+  salt_concentration: 0.15
+  molecule_ID:
+    - molecule_count: 4
+      atom_count: 1822
+      monomer_count: 127
+      molecule_charge:
+        value: -1.0
+        value_unit: e
+      molecular_weight:
+        value: 13270.54
+        value_unit: g/mol
+      protein_sequence: "AEAGITGTWYNQLGSTFIVTAGADGALTGTYESAVGNAESRYVLTGRYDSAPATDGSGTALGWTVAWKNNYRNAHSATTWSGQYVGGAEARINTQWLLTSGTTEANAWKSTLVGHDTFTKVKPSAAS"
+    - molecule_count: 84
+      atom_count: 1
+      monomer_count: 1
+      molecule_charge:
+        value: 1.0
+        value_unit: e
+      molecular_weight:
+        value: 22.99
+        value_unit: g/mol
+      molecular_formula: "Na"
+    - molecule_count: 80
+      atom_count: 1
+      monomer_count: 1
+      molecule_charge:
+        value: -1.0
+        value_unit: e
+      molecular_weight:
+        value: 35.45
+        value_unit: g/mol
+      molecular_formula: "Cl"
+    - molecule_count: 24000
+      atom_count: 3
+      monomer_count: 1
+      molecule_charge:
+        value: 0.0
+        value_unit: e
+      molecular_weight:
+        value: 18.016
+        value_unit: g/mol
+      InChIKey: "XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      SMILES: "O"
+      InChI: "InChI=1S/H2O/h1H2"
+      molecular_formula: "H2O"
+
+observables:
+  average_temperature: 300.0
+  average_pressure: 1.0
+  average_volume: 125000.0
+  average_kinetic_energy:
+    value: 1500.0
+    value_unit: kJ/mol
+  average_potential_energy:
+    value: -50000.0
+    value_unit: kJ/mol
+
+topology:
+  masses: true
+  fixed_charges: true
+  bonds: true
+  dihedrals: true
+  system_charge:
+    value: 0.0
+    value_unit: e
+  coarse_grained: false
+
+trajectory:
+  frame_count: 5000
+  positions: true
+  forces: false
+  velocities: true
+  polarizable_charges: false
+  energies: true
+  water: true
+  replica: false
+  box:
+    box_dimensions:
+      vector_value: [5.0, 5.0, 5.0]
+      value_unit: nm
+    box_angles:
+      vector_value: [90.0, 90.0, 90.0]
+      value_unit: degrees
+    box_type: cubic
+
+forcefields:
+  water_force_field: TIP3P
+  protein_force_field: ff14SB
+  modified: false
+
+compute:
+  wall_time: "02:30:00"

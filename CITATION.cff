@@ -1,0 +1,26 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: BioSim-Schema Repository
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Jas
+    family-names: Kalayan
+    email: jas.kalayan@stfc.ac.uk
+    affiliation: STFC
+    orcid: 'https://orcid.org/0000-0002-6833-1864'
+repository-code: 'https://github.com/CCPBioSim/biosim-schema'
+abstract: >-
+  A repository for the biomolecular simulation metadata schema used in the BioSimDR project.
+keywords:
+  - Molecular Dynamics
+  - Python
+  - biosim-schema
+  - metadata
+license: MIT
+version: 0.0.1
+date-released: '2026-06-08'

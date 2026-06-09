@@ -1,0 +1,725 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/settings
+name: biosim-settings
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+  qudt: http://qudt.org/schema/qudt/
+
+
+classes:
+
+  SimulationSettings:
+    slots:
+      - ensemble # class
+      - integrator # class
+      - barostat # class
+      - thermostat # class
+      - interactions # class
+
+  Ensemble:
+    slots:
+      - ensemble_type # enum
+      - random_seed # int
+
+  Interactions:
+    slots:
+      - restraints # bool
+      - electrostatic_cutoff_distance # float
+      - vdw_cutoff_distance # float
+      - bond_length_constraints_algorithm # enum
+      - long_range_interaction_method # enum
+
+  Integrator:
+    slots:
+      - integrator_algorithm # enum
+      # - time_information # class
+      - frame_step # float
+      - time_step # float
+      - number_of_steps # int
+      - simulation_time # float
+
+  Barostat:
+    slots:
+      - barostat_algorithm # enum
+      - compressibility # float
+      - target_pressure # float
+      # - pressure_relaxation_time # float
+      - pressure_time_constant # float
+      - pressure_coupling_frequency # int
+      - pressure_coupling_type # enum
+
+  Thermostat:
+    slots:
+      - thermostat_algorithm # enum
+      - target_temperature # float
+      - collision_frequency # int
+      - temperature_time_constant # float
+      - coupling_group # free text
+      - chain_length # int
+      - friction_coefficient # float
+
+  # TimeInformation:
+  #   slots:
+  #     - frame_step # float
+  #     - time_step # float
+  #     - number_of_steps # int
+  #     - simulation_time # float
+
+slots:
+
+  ensemble:
+    description:
+      Ensemble information.
+    range: Ensemble # class
+  interactions:
+    description:
+      Interaction information.
+    range: Interactions # class
+  integrator:
+    description:
+      Integrator information.
+    range: Integrator # class
+  barostat:
+    description:
+      Barostat information.
+    range: Barostat # class
+  thermostat:
+    description:
+      thermostat information.
+    range: Thermostat # class
+  # time_information:
+  #   description:
+  #     Time information.
+  #   range: TimeInformation # class
+
+  time_step:
+    aliases:
+      - "Integration Step"
+      - "Time Step"
+      - dT
+    range: TimeQuantity # class
+    description:
+      Time between integration steps in a simulation, given as a float.
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: dt
+          unit: ps
+        - engine: gromacs
+          key: dt
+          unit: ps
+        - engine: lammps
+          key: timestep
+          unit: fs
+
+  frame_step:
+    range: TimeQuantity # class
+    description:
+      Time between saved snapshots/frames in a simulation, given as a float.
+
+  number_of_steps:
+    range: integer
+    description:
+      Number of integration steps performed in the simulation, given as an integer.
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: nstlim
+        - engine: gromacs
+          key: nsteps
+
+  simulation_time:
+    range: TimeQuantity # class
+    description:
+      Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.
+
+  restraints:
+    description:
+      Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).
+    range: boolean
+
+  integrator_algorithm:
+    description:
+      List of integrator algorithms used to integrate the simulation.
+    range: IntegratorAlgorithm # enum
+
+  barostat_algorithm:
+    description:
+      List of barostat algorithms used in the simulation.
+    range: BarostatAlgorithm # enum
+
+  pressure_coupling_type:
+    description:
+      List of coupling types for adjusting box vectors.
+    range: PressureCouplingType # enum
+
+  pressure_coupling_frequency:
+    description:
+      Step frequency to apply the barostat, given as an integer.
+    range: integer
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: nstpcouple
+
+  thermostat_algorithm:
+    description:
+      List of thermostat algorithms used in the simulation.
+    range: ThermostatAlgorithm # enum
+
+  ensemble_type:
+    description:
+      List of ensemble types used in the simulation.
+    range: EnsembleType # enum
+
+  random_seed:
+    description:
+      Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer.
+    range: integer
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: ig
+        - engine: gromacs
+          key: ld-seed
+
+  temperature_time_constant:
+    description:
+      Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).
+    range: VectorTimeQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: tau-t
+          unit: ps
+
+  coupling_group:
+    description:
+      A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string
+    range: string
+
+  chain_length:
+    description:
+      Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.
+    range: integer
+    minimum_value: 0
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: nhc_chain_length
+        - engine: gromacs
+          key: nh-chain-length
+
+  friction_coefficient:
+    description:
+      Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.
+    range: FrictionCoefficientQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: bd-fric
+          unit: a/ps
+
+  collision_frequency:
+    description:
+      Collision frequency for the integrator, given as a float.
+    range: FrequencyQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: gamma_ln
+          unit: 1/ps
+
+  target_temperature:
+    description:
+      Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
+    range: VectorTemperatureQuantity #MatrixQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: amber
+          key: temp0
+          unit: K
+        - engine: gromacs
+          key: ref-t
+          unit: K
+        - engine: lammps
+          key: temp
+          unit: K
+
+  # target_pressure_vector:
+  #   description:
+  #     Target/reference pressure set to reach in the simulation, given as a float.
+  #   range: VectorPressureQuantity
+  #   annotations:
+  #     engine_mapping:
+  #       - engine: gromacs
+  #         key: ref-p
+  #         unit: bar
+  #       - engine: amber
+  #         key: pres0
+  #         unit: bar
+
+  target_pressure: # CHECK THIS
+    description:
+      Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).
+    range: MatrixPressureQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: ref-p
+          unit: bar
+        - engine: amber
+          key: pres0
+          unit: bar
+
+  compressibility:
+    description:
+      Compressibility of the simulated system, given as a float.
+    range: MatrixCompressibilityQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: compressibility
+          unit: "1/bar"
+        - engine: amber
+          key: comp
+          unit: "1e10-6 1/bar"
+    examples:
+      - value: 44.6 1e10-6 1/bar
+      - value: 4.5e-5 1/bar
+
+  pressure_time_constant:
+    description:
+      Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.
+    range: TimeQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: tau-p
+          unit: ps
+        - engine: amber
+          key: taup
+          unit: ps
+    examples:
+      - value: 1.0 ps
+      - value: 5.0 ps
+
+  bond_length_constraints_algorithm:
+    description:
+      Constraints applied to bonds between two particles in the simulated system.
+    range: BondLengthConstraintsAlgorithm # enum
+
+  electrostatic_cutoff_distance:
+    description:
+      Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.
+    range: LengthQuantity
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: rcoulomb
+          unit: nm
+        - engine: amber
+          key: cut
+          unit: Å
+    examples:
+      - value: 10 Å
+      - value: 1.2 nm
+
+  vdw_cutoff_distance:
+    description:
+      Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.
+    range: LengthQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: rvdw
+          unit: nm
+    examples:
+      - value: 10 Å
+      - value: 1.2 nm
+
+  long_range_interaction_method:
+    description:
+      Method used to describe long-range interactions between particles.
+    range: LongRangeInteractionMethod # enum
+
+enums:
+
+  LongRangeInteractionMethod:
+    description:
+      Method used to implement long-range interactions of point charges in the simulation.
+    permissible_values:
+      Cutoff:
+        description:
+          Plain cut-off used to implement electrostatics.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: coulombtype
+              value: Cut-off
+            - engine: gromacs
+              key: vdwtype
+              value: Cut-off
+      Ewald:
+        description:
+          Classical Ewald sum electrostatics. Ewald scales as O(N3/2) and is thus extremely slow for large systems. In most cases PME will perform much better.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: coulombtype
+              value: Ewald
+            - engine: amber
+              key: ew_type
+              value: 1
+      PME:
+        description:
+          Particle Mesh Ewald (PME) accelerates the traditional Ewald sum by calculating reciprocal space sums on a mesh grid using fast Fourier transforms (FFTs), yielding complexity.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: coulombtype
+              value: PME
+            - engine: gromacs
+              key: vdwtype
+              value: PME
+            - engine: amber
+              key: ew_type
+              value: 0
+      P3M:
+        description:
+          Particle-Particle Particle-Mesh (P3M) is faster, more flexible alternative to PME that uses a numerical particle mesh for long-range and direct summation for short-ranges.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: coulombtype
+              value: P3M-AD
+      FMM:
+        description:
+          Fast Multipole (FMM) is a highly scalable, linear complexity method that groups distant particles together, allowing the approximation of their interactions via multipole expansions.
+      RF:
+        description:
+          Reaction Field (RF) is simpler, faster approach that approximates the effect of the long-range environment by treating it as a continuous dielectric medium beyond a certain cutoff, suitable for homogeneous systems.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: coulombtype
+              value: Reaction-Field
+
+  IntegratorAlgorithm:
+    description:
+      Algorithm used to integrate the simulation.
+    permissible_values:
+      "Velocity-Verlet":
+        aliases:
+          - "Velocity-Verlet"
+          - Velocity_Verlet
+        description:
+          Directly computes positions, velocities, and accelerations at the same time, facilitating kinetic energy calculation.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: integrator
+              value: [md-vv, md-vv-avek]
+      "Leap-frog":
+        aliases:
+          - "Leap-frog"
+          - Leapfrog
+        description:
+          Updates velocities at half-integer time steps and positions at integer time steps, equivalent to Verlet but with better velocity management.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: integrator
+              value: [md, sd]
+      Verlet:
+        description:
+          A simple, stable algorithm that uses positions at a timestep and the previous timestep to calculate the next position.
+      Euler:
+        description:
+          An Euler integrator for Brownian or position Langevin dynamics.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: integrator
+              value: bd
+
+  PressureCouplingType:
+    description:
+      Coupling type for adjusting box vectors.
+    permissible_values:
+      isotropic:
+        description:
+          Standard for liquids; adjusts all box vectors equally.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupltype
+              value: isotropic
+            - engine: amber
+              key: ntp
+              value: 1
+      "semi-isotropic":
+        aliases:
+          - "semi-isotropic"
+          - semi_isotropic
+        description:
+          Used for membrane simulations to allow different scaling for and axes.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupltype
+              value: semiisotropic
+            - engine: amber
+              key: ntp
+              value: 3
+      anisotropic:
+        description:
+          Allows individual box vector scaling, often needed for solids.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupltype
+              value: anisotropic
+            - engine: amber
+              key: ntp
+              value: 2
+      "surface tension":
+        aliases:
+          - "surface tension"
+          - surface_tension
+        description:
+          Surface tension coupling for surfaces parallel to the xy-plane.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupltype
+              value: surface-tension
+
+  BarostatAlgorithm:
+    description:
+      Barostat algorithm used to set the pressure in a simulation.
+    permissible_values:
+      Berendsen:
+        description:
+          Rescales the system volume and (optionally) the atoms coordinates within the simulation box every timestep via weak coupling between the internal pressure and pressure.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupl
+              value: [Berendsen, C-rescale]
+            - engine: gromacs
+              key: barostat
+              value: 1
+      Andersen:
+        description:
+          Includes an additional degree of freedom, the volume of a simulation cell. Volume adjusts itself to equalize the internal and external pressure.
+      "Parrinello-Rahman":
+        aliases:
+          - "Parrinello-Rahman"
+          - Parrinello_Rahman
+        description:
+          Extension of the Andersen method allowing changes in the shape of the simulation cell.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupl
+              value: Parrinello-Rahman
+      "Nose-Hoover":
+        aliases:
+          - "Nose-Hoover"
+          - Nose_Hoover
+        description:
+          Couples the system to a virtual "pressure bath" to control the simulation volume using extended Lagrangian dynamics.
+      "Monte Carlo":
+        aliases:
+          - "Monte Carlo"
+          - Monte_Carlo
+        description:
+          Maintain constant pressure by periodically attempting to scale the simulation box size using random numbers.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: barostat
+              value: 2
+      "Martyna-Tuckerman-Tobias-Klein":
+        aliases:
+          - "Martyna-Tuckerman-Tobias-Klein"
+          - Martyna_Tuckerman_Tobias_Klein
+        description:
+          The MTTK barostat is an extension of the Nose-Hoover and Nose-Hoover chain thermostat, acting as a modified Andersen barostat to control pressure by coupling the system to a virtual volume bath.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: pcoupl
+              value: MTTK
+
+  ThermostatAlgorithm:
+    description:
+      Thermostat algorithm used to set the temperature in a simulation.
+    permissible_values:
+      Langevin:
+        description:
+          A Langevin thermostat is a molecular dynamics algorithm that maintains a constant temperature (canonical ensemble, NVT) by adding a viscous friction force and a random noise force to Newton's equations of motion. It simulates interaction with a heat bath, where the damping term removes energy and the random force inputs energy to reach equilibrium.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntt
+              value: 3
+      Berendsen:
+        description:
+          Rescales particle velocities by a factor at each step to bring the system toward the target temperature.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: tcoupl
+              value: [berendsen, v-rescale]
+            - engine: amber
+              key: ntt
+              value: 1
+      Andersen:
+        description:
+          Stochastic approach that periodically reassigns particle velocities from a Maxwell-Boltzmann distribution, simulating collisions with a heat bath.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: tcoupl
+              value: [andersen, andersen-massive]
+            - engine: amber
+              key: ntt
+              value: 2
+      "Nose-Hoover":
+        aliases:
+          - "Nose-Hoover"
+          - Nose_Hoover
+        description:
+          A deterministic method that introduces a fictitious friction variable into the system's dynamics to achieve the desired temperature (NVT ensemble).
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: tcoupl
+              value: nose-hoover
+            - engine: amber
+              key: ntt
+              value: [9, 10]
+      Bussi:
+        aliases:
+          - Bussi
+          - Bussi-Donadio-Parrinello
+        description:
+          The Bussi-Donadio-Parrinello (CSVR) is a stochastic velocity rescaling thermostat that corrects the pitfalls of the Berendsen thermostat, accurately sampling the canonical ensemble while maintaining correct dynamics.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntt
+              value: 11
+
+
+  BondLengthConstraintsAlgorithm:
+    description:
+      Fix specific molecular degrees of freedom—typically fast bond vibrations involving hydrogen atoms. By eliminating these high-frequency motions, constraints allow for larger integration time steps (e.g., 2 fs instead of 0.5 fs), significantly speeding up simulations without disrupting system dynamics.
+    permissible_values:
+      "SHAKE":
+        aliases:
+          - "SHAKE"
+          - shake
+        description:
+          An iterative method that works with the Verlet algorithm to satisfy constraints on bond lengths, ensuring the distance between mass points remains constant.
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: constraint-algorithm
+              value: SHAKE
+            - engine: amber
+              key: ntc
+              value: [2, 3]
+      "RATTLE":
+        aliases:
+          - "RATTLE"
+          - rattle
+        description:
+          A velocity-friendly version of SHAKE used to maintain constraints in velocity Verlet integrators.
+      "SETTLE":
+        aliases:
+          - "SETTLE"
+          - settle
+        description:
+          An analytical constraint algorithm used in molecular dynamics (specifically GROMACS) to maintain rigid water models (like TIP3P, TIP4P) by fixing bond lengths and angles. It is faster and more stable than iterative methods like SHAKE, operating in constant time without calculating centers of mass, reducing rounding errors.
+      "LINCS":
+        aliases:
+          - "LINCS"
+          - lincs
+        description:
+          LINCS (Linear Constraint Solver) is a fast, stable algorithm that breaks constraints into two steps; removing projections of new bond lengths on old bonds and correcting for bond lengthening due to rotation
+        annotations:
+          engine_mapping:
+            - engine: gromacs
+              key: constraint-algorithm
+              value: LINCS
+      "CCMA":
+        aliases:
+          - "CCMA"
+          - ccma
+        description:
+          The Constant Constraint Matrix Approximation (CCMA) is a fast, stable algorithm designed to handle geometric constraints in molecular simulations, particularly effective for macromolecules like proteins.
+
+  EnsembleType:
+    description:
+      Ensemble used in a simulation
+    permissible_values:
+      "NPT":
+        aliases:
+          - "NPT"
+          - isothermal_isothermic_ensemble
+        description:
+          Isothermal-isothermic ensemble (NPT) with a constant number of particles, pressure and temperature.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntb
+              value: 2
+            - engine: gromacs
+              key: pcoupl
+              value: ["Berendsen", "Parrinello-Rahman"]
+      "NVT":
+        aliases:
+          - "NVT"
+          - canonical_ensemble
+        description:
+          Canonical ensemble (NVT) with a constant number of particles, volume and temperature.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntb
+              value: 1
+            - engine: gromacs
+              key: pcoupl
+              value: no
+      "NVE":
+        aliases:
+          - "NVE"
+          - microcanonical_ensemble
+        description:
+          Microcanonical ensemble (NVE) with a constant number of particles, volume and energy.
+      "μVT":
+        aliases:
+          - "μVT"
+          - "grand_canonical_ensemble"
+        description:
+          Grand canonical ensemble (μVT) with constant chemical potential, volume and temperature.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: ntb
+              value: 0
+            - engine: amber
+              key: ntt
+              value: 0
+            - engine: amber
+              key: ntp
+              value: 0
+            - engine: gromacs
+              key: pcoupl
+              value: no
+            - engine: gromacs
+              key: tcoupl
+              value: no

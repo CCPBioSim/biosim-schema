@@ -1,0 +1,361 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/potentials
+name: biosim-potentials
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+
+classes:
+
+  PotentialMetadata:
+    slots:
+      - water_potential # class
+      - protein_potential # class
+      - lipid_potential # class
+      - nucleic_potential # class
+      - carbohydrate_potential # class
+      - polymer_potential # class
+      - general_potential # class
+      - machine_learned_potential # class
+
+  WaterPotential:
+    slots:
+      - water_potential_name # enum
+      - modified # bool
+
+  ProteinPotential:
+    slots:
+      - protein_potential_name # enum
+      - modified # bool
+
+  LipidPotential:
+    slots:
+      - lipid_potential_name # enum
+      - modified # bool
+
+  NucleicPotential:
+    slots:
+      - nucleic_potential_name # enum
+      - modified # bool
+
+  CarbohydratePotential:
+    slots:
+      - carbohydrate_potential_name # enum
+      - modified # bool
+
+  PolymerPotential:
+    slots:
+      - polymer_potential_name # enum
+      - modified # bool
+
+  GeneralPotential:
+    slots:
+      - general_potential_name # enum
+      - modified # bool
+
+  MachineLearnedPotential:
+    slots:
+      - machine_learned_potential_name # enum
+      - modified # bool
+
+
+slots:
+
+  water_potential:
+    range: WaterPotential # class
+    description:
+      Force field for water molecules.
+
+  water_potential_name:
+    range: WaterPotentialName # enum
+    description:
+      Force field used to describe water molecules.
+
+  protein_potential:
+    range: ProteinPotential # class
+    description:
+      Force field for proteins.
+
+  protein_potential_name:
+    range: ProteinPotentialName # enum
+    description:
+      Force field used to describe proteins.
+
+  lipid_potential:
+    range: LipidPotential # class
+    description:
+      Force field for lipids.
+
+  lipid_potential_name:
+    range: LipidPotentialName # enum
+    description:
+      Force field used to describe lipids.
+
+  nucleic_potential:
+    range: NucleicPotential # class
+    description:
+      Force field for nucleic acids.
+
+  nucleic_potential_name:
+    range: NucleicPotentialName # enum
+    description:
+      Force field used to describe nucleic acids.
+
+  carbohydrate_potential:
+    range: CarbohydratePotential # class
+    description:
+      Force field for carbohydrates.
+
+  carbohydrate_potential_name:
+    range: CarbohydratePotentialName # enum
+    description:
+      Force field used to describe carbohydrate.
+
+  polymer_potential:
+    range: PolymerPotential # class
+    description:
+      Force field for polymers (excluding proteins and nucleic acids).
+
+  polymer_potential_name:
+    range: PolymerPotentialName # enum
+    description:
+      Force field used to describe polymers (excluding proteins and nucleic acids).
+
+  general_potential:
+    range: GeneralPotential # class
+    description:
+      Force field for molecules (in general).
+
+  general_potential_name:
+    range: GeneralPotentialName # enum
+    description:
+      Force field used to describe molecules.
+
+  machine_learned_potential:
+    range: MachineLearnedPotential # class
+    description:
+      ML force field for molecules (in general).
+
+  machine_learned_potential_name:
+    range: MachineLearnedPotentialName # enum
+    description:
+      ML force field used to describe molecules.
+
+enums:
+
+  WaterPotentialName:
+    description:
+      Force fields used to parametrize water molecules in a simulation.
+    permissible_values:
+      OPC:
+        description:
+          Parameters for a water model. It is a non-polarizable, 4-point, 3-charge rigid water model.
+      OPC3:
+        description:
+          Parameters for a water model. It is a 3-point rigid non-polarizable water model – as of Amber24, is the latest addition to the OPC family, constructed using the same philosophy as OPC.
+      OPC3POL:
+        description:
+          Parameters for a water model. It is a new classical 3-point water model that explicitly accounts for electronic polarizability with minimal impact on computational efficiency.
+      POL3:
+        description:
+          Parameters for a water model.
+      TIP3P:
+        description:
+          Parameters for the force balance 3-point water model.
+      TIP3PFB:
+        description:
+          Parameters for a water model.
+      TIP4PFB:
+        description:
+          Parameters for a water model.
+      TIP4P:
+        description:
+          Parameters for a water model.
+      TIP5P:
+        description:
+          Parameters for a water model.
+      TIP4PEW:
+        description:
+          Parameters for a water model.
+      SPCE:
+        description:
+          Parameters for a water model.
+      SPCEB:
+        description:
+          Parameters for a water model.
+      "SPC/Fw":
+        description:
+           SPC/Fw parameters for flexible water models, for classical dynamics. Also known as SPF.
+      "q-SPC/Fw":
+        description:
+          qSPC/Fw parameters for flexible water models, for path-integral MD. Also know as SPG
+
+  ProteinPotentialName:
+    description:
+      Force fields used to parametrize amino acids in proteins in a simulation.
+    permissible_values:
+      ff19SB:
+        description:
+          As of Amber24, ff19SB is the latest model of SB protein force fields and has shown to improve amino acid-dependent properties such as helical propensities and reproduces the differences in amino acid-specific PDB Ramachandran maps.
+      ff99SB:
+        description:
+          All-atom molecular mechanics force field specifically designed to simulate proteins and peptides
+      ff99SB-ILDN:
+        description:
+          Refined extension of the foundational Amber ff99SB model, specifically optimized to fix errors in side-chain rotamer distributions.
+      ff99SB-disp:
+        description:
+          Optimized by D.E. Shaw Research to accurately simulate both folded, structured proteins and intrinsically disordered proteins (IDPs) or highly flexible peptide states.
+      ff14SB:
+        description:
+          Older version of the SB protein force fields that utilizes uncoupled phi/psi dihedral parameters for the protein backbone, and every amino acid except for glycine used the backbone dihedral parameters fit using alanine.
+      ff14SBonlysc:
+        description:
+          Includes the ff99SB backbone parameters with updated side chain (sc) parameters that were derived from ab initio quantum mechanics calculations.
+      ff15ipq:
+        description:
+          Continues the development begun with the ff14ipq force field for proteins, but offers new parameter choices, data fitting and validation.
+      fb15:
+        description:
+          The force balance (fb) protein force field that can be used for protein-water simulations.
+      ff03:
+        description:
+          A modified version of ff99, where charges are derived from quantum calculations that ise a continuum dielectric to mimic solvent polarization.
+      ff03ua:
+        description:
+          The united-atom counterpart of ff03, which uses the dame charging scheme as ff03, but the aliphatic hydrogen atoms on all amino acid side-chains are united to their corresponding carbon atoms.
+      phosaa10:
+        description:
+          Force field for phosphorylated amino acids.
+      phosaa14SB:
+        description:
+          Force field for phosphorylated amino acids with ff14SB.
+      phosaa19SB:
+        description:
+          Force field for phosphorylated amino acids with ff19SB.
+      ff14SB_modAA:
+        description:
+          Force field with ff14SB for modified amino acids like selenomethionine, cyano-phenylalanine, and azido-phenylalanine, acetylated lysine and for the nitroxide spin-label methanesulfonothioate (MTSL).
+      ff19SB_modAA:
+        description:
+          Force field with ff19SB for modified amino acids like selenomethionine, cyano-phenylalanine, and azido-phenylalanine, acetylated lysine and for the nitroxide spin-label methanesulfonothioate (MTSL).
+
+  NucleicPotentialName:
+    description:
+      Force fields used to parametrize nucleic acids in a simulation.
+    permissible_values:
+      ff99-bsc0:
+        description:
+          Force field for nucliec acids. High level quantum mechanics calculations were perfomed on models of sugars and phosphates, specifically a sugar-phosphate model and a sugar-phosphate-sugar model.
+      ff99OL3:
+        description:
+          Force field for RNA, where quantum mechanics methods at various levels were employed to improve the chi angle distribution using relevant model systems.
+      LJbb:
+        description:
+          RNA force field with modified phosphate parameters (from OL force field) and an improved water model (OPC), which has better agreement with NMR data for RNA tetranucleotide populations.
+      ROC:
+        description:
+          Force field with alternative set of torsions for RNA, fit to quantum calculations.
+      Shaw:
+        description:
+          RNA force field with more extensive modifications.
+      OL15:
+        description:
+          Force field for DNA, with a combination of three dihedral updates.
+      OL21:
+        description:
+          DNA force field that adds some new torsion modifications, aimed at non-B double helices, as of Amber24, is the current recommended DNA force field.
+      OL24:
+        description:
+      OL3:
+      bsc1:
+        description:
+          Updated version of bsc0 force field for DNA, using an implicit solvation model and a rigorous quantum mechanics methodology.
+      terminal_monophosphate:
+        description:
+          Force field library for the 5\’ end of many DNA and RNA chains have one or more phosphate groups.
+
+  CarbohydratePotentialName:
+    description:
+      Force fields used to parametrize carbohydrates in a simulation.
+    permissible_values:
+      GLYCAM06:
+        description:
+          Parameter set for modeling carbohydrates and glycoconjugates.
+      GLYCAM_06EP:
+        description:
+           GLYCAM-06EP parameter set for modeling carbohydrates and glycoconjugates. Extends GLYCAM to simulations employing the TIP-5P water model, an additional set of carbohydrate parameters, GLYCAM-06EP.
+      GLYCAM_06j-1:
+        description:
+          An empirical biomolecular force field designed primarily for carbohydrates and complex glycans.
+
+  LipidPotentialName:
+    description:
+      Force fields used to parametrize lipids in a simulation.
+    permissible_values:
+      LIPID21:
+        description:
+          An Amber lipid force field building on the modular nature of LIPID11, LIPID 14 and LIPID 17 to allow for tensionless lipid bilayer simulations in Amber.
+
+  PolymerPotentialName:
+    description:
+      Force fields used to parametrize polymers in a simulation.
+    permissible_values:
+      LignAmb25:
+        description:
+          Force field that includes parameters for all common monolignol units and their associated linkages along with less commonly encountered units.
+  GeneralPotentialName:
+    description:
+      Force fields used to parametrize molecules in a simulation.
+    permissible_values:
+      "gem.pmemd":
+        description:
+          The Amoeba force field in a multiploar/polarizable force field with parameters for water, univalent ions, small organic molecules, proteins, nucliec acids and ionic liquids.
+      GAFF:
+        description:
+          Provides parameters for small molecules and drug-like ligands that are fully compatible with standard macromolecular AMBER force fields used for proteins and nucleic acids.
+      GAFF2:
+        description:
+          The second generation of GAFF for small molecules and drug-like ligands.
+      OPLS:
+        description:
+          OPLS (Optimized Potential for Liquid Simulations) is a set of force fields developed by Prof. William L. Jorgensen for condensed phase simulations.
+      GROMOS:
+        description:
+          GROMOS is is a general-purpose molecular dynamics computer simulation package for the study of biomolecular systems. It also incorporates its own force field covering proteins, nucleotides, sugars etc. and can be applied to chemical and physical systems ranging from glasses and liquid crystals, to polymers and crystals and solutions of biomolecules.
+      CHARMM:
+        description:
+          CHARMM (Chemistry at HARvard Macromolecular Mechanics) is a both a set of force fields and a software package for molecular dynamics simulations and analysis. Includes united atom (CHARMM19) and all atom (CHARMM22, CHARMM27, CHARMM36) force fields.
+
+  MachineLearnedPotentialName:
+    description:
+      Machine learned potentials.
+    permissible_values:
+      MACE:
+        aliases:
+          - MACE
+          - "Multi-Atomic Cluster Expansion"
+        description:
+          Utilizes high-body-order expansions and provides exceptional force accuracy, excelling at capturing anharmonic dynamics in organic and macromolecular systems.
+      ANI:
+        aliases:
+          - ANI
+          - "Accurate Neural net Interaction"
+        description:
+          Neural network potentials specifically parameterized for organic and small-molecule drug-like spaces (covering H, C, N, O).
+      NequIP:
+        aliases:
+          - NequIP
+          - "Neural Equivariant Interatomic Potential"
+        description:
+          E(3)-equivariant network that models local atomic environments as tensors.
+      UMA:
+        aliases:
+          - UMA
+          - "Universal Model for Atoms"
+        description:
+          Large-scale framework spanning half a billion atomic structures, and generalizes across different chemical environments.
+      AceFF:
+        aliases:
+          - AceFF
+        description:
+          Specifically optimized for small molecule drug discovery

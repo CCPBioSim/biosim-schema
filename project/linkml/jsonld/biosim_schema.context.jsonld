@@ -1,0 +1,1002 @@
+{
+   "@context": {
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "ORCID": "https://orcid.org/",
+      "biolink": "https://w3id.org/biolink/",
+      "biosim_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
+      "example": "https://example.org/",
+      "linkml": "https://w3id.org/linkml/",
+      "pdb": {
+         "@id": "https://identifiers.org/pdb",
+         "@prefix": true
+      },
+      "qudt": "http://qudt.org/schema/qudt/",
+      "schema": "http://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "uniprot": {
+         "@id": "https://identifiers.org/uniprot",
+         "@prefix": true
+      },
+      "@vocab": "https://CCPBioSim.ac.uk/biosim-schema/",
+      "alphafold_ID": {
+         "@id": "composition/alphafold_ID"
+      },
+      "analysis": {
+         "@type": "@id",
+         "@id": "stages/analysis"
+      },
+      "analysis_method": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/analysis_method"
+      },
+      "analysis_software": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/analysis_software"
+      },
+      "analysis_tool": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/analysis_tool"
+      },
+      "value": {
+         "@type": "xsd:float",
+         "@id": "quantities/value"
+      },
+      "value_unit": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "quantities/value_unit"
+      },
+      "atom_count": {
+         "@type": "xsd:integer",
+         "@id": "composition/atom_count"
+      },
+      "average_enthalpy": {
+         "@type": "@id",
+         "@id": "observables/average_enthalpy"
+      },
+      "average_kinetic_energy": {
+         "@type": "@id",
+         "@id": "observables/average_kinetic_energy"
+      },
+      "average_potential_energy": {
+         "@type": "@id",
+         "@id": "observables/average_potential_energy"
+      },
+      "average_pressure": {
+         "@type": "@id",
+         "@id": "observables/average_pressure"
+      },
+      "average_temperature": {
+         "@type": "@id",
+         "@id": "observables/average_temperature"
+      },
+      "average_volume": {
+         "@type": "@id",
+         "@id": "observables/average_volume"
+      },
+      "average_volume_vector": {
+         "@type": "@id",
+         "@id": "observables/average_volume_vector"
+      },
+      "barostat": {
+         "@type": "@id",
+         "@id": "settings/barostat"
+      },
+      "barostat_algorithm": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/barostat_algorithm"
+      },
+      "bond_length_constraints_algorithm": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/bond_length_constraints_algorithm"
+      },
+      "bonds": {
+         "@type": "xsd:boolean",
+         "@id": "topology/bonds"
+      },
+      "box_angles": {
+         "@type": "@id",
+         "@id": "trajectory/box_angles"
+      },
+      "box_dimensions": {
+         "@type": "@id",
+         "@id": "trajectory/box_dimensions"
+      },
+      "box_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "trajectory/box_type"
+      },
+      "carbohydrate_potential": {
+         "@type": "@id",
+         "@id": "potentials/carbohydrate_potential"
+      },
+      "carbohydrate_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/carbohydrate_potential_name"
+      },
+      "chain_length": {
+         "@type": "xsd:integer",
+         "@id": "settings/chain_length"
+      },
+      "coarse_grained": {
+         "@type": "xsd:boolean",
+         "@id": "topology/coarse_grained"
+      },
+      "collision_frequency": {
+         "@type": "@id",
+         "@id": "settings/collision_frequency"
+      },
+      "composition": {
+         "@type": "@id",
+         "@id": "composition"
+      },
+      "compressibility": {
+         "@type": "@id",
+         "@id": "settings/compressibility"
+      },
+      "compute": {
+         "@type": "@id",
+         "@id": "compute"
+      },
+      "connectivity": {
+         "@type": "@id",
+         "@id": "topology/connectivity"
+      },
+      "container_runtime": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/container_runtime"
+      },
+      "cores_per_socket": {
+         "@type": "xsd:integer",
+         "@id": "compute/cores_per_socket"
+      },
+      "coupling_group": {
+         "@id": "settings/coupling_group"
+      },
+      "CPU_architecture": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/CPU_architecture"
+      },
+      "CPU_vendor": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/CPU_vendor"
+      },
+      "dihedrals": {
+         "@type": "xsd:boolean",
+         "@id": "topology/dihedrals"
+      },
+      "electrostatic_cutoff_distance": {
+         "@type": "@id",
+         "@id": "settings/electrostatic_cutoff_distance"
+      },
+      "EMDB_ID": {
+         "@id": "composition/EMDB_ID"
+      },
+      "energies": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/energies"
+      },
+      "energy_consumption": {
+         "@type": "@id",
+         "@id": "compute/energy_consumption"
+      },
+      "energy_tolerance": {
+         "@type": "@id",
+         "@id": "stages/energy_tolerance"
+      },
+      "engine_mapping": {
+         "@id": "engine_mapping"
+      },
+      "ensemble": {
+         "@type": "@id",
+         "@id": "settings/ensemble"
+      },
+      "ensemble_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/ensemble_type"
+      },
+      "equilibration": {
+         "@type": "@id",
+         "@id": "stages/equilibration"
+      },
+      "execution_platform": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/execution_platform"
+      },
+      "fixed_charges": {
+         "@type": "xsd:boolean",
+         "@id": "topology/fixed_charges"
+      },
+      "forces": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/forces"
+      },
+      "frame_count": {
+         "@type": "xsd:integer",
+         "@id": "trajectory/frame_count"
+      },
+      "frame_step": {
+         "@type": "@id",
+         "@id": "settings/frame_step"
+      },
+      "friction_coefficient": {
+         "@type": "@id",
+         "@id": "settings/friction_coefficient"
+      },
+      "general_potential": {
+         "@type": "@id",
+         "@id": "potentials/general_potential"
+      },
+      "general_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/general_potential_name"
+      },
+      "GPU_vendor": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/GPU_vendor"
+      },
+      "GPUs_per_node": {
+         "@type": "xsd:integer",
+         "@id": "compute/GPUs_per_node"
+      },
+      "hardware": {
+         "@type": "@id",
+         "@id": "compute/hardware"
+      },
+      "identifier": {
+         "@type": "xsd:anyURI",
+         "@id": "schema:identifier"
+      },
+      "InChI": {
+         "@id": "composition/InChI"
+      },
+      "InChIKey": {
+         "@id": "composition/InChIKey"
+      },
+      "integrator": {
+         "@type": "@id",
+         "@id": "settings/integrator"
+      },
+      "integrator_algorithm": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/integrator_algorithm"
+      },
+      "interactions": {
+         "@type": "@id",
+         "@id": "settings/interactions"
+      },
+      "lipid_potential": {
+         "@type": "@id",
+         "@id": "potentials/lipid_potential"
+      },
+      "lipid_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/lipid_potential_name"
+      },
+      "long_range_interaction_method": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/long_range_interaction_method"
+      },
+      "machine_learned_potential": {
+         "@type": "@id",
+         "@id": "potentials/machine_learned_potential"
+      },
+      "machine_learned_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/machine_learned_potential_name"
+      },
+      "masses": {
+         "@type": "xsd:boolean",
+         "@id": "topology/masses"
+      },
+      "vector_value": {
+         "@type": "xsd:float",
+         "@id": "quantities/vector_value"
+      },
+      "memory_per_node": {
+         "@type": "@id",
+         "@id": "compute/memory_per_node"
+      },
+      "minimisation": {
+         "@type": "@id",
+         "@id": "stages/minimisation"
+      },
+      "minimisation_algorithm": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/minimisation_algorithm"
+      },
+      "minimisation_distance_step_size": {
+         "@type": "@id",
+         "@id": "stages/minimisation_distance_step_size"
+      },
+      "modified": {
+         "@type": "xsd:boolean",
+         "@id": "composition/modified"
+      },
+      "molecular_formula": {
+         "@id": "composition/molecular_formula"
+      },
+      "molecular_weight": {
+         "@type": "@id",
+         "@id": "composition/molecular_weight"
+      },
+      "molecule_charge": {
+         "@type": "@id",
+         "@id": "composition/molecule_charge"
+      },
+      "molecule_count": {
+         "@type": "xsd:integer",
+         "@id": "composition/molecule_count"
+      },
+      "molecule_ID": {
+         "@type": "@id",
+         "@id": "composition/molecule_ID"
+      },
+      "monomer_count": {
+         "@type": "xsd:integer",
+         "@id": "composition/monomer_count"
+      },
+      "MPI_library": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/MPI_library"
+      },
+      "node_count": {
+         "@type": "xsd:integer",
+         "@id": "compute/node_count"
+      },
+      "node_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/node_type"
+      },
+      "nucleic_potential": {
+         "@type": "@id",
+         "@id": "potentials/nucleic_potential"
+      },
+      "nucleic_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/nucleic_potential_name"
+      },
+      "nucleic_sequence": {
+         "@id": "composition/nucleic_sequence"
+      },
+      "number_of_minimisation_steps": {
+         "@type": "xsd:integer",
+         "@id": "stages/number_of_minimisation_steps"
+      },
+      "number_of_steps": {
+         "@type": "xsd:integer",
+         "@id": "settings/number_of_steps"
+      },
+      "observables": {
+         "@type": "@id",
+         "@id": "observables"
+      },
+      "operating_system": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/operating_system"
+      },
+      "particles": {
+         "@type": "@id",
+         "@id": "topology/particles"
+      },
+      "PDB_ID": {
+         "@id": "composition/PDB_ID"
+      },
+      "performance": {
+         "@type": "@id",
+         "@id": "compute/performance"
+      },
+      "periodic_boundary_conditions": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "trajectory/periodic_boundary_conditions"
+      },
+      "polarizable_charges": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/polarizable_charges"
+      },
+      "polymer_potential": {
+         "@type": "@id",
+         "@id": "potentials/polymer_potential"
+      },
+      "polymer_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/polymer_potential_name"
+      },
+      "positions": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/positions"
+      },
+      "potentials": {
+         "@type": "@id",
+         "@id": "potentials"
+      },
+      "predicted_structure": {
+         "@type": "xsd:boolean",
+         "@id": "composition/predicted_structure"
+      },
+      "pressure_coupling_frequency": {
+         "@type": "xsd:integer",
+         "@id": "settings/pressure_coupling_frequency"
+      },
+      "pressure_coupling_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/pressure_coupling_type"
+      },
+      "pressure_time_constant": {
+         "@type": "@id",
+         "@id": "settings/pressure_time_constant"
+      },
+      "production": {
+         "@type": "@id",
+         "@id": "stages/production"
+      },
+      "protein_potential": {
+         "@type": "@id",
+         "@id": "potentials/protein_potential"
+      },
+      "protein_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/protein_potential_name"
+      },
+      "protein_sequence": {
+         "@id": "composition/protein_sequence"
+      },
+      "PubChem_CID": {
+         "@id": "composition/PubChem_CID"
+      },
+      "random_seed": {
+         "@type": "xsd:integer",
+         "@id": "settings/random_seed"
+      },
+      "replica": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/replica"
+      },
+      "resolution": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "topology/resolution"
+      },
+      "restraints": {
+         "@type": "xsd:boolean",
+         "@id": "settings/restraints"
+      },
+      "salt_concentration": {
+         "@type": "@id",
+         "@id": "composition/salt_concentration"
+      },
+      "scheduler": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "compute/scheduler"
+      },
+      "settings": {
+         "@type": "@id",
+         "@id": "settings"
+      },
+      "setup": {
+         "@type": "@id",
+         "@id": "stages/setup"
+      },
+      "setup_tool": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/setup_tool"
+      },
+      "simulation_averages": {
+         "@type": "@id",
+         "@id": "observables/simulation_averages"
+      },
+      "simulation_box": {
+         "@type": "@id",
+         "@id": "trajectory/simulation_box"
+      },
+      "simulation_method": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/simulation_method"
+      },
+      "simulation_software": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/simulation_software"
+      },
+      "simulation_software_version": {
+         "@id": "stages/simulation_software_version"
+      },
+      "simulation_time": {
+         "@type": "@id",
+         "@id": "settings/simulation_time"
+      },
+      "simulation_tool": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "stages/simulation_tool"
+      },
+      "SMILES": {
+         "@id": "composition/SMILES"
+      },
+      "sockets_per_node": {
+         "@type": "xsd:integer",
+         "@id": "compute/sockets_per_node"
+      },
+      "software": {
+         "@type": "@id",
+         "@id": "compute/software"
+      },
+      "stages": {
+         "@type": "@id",
+         "@id": "stages"
+      },
+      "system_charge": {
+         "@type": "@id",
+         "@id": "topology/system_charge"
+      },
+      "system_counts": {
+         "@type": "@id",
+         "@id": "composition/system_counts"
+      },
+      "target_pressure": {
+         "@type": "@id",
+         "@id": "settings/target_pressure"
+      },
+      "target_temperature": {
+         "@type": "@id",
+         "@id": "settings/target_temperature"
+      },
+      "temperature_time_constant": {
+         "@type": "@id",
+         "@id": "settings/temperature_time_constant"
+      },
+      "thermostat": {
+         "@type": "@id",
+         "@id": "settings/thermostat"
+      },
+      "thermostat_algorithm": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "settings/thermostat_algorithm"
+      },
+      "threads_per_core": {
+         "@type": "xsd:integer",
+         "@id": "compute/threads_per_core"
+      },
+      "time_step": {
+         "@type": "@id",
+         "@id": "settings/time_step"
+      },
+      "topology": {
+         "@type": "@id",
+         "@id": "topology"
+      },
+      "total_atom_count": {
+         "@type": "xsd:integer",
+         "@id": "composition/total_atom_count"
+      },
+      "total_molecule_count": {
+         "@type": "xsd:integer",
+         "@id": "composition/total_molecule_count"
+      },
+      "trajectory": {
+         "@type": "@id",
+         "@id": "trajectory"
+      },
+      "trajectory_output": {
+         "@type": "@id",
+         "@id": "trajectory/trajectory_output"
+      },
+      "UNIPROT_ID": {
+         "@id": "composition/UNIPROT_ID"
+      },
+      "unique_molecule_count": {
+         "@type": "xsd:integer",
+         "@id": "composition/unique_molecule_count"
+      },
+      "vdw_cutoff_distance": {
+         "@type": "@id",
+         "@id": "settings/vdw_cutoff_distance"
+      },
+      "velocities": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/velocities"
+      },
+      "wall_time": {
+         "@type": "@id",
+         "@id": "compute/wall_time"
+      },
+      "water": {
+         "@type": "xsd:boolean",
+         "@id": "trajectory/water"
+      },
+      "water_potential": {
+         "@type": "@id",
+         "@id": "potentials/water_potential"
+      },
+      "water_potential_name": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "potentials/water_potential_name"
+      },
+      "Analysis": {
+         "@id": "stages/Analysis"
+      },
+      "AngleQuantity": {
+         "@id": "quantities/AngleQuantity"
+      },
+      "Barostat": {
+         "@id": "settings/Barostat"
+      },
+      "ByteQuantity": {
+         "@id": "quantities/ByteQuantity"
+      },
+      "CarbohydratePotential": {
+         "@id": "potentials/CarbohydratePotential"
+      },
+      "ChargeQuantity": {
+         "@id": "quantities/ChargeQuantity"
+      },
+      "ComputationalEnvironment": {
+         "@id": "compute/ComputationalEnvironment"
+      },
+      "ConcentrationQuantity": {
+         "@id": "quantities/ConcentrationQuantity"
+      },
+      "Connectivity": {
+         "@id": "topology/Connectivity"
+      },
+      "EnergyQuantity": {
+         "@id": "quantities/EnergyQuantity"
+      },
+      "Ensemble": {
+         "@id": "settings/Ensemble"
+      },
+      "Equilibration": {
+         "@id": "stages/Equilibration"
+      },
+      "ForceQuantity": {
+         "@id": "quantities/ForceQuantity"
+      },
+      "FrequencyQuantity": {
+         "@id": "quantities/FrequencyQuantity"
+      },
+      "FrictionCoefficientQuantity": {
+         "@id": "quantities/FrictionCoefficientQuantity"
+      },
+      "GeneralPotential": {
+         "@id": "potentials/GeneralPotential"
+      },
+      "Hardware": {
+         "@id": "compute/Hardware"
+      },
+      "Integrator": {
+         "@id": "settings/Integrator"
+      },
+      "Interactions": {
+         "@id": "settings/Interactions"
+      },
+      "LengthQuantity": {
+         "@id": "quantities/LengthQuantity"
+      },
+      "LipidPotential": {
+         "@id": "potentials/LipidPotential"
+      },
+      "MachineLearnedPotential": {
+         "@id": "potentials/MachineLearnedPotential"
+      },
+      "MassQuantity": {
+         "@id": "quantities/MassQuantity"
+      },
+      "MatrixCompressibilityQuantity": {
+         "@id": "quantities/MatrixCompressibilityQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "MatrixPressureQuantity": {
+         "@id": "quantities/MatrixPressureQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "MatrixQuantity": {
+         "@id": "quantities/MatrixQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "Minimisation": {
+         "@id": "stages/Minimisation"
+      },
+      "MolarEnergyQuantity": {
+         "@id": "quantities/MolarEnergyQuantity"
+      },
+      "MoleculeID": {
+         "@id": "composition/MoleculeID"
+      },
+      "NucleicPotential": {
+         "@id": "potentials/NucleicPotential"
+      },
+      "Particles": {
+         "@id": "topology/Particles"
+      },
+      "Performance": {
+         "@id": "compute/Performance"
+      },
+      "PolymerPotential": {
+         "@id": "potentials/PolymerPotential"
+      },
+      "PotentialMetadata": {
+         "@id": "potentials/PotentialMetadata"
+      },
+      "PressureQuantity": {
+         "@id": "quantities/PressureQuantity"
+      },
+      "Production": {
+         "@id": "stages/Production"
+      },
+      "ProteinPotential": {
+         "@id": "potentials/ProteinPotential"
+      },
+      "Setup": {
+         "@id": "stages/Setup"
+      },
+      "SimulationAverages": {
+         "@id": "observables/SimulationAverages"
+      },
+      "SimulationBox": {
+         "@id": "trajectory/SimulationBox"
+      },
+      "SimulationMetadata": {
+         "@id": "SimulationMetadata"
+      },
+      "SimulationObservables": {
+         "@id": "observables/SimulationObservables"
+      },
+      "SimulationSettings": {
+         "@id": "settings/SimulationSettings"
+      },
+      "SimulationStages": {
+         "@id": "stages/SimulationStages"
+      },
+      "Software": {
+         "@id": "compute/Software"
+      },
+      "SystemComposition": {
+         "@id": "composition/SystemComposition"
+      },
+      "SystemCounts": {
+         "@id": "composition/SystemCounts"
+      },
+      "TemperatureQuantity": {
+         "@id": "quantities/TemperatureQuantity"
+      },
+      "Thermostat": {
+         "@id": "settings/Thermostat"
+      },
+      "TimeQuantity": {
+         "@id": "quantities/TimeQuantity"
+      },
+      "TopologyMetadata": {
+         "@id": "topology/TopologyMetadata"
+      },
+      "Trajectories": {
+         "@id": "trajectory/Trajectories"
+      },
+      "TrajectoryMetadata": {
+         "@id": "trajectory/TrajectoryMetadata"
+      },
+      "VectorAngleQuantity": {
+         "@id": "quantities/VectorAngleQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VectorCompressibilityQuantity": {
+         "@id": "quantities/VectorCompressibilityQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VectorLengthQuantity": {
+         "@id": "quantities/VectorLengthQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VectorPressureQuantity": {
+         "@id": "quantities/VectorPressureQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VectorTemperatureQuantity": {
+         "@id": "quantities/VectorTemperatureQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VectorTimeQuantity": {
+         "@id": "quantities/VectorTimeQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VectorVolumeQuantity": {
+         "@id": "quantities/VectorVolumeQuantity",
+         "@context": {
+            "vector_value": {
+               "@id": "quantities/vector_value",
+               "@type": "xsd:float"
+            }
+         }
+      },
+      "VolumeQuantity": {
+         "@id": "quantities/VolumeQuantity"
+      },
+      "WaterPotential": {
+         "@id": "potentials/WaterPotential"
+      }
+   }
+}

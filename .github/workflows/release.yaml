@@ -48,14 +48,22 @@ jobs:
       - name: checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
-      - name: Change version in repo and CITATION.cff
+      - name: Change version in repo (init and schema) and CITATION.cff
         run: |
+          VERSION="${{ github.event.inputs.version }}"
+
           # Update Python package version
-          sed -i "s/__version__ =.*/__version__ = \"${{ github.event.inputs.version }}\"/g" biosim_schema/__init__.py
+          sed -i "s/^__version__ = .*/__version__ = \"${VERSION}\"/g" biosim_schema/__init__.py
+
+          # Update schema version
+          sed -i -E "s/^(version:\s*).*/\1${VERSION}/" biosim_schema/schema/biosim_schema.yaml
+
+          # Optional: keep Sphinx release metadata in sync
+          sed -i -E "s/^(release = ).*/\1'${VERSION}'/" docs/source/conf.py
 
           # Update CITATION.cff version and date-released
           if [ -f CITATION.cff ]; then
-            sed -i -E "s/^(version:\s*).*/\1${{ github.event.inputs.version }}/" CITATION.cff
+            sed -i -E "s/^(version:\s*).*/\1${VERSION}/" CITATION.cff
             sed -i -E "s/^(date-released:\s*).*/\1'$(date -u +%F)'/" CITATION.cff
           fi
 

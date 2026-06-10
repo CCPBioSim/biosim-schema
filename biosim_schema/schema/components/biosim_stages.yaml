@@ -8,6 +8,8 @@ prefixes:
 classes:
 
   SimulationStages:
+    description:
+      Stages of simulation workflow.
     slots:
       - setup # class
       - minimisation # class
@@ -16,10 +18,14 @@ classes:
       - analysis # class
 
   Setup:
+    description:
+      Setup stage of simulation workflow.
     slots:
       - setup_tool # enum
 
   Minimisation:
+    description:
+      Minimisation stage of simulation workflow.
     slots:
       - energy_tolerance # float
       - number_of_minimisation_steps # int, from settings
@@ -29,11 +35,15 @@ classes:
       - simulation_software # enum
 
   Equilibration:
+    description:
+      Equilibration stage of simulation workflow.
     slots:
       - simulation_tool
       - simulation_software # enum
 
   Production:
+    description:
+      Production stage of simulation workflow.
     slots:
       - simulation_tool
       - simulation_software # enum
@@ -187,6 +197,8 @@ enums:
         description:
           An action inside cpptraj, that also helps make pdb-format files compatible with LEaP. It is particularly useful for carbohydrates.
       packmol:
+        description:
+          PACKMOL creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space.
       packmol_memgen:
         description:
            Packmol-memgen provides a way to generate membrane systems, with or without protein, by orienting input proteins with Memembed and using Packmol as the packing engine.
@@ -585,32 +597,46 @@ enums:
         aliases:
           - PLUMED
           - "plumed"
+        description:
+          PLUMED is an open-source, community-developed library used in Molecular Dynamics (MD) to perform free-energy calculations, enhance sampling algorithms, and analyze simulation trajectories. It acts as a plugin or standalone engine to manipulate forces and biases on the fly.
       MDanalysis:
         aliases:
           - MDanalysis
           - "mdanalysis"
+        description:
+          MDAnalysis is an object-oriented Python library for structural and temporal analysis of molecular dynamics (MD) simulation trajectories.
 
 
   AnalysisSoftware:
     description:
       Software used to analyse simulation outputs.
     permissible_values:
-      VMD:
+      "Visual Molecular Dynamics (VMD)":
         aliases:
+          - "Visual Molecular Dynamics (VMD)"
           - VMD
           - "vmd"
-      "Schrodinger Maestro":
+        description:
+          VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular systems using 3-D graphics and built-in scripting.
+      "Schrödinger Maestro":
         aliases:
+          - "Schrödinger Maestro"
           - "Schrodinger Maestro"
           - "schrodinger_maestro"
+        description:
+          Schrödinger Maestro is the primary graphical user interface (GUI) and workspace for the Schrödinger computational suite. It allows scientists to build, visualize, and analyze 3D molecular structures
       PyMOL:
         aliases:
           - PyMOL
           - "pymol"
+        description:
+          PyMOL is an advanced molecular visualization and structural analysis software used extensively in biochemistry, pharmacology, and structural biology.
       Avogadro:
         aliases:
           - Avogadro
           - "avogadro"
+        description:
+          Avogadro is an advanced, free, and open-source 3D molecular editor and visualization tool designed for computational chemistry, bioinformatics, and materials science.
 
   AnalysisMethod:
     description:

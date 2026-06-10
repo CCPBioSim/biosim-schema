@@ -176,11 +176,22 @@ def fix_generated_docs(linkml_docs_dir: Path) -> None:
         - malformed type headings where front matter closes as '---#'
         - PlantUML fences tagged as 'puml', which Sphinx does not lex by default
         - hidden Sphinx toctree helper page listing generated docs
+        - Unwrap YAML fenced blocks from raw HTML details wrappers so YAML is
+          parsed as markdown code blocks:
+          <details> ... ```yaml ... ``` ... </details>
+        - Remove stray closing HTML tags left by generator output:
+          </details>, </details></div>, </div>
     """
     for md_file in linkml_docs_dir.rglob("*.md"):
         text = md_file.read_text(encoding="utf-8")
         fixed = text.replace("\n---#", "\n---\n#")
         fixed = fixed.replace("```puml", "```text")
+        fixed = fixed.replace("<details>\n```yaml", "```yaml")
+        fixed = fixed.replace("```\n</details></div>", "```")
+        fixed = fixed.replace("```\n</details>", "```")
+        fixed = fixed.replace("</details></div>", "")
+        fixed = fixed.replace("</details>", "")
+        fixed = fixed.replace("</div>", "")
         if fixed != text:
             md_file.write_text(fixed, encoding="utf-8")
 

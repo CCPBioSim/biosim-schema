@@ -7,6 +7,8 @@ prefixes:
 classes:
 
   PotentialMetadata:
+    description:
+      Potentials used for various modelled molecules.
     slots:
       - water_potential # class
       - protein_potential # class
@@ -18,41 +20,57 @@ classes:
       - machine_learned_potential # class
 
   WaterPotential:
+    description:
+      Potential used for water molecules.
     slots:
       - water_potential_name # enum
       - modified # bool
 
   ProteinPotential:
+    description:
+      Potential used for protein molecules.
     slots:
       - protein_potential_name # enum
       - modified # bool
 
   LipidPotential:
+    description:
+      Potential used for lipid molecules.
     slots:
       - lipid_potential_name # enum
       - modified # bool
 
   NucleicPotential:
+    description:
+      Potential used for nucleic acid molecules.
     slots:
       - nucleic_potential_name # enum
       - modified # bool
 
   CarbohydratePotential:
+    description:
+      Potential used for carbohydrate molecules.
     slots:
       - carbohydrate_potential_name # enum
       - modified # bool
 
   PolymerPotential:
+    description:
+      Potential used for polymers molecules.
     slots:
       - polymer_potential_name # enum
       - modified # bool
 
   GeneralPotential:
+    description:
+      Potential used for molecules.
     slots:
       - general_potential_name # enum
       - modified # bool
 
   MachineLearnedPotential:
+    description:
+      Machine learned potential used for molecules.
     slots:
       - machine_learned_potential_name # enum
       - modified # bool
@@ -266,7 +284,10 @@ enums:
           DNA force field that adds some new torsion modifications, aimed at non-B double helices, as of Amber24, is the current recommended DNA force field.
       OL24:
         description:
+          OL24 is a 2024 DNA force field tested on both canonical and non-canonical DNA.
       OL3:
+        description:
+          The Amber OL3 force field is a parameter set for simulations of RNA.
       bsc1:
         description:
           Updated version of bsc0 force field for DNA, using an implicit solvation model and a rigorous quantum mechanics methodology.

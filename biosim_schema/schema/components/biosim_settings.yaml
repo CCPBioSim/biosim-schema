@@ -9,6 +9,7 @@ prefixes:
 classes:
 
   SimulationSettings:
+    description: Settings in simulation.
     slots:
       - ensemble # class
       - integrator # class
@@ -17,11 +18,13 @@ classes:
       - interactions # class
 
   Ensemble:
+    description: Simulation ensemble/thermodynamic properties.
     slots:
       - ensemble_type # enum
       - random_seed # int
 
   Interactions:
+    description: Settings used to define particle interactions.
     slots:
       - restraints # bool
       - electrostatic_cutoff_distance # float
@@ -30,6 +33,7 @@ classes:
       - long_range_interaction_method # enum
 
   Integrator:
+    description: Settings used for the simulation integrator.
     slots:
       - integrator_algorithm # enum
       # - time_information # class
@@ -39,6 +43,7 @@ classes:
       - simulation_time # float
 
   Barostat:
+    description: Settings used for the simulation barostat.
     slots:
       - barostat_algorithm # enum
       - compressibility # float
@@ -49,6 +54,7 @@ classes:
       - pressure_coupling_type # enum
 
   Thermostat:
+    description: Settings used for the simulation thermostat.
     slots:
       - thermostat_algorithm # enum
       - target_temperature # float

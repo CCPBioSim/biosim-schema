@@ -4,10 +4,14 @@ name: biosim-observables
 classes:
 
   SimulationObservables:
+    description:
+      Simulation observables outputted from simulation.
     slots:
       - simulation_averages
 
   SimulationAverages:
+    description:
+      Average values of observables outputted from the simulation.
     slots:
       - average_kinetic_energy # float
       - average_potential_energy # float

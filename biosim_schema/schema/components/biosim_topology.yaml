@@ -7,16 +7,19 @@ prefixes:
 classes:
 
   TopologyMetadata:
+    description: Topology information.
     slots:
       - connectivity
       - particles
 
   Connectivity:
+    description: Connectivity information included in the topology.
     slots:
       - bonds # bool
       - dihedrals # bool
 
   Particles:
+    description: Particle information included in the topology.
     slots:
       - masses # bool
       - fixed_charges # bool
@@ -78,12 +81,8 @@ slots:
   system_charge:
     description:
       Total electrostatic charge of the system given by the elementary charge (e).
-    range: ChargeQuantity
+    range: ChargeQuantity # class
     pattern: "^[+-]?\\d+(\\.\\d+)?$"
-    # unit:
-    #   symbol: "e"
-    #   ucum_code: E
-    #   has_quantity_kind: ElectricCharge
     annotations:
       engine_mapping:
         - engine: toptrajparser

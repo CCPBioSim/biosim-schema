@@ -8,6 +8,8 @@ classes:
 
 
   ComputationalEnvironment:
+    description:
+      Computational environment used to perform simulation.
     slots:
       - hardware
       - software
@@ -20,6 +22,8 @@ classes:
       # - computer_cluster # enum
 
   Hardware:
+    description:
+      Computer hardware used to perform simulation.
     slots:
       - execution_platform
       - node_type
@@ -34,6 +38,8 @@ classes:
       - memory_per_node
 
   Software:
+    description:
+      Computer software used to perform simulation.
     slots:
       - operating_system
       - scheduler
@@ -41,6 +47,8 @@ classes:
       - container_runtime
 
   Performance:
+    description:
+      Compute performance during simulation.
     slots:
       - wall_time # time
       - energy_consumption
@@ -68,12 +76,18 @@ classes:
 slots:
 
   hardware:
+    description:
+      Computer hardware used to perform simulation.
     range: Hardware # class
 
   software:
+    description:
+      Computer software used to perform simulation.
     range: Software # class
 
   performance:
+    description:
+      Compute performance during simulation.
     range: Performance # class
 
 

@@ -57,4 +57,4 @@ Schema validation is primarily exercised through tests. For ad hoc validation:
 
 .. code-block:: bash
 
-   linkml-validate -s biosim_schema/schema/biosim_schema.yaml tests/valid_data/test.yaml
+   linkml-validate -s biosim_schema/schema/biosim_schema.yaml tests/test_validation/valid_data/test.json

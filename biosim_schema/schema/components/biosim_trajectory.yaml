@@ -7,11 +7,13 @@ prefixes:
 classes:
 
   TrajectoryMetadata:
+    description: Trajectory information.
     slots:
       - simulation_box # class
       - trajectory_output # class
 
   SimulationBox:
+    description: Simulation box information
     slots:
       - box_dimensions # list of floats
       - box_angles # list of floats
@@ -19,6 +21,7 @@ classes:
       - periodic_boundary_conditions # enum xyz,xy,xz,yz
 
   Trajectories:
+    description: Information in trajectory files.
     slots:
       - positions # bool
       - forces # bool
@@ -55,13 +58,12 @@ slots:
           key: frame_count
 
   periodic_boundary_conditions:
-    # multivalued: true
     description:
       What directions in a simulation cell periodic boundaries are set if they are turned on.
     range: PeriodicBoundaryConditions
 
   box_dimensions:
-    range: VectorLengthQuantity # LengthQuantity #
+    range: VectorLengthQuantity
     description:
       The lengths/dimensions of the box used to simulate the system.
     examples:
@@ -73,7 +75,7 @@ slots:
           unit: Ang
 
   box_angles:
-    range: VectorAngleQuantity # AngleQuantity #
+    range: VectorAngleQuantity
     description:
       The angles of the box used to simulate the system.
     examples:
@@ -172,6 +174,7 @@ enums:
       Types of box used to simulate the system.
     permissible_values:
       Cubic:
+        description: 3D rectangular prism where all sides are equal in length
         aliases:
           - Cubic
           - cubic
@@ -181,6 +184,7 @@ enums:
               key: box_type
               value: cubic
       Tetragonal:
+        description: Simulation boundaries form a rectangular prism, where two sides are equal (a = b ≠ c) and all angles are exactly 90°.
         aliases:
           - Tetragonal
           - tetragonal
@@ -190,6 +194,7 @@ enums:
               key: box_type
               value: tetragonal
       Orthorhombic:
+        description: 3D unit cell defined by three mutually perpendicular axes of unequal length (a ≠ b ≠ c), where all angles are exactly 90°
         aliases:
           - Orthorhombic
           - orthorhombic
@@ -199,6 +204,7 @@ enums:
               key: box_type
               value: orthorhombic
       "Truncated Octahedron":
+        description: A 14-sided 3D shape (8 hexagonal and 6 square faces) used as a simulation cell in molecular dynamics. Because its geometry closely approximates a sphere, it is ideal for solvating roughly spherical or globular proteins
         aliases:
           - "Truncated Octahedron"
           - truncated_octahedron
@@ -208,6 +214,7 @@ enums:
               key: box_type
               value: "truncated octahedron"
       Triclinic:
+        description: Non-orthogonal simulation cell defined by three arbitrary, non-coplanar vectors. Unlike standard cubic or orthorhombic boxes (which have 90° angles), triclinic boxes can have arbitrary angles and varying edge lengths to model sheared systems, complex crystal lattices, and anisotropic stress tensors
         aliases:
           - Triclinic
           - triclinic

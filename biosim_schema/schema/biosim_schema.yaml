@@ -40,6 +40,7 @@ classes:
 
   # PICK ONE OF THE BELOW ROOT CLASS
   SimulationMetadata:  # root class
+    description: root class for biosim-schema
     tree_root: true
     slots:
       - stages # class
@@ -56,29 +57,36 @@ classes:
 slots:
 
   stages:
+    description: Simulation stages
     range: SimulationStages # class
 
   settings:
+    description: Simulation settings
     range: SimulationSettings # class
 
   composition:
+    description: Composition of simulated system.
     range: SystemComposition # class
 
   observables:
+    description: Simulation observables.
     range: SimulationObservables # class
 
   topology:
+    description: Topology information.
     range: TopologyMetadata # class
 
   trajectory:
+    description: Trajectory information.
     range: TrajectoryMetadata # class
 
   potentials:
+    description: Force field potentials used to describe simulated particles.
     range: PotentialMetadata # class
 
   compute:
+    description: Computational environment information.
     range: ComputationalEnvironment # class
-
 
   engine_mapping:
     description: Mapping from engine-specific parameter names to schema slots

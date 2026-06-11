@@ -111,7 +111,6 @@ classes:
     attributes:
       value:
         range: float
-        minimum_value: 0
       value_unit:
         range: PressureUnit
         ifabsent: string(bar)

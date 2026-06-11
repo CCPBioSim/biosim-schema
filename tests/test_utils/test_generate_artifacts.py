@@ -70,6 +70,7 @@ def test_main_verify_with_include_docs(monkeypatch, tmp_path):
     (paths.linkml_docs_dir / "x.md").write_text("x", encoding="utf-8")
 
     monkeypatch.setattr(mod, "generate_derived", lambda p: None)
+    monkeypatch.setattr(mod, "generate_jsonschema", lambda p: None)
     monkeypatch.setattr(mod, "generate_docs", lambda p, build_html=False: None)
 
     seen = {}
@@ -224,6 +225,9 @@ def test_main_dispatches_commands(monkeypatch, tmp_path, cmd, extra):
 
     calls = []
     monkeypatch.setattr(mod, "generate_project", lambda p: calls.append("project"))
+    monkeypatch.setattr(
+        mod, "generate_jsonschema", lambda p: calls.append("jsonschema")
+    )
     monkeypatch.setattr(mod, "generate_derived", lambda p: calls.append("derived"))
     monkeypatch.setattr(
         mod,

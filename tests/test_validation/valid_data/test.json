@@ -15,7 +15,7 @@
     },
     "barostat": {
       "barostat_algorithm": "Parrinello-Rahman",
-      "compressibility": {
+      "compressibility_vector": {
         "vector_value": [
           [
             0.0,
@@ -35,7 +35,7 @@
         ],
         "value_unit": "1/bar"
       },
-      "target_pressure": {
+      "target_pressure_vector": {
         "vector_value": [
           [
             1.0,
@@ -64,7 +64,7 @@
     },
     "thermostat": {
       "thermostat_algorithm": "Berendsen",
-      "target_temperature": {
+      "target_temperature_vector": {
         "vector_value": [
           300,
           300

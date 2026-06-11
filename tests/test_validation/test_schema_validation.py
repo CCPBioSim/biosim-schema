@@ -2,6 +2,7 @@ import copy
 import json
 from pathlib import Path
 
+import yaml
 from linkml.validator import validate
 
 
@@ -9,21 +10,26 @@ def _paths():
     repo = Path(__file__).resolve().parents[2]
     schema = repo / "biosim_schema" / "schema" / "biosim_schema.yaml"
     data = repo / "tests" / "test_validation" / "valid_data" / "test.json"
-    return schema, data
+    data2 = repo / "tests" / "test_validation" / "valid_data" / "test.yaml"
+    return schema, data, data2
 
 
 def test_valid_instance_passes(monkeypatch):
-    schema, data = _paths()
+    schema, data, data_yaml = _paths()
     monkeypatch.chdir(schema.parent)  # LinkML import resolution
     instance = json.loads(data.read_text(encoding="utf-8"))
+    with data_yaml.open("r", encoding="utf-8") as handle:
+        instance_from_yaml = yaml.safe_load(handle)
 
     report = validate(instance, str(schema), "SimulationMetadata")
+    report_from_yaml = validate(instance_from_yaml, str(schema), "SimulationMetadata")
 
     assert not report.results
+    assert not report_from_yaml.results
 
 
 def test_invalid_instance_fails(monkeypatch):
-    schema, data = _paths()
+    schema, data, _data2 = _paths()
     monkeypatch.chdir(schema.parent)
     instance = json.loads(data.read_text(encoding="utf-8"))
 

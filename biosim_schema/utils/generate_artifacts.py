@@ -50,6 +50,10 @@ class ArtifactPaths:
         return self.project_dir / "jsonld" / f"{self.schema_name}.jsonld"
 
     @property
+    def jsonschema_path(self) -> Path:
+        return self.project_dir / "jsonschema" / f"{self.schema_name}.schema.json"
+
+    @property
     def docs_dir(self) -> Path:
         return self.repo_root / "docs"
 
@@ -121,6 +125,23 @@ def generate_jsonld(paths: ArtifactPaths) -> None:
             "gen-project",
             "-I",
             "jsonld",
+            str(paths.schema_path),
+            "-d",
+            str(paths.project_dir),
+            "--generator-arguments",
+            "diagram-type: plantuml_class_diagram",
+        ],
+        cwd=paths.repo_root,
+    )
+
+
+def generate_jsonschema(paths: ArtifactPaths) -> None:
+    """Generate JSON Schema project output for verification."""
+    run(
+        [
+            "gen-project",
+            "-I",
+            "jsonschema",
             str(paths.schema_path),
             "-d",
             str(paths.project_dir),
@@ -245,6 +266,7 @@ def parse_args() -> argparse.Namespace:
 
     subparsers.add_parser("project", help="Generate full project artefacts.")
     subparsers.add_parser("jsonld", help="Generate JSON-LD artefacts only.")
+    subparsers.add_parser("jsonschema", help="Generate JSON Schema artefacts only.")
     subparsers.add_parser(
         "derived", help="Generate webform, engine mapping, and summary files."
     )
@@ -291,6 +313,10 @@ def main() -> None:
         generate_jsonld(paths)
         return
 
+    if args.command == "jsonschema":
+        generate_jsonschema(paths)
+        return
+
     if args.command == "derived":
         generate_derived(paths)
         return
@@ -307,11 +333,21 @@ def main() -> None:
 
     if args.command == "verify":
         generate_derived(paths)
+        generate_jsonschema(paths)
+        # Verification intentionally checks only stable generated artefacts:
+        # - derived outputs consumed by downstream tools
+        # - jsonschema output for schema contract checks
+        #
+        # We do NOT verify all files under project/linkml because several generators
+        # emit non-deterministic content (for example timestamps/header ordering),
+        # which causes persistent diff noise and flaky verification without schema
+        # changes. The selected files are deterministic and meaningful for CI gates.
         files_to_check = [
             paths.webform_fields_path,
             paths.engine_mappings_path,
             paths.summary_yaml_path,
             paths.summary_csv_path,
+            paths.jsonschema_path,
         ]
 
         if args.include_docs:

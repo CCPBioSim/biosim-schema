@@ -55,8 +55,8 @@
         "AnalysisSoftware": {
             "description": "Software used to analyse simulation outputs.",
             "enum": [
-                "VMD",
-                "Schrodinger Maestro",
+                "Visual Molecular Dynamics (VMD)",
+                "Schr\u00f6dinger Maestro",
                 "PyMOL",
                 "Avogadro"
             ],
@@ -85,7 +85,7 @@
         },
         "AngleQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing angles.",
             "properties": {
                 "value": {
                     "type": [
@@ -103,20 +103,32 @@
         "AngleUnit": {
             "description": "Units for angles.",
             "enum": [
-                "degrees"
+                "degree",
+                "radian"
             ],
             "title": "AngleUnit",
             "type": "string"
         },
         "Barostat": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Settings used for the simulation barostat.",
             "properties": {
                 "barostat_algorithm": {
                     "$ref": "#/$defs/BarostatAlgorithm",
                     "description": "List of barostat algorithms used in the simulation."
                 },
                 "compressibility": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CompressibilityQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Compressibility of the simulated system, given as a float."
+                },
+                "compressibility_vector": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/MatrixCompressibilityQuantity"
@@ -152,13 +164,24 @@
                 "target_pressure": {
                     "anyOf": [
                         {
+                            "$ref": "#/$defs/PressureQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target/reference pressure set to reach in the simulation, given as a float."
+                },
+                "target_pressure_vector": {
+                    "anyOf": [
+                        {
                             "$ref": "#/$defs/MatrixPressureQuantity"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1)."
+                    "description": "Target/reference pressure set to reach in the simulation, given as a 3x3 array."
                 }
             },
             "title": "Barostat",
@@ -203,7 +226,7 @@
         },
         "ByteQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing bytes.",
             "properties": {
                 "value": {
                     "type": [
@@ -229,7 +252,7 @@
         },
         "CarbohydratePotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for carbohydrate molecules.",
             "properties": {
                 "carbohydrate_potential_name": {
                     "$ref": "#/$defs/CarbohydratePotentialName",
@@ -258,7 +281,7 @@
         },
         "ChargeQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing charge.",
             "properties": {
                 "value": {
                     "type": [
@@ -274,7 +297,7 @@
             "type": "object"
         },
         "ChargeUnit": {
-            "description": "",
+            "description": "Units for charge quantity.",
             "enum": [
                 "e",
                 "C"
@@ -282,8 +305,25 @@
             "title": "ChargeUnit",
             "type": "string"
         },
+        "CompressibilityQuantity": {
+            "additionalProperties": false,
+            "description": "A quantity representing compressibility.",
+            "properties": {
+                "value": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value_unit": {
+                    "$ref": "#/$defs/CompressibilityUnit"
+                }
+            },
+            "title": "CompressibilityQuantity",
+            "type": "object"
+        },
         "CompressibilityUnit": {
-            "description": "",
+            "description": "measures how the system volume responds to pressure changes.",
             "enum": [
                 "1/bar",
                 "1/Pa"
@@ -293,7 +333,7 @@
         },
         "ComputationalEnvironment": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Computational environment used to perform simulation.",
             "properties": {
                 "hardware": {
                     "anyOf": [
@@ -303,7 +343,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Computer hardware used to perform simulation."
                 },
                 "performance": {
                     "anyOf": [
@@ -313,7 +354,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Compute performance during simulation."
                 },
                 "software": {
                     "anyOf": [
@@ -323,7 +365,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Computer software used to perform simulation."
                 }
             },
             "title": "ComputationalEnvironment",
@@ -331,7 +374,7 @@
         },
         "ConcentrationQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing concentration.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -348,7 +391,7 @@
             "type": "object"
         },
         "ConcentrationUnit": {
-            "description": "",
+            "description": "Units for concentration quantity.",
             "enum": [
                 "M"
             ],
@@ -357,7 +400,7 @@
         },
         "Connectivity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Connectivity information included in the topology.",
             "properties": {
                 "bonds": {
                     "description": "Are bond parameters present in the topology?",
@@ -410,7 +453,7 @@
         },
         "EnergyQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing energy.",
             "properties": {
                 "value": {
                     "type": [
@@ -435,7 +478,7 @@
         },
         "Ensemble": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Simulation ensemble/thermodynamic properties.",
             "properties": {
                 "ensemble_type": {
                     "$ref": "#/$defs/EnsembleType",
@@ -465,7 +508,7 @@
         },
         "Equilibration": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Equilibration stage of simulation workflow.",
             "properties": {
                 "simulation_software": {
                     "description": "Name of software used to perform simulation step.",
@@ -503,7 +546,7 @@
         },
         "ForceQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing force.",
             "properties": {
                 "value": {
                     "pattern": "^[+-]?\\d+(\\.\\d+)?$",
@@ -520,7 +563,7 @@
             "type": "object"
         },
         "ForceUnit": {
-            "description": "",
+            "description": "Units for force.",
             "enum": [
                 "kJ/mol/nm",
                 "kcal/mol/\u00c5"
@@ -530,7 +573,7 @@
         },
         "FrequencyQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing frequency.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -556,7 +599,7 @@
         },
         "FrictionCoefficientQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing friction coefficients.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -573,7 +616,7 @@
             "type": "object"
         },
         "FrictionCoefficientUnit": {
-            "description": "",
+            "description": "Relationship between applied forces and the resulting resistance to motion.",
             "enum": [
                 "a/ps",
                 "kg/s"
@@ -583,7 +626,7 @@
         },
         "GeneralPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for molecules.",
             "properties": {
                 "general_potential_name": {
                     "$ref": "#/$defs/GeneralPotentialName",
@@ -626,7 +669,7 @@
         },
         "Hardware": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Computer hardware used to perform simulation.",
             "properties": {
                 "CPU_architecture": {
                     "$ref": "#/$defs/CpuArchitecture",
@@ -705,7 +748,7 @@
         },
         "Integrator": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Settings used for the simulation integrator.",
             "properties": {
                 "frame_step": {
                     "anyOf": [
@@ -768,7 +811,7 @@
         },
         "Interactions": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Settings used to define particle interactions.",
             "properties": {
                 "bond_length_constraints_algorithm": {
                     "$ref": "#/$defs/BondLengthConstraintsAlgorithm",
@@ -813,7 +856,7 @@
         },
         "LengthQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing length.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -830,7 +873,7 @@
             "type": "object"
         },
         "LengthUnit": {
-            "description": "",
+            "description": "Units for length quantity.",
             "enum": [
                 "\u00c5",
                 "nm"
@@ -840,7 +883,7 @@
         },
         "LipidPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for lipid molecules.",
             "properties": {
                 "lipid_potential_name": {
                     "$ref": "#/$defs/LipidPotentialName",
@@ -892,7 +935,7 @@
         },
         "MachineLearnedPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Machine learned potential used for molecules.",
             "properties": {
                 "machine_learned_potential_name": {
                     "$ref": "#/$defs/MachineLearnedPotentialName",
@@ -923,7 +966,7 @@
         },
         "MassQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing mass.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -950,7 +993,7 @@
         },
         "MatrixCompressibilityQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing compressibility vectors in 3D.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/CompressibilityUnit"
@@ -978,7 +1021,7 @@
         },
         "MatrixPressureQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing pressure vectors in 3D.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/PressureUnit"
@@ -1006,7 +1049,7 @@
         },
         "MatrixQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing general vectors in 3D.",
             "properties": {
                 "value_unit": {
                     "type": [
@@ -1037,7 +1080,7 @@
         },
         "Minimisation": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Minimisation stage of simulation workflow.",
             "properties": {
                 "energy_tolerance": {
                     "anyOf": [
@@ -1111,7 +1154,8 @@
                 "Conjugate Gradient",
                 "L-BFGS",
                 "XMIN",
-                "LMOD"
+                "LMOD",
+                "None"
             ],
             "title": "MinimisationAlgorithm",
             "type": "string"
@@ -1129,7 +1173,7 @@
         },
         "MolarEnergyQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing molar energy.",
             "properties": {
                 "value": {
                     "pattern": "^[+-]?\\d+(\\.\\d+)?$",
@@ -1156,7 +1200,7 @@
         },
         "MoleculeID": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Identifiers of a molecule type in the simulated system.",
             "properties": {
                 "InChI": {
                     "description": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
@@ -1315,7 +1359,7 @@
         },
         "NucleicPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for nucleic acid molecules.",
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
@@ -1362,7 +1406,7 @@
         },
         "Particles": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Particle information included in the topology.",
             "properties": {
                 "coarse_grained": {
                     "description": "Are atoms coarse-grained?",
@@ -1407,7 +1451,7 @@
         },
         "Performance": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Compute performance during simulation.",
             "properties": {
                 "energy_consumption": {
                     "anyOf": [
@@ -1449,7 +1493,7 @@
         },
         "PolymerPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for polymers molecules.",
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
@@ -1476,7 +1520,7 @@
         },
         "PotentialMetadata": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potentials used for various modelled molecules.",
             "properties": {
                 "carbohydrate_potential": {
                     "anyOf": [
@@ -1583,10 +1627,9 @@
         },
         "PressureQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing pressure.",
             "properties": {
                 "value": {
-                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
@@ -1600,7 +1643,7 @@
             "type": "object"
         },
         "PressureUnit": {
-            "description": "",
+            "description": "Units to describe pressure.",
             "enum": [
                 "bar",
                 "Pa"
@@ -1610,7 +1653,7 @@
         },
         "Production": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Production stage of simulation workflow.",
             "properties": {
                 "simulation_method": {
                     "description": "Method used to perform simulation.",
@@ -1655,7 +1698,7 @@
         },
         "ProteinPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for protein molecules.",
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
@@ -1708,7 +1751,7 @@
         },
         "Setup": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Setup stage of simulation workflow.",
             "properties": {
                 "setup_tool": {
                     "$ref": "#/$defs/SetupTool",
@@ -1736,7 +1779,7 @@
         },
         "SimulationAverages": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Average values of observables outputted from the simulation.",
             "properties": {
                 "average_enthalpy": {
                     "anyOf": [
@@ -1821,7 +1864,7 @@
         },
         "SimulationBox": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Simulation box information",
             "properties": {
                 "box_angles": {
                     "anyOf": [
@@ -1859,7 +1902,7 @@
         },
         "SimulationMetadata": {
             "additionalProperties": false,
-            "description": "",
+            "description": "root class for biosim-schema",
             "properties": {
                 "composition": {
                     "anyOf": [
@@ -1869,7 +1912,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Composition of simulated system."
                 },
                 "compute": {
                     "anyOf": [
@@ -1879,7 +1923,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Computational environment information."
                 },
                 "observables": {
                     "anyOf": [
@@ -1889,7 +1934,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Simulation observables."
                 },
                 "potentials": {
                     "anyOf": [
@@ -1899,7 +1945,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Force field potentials used to describe simulated particles."
                 },
                 "settings": {
                     "anyOf": [
@@ -1909,7 +1956,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Simulation settings"
                 },
                 "stages": {
                     "anyOf": [
@@ -1919,7 +1967,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Simulation stages"
                 },
                 "topology": {
                     "anyOf": [
@@ -1929,7 +1978,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Topology information."
                 },
                 "trajectory": {
                     "anyOf": [
@@ -1939,7 +1989,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Trajectory information."
                 }
             },
             "title": "SimulationMetadata",
@@ -1976,7 +2027,7 @@
         },
         "SimulationObservables": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Simulation observables outputted from simulation.",
             "properties": {
                 "simulation_averages": {
                     "anyOf": [
@@ -1995,7 +2046,7 @@
         },
         "SimulationSettings": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Settings in simulation.",
             "properties": {
                 "barostat": {
                     "anyOf": [
@@ -2076,7 +2127,7 @@
         },
         "SimulationStages": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Stages of simulation workflow.",
             "properties": {
                 "analysis": {
                     "anyOf": [
@@ -2150,7 +2201,7 @@
         },
         "Software": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Computer software used to perform simulation.",
             "properties": {
                 "MPI_library": {
                     "$ref": "#/$defs/MPILibrary",
@@ -2174,7 +2225,7 @@
         },
         "SystemComposition": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Molecular composition of simulated system.",
             "properties": {
                 "molecule_ID": {
                     "description": "Persistent identifier of a molecule being simulated.",
@@ -2195,7 +2246,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "description": "Entity counts across the simulated system."
                 }
             },
             "title": "SystemComposition",
@@ -2203,7 +2255,7 @@
         },
         "SystemCounts": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Entity counts across the simulated system.",
             "properties": {
                 "salt_concentration": {
                     "anyOf": [
@@ -2246,7 +2298,7 @@
         },
         "TemperatureQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing temperature.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -2263,7 +2315,7 @@
             "type": "object"
         },
         "TemperatureUnit": {
-            "description": "",
+            "description": "Units to describe temperature.",
             "enum": [
                 "K",
                 "\u00b0C",
@@ -2274,7 +2326,7 @@
         },
         "Thermostat": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Settings used for the simulation thermostat.",
             "properties": {
                 "chain_length": {
                     "description": "Usually required in the Nos\u00e9-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.",
@@ -2314,6 +2366,17 @@
                     "description": "Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float."
                 },
                 "target_temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TemperatureQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Target/reference temperature set to reach in the simulation, given as a float."
+                },
+                "target_temperature_vector": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/VectorTemperatureQuantity"
@@ -2357,7 +2420,7 @@
         },
         "TimeQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing time.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -2388,7 +2451,7 @@
         },
         "TopologyMetadata": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Topology information.",
             "properties": {
                 "connectivity": {
                     "anyOf": [
@@ -2418,7 +2481,7 @@
         },
         "Trajectories": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Information in trajectory files.",
             "properties": {
                 "energies": {
                     "description": "Are per-frame energies included in the trajectory?",
@@ -2483,7 +2546,7 @@
         },
         "TrajectoryMetadata": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Trajectory information.",
             "properties": {
                 "simulation_box": {
                     "anyOf": [
@@ -2513,7 +2576,7 @@
         },
         "VectorAngleQuantity": {
             "additionalProperties": false,
-            "description": "A quantity representing 3D angles",
+            "description": "A quantity representing 3D angles.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/AngleUnit"
@@ -2535,7 +2598,7 @@
         },
         "VectorCompressibilityQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing compressibility in 3D.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/CompressibilityUnit"
@@ -2563,7 +2626,7 @@
         },
         "VectorLengthQuantity": {
             "additionalProperties": false,
-            "description": "A quantity representing 3D lengths/dimensions",
+            "description": "A quantity representing 3D lengths/dimensions.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/LengthUnit"
@@ -2585,7 +2648,7 @@
         },
         "VectorPressureQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing pressure in 3D.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/PressureUnit"
@@ -2607,7 +2670,7 @@
         },
         "VectorTemperatureQuantity": {
             "additionalProperties": false,
-            "description": "Temperature values for multiple coupling groups",
+            "description": "Temperature values for multiple coupling groups.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/TemperatureUnit"
@@ -2627,7 +2690,7 @@
         },
         "VectorTimeQuantity": {
             "additionalProperties": false,
-            "description": "Time values for multiple coupling groups",
+            "description": "Time values for multiple coupling groups.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/TimeUnit"
@@ -2647,7 +2710,7 @@
         },
         "VectorVolumeQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing volume as via 3 length dimensions.",
             "properties": {
                 "value_unit": {
                     "$ref": "#/$defs/LengthUnit"
@@ -2667,7 +2730,7 @@
         },
         "VolumeQuantity": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A quantity representing volume.",
             "properties": {
                 "value": {
                     "minimum": 0,
@@ -2684,7 +2747,7 @@
             "type": "object"
         },
         "VolumeUnit": {
-            "description": "",
+            "description": "Units for volume quantity.",
             "enum": [
                 "\u00c5\u00b3",
                 "nm\u00b3"
@@ -2694,7 +2757,7 @@
         },
         "WaterPotential": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Potential used for water molecules.",
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
@@ -2736,7 +2799,7 @@
     "$id": "https://CCPBioSim.ac.uk/biosim-schema/",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "",
+    "description": "root class for biosim-schema",
     "metamodel_version": "1.11.0",
     "properties": {
         "composition": {
@@ -2747,7 +2810,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Composition of simulated system."
         },
         "compute": {
             "anyOf": [
@@ -2757,7 +2821,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Computational environment information."
         },
         "observables": {
             "anyOf": [
@@ -2767,7 +2832,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Simulation observables."
         },
         "potentials": {
             "anyOf": [
@@ -2777,7 +2843,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Force field potentials used to describe simulated particles."
         },
         "settings": {
             "anyOf": [
@@ -2787,7 +2854,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Simulation settings"
         },
         "stages": {
             "anyOf": [
@@ -2797,7 +2865,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Simulation stages"
         },
         "topology": {
             "anyOf": [
@@ -2807,7 +2876,8 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Topology information."
         },
         "trajectory": {
             "anyOf": [
@@ -2817,10 +2887,11 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "description": "Trajectory information."
         }
     },
     "title": "biosim-schema",
     "type": "object",
-    "version": null
+    "version": "0.0.2"
 }

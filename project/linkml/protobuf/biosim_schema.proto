@@ -1,6 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.11.0
+// version: 0.0.2
 // Analysis stage of simulation workflow.
 message Analysis
  {
@@ -8,86 +9,110 @@ message Analysis
  repeated  analysisSoftware analysisSoftware = 0
  repeated  analysisMethod analysisMethod = 0
  }
+// A quantity representing angles.
 message AngleQuantity
  {
   float value = 0
   angleUnit valueUnit = 0
  }
+// Settings used for the simulation barostat.
 message Barostat
  {
   barostatAlgorithm barostatAlgorithm = 0
-  matrixCompressibilityQuantity compressibility = 0
-  matrixPressureQuantity targetPressure = 0
+  compressibilityQuantity compressibility = 0
+  matrixCompressibilityQuantity compressibilityVector = 0
+  pressureQuantity targetPressure = 0
+  matrixPressureQuantity targetPressureVector = 0
   timeQuantity pressureTimeConstant = 0
   integer pressureCouplingFrequency = 0
   pressureCouplingType pressureCouplingType = 0
  }
+// A quantity representing bytes.
 message ByteQuantity
  {
   float value = 0
   byteUnit valueUnit = 0
  }
+// Potential used for carbohydrate molecules.
 message CarbohydratePotential
  {
   carbohydratePotentialName carbohydratePotentialName = 0
   boolean modified = 0
  }
+// A quantity representing charge.
 message ChargeQuantity
  {
   float value = 0
   chargeUnit valueUnit = 0
  }
+// A quantity representing compressibility.
+message CompressibilityQuantity
+ {
+  float value = 0
+  compressibilityUnit valueUnit = 0
+ }
+// Computational environment used to perform simulation.
 message ComputationalEnvironment
  {
   hardware hardware = 0
   software software = 0
   performance performance = 0
  }
+// A quantity representing concentration.
 message ConcentrationQuantity
  {
   float value = 0
   concentrationUnit valueUnit = 0
  }
+// Connectivity information included in the topology.
 message Connectivity
  {
   boolean bonds = 0
   boolean dihedrals = 0
  }
+// A quantity representing energy.
 message EnergyQuantity
  {
   float value = 0
   energyUnit valueUnit = 0
  }
+// Simulation ensemble/thermodynamic properties.
 message Ensemble
  {
   ensembleType ensembleType = 0
   integer randomSeed = 0
  }
+// Equilibration stage of simulation workflow.
 message Equilibration
  {
  repeated  simulationTool simulationTool = 0
  repeated  simulationSoftware simulationSoftware = 0
  }
+// A quantity representing force.
 message ForceQuantity
  {
   float value = 0
   forceUnit valueUnit = 0
  }
+// A quantity representing frequency.
 message FrequencyQuantity
  {
   float value = 0
   frequencyUnit valueUnit = 0
  }
+// A quantity representing friction coefficients.
 message FrictionCoefficientQuantity
  {
   float value = 0
   frictionCoefficientUnit valueUnit = 0
  }
+// Potential used for molecules.
 message GeneralPotential
  {
   generalPotentialName generalPotentialName = 0
   boolean modified = 0
  }
+// Computer hardware used to perform simulation.
 message Hardware
  {
   executionPlatform executionPlatform = 0
@@ -102,6 +127,7 @@ message Hardware
   integer gPUsPerNode = 0
   byteQuantity memoryPerNode = 0
  }
+// Settings used for the simulation integrator.
 message Integrator
  {
   integratorAlgorithm integratorAlgorithm = 0
@@ -110,6 +136,7 @@ message Integrator
   integer numberOfSteps = 0
   timeQuantity simulationTime = 0
  }
+// Settings used to define particle interactions.
 message Interactions
  {
   boolean restraints = 0
@@ -118,41 +145,49 @@ message Interactions
   bondLengthConstraintsAlgorithm bondLengthConstraintsAlgorithm = 0
   longRangeInteractionMethod longRangeInteractionMethod = 0
  }
+// A quantity representing length.
 message LengthQuantity
  {
   float value = 0
   lengthUnit valueUnit = 0
  }
+// Potential used for lipid molecules.
 message LipidPotential
  {
   lipidPotentialName lipidPotentialName = 0
   boolean modified = 0
  }
+// Machine learned potential used for molecules.
 message MachineLearnedPotential
  {
   machineLearnedPotentialName machineLearnedPotentialName = 0
   boolean modified = 0
  }
+// A quantity representing mass.
 message MassQuantity
  {
   float value = 0
   massUnit valueUnit = 0
  }
+// A quantity representing compressibility vectors in 3D.
 message MatrixCompressibilityQuantity
  {
  repeated  float vectorValue = 0
   compressibilityUnit valueUnit = 0
  }
+// A quantity representing pressure vectors in 3D.
 message MatrixPressureQuantity
  {
  repeated  float vectorValue = 0
   pressureUnit valueUnit = 0
  }
+// A quantity representing general vectors in 3D.
 message MatrixQuantity
  {
  repeated  float vectorValue = 0
   string valueUnit = 0
  }
+// Minimisation stage of simulation workflow.
 message Minimisation
  {
   forceQuantity energyTolerance = 0
@@ -162,11 +197,13 @@ message Minimisation
  repeated  simulationTool simulationTool = 0
  repeated  simulationSoftware simulationSoftware = 0
  }
+// A quantity representing molar energy.
 message MolarEnergyQuantity
  {
   float value = 0
   molarEnergyUnit valueUnit = 0
  }
+// Identifiers of a molecule type in the simulated system.
 message MoleculeID
  {
   string pDBID = 0
@@ -187,11 +224,13 @@ message MoleculeID
   integer atomCount = 0
   integer monomerCount = 0
  }
+// Potential used for nucleic acid molecules.
 message NucleicPotential
  {
   nucleicPotentialName nucleicPotentialName = 0
   boolean modified = 0
  }
+// Particle information included in the topology.
 message Particles
  {
   boolean masses = 0
@@ -200,16 +239,19 @@ message Particles
   boolean coarseGrained = 0
   modelResolution resolution = 0
  }
+// Compute performance during simulation.
 message Performance
  {
   timeQuantity wallTime = 0
   energyQuantity energyConsumption = 0
  }
+// Potential used for polymers molecules.
 message PolymerPotential
  {
   polymerPotentialName polymerPotentialName = 0
   boolean modified = 0
  }
+// Potentials used for various modelled molecules.
 message PotentialMetadata
  {
   waterPotential waterPotential = 0
@@ -221,11 +263,13 @@ message PotentialMetadata
   generalPotential generalPotential = 0
   machineLearnedPotential machineLearnedPotential = 0
  }
+// A quantity representing pressure.
 message PressureQuantity
  {
   float value = 0
   pressureUnit valueUnit = 0
  }
+// Production stage of simulation workflow.
 message Production
  {
  repeated  simulationTool simulationTool = 0
@@ -233,15 +277,18 @@ message Production
   string simulationSoftwareVersion = 0
  repeated  simulationMethod simulationMethod = 0
  }
+// Potential used for protein molecules.
 message ProteinPotential
  {
   proteinPotentialName proteinPotentialName = 0
   boolean modified = 0
  }
+// Setup stage of simulation workflow.
 message Setup
  {
   setupTool setupTool = 0
  }
+// Average values of observables outputted from the simulation.
 message SimulationAverages
  {
   molarEnergyQuantity averageKineticEnergy = 0
@@ -252,6 +299,7 @@ message SimulationAverages
   volumeQuantity averageVolume = 0
   vectorVolumeQuantity averageVolumeVector = 0
  }
+// Simulation box information
 message SimulationBox
  {
   vectorLengthQuantity boxDimensions = 0
@@ -259,6 +307,7 @@ message SimulationBox
   boxType boxType = 0
   periodicBoundaryConditions periodicBoundaryConditions = 0
  }
+// root class for biosim-schema
 message SimulationMetadata
  {
   simulationStages stages = 0
@@ -270,10 +319,12 @@ message SimulationMetadata
   potentialMetadata potentials = 0
   computationalEnvironment compute = 0
  }
+// Simulation observables outputted from simulation.
 message SimulationObservables
  {
   simulationAverages simulationAverages = 0
  }
+// Settings in simulation.
 message SimulationSettings
  {
   ensemble ensemble = 0
@@ -282,6 +333,7 @@ message SimulationSettings
   thermostat thermostat = 0
   interactions interactions = 0
  }
+// Stages of simulation workflow.
 message SimulationStages
  {
   setup setup = 0
@@ -290,6 +342,7 @@ message SimulationStages
   production production = 0
   analysis analysis = 0
  }
+// Computer software used to perform simulation.
 message Software
  {
   operatingSystem operatingSystem = 0
@@ -297,11 +350,13 @@ message Software
   mPILibrary mPILibrary = 0
   containerRuntime containerRuntime = 0
  }
+// Molecular composition of simulated system.
 message SystemComposition
  {
   systemCounts systemCounts = 0
  repeated  moleculeID moleculeID = 0
  }
+// Entity counts across the simulated system.
 message SystemCounts
  {
   integer totalMoleculeCount = 0
@@ -309,31 +364,37 @@ message SystemCounts
   integer uniqueMoleculeCount = 0
   concentrationQuantity saltConcentration = 0
  }
+// A quantity representing temperature.
 message TemperatureQuantity
  {
   float value = 0
   temperatureUnit valueUnit = 0
  }
+// Settings used for the simulation thermostat.
 message Thermostat
  {
   thermostatAlgorithm thermostatAlgorithm = 0
-  vectorTemperatureQuantity targetTemperature = 0
+  temperatureQuantity targetTemperature = 0
+  vectorTemperatureQuantity targetTemperatureVector = 0
   frequencyQuantity collisionFrequency = 0
   vectorTimeQuantity temperatureTimeConstant = 0
   string couplingGroup = 0
   integer chainLength = 0
   frictionCoefficientQuantity frictionCoefficient = 0
  }
+// A quantity representing time.
 message TimeQuantity
  {
   float value = 0
   timeUnit valueUnit = 0
  }
+// Topology information.
 message TopologyMetadata
  {
   connectivity connectivity = 0
   particles particles = 0
  }
+// Information in trajectory files.
 message Trajectories
  {
   boolean positions = 0
@@ -345,55 +406,61 @@ message Trajectories
   boolean replica = 0
   integer frameCount = 0
  }
+// Trajectory information.
 message TrajectoryMetadata
  {
   simulationBox simulationBox = 0
   trajectories trajectoryOutput = 0
  }
-// A quantity representing 3D angles
+// A quantity representing 3D angles.
 message VectorAngleQuantity
  {
  repeated  float vectorValue = 0
   angleUnit valueUnit = 0
  }
+// A quantity representing compressibility in 3D.
 message VectorCompressibilityQuantity
  {
   float vectorValue = 0
   compressibilityUnit valueUnit = 0
  }
-// A quantity representing 3D lengths/dimensions
+// A quantity representing 3D lengths/dimensions.
 message VectorLengthQuantity
  {
  repeated  float vectorValue = 0
   lengthUnit valueUnit = 0
  }
+// A quantity representing pressure in 3D.
 message VectorPressureQuantity
  {
  repeated  float vectorValue = 0
   pressureUnit valueUnit = 0
  }
-// Temperature values for multiple coupling groups
+// Temperature values for multiple coupling groups.
 message VectorTemperatureQuantity
  {
  repeated  float vectorValue = 0
   temperatureUnit valueUnit = 0
  }
-// Time values for multiple coupling groups
+// Time values for multiple coupling groups.
 message VectorTimeQuantity
  {
  repeated  float vectorValue = 0
   timeUnit valueUnit = 0
  }
+// A quantity representing volume as via 3 length dimensions.
 message VectorVolumeQuantity
  {
  repeated  float vectorValue = 0
   lengthUnit valueUnit = 0
  }
+// A quantity representing volume.
 message VolumeQuantity
  {
   float value = 0
   volumeUnit valueUnit = 0
  }
+// Potential used for water molecules.
 message WaterPotential
  {
   waterPotentialName waterPotentialName = 0

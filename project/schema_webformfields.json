@@ -2,7 +2,7 @@
   "stages": {
     "type": "class",
     "label": "Stages",
-    "hint": null,
+    "hint": "Simulation stages",
     "multiple": false,
     "fields": {
       "setup": {
@@ -52,7 +52,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for force.",
                 "options": [
                   "kJ/mol/nm",
                   "kcal/mol/Å"
@@ -83,7 +83,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for length quantity.",
                 "options": [
                   "Å",
                   "nm"
@@ -102,7 +102,8 @@
               "Conjugate Gradient",
               "L-BFGS",
               "XMIN",
-              "LMOD"
+              "LMOD",
+              "None"
             ],
             "multiple": true
           },
@@ -287,8 +288,8 @@
             "label": "Analysis Software",
             "hint": "Software used to analyse simulation outputs.",
             "options": [
-              "VMD",
-              "Schrodinger Maestro",
+              "Visual Molecular Dynamics (VMD)",
+              "Schrödinger Maestro",
               "PyMOL",
               "Avogadro"
             ],
@@ -316,7 +317,7 @@
   "settings": {
     "type": "class",
     "label": "Settings",
-    "hint": null,
+    "hint": "Simulation settings",
     "multiple": false,
     "fields": {
       "ensemble": {
@@ -483,6 +484,31 @@
             "label": "Compressibility",
             "hint": "Compressibility of the simulated system, given as a float.",
             "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "placeholder": "44.6"
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "measures how the system volume responds to pressure changes.",
+                "options": [
+                  "1/bar",
+                  "1/Pa"
+                ],
+                "multiple": false,
+                "default": "1/bar"
+              }
+            }
+          },
+          "compressibility_vector": {
+            "type": "quantity",
+            "label": "Compressibility Vector",
+            "hint": "Compressibility of the simulated system, given as a float.",
+            "fields": {
               "vector_value": {
                 "type": "text",
                 "label": "Vector Value",
@@ -493,7 +519,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "measures how the system volume responds to pressure changes.",
                 "options": [
                   "1/bar",
                   "1/Pa"
@@ -506,7 +532,31 @@
           "target_pressure": {
             "type": "quantity",
             "label": "Target Pressure",
-            "hint": "Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).",
+            "hint": "Target/reference pressure set to reach in the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units to describe pressure.",
+                "options": [
+                  "Bar",
+                  "Pascal"
+                ],
+                "multiple": false,
+                "default": "bar"
+              }
+            }
+          },
+          "target_pressure_vector": {
+            "type": "quantity",
+            "label": "Target Pressure Vector",
+            "hint": "Target/reference pressure set to reach in the simulation, given as a 3x3 array.",
             "fields": {
               "vector_value": {
                 "type": "text",
@@ -517,7 +567,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units to describe pressure.",
                 "options": [
                   "Bar",
                   "Pascal"
@@ -599,6 +649,32 @@
           "target_temperature": {
             "type": "quantity",
             "label": "Target Temperature",
+            "hint": "Target/reference temperature set to reach in the simulation, given as a float.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units to describe temperature.",
+                "options": [
+                  "K",
+                  "°C",
+                  "°F"
+                ],
+                "multiple": false,
+                "default": "K"
+              }
+            }
+          },
+          "target_temperature_vector": {
+            "type": "quantity",
+            "label": "Target Temperature Vector",
             "hint": "Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",
             "fields": {
               "vector_value": {
@@ -610,7 +686,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units to describe temperature.",
                 "options": [
                   "K",
                   "°C",
@@ -701,7 +777,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Relationship between applied forces and the resulting resistance to motion.",
                 "options": [
                   "a/ps",
                   "kg/s"
@@ -741,7 +817,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for length quantity.",
                 "options": [
                   "Å",
                   "nm"
@@ -767,7 +843,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for length quantity.",
                 "options": [
                   "Å",
                   "nm"
@@ -811,7 +887,7 @@
   "observables": {
     "type": "class",
     "label": "Observables",
-    "hint": null,
+    "hint": "Simulation observables.",
     "multiple": false,
     "fields": {
       "simulation_averages": {
@@ -907,13 +983,12 @@
                 "type": "text",
                 "label": "Value",
                 "typehint": "float",
-                "hint": null,
-                "min": 0
+                "hint": null
               },
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units to describe pressure.",
                 "options": [
                   "Bar",
                   "Pascal"
@@ -938,7 +1013,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units to describe temperature.",
                 "options": [
                   "K",
                   "°C",
@@ -964,7 +1039,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for volume quantity.",
                 "options": [
                   "Å³",
                   "nm³"
@@ -988,7 +1063,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for length quantity.",
                 "options": [
                   "Å",
                   "nm"
@@ -1005,7 +1080,7 @@
   "topology": {
     "type": "class",
     "label": "Topology",
-    "hint": null,
+    "hint": "Topology information.",
     "multiple": false,
     "fields": {
       "connectivity": {
@@ -1060,7 +1135,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for charge quantity.",
                 "options": [
                   "e",
                   "C"
@@ -1095,7 +1170,7 @@
   "trajectory": {
     "type": "class",
     "label": "Trajectory",
-    "hint": null,
+    "hint": "Trajectory information.",
     "multiple": false,
     "fields": {
       "simulation_box": {
@@ -1119,7 +1194,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for length quantity.",
                 "options": [
                   "Å",
                   "nm"
@@ -1146,10 +1221,11 @@
                 "label": "Value Unit",
                 "hint": "Units for angles.",
                 "options": [
-                  "degrees"
+                  "degree",
+                  "radian"
                 ],
                 "multiple": false,
-                "default": "degrees"
+                "default": "degree"
               }
             }
           },
@@ -1244,13 +1320,13 @@
   "composition": {
     "type": "class",
     "label": "Composition",
-    "hint": null,
+    "hint": "Composition of simulated system.",
     "multiple": false,
     "fields": {
       "system_counts": {
         "type": "class",
         "label": "System Counts",
-        "hint": null,
+        "hint": "Entity counts across the simulated system.",
         "multiple": false,
         "fields": {
           "total_molecule_count": {
@@ -1293,7 +1369,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for concentration quantity.",
                 "options": [
                   "Molar"
                 ],
@@ -1448,7 +1524,7 @@
               "value_unit": {
                 "type": "select",
                 "label": "Value Unit",
-                "hint": null,
+                "hint": "Units for charge quantity.",
                 "options": [
                   "e",
                   "C"
@@ -1490,7 +1566,7 @@
   "potentials": {
     "type": "class",
     "label": "Potentials",
-    "hint": null,
+    "hint": "Force field potentials used to describe simulated particles.",
     "multiple": false,
     "fields": {
       "water_potential": {
@@ -1730,13 +1806,13 @@
   "compute": {
     "type": "class",
     "label": "Compute",
-    "hint": null,
+    "hint": "Computational environment information.",
     "multiple": false,
     "fields": {
       "hardware": {
         "type": "class",
         "label": "Hardware",
-        "hint": null,
+        "hint": "Computer hardware used to perform simulation.",
         "multiple": false,
         "fields": {
           "execution_platform": {
@@ -1859,7 +1935,7 @@
       "software": {
         "type": "class",
         "label": "Software",
-        "hint": null,
+        "hint": "Computer software used to perform simulation.",
         "multiple": false,
         "fields": {
           "operating_system": {
@@ -1916,7 +1992,7 @@
       "performance": {
         "type": "class",
         "label": "Performance",
-        "hint": null,
+        "hint": "Compute performance during simulation.",
         "multiple": false,
         "fields": {
           "wall_time": {

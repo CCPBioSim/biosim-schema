@@ -69,11 +69,6 @@ slots:
     description:
       Minimisation stage of a simulation.
     range: Minimisation # class
-    annotations:
-      engine_mapping:
-        - engine: amber
-          key: imin
-          value: 1
 
   number_of_minimisation_steps:
     range: integer
@@ -283,6 +278,16 @@ enums:
             - engine: amber
               key: ntmin
               value: 4
+      None:
+        aliases:
+          - "None"
+        description:
+          No minimisation.
+        annotations:
+          engine_mapping:
+            - engine: amber
+              key: imin
+              value: 0
 
   SimulationMethod:
     description:

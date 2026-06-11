@@ -1,4 +1,5 @@
 # metamodel_version: 1.11.0
+# version: 0.0.2
 BASE <https://CCPBioSim.ac.uk/biosim-schema/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -60,8 +61,8 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#PLUMED>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisTool#MDanalysis> ] * ;
           <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_software> [
-             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#VMD>
-             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#Schrodinger%20Maestro>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#Visual%20Molecular%20Dynamics%20%28VMD%29>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#Schr%C3%B6dinger%20Maestro>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#PyMOL>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/AnalysisSoftware#Avogadro> ] * ;
           <https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_method> [
@@ -78,17 +79,16 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
-          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
-             <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleUnit#degrees> ] ?
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:DEG qudt:RAD ] ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity> ] ?
     )
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/settings/barostat_algorithm> [
              <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Berendsen>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Andersen>
@@ -97,8 +97,12 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Monte%20Carlo>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/BarostatAlgorithm#Martyna-Tuckerman-Tobias-Klein> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility_vector>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure_vector>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_time_constant>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
@@ -114,7 +118,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:GigaBYTE qudt:MegaBYTE ] ?
        ) ;
@@ -123,7 +127,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotentialName#GLYCAM06>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotentialName#GLYCAM_06EP>
@@ -135,18 +139,25 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
-          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
-             <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeUnit#e>
-             <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeUnit#C> ] ?
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:E qudt:C ] ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ] ?
     )
 }
 
+<https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityQuantity> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityQuantity_tes> ( 
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:PER-BAR qudt:PER-PA ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityQuantity> ] ?
+    )
+}
+
 <https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/compute/hardware> @<https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/compute/software> @<https://CCPBioSim.ac.uk/biosim-schema/compute/Software> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/compute/performance> @<https://CCPBioSim.ac.uk/biosim-schema/compute/Performance>
@@ -157,7 +168,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:MOL-PER-M3 ] ?
        ) ;
@@ -175,7 +186,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:KiloW-HR ] ?
        ) ;
@@ -184,7 +195,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble_type> [
              <https://CCPBioSim.ac.uk/biosim-schema/settings/EnsembleType#NPT>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/EnsembleType#NVT>
@@ -197,7 +208,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> [
              <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#sander>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#pmemd>
@@ -221,7 +232,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:KiloJoulePerMoleNanometer
              qudt:KiloCAL-PER-MOL-ANGSTROM ] ?
@@ -231,7 +242,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyUnit#1/ps> ] ?
@@ -241,7 +252,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientUnit#a/ps>
@@ -252,7 +263,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/general_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#gem.pmemd>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#GAFF>
@@ -267,7 +278,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/compute/execution_platform> [
              <https://CCPBioSim.ac.uk/biosim-schema/compute/ExecutionPlatform#HPC%20Cluster>
              <https://CCPBioSim.ac.uk/biosim-schema/compute/ExecutionPlatform#Cloud%20VM>
@@ -302,7 +313,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator_algorithm> [
              <https://CCPBioSim.ac.uk/biosim-schema/settings/IntegratorAlgorithm#Velocity-Verlet>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/IntegratorAlgorithm#Leap-frog>
@@ -321,7 +332,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/settings/restraints> @linkml:Boolean ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/electrostatic_cutoff_distance>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> ? ;
@@ -346,7 +357,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM qudt:NanoM ] ?
        ) ;
@@ -355,7 +366,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotentialName#LIPID21> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
@@ -365,7 +376,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#MACE>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotentialName#ANI>
@@ -379,7 +390,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:GramPerMole qudt:Dalton ] ?
        ) ;
@@ -388,7 +399,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:PER-BAR qudt:PER-PA ] ?
        ) ;
@@ -397,7 +408,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
@@ -408,7 +419,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> @linkml:String ?
        ) ;
@@ -417,7 +428,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/stages/energy_tolerance>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/stages/number_of_minimisation_steps> @linkml:Integer ? ;
@@ -428,7 +439,8 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#Conjugate%20Gradient>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#L-BFGS>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#XMIN>
-             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#LMOD> ] * ;
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#LMOD>
+             <https://CCPBioSim.ac.uk/biosim-schema/stages/MinimisationAlgorithm#None> ] * ;
           <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> [
              <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#sander>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#pmemd>
@@ -452,7 +464,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:KiloCAL-PER-MOL qudt:KiloJ-PER-MOL ] ?
        ) ;
@@ -461,7 +473,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/composition/PDB_ID> @linkml:String ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/UNIPROT_ID> @linkml:String ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/SMILES> @linkml:String ? ;
@@ -487,7 +499,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#ff99-bsc0>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotentialName#ff99OL3>
@@ -524,7 +536,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/Performance> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Performance_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Performance_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/compute/wall_time>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/compute/energy_consumption>
@@ -535,7 +547,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotentialName#LignAmb25> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
@@ -545,7 +557,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential>
           @<https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential>
@@ -568,7 +580,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
@@ -579,7 +591,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/stages/Production> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Production_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/stages/Production_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool> [
              <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#sander>
              <https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationTool#pmemd>
@@ -627,7 +639,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff19SB>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff99SB>
@@ -666,7 +678,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/observables/average_kinetic_energy>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/observables/average_potential_energy>
@@ -687,7 +699,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_dimensions>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_angles>
@@ -732,7 +744,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble> @<https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/integrator> @<https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator>
           ? ;
@@ -761,7 +773,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/compute/Software> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Software_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/compute/Software_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/compute/operating_system> [
              <https://CCPBioSim.ac.uk/biosim-schema/compute/OperatingSystem#Linux>
              <https://CCPBioSim.ac.uk/biosim-schema/compute/OperatingSystem#macOS>
@@ -789,7 +801,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/composition/system_counts>
           @<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_ID>
@@ -800,7 +812,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/composition/total_molecule_count> @linkml:Integer ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/total_atom_count> @linkml:Integer ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/unique_molecule_count> @linkml:Integer ? ;
@@ -812,7 +824,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#K>
@@ -824,7 +836,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat_algorithm> [
              <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Langevin>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Berendsen>
@@ -832,6 +844,8 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Nose-Hoover>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/ThermostatAlgorithm#Bussi> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity> ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature_vector>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/collision_frequency>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> ? ;
@@ -847,7 +861,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:SEC qudt:MilliSEC qudt:MicroSEC qudt:NanoSEC
              qudt:PicoSEC <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeUnit#fs> ] ?
@@ -857,7 +871,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/topology/connectivity>
           @<https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/topology/particles> @<https://CCPBioSim.ac.uk/biosim-schema/topology/Particles> ?
@@ -867,7 +881,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/positions> @linkml:Boolean ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/forces> @linkml:Boolean ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/velocities> @linkml:Boolean ? ;
@@ -882,7 +896,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/simulation_box>
           @<https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/trajectory/trajectory_output>
@@ -893,17 +907,16 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
-          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
-             <https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleUnit#degrees> ] ?
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:DEG qudt:RAD ] ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity> ] ?
     )
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:PER-BAR qudt:PER-PA ] ?
        ) ;
@@ -912,7 +925,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM qudt:NanoM ] ?
        ) ;
@@ -921,7 +934,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
@@ -932,7 +945,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit#K>
@@ -944,7 +957,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:SEC qudt:MilliSEC qudt:MicroSEC qudt:NanoSEC
              qudt:PicoSEC <https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeUnit#fs> ] ?
@@ -954,7 +967,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM qudt:NanoM ] ?
        ) ;
@@ -963,7 +976,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:ANGSTROM3
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeUnit#nm%C2%B3> ] ?
@@ -973,7 +986,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> CLOSED {
-    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential_tes> (
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential_name> [
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#OPC>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#OPC3>

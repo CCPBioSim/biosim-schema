@@ -165,6 +165,10 @@
          "@type": "@id",
          "@id": "settings/compressibility"
       },
+      "compressibility_vector": {
+         "@type": "@id",
+         "@id": "settings/compressibility_vector"
+      },
       "compute": {
          "@type": "@id",
          "@id": "compute"
@@ -669,9 +673,17 @@
          "@type": "@id",
          "@id": "settings/target_pressure"
       },
+      "target_pressure_vector": {
+         "@type": "@id",
+         "@id": "settings/target_pressure_vector"
+      },
       "target_temperature": {
          "@type": "@id",
          "@id": "settings/target_temperature"
+      },
+      "target_temperature_vector": {
+         "@type": "@id",
+         "@id": "settings/target_temperature_vector"
       },
       "temperature_time_constant": {
          "@type": "@id",
@@ -769,6 +781,9 @@
       },
       "ChargeQuantity": {
          "@id": "quantities/ChargeQuantity"
+      },
+      "CompressibilityQuantity": {
+         "@id": "quantities/CompressibilityQuantity"
       },
       "ComputationalEnvironment": {
          "@id": "compute/ComputationalEnvironment"

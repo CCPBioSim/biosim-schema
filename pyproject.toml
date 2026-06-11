@@ -86,7 +86,7 @@ biosim-schema-generate = "biosim_schema.utils.generate_artifacts:main"
 line-length = 88
 target-version = "py312"
 fix = true
-exclude = ["docs/*", "build/*"]
+exclude = ["docs/*", "build/*", "project/**"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]   # base checks + import sort

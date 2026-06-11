@@ -1,12 +1,399 @@
 {
   "forward": {
-    "amber": {
-      "SimulationMetadata.stages.minimisation": [
+    "gromacs": {
+      "SimulationMetadata.stages.minimisation.energy_tolerance": [
         {
-          "key": "imin",
-          "value": 1
+          "key": "emtol",
+          "value": null,
+          "unit": "kJ/mol/nm"
         }
       ],
+      "SimulationMetadata.stages.minimisation.number_of_minimisation_steps": [
+        {
+          "key": "nsteps",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.stages.minimisation.minimisation_distance_step_size": [
+        {
+          "key": "emstep",
+          "value": null,
+          "unit": "nm"
+        }
+      ],
+      "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
+        "Steepest Descent": [
+          {
+            "key": "integrator",
+            "value": "steep"
+          }
+        ],
+        "Conjugate Gradient": [
+          {
+            "key": "integrator",
+            "value": "cg"
+          }
+        ],
+        "L-BFGS": [
+          {
+            "key": "integrator",
+            "value": "l-bfgs"
+          }
+        ]
+      },
+      "SimulationMetadata.settings.ensemble.ensemble_type": {
+        "NPT": [
+          {
+            "key": "pcoupl",
+            "value": [
+              "Berendsen",
+              "Parrinello-Rahman"
+            ]
+          }
+        ],
+        "NVT": [
+          {
+            "key": "pcoupl",
+            "value": false
+          }
+        ],
+        "μVT": [
+          {
+            "key": "pcoupl",
+            "value": false
+          },
+          {
+            "key": "tcoupl",
+            "value": false
+          }
+        ]
+      },
+      "SimulationMetadata.settings.ensemble.random_seed": [
+        {
+          "key": "ld-seed",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.settings.integrator.integrator_algorithm": {
+        "Velocity-Verlet": [
+          {
+            "key": "integrator",
+            "value": [
+              "md-vv",
+              "md-vv-avek"
+            ]
+          }
+        ],
+        "Leap-frog": [
+          {
+            "key": "integrator",
+            "value": [
+              "md",
+              "sd"
+            ]
+          }
+        ],
+        "Euler": [
+          {
+            "key": "integrator",
+            "value": "bd"
+          }
+        ]
+      },
+      "SimulationMetadata.settings.integrator.time_step": [
+        {
+          "key": "dt",
+          "value": null,
+          "unit": "ps"
+        }
+      ],
+      "SimulationMetadata.settings.integrator.number_of_steps": [
+        {
+          "key": "nsteps",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.settings.barostat.barostat_algorithm": {
+        "Berendsen": [
+          {
+            "key": "pcoupl",
+            "value": [
+              "Berendsen",
+              "C-rescale"
+            ]
+          },
+          {
+            "key": "barostat",
+            "value": 1
+          }
+        ],
+        "Parrinello-Rahman": [
+          {
+            "key": "pcoupl",
+            "value": "Parrinello-Rahman"
+          }
+        ],
+        "Monte Carlo": [
+          {
+            "key": "barostat",
+            "value": 2
+          }
+        ],
+        "Martyna-Tuckerman-Tobias-Klein": [
+          {
+            "key": "pcoupl",
+            "value": "MTTK"
+          }
+        ]
+      },
+      "SimulationMetadata.settings.barostat.compressibility_vector": [
+        {
+          "key": "compressibility",
+          "value": null,
+          "unit": "1/bar"
+        }
+      ],
+      "SimulationMetadata.settings.barostat.target_pressure_vector": [
+        {
+          "key": "ref-p",
+          "value": null,
+          "unit": "bar"
+        }
+      ],
+      "SimulationMetadata.settings.barostat.pressure_time_constant": [
+        {
+          "key": "tau-p",
+          "value": null,
+          "unit": "ps"
+        }
+      ],
+      "SimulationMetadata.settings.barostat.pressure_coupling_frequency": [
+        {
+          "key": "nstpcouple",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.settings.barostat.pressure_coupling_type": {
+        "isotropic": [
+          {
+            "key": "pcoupltype",
+            "value": "isotropic"
+          }
+        ],
+        "semi-isotropic": [
+          {
+            "key": "pcoupltype",
+            "value": "semiisotropic"
+          }
+        ],
+        "anisotropic": [
+          {
+            "key": "pcoupltype",
+            "value": "anisotropic"
+          }
+        ],
+        "surface tension": [
+          {
+            "key": "pcoupltype",
+            "value": "surface-tension"
+          }
+        ]
+      },
+      "SimulationMetadata.settings.thermostat.thermostat_algorithm": {
+        "Berendsen": [
+          {
+            "key": "tcoupl",
+            "value": [
+              "berendsen",
+              "v-rescale"
+            ]
+          }
+        ],
+        "Andersen": [
+          {
+            "key": "tcoupl",
+            "value": [
+              "andersen",
+              "andersen-massive"
+            ]
+          }
+        ],
+        "Nose-Hoover": [
+          {
+            "key": "tcoupl",
+            "value": "nose-hoover"
+          }
+        ]
+      },
+      "SimulationMetadata.settings.thermostat.target_temperature_vector": [
+        {
+          "key": "ref-t",
+          "value": null,
+          "unit": "K"
+        }
+      ],
+      "SimulationMetadata.settings.thermostat.temperature_time_constant": [
+        {
+          "key": "tau-t",
+          "value": null,
+          "unit": "ps"
+        }
+      ],
+      "SimulationMetadata.settings.thermostat.chain_length": [
+        {
+          "key": "nh-chain-length",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.settings.thermostat.friction_coefficient": [
+        {
+          "key": "bd-fric",
+          "value": null,
+          "unit": "a/ps"
+        }
+      ],
+      "SimulationMetadata.settings.interactions.electrostatic_cutoff_distance": [
+        {
+          "key": "rcoulomb",
+          "value": null,
+          "unit": "nm"
+        }
+      ],
+      "SimulationMetadata.settings.interactions.vdw_cutoff_distance": [
+        {
+          "key": "rvdw",
+          "value": null,
+          "unit": "nm"
+        }
+      ],
+      "SimulationMetadata.settings.interactions.bond_length_constraints_algorithm": {
+        "SHAKE": [
+          {
+            "key": "constraint-algorithm",
+            "value": "SHAKE"
+          }
+        ],
+        "LINCS": [
+          {
+            "key": "constraint-algorithm",
+            "value": "LINCS"
+          }
+        ]
+      },
+      "SimulationMetadata.settings.interactions.long_range_interaction_method": {
+        "Cutoff": [
+          {
+            "key": "coulombtype",
+            "value": "Cut-off"
+          },
+          {
+            "key": "vdwtype",
+            "value": "Cut-off"
+          }
+        ],
+        "Ewald": [
+          {
+            "key": "coulombtype",
+            "value": "Ewald"
+          }
+        ],
+        "PME": [
+          {
+            "key": "coulombtype",
+            "value": "PME"
+          },
+          {
+            "key": "vdwtype",
+            "value": "PME"
+          }
+        ],
+        "P3M": [
+          {
+            "key": "coulombtype",
+            "value": "P3M-AD"
+          }
+        ],
+        "RF": [
+          {
+            "key": "coulombtype",
+            "value": "Reaction-Field"
+          }
+        ]
+      },
+      "SimulationMetadata.observables.simulation_averages.average_kinetic_energy": [
+        {
+          "key": "Kinetic En.",
+          "value": null,
+          "unit": "kJ/mol"
+        }
+      ],
+      "SimulationMetadata.observables.simulation_averages.average_potential_energy": [
+        {
+          "key": "Potential",
+          "value": null,
+          "unit": "kJ/mol"
+        }
+      ],
+      "SimulationMetadata.observables.simulation_averages.average_enthalpy": [
+        {
+          "key": "Total Energy",
+          "value": null,
+          "unit": "kJ/mol"
+        }
+      ],
+      "SimulationMetadata.observables.simulation_averages.average_pressure": [
+        {
+          "key": "Pressure (bar)",
+          "value": null,
+          "unit": "bar"
+        }
+      ],
+      "SimulationMetadata.observables.simulation_averages.average_temperature": [
+        {
+          "key": "Temperature",
+          "value": null,
+          "unit": "K"
+        }
+      ],
+      "SimulationMetadata.observables.simulation_averages.average_volume_vector": [
+        {
+          "key": "Box-X",
+          "value": null,
+          "unit": "nm"
+        },
+        {
+          "key": "Box-Y",
+          "value": null,
+          "unit": "nm"
+        },
+        {
+          "key": "Box-Z",
+          "value": null,
+          "unit": "nm"
+        }
+      ],
+      "SimulationMetadata.trajectory.simulation_box.periodic_boundary_conditions": {
+        "None": [
+          {
+            "key": "pbc",
+            "value": false
+          }
+        ],
+        "xyz": [
+          {
+            "key": "pbc",
+            "value": "xyz"
+          }
+        ],
+        "xy": [
+          {
+            "key": "pbc",
+            "value": "xy"
+          }
+        ]
+      }
+    },
+    "amber": {
       "SimulationMetadata.stages.minimisation.energy_tolerance": [
         {
           "key": "drms",
@@ -56,6 +443,12 @@
           {
             "key": "ntmin",
             "value": 4
+          }
+        ],
+        "None": [
+          {
+            "key": "imin",
+            "value": 0
           }
         ]
       },
@@ -277,399 +670,6 @@
         }
       ]
     },
-    "gromacs": {
-      "SimulationMetadata.stages.minimisation.energy_tolerance": [
-        {
-          "key": "emtol",
-          "value": null,
-          "unit": "kJ/mol/nm"
-        }
-      ],
-      "SimulationMetadata.stages.minimisation.number_of_minimisation_steps": [
-        {
-          "key": "nsteps",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.stages.minimisation.minimisation_distance_step_size": [
-        {
-          "key": "emstep",
-          "value": null,
-          "unit": "nm"
-        }
-      ],
-      "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
-        "Steepest Descent": [
-          {
-            "key": "integrator",
-            "value": "steep"
-          }
-        ],
-        "Conjugate Gradient": [
-          {
-            "key": "integrator",
-            "value": "cg"
-          }
-        ],
-        "L-BFGS": [
-          {
-            "key": "integrator",
-            "value": "l-bfgs"
-          }
-        ]
-      },
-      "SimulationMetadata.settings.ensemble.ensemble_type": {
-        "NPT": [
-          {
-            "key": "pcoupl",
-            "value": [
-              "Berendsen",
-              "Parrinello-Rahman"
-            ]
-          }
-        ],
-        "NVT": [
-          {
-            "key": "pcoupl",
-            "value": false
-          }
-        ],
-        "μVT": [
-          {
-            "key": "pcoupl",
-            "value": false
-          },
-          {
-            "key": "tcoupl",
-            "value": false
-          }
-        ]
-      },
-      "SimulationMetadata.settings.ensemble.random_seed": [
-        {
-          "key": "ld-seed",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.settings.integrator.integrator_algorithm": {
-        "Velocity-Verlet": [
-          {
-            "key": "integrator",
-            "value": [
-              "md-vv",
-              "md-vv-avek"
-            ]
-          }
-        ],
-        "Leap-frog": [
-          {
-            "key": "integrator",
-            "value": [
-              "md",
-              "sd"
-            ]
-          }
-        ],
-        "Euler": [
-          {
-            "key": "integrator",
-            "value": "bd"
-          }
-        ]
-      },
-      "SimulationMetadata.settings.integrator.time_step": [
-        {
-          "key": "dt",
-          "value": null,
-          "unit": "ps"
-        }
-      ],
-      "SimulationMetadata.settings.integrator.number_of_steps": [
-        {
-          "key": "nsteps",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.settings.barostat.barostat_algorithm": {
-        "Berendsen": [
-          {
-            "key": "pcoupl",
-            "value": [
-              "Berendsen",
-              "C-rescale"
-            ]
-          },
-          {
-            "key": "barostat",
-            "value": 1
-          }
-        ],
-        "Parrinello-Rahman": [
-          {
-            "key": "pcoupl",
-            "value": "Parrinello-Rahman"
-          }
-        ],
-        "Monte Carlo": [
-          {
-            "key": "barostat",
-            "value": 2
-          }
-        ],
-        "Martyna-Tuckerman-Tobias-Klein": [
-          {
-            "key": "pcoupl",
-            "value": "MTTK"
-          }
-        ]
-      },
-      "SimulationMetadata.settings.barostat.compressibility": [
-        {
-          "key": "compressibility",
-          "value": null,
-          "unit": "1/bar"
-        }
-      ],
-      "SimulationMetadata.settings.barostat.target_pressure": [
-        {
-          "key": "ref-p",
-          "value": null,
-          "unit": "bar"
-        }
-      ],
-      "SimulationMetadata.settings.barostat.pressure_time_constant": [
-        {
-          "key": "tau-p",
-          "value": null,
-          "unit": "ps"
-        }
-      ],
-      "SimulationMetadata.settings.barostat.pressure_coupling_frequency": [
-        {
-          "key": "nstpcouple",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.settings.barostat.pressure_coupling_type": {
-        "isotropic": [
-          {
-            "key": "pcoupltype",
-            "value": "isotropic"
-          }
-        ],
-        "semi-isotropic": [
-          {
-            "key": "pcoupltype",
-            "value": "semiisotropic"
-          }
-        ],
-        "anisotropic": [
-          {
-            "key": "pcoupltype",
-            "value": "anisotropic"
-          }
-        ],
-        "surface tension": [
-          {
-            "key": "pcoupltype",
-            "value": "surface-tension"
-          }
-        ]
-      },
-      "SimulationMetadata.settings.thermostat.thermostat_algorithm": {
-        "Berendsen": [
-          {
-            "key": "tcoupl",
-            "value": [
-              "berendsen",
-              "v-rescale"
-            ]
-          }
-        ],
-        "Andersen": [
-          {
-            "key": "tcoupl",
-            "value": [
-              "andersen",
-              "andersen-massive"
-            ]
-          }
-        ],
-        "Nose-Hoover": [
-          {
-            "key": "tcoupl",
-            "value": "nose-hoover"
-          }
-        ]
-      },
-      "SimulationMetadata.settings.thermostat.target_temperature": [
-        {
-          "key": "ref-t",
-          "value": null,
-          "unit": "K"
-        }
-      ],
-      "SimulationMetadata.settings.thermostat.temperature_time_constant": [
-        {
-          "key": "tau-t",
-          "value": null,
-          "unit": "ps"
-        }
-      ],
-      "SimulationMetadata.settings.thermostat.chain_length": [
-        {
-          "key": "nh-chain-length",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.settings.thermostat.friction_coefficient": [
-        {
-          "key": "bd-fric",
-          "value": null,
-          "unit": "a/ps"
-        }
-      ],
-      "SimulationMetadata.settings.interactions.electrostatic_cutoff_distance": [
-        {
-          "key": "rcoulomb",
-          "value": null,
-          "unit": "nm"
-        }
-      ],
-      "SimulationMetadata.settings.interactions.vdw_cutoff_distance": [
-        {
-          "key": "rvdw",
-          "value": null,
-          "unit": "nm"
-        }
-      ],
-      "SimulationMetadata.settings.interactions.bond_length_constraints_algorithm": {
-        "SHAKE": [
-          {
-            "key": "constraint-algorithm",
-            "value": "SHAKE"
-          }
-        ],
-        "LINCS": [
-          {
-            "key": "constraint-algorithm",
-            "value": "LINCS"
-          }
-        ]
-      },
-      "SimulationMetadata.settings.interactions.long_range_interaction_method": {
-        "Cutoff": [
-          {
-            "key": "coulombtype",
-            "value": "Cut-off"
-          },
-          {
-            "key": "vdwtype",
-            "value": "Cut-off"
-          }
-        ],
-        "Ewald": [
-          {
-            "key": "coulombtype",
-            "value": "Ewald"
-          }
-        ],
-        "PME": [
-          {
-            "key": "coulombtype",
-            "value": "PME"
-          },
-          {
-            "key": "vdwtype",
-            "value": "PME"
-          }
-        ],
-        "P3M": [
-          {
-            "key": "coulombtype",
-            "value": "P3M-AD"
-          }
-        ],
-        "RF": [
-          {
-            "key": "coulombtype",
-            "value": "Reaction-Field"
-          }
-        ]
-      },
-      "SimulationMetadata.observables.simulation_averages.average_kinetic_energy": [
-        {
-          "key": "Kinetic En.",
-          "value": null,
-          "unit": "kJ/mol"
-        }
-      ],
-      "SimulationMetadata.observables.simulation_averages.average_potential_energy": [
-        {
-          "key": "Potential",
-          "value": null,
-          "unit": "kJ/mol"
-        }
-      ],
-      "SimulationMetadata.observables.simulation_averages.average_enthalpy": [
-        {
-          "key": "Total Energy",
-          "value": null,
-          "unit": "kJ/mol"
-        }
-      ],
-      "SimulationMetadata.observables.simulation_averages.average_pressure": [
-        {
-          "key": "Pressure (bar)",
-          "value": null,
-          "unit": "bar"
-        }
-      ],
-      "SimulationMetadata.observables.simulation_averages.average_temperature": [
-        {
-          "key": "Temperature",
-          "value": null,
-          "unit": "K"
-        }
-      ],
-      "SimulationMetadata.observables.simulation_averages.average_volume_vector": [
-        {
-          "key": "Box-X",
-          "value": null,
-          "unit": "nm"
-        },
-        {
-          "key": "Box-Y",
-          "value": null,
-          "unit": "nm"
-        },
-        {
-          "key": "Box-Z",
-          "value": null,
-          "unit": "nm"
-        }
-      ],
-      "SimulationMetadata.trajectory.simulation_box.periodic_boundary_conditions": {
-        "None": [
-          {
-            "key": "pbc",
-            "value": false
-          }
-        ],
-        "xyz": [
-          {
-            "key": "pbc",
-            "value": "xyz"
-          }
-        ],
-        "xy": [
-          {
-            "key": "pbc",
-            "value": "xy"
-          }
-        ]
-      }
-    },
     "lammps": {
       "SimulationMetadata.settings.integrator.time_step": [
         {
@@ -883,234 +883,25 @@
     }
   },
   "reverse": {
-    "amber": {
-      "imin": {
-        "by_path": {
-          "SimulationMetadata.stages.minimisation": {}
-        }
-      },
-      "drms": {
-        "by_path": {
-          "SimulationMetadata.stages.minimisation.energy_tolerance": {}
-        }
-      },
-      "maxcyc": {
-        "by_path": {
-          "SimulationMetadata.stages.minimisation.number_of_minimisation_steps": {}
-        }
-      },
-      "dx0": {
-        "by_path": {
-          "SimulationMetadata.stages.minimisation.minimisation_distance_step_size": {}
-        }
-      },
-      "ntmin": {
-        "by_path": {
-          "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
-            "1": [
-              "Steepest Descent",
-              "Conjugate Gradient"
-            ],
-            "2": [
-              "Steepest Descent"
-            ],
-            "0": [
-              "Conjugate Gradient"
-            ],
-            "3": [
-              "XMIN"
-            ],
-            "4": [
-              "LMOD"
-            ]
-          }
-        }
-      },
-      "ntb": {
-        "by_path": {
-          "SimulationMetadata.settings.ensemble.ensemble_type": {
-            "2": [
-              "NPT"
-            ],
-            "1": [
-              "NVT"
-            ],
-            "0": [
-              "μVT"
-            ]
-          }
-        }
-      },
-      "ntt": {
-        "by_path": {
-          "SimulationMetadata.settings.ensemble.ensemble_type": {
-            "0": [
-              "μVT"
-            ]
-          },
-          "SimulationMetadata.settings.thermostat.thermostat_algorithm": {
-            "3": [
-              "Langevin"
-            ],
-            "1": [
-              "Berendsen"
-            ],
-            "2": [
-              "Andersen"
-            ],
-            "9": [
-              "Nose-Hoover"
-            ],
-            "10": [
-              "Nose-Hoover"
-            ],
-            "11": [
-              "Bussi"
-            ]
-          }
-        }
-      },
-      "ntp": {
-        "by_path": {
-          "SimulationMetadata.settings.ensemble.ensemble_type": {
-            "0": [
-              "μVT"
-            ]
-          },
-          "SimulationMetadata.settings.barostat.pressure_coupling_type": {
-            "1": [
-              "isotropic"
-            ],
-            "3": [
-              "semi-isotropic"
-            ],
-            "2": [
-              "anisotropic"
-            ]
-          }
-        }
-      },
-      "ig": {
-        "by_path": {
-          "SimulationMetadata.settings.ensemble.random_seed": {}
-        }
-      },
-      "dt": {
-        "by_path": {
-          "SimulationMetadata.settings.integrator.time_step": {}
-        }
-      },
-      "nstlim": {
-        "by_path": {
-          "SimulationMetadata.settings.integrator.number_of_steps": {}
-        }
-      },
-      "comp": {
-        "by_path": {
-          "SimulationMetadata.settings.barostat.compressibility": {}
-        }
-      },
-      "pres0": {
-        "by_path": {
-          "SimulationMetadata.settings.barostat.target_pressure": {}
-        }
-      },
-      "taup": {
-        "by_path": {
-          "SimulationMetadata.settings.barostat.pressure_time_constant": {}
-        }
-      },
-      "temp0": {
-        "by_path": {
-          "SimulationMetadata.settings.thermostat.target_temperature": {}
-        }
-      },
-      "gamma_ln": {
-        "by_path": {
-          "SimulationMetadata.settings.thermostat.collision_frequency": {}
-        }
-      },
-      "nhc_chain_length": {
-        "by_path": {
-          "SimulationMetadata.settings.thermostat.chain_length": {}
-        }
-      },
-      "cut": {
-        "by_path": {
-          "SimulationMetadata.settings.interactions.electrostatic_cutoff_distance": {}
-        }
-      },
-      "ntc": {
-        "by_path": {
-          "SimulationMetadata.settings.interactions.bond_length_constraints_algorithm": {
-            "2": [
-              "SHAKE"
-            ],
-            "3": [
-              "SHAKE"
-            ]
-          }
-        }
-      },
-      "ew_type": {
-        "by_path": {
-          "SimulationMetadata.settings.interactions.long_range_interaction_method": {
-            "1": [
-              "Ewald"
-            ],
-            "0": [
-              "PME"
-            ]
-          }
-        }
-      },
-      "EKtot": {
-        "by_path": {
-          "SimulationMetadata.observables.simulation_averages.average_kinetic_energy": {}
-        }
-      },
-      "EPtot": {
-        "by_path": {
-          "SimulationMetadata.observables.simulation_averages.average_potential_energy": {}
-        }
-      },
-      "Etot": {
-        "by_path": {
-          "SimulationMetadata.observables.simulation_averages.average_enthalpy": {}
-        }
-      },
-      "PRESS": {
-        "by_path": {
-          "SimulationMetadata.observables.simulation_averages.average_pressure": {}
-        }
-      },
-      "TEMP(K)": {
-        "by_path": {
-          "SimulationMetadata.observables.simulation_averages.average_temperature": {}
-        }
-      },
-      "VOLUME": {
-        "by_path": {
-          "SimulationMetadata.observables.simulation_averages.average_volume": {}
-        }
-      }
-    },
     "gromacs": {
       "emtol": {
         "by_path": {
           "SimulationMetadata.stages.minimisation.energy_tolerance": {}
-        }
+        },
+        "path_metadata": {}
       },
       "nsteps": {
         "by_path": {
           "SimulationMetadata.stages.minimisation.number_of_minimisation_steps": {},
           "SimulationMetadata.settings.integrator.number_of_steps": {}
-        }
+        },
+        "path_metadata": {}
       },
       "emstep": {
         "by_path": {
           "SimulationMetadata.stages.minimisation.minimisation_distance_step_size": {}
-        }
+        },
+        "path_metadata": {}
       },
       "integrator": {
         "by_path": {
@@ -1142,6 +933,11 @@
               "Euler"
             ]
           }
+        },
+        "path_metadata": {
+          "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
+            "multivalued": true
+          }
         }
       },
       "pcoupl": {
@@ -1172,7 +968,8 @@
               "Martyna-Tuckerman-Tobias-Klein"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "tcoupl": {
         "by_path": {
@@ -1198,17 +995,20 @@
               "Nose-Hoover"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "ld-seed": {
         "by_path": {
           "SimulationMetadata.settings.ensemble.random_seed": {}
-        }
+        },
+        "path_metadata": {}
       },
       "dt": {
         "by_path": {
           "SimulationMetadata.settings.integrator.time_step": {}
-        }
+        },
+        "path_metadata": {}
       },
       "barostat": {
         "by_path": {
@@ -1220,27 +1020,32 @@
               "Monte Carlo"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "compressibility": {
         "by_path": {
-          "SimulationMetadata.settings.barostat.compressibility": {}
-        }
+          "SimulationMetadata.settings.barostat.compressibility_vector": {}
+        },
+        "path_metadata": {}
       },
       "ref-p": {
         "by_path": {
-          "SimulationMetadata.settings.barostat.target_pressure": {}
-        }
+          "SimulationMetadata.settings.barostat.target_pressure_vector": {}
+        },
+        "path_metadata": {}
       },
       "tau-p": {
         "by_path": {
           "SimulationMetadata.settings.barostat.pressure_time_constant": {}
-        }
+        },
+        "path_metadata": {}
       },
       "nstpcouple": {
         "by_path": {
           "SimulationMetadata.settings.barostat.pressure_coupling_frequency": {}
-        }
+        },
+        "path_metadata": {}
       },
       "pcoupltype": {
         "by_path": {
@@ -1258,37 +1063,44 @@
               "surface tension"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "ref-t": {
         "by_path": {
-          "SimulationMetadata.settings.thermostat.target_temperature": {}
-        }
+          "SimulationMetadata.settings.thermostat.target_temperature_vector": {}
+        },
+        "path_metadata": {}
       },
       "tau-t": {
         "by_path": {
           "SimulationMetadata.settings.thermostat.temperature_time_constant": {}
-        }
+        },
+        "path_metadata": {}
       },
       "nh-chain-length": {
         "by_path": {
           "SimulationMetadata.settings.thermostat.chain_length": {}
-        }
+        },
+        "path_metadata": {}
       },
       "bd-fric": {
         "by_path": {
           "SimulationMetadata.settings.thermostat.friction_coefficient": {}
-        }
+        },
+        "path_metadata": {}
       },
       "rcoulomb": {
         "by_path": {
           "SimulationMetadata.settings.interactions.electrostatic_cutoff_distance": {}
-        }
+        },
+        "path_metadata": {}
       },
       "rvdw": {
         "by_path": {
           "SimulationMetadata.settings.interactions.vdw_cutoff_distance": {}
-        }
+        },
+        "path_metadata": {}
       },
       "constraint-algorithm": {
         "by_path": {
@@ -1300,7 +1112,8 @@
               "LINCS"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "coulombtype": {
         "by_path": {
@@ -1321,7 +1134,8 @@
               "RF"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "vdwtype": {
         "by_path": {
@@ -1333,47 +1147,56 @@
               "PME"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "Kinetic En.": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_kinetic_energy": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Potential": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_potential_energy": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Total Energy": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_enthalpy": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Pressure (bar)": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_pressure": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Temperature": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_temperature": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Box-X": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_volume_vector": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Box-Y": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_volume_vector": {}
-        }
+        },
+        "path_metadata": {}
       },
       "Box-Z": {
         "by_path": {
           "SimulationMetadata.observables.simulation_averages.average_volume_vector": {}
-        }
+        },
+        "path_metadata": {}
       },
       "pbc": {
         "by_path": {
@@ -1388,56 +1211,316 @@
               "xy"
             ]
           }
+        },
+        "path_metadata": {}
+      }
+    },
+    "amber": {
+      "drms": {
+        "by_path": {
+          "SimulationMetadata.stages.minimisation.energy_tolerance": {}
+        },
+        "path_metadata": {}
+      },
+      "maxcyc": {
+        "by_path": {
+          "SimulationMetadata.stages.minimisation.number_of_minimisation_steps": {}
+        },
+        "path_metadata": {}
+      },
+      "dx0": {
+        "by_path": {
+          "SimulationMetadata.stages.minimisation.minimisation_distance_step_size": {}
+        },
+        "path_metadata": {}
+      },
+      "ntmin": {
+        "by_path": {
+          "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
+            "1": [
+              "Steepest Descent",
+              "Conjugate Gradient"
+            ],
+            "2": [
+              "Steepest Descent"
+            ],
+            "0": [
+              "Conjugate Gradient"
+            ],
+            "3": [
+              "XMIN"
+            ],
+            "4": [
+              "LMOD"
+            ]
+          }
+        },
+        "path_metadata": {
+          "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
+            "multivalued": true
+          }
         }
+      },
+      "imin": {
+        "by_path": {
+          "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
+            "0": [
+              "None"
+            ]
+          }
+        },
+        "path_metadata": {
+          "SimulationMetadata.stages.minimisation.minimisation_algorithm": {
+            "multivalued": true
+          }
+        }
+      },
+      "ntb": {
+        "by_path": {
+          "SimulationMetadata.settings.ensemble.ensemble_type": {
+            "2": [
+              "NPT"
+            ],
+            "1": [
+              "NVT"
+            ],
+            "0": [
+              "μVT"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
+      "ntt": {
+        "by_path": {
+          "SimulationMetadata.settings.ensemble.ensemble_type": {
+            "0": [
+              "μVT"
+            ]
+          },
+          "SimulationMetadata.settings.thermostat.thermostat_algorithm": {
+            "3": [
+              "Langevin"
+            ],
+            "1": [
+              "Berendsen"
+            ],
+            "2": [
+              "Andersen"
+            ],
+            "9": [
+              "Nose-Hoover"
+            ],
+            "10": [
+              "Nose-Hoover"
+            ],
+            "11": [
+              "Bussi"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
+      "ntp": {
+        "by_path": {
+          "SimulationMetadata.settings.ensemble.ensemble_type": {
+            "0": [
+              "μVT"
+            ]
+          },
+          "SimulationMetadata.settings.barostat.pressure_coupling_type": {
+            "1": [
+              "isotropic"
+            ],
+            "3": [
+              "semi-isotropic"
+            ],
+            "2": [
+              "anisotropic"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
+      "ig": {
+        "by_path": {
+          "SimulationMetadata.settings.ensemble.random_seed": {}
+        },
+        "path_metadata": {}
+      },
+      "dt": {
+        "by_path": {
+          "SimulationMetadata.settings.integrator.time_step": {}
+        },
+        "path_metadata": {}
+      },
+      "nstlim": {
+        "by_path": {
+          "SimulationMetadata.settings.integrator.number_of_steps": {}
+        },
+        "path_metadata": {}
+      },
+      "comp": {
+        "by_path": {
+          "SimulationMetadata.settings.barostat.compressibility": {}
+        },
+        "path_metadata": {}
+      },
+      "pres0": {
+        "by_path": {
+          "SimulationMetadata.settings.barostat.target_pressure": {}
+        },
+        "path_metadata": {}
+      },
+      "taup": {
+        "by_path": {
+          "SimulationMetadata.settings.barostat.pressure_time_constant": {}
+        },
+        "path_metadata": {}
+      },
+      "temp0": {
+        "by_path": {
+          "SimulationMetadata.settings.thermostat.target_temperature": {}
+        },
+        "path_metadata": {}
+      },
+      "gamma_ln": {
+        "by_path": {
+          "SimulationMetadata.settings.thermostat.collision_frequency": {}
+        },
+        "path_metadata": {}
+      },
+      "nhc_chain_length": {
+        "by_path": {
+          "SimulationMetadata.settings.thermostat.chain_length": {}
+        },
+        "path_metadata": {}
+      },
+      "cut": {
+        "by_path": {
+          "SimulationMetadata.settings.interactions.electrostatic_cutoff_distance": {}
+        },
+        "path_metadata": {}
+      },
+      "ntc": {
+        "by_path": {
+          "SimulationMetadata.settings.interactions.bond_length_constraints_algorithm": {
+            "2": [
+              "SHAKE"
+            ],
+            "3": [
+              "SHAKE"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
+      "ew_type": {
+        "by_path": {
+          "SimulationMetadata.settings.interactions.long_range_interaction_method": {
+            "1": [
+              "Ewald"
+            ],
+            "0": [
+              "PME"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
+      "EKtot": {
+        "by_path": {
+          "SimulationMetadata.observables.simulation_averages.average_kinetic_energy": {}
+        },
+        "path_metadata": {}
+      },
+      "EPtot": {
+        "by_path": {
+          "SimulationMetadata.observables.simulation_averages.average_potential_energy": {}
+        },
+        "path_metadata": {}
+      },
+      "Etot": {
+        "by_path": {
+          "SimulationMetadata.observables.simulation_averages.average_enthalpy": {}
+        },
+        "path_metadata": {}
+      },
+      "PRESS": {
+        "by_path": {
+          "SimulationMetadata.observables.simulation_averages.average_pressure": {}
+        },
+        "path_metadata": {}
+      },
+      "TEMP(K)": {
+        "by_path": {
+          "SimulationMetadata.observables.simulation_averages.average_temperature": {}
+        },
+        "path_metadata": {}
+      },
+      "VOLUME": {
+        "by_path": {
+          "SimulationMetadata.observables.simulation_averages.average_volume": {}
+        },
+        "path_metadata": {}
       }
     },
     "lammps": {
       "timestep": {
         "by_path": {
           "SimulationMetadata.settings.integrator.time_step": {}
-        }
+        },
+        "path_metadata": {}
       },
       "temp": {
         "by_path": {
           "SimulationMetadata.settings.thermostat.target_temperature": {}
-        }
+        },
+        "path_metadata": {}
       }
     },
     "toptrajparser": {
       "bonds": {
         "by_path": {
           "SimulationMetadata.topology.connectivity.bonds": {}
-        }
+        },
+        "path_metadata": {}
       },
       "dihedrals": {
         "by_path": {
           "SimulationMetadata.topology.connectivity.dihedrals": {}
-        }
+        },
+        "path_metadata": {}
       },
       "masses": {
         "by_path": {
           "SimulationMetadata.topology.particles.masses": {}
-        }
+        },
+        "path_metadata": {}
       },
       "fixed_charges": {
         "by_path": {
           "SimulationMetadata.topology.particles.fixed_charges": {}
-        }
+        },
+        "path_metadata": {}
       },
       "system_charge": {
         "by_path": {
           "SimulationMetadata.topology.particles.system_charge": {}
-        }
+        },
+        "path_metadata": {}
       },
       "box_dimensions": {
         "by_path": {
           "SimulationMetadata.trajectory.simulation_box.box_dimensions": {}
-        }
+        },
+        "path_metadata": {}
       },
       "box_angles": {
         "by_path": {
           "SimulationMetadata.trajectory.simulation_box.box_angles": {}
-        }
+        },
+        "path_metadata": {}
       },
       "box_type": {
         "by_path": {
@@ -1458,102 +1541,122 @@
               "Triclinic"
             ]
           }
-        }
+        },
+        "path_metadata": {}
       },
       "positions": {
         "by_path": {
           "SimulationMetadata.trajectory.trajectory_output.positions": {}
-        }
+        },
+        "path_metadata": {}
       },
       "forces": {
         "by_path": {
           "SimulationMetadata.trajectory.trajectory_output.forces": {}
-        }
+        },
+        "path_metadata": {}
       },
       "velocities": {
         "by_path": {
           "SimulationMetadata.trajectory.trajectory_output.velocities": {}
-        }
+        },
+        "path_metadata": {}
       },
       "water": {
         "by_path": {
           "SimulationMetadata.trajectory.trajectory_output.water": {}
-        }
+        },
+        "path_metadata": {}
       },
       "frame_count": {
         "by_path": {
           "SimulationMetadata.trajectory.trajectory_output.frame_count": {}
-        }
+        },
+        "path_metadata": {}
       },
       "total_molecule_count": {
         "by_path": {
           "SimulationMetadata.composition.system_counts.total_molecule_count": {}
-        }
+        },
+        "path_metadata": {}
       },
       "total_atom_count": {
         "by_path": {
           "SimulationMetadata.composition.system_counts.total_atom_count": {}
-        }
+        },
+        "path_metadata": {}
       },
       "unique_molecule_count": {
         "by_path": {
           "SimulationMetadata.composition.system_counts.unique_molecule_count": {}
-        }
+        },
+        "path_metadata": {}
       },
       "SMILES": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.SMILES": {}
-        }
+        },
+        "path_metadata": {}
       },
       "InChI": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.InChI": {}
-        }
+        },
+        "path_metadata": {}
       },
       "InChIKey": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.InChIKey": {}
-        }
+        },
+        "path_metadata": {}
       },
       "protein_sequence": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.protein_sequence": {}
-        }
+        },
+        "path_metadata": {}
       },
       "nucleic_sequence": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.nucleic_sequence": {}
-        }
+        },
+        "path_metadata": {}
       },
       "molecular_formula": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.molecular_formula": {}
-        }
+        },
+        "path_metadata": {}
       },
       "molecular_weight": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.molecular_weight": {}
-        }
+        },
+        "path_metadata": {}
       },
       "molecule_charge": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.molecule_charge": {}
-        }
+        },
+        "path_metadata": {}
       },
       "molecule_count": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.molecule_count": {}
-        }
+        },
+        "path_metadata": {}
       },
       "atom_count": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.atom_count": {}
-        }
+        },
+        "path_metadata": {}
       },
       "monomer_count": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.monomer_count": {}
-        }
+        },
+        "path_metadata": {}
       }
     }
   }

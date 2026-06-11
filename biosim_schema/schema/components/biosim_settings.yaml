@@ -47,7 +47,9 @@ classes:
     slots:
       - barostat_algorithm # enum
       - compressibility # float
+      - compressibility_vector # float
       - target_pressure # float
+      - target_pressure_vector # array
       # - pressure_relaxation_time # float
       - pressure_time_constant # float
       - pressure_coupling_frequency # int
@@ -58,6 +60,7 @@ classes:
     slots:
       - thermostat_algorithm # enum
       - target_temperature # float
+      - target_temperature_vector # list
       - collision_frequency # int
       - temperature_time_constant # float
       - coupling_group # free text
@@ -238,18 +241,25 @@ slots:
 
   target_temperature:
     description:
-      Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
-    range: VectorTemperatureQuantity #MatrixQuantity # class
+      Target/reference temperature set to reach in the simulation, given as a float.
+    range: TemperatureQuantity # class
     annotations:
       engine_mapping:
         - engine: amber
           key: temp0
           unit: K
-        - engine: gromacs
-          key: ref-t
-          unit: K
         - engine: lammps
           key: temp
+          unit: K
+
+  target_temperature_vector:
+    description:
+      Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
+    range: VectorTemperatureQuantity #MatrixQuantity # class
+    annotations:
+      engine_mapping:
+        - engine: gromacs
+          key: ref-t
           unit: K
 
   # target_pressure_vector:
@@ -265,20 +275,27 @@ slots:
   #         key: pres0
   #         unit: bar
 
-  target_pressure: # CHECK THIS
+  target_pressure_vector:
     description:
-      Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).
+      Target/reference pressure set to reach in the simulation, given as a 3x3 array.
     range: MatrixPressureQuantity # class
     annotations:
       engine_mapping:
         - engine: gromacs
           key: ref-p
           unit: bar
+
+  target_pressure:
+    description:
+      Target/reference pressure set to reach in the simulation, given as a float.
+    range: PressureQuantity # class
+    annotations:
+      engine_mapping:
         - engine: amber
           key: pres0
           unit: bar
 
-  compressibility:
+  compressibility_vector:
     description:
       Compressibility of the simulated system, given as a float.
     range: MatrixCompressibilityQuantity # class
@@ -287,6 +304,16 @@ slots:
         - engine: gromacs
           key: compressibility
           unit: "1/bar"
+    examples:
+      - value: 44.6 1e10-6 1/bar
+      - value: 4.5e-5 1/bar
+
+  compressibility:
+    description:
+      Compressibility of the simulated system, given as a float.
+    range: CompressibilityQuantity # class
+    annotations:
+      engine_mapping:
         - engine: amber
           key: comp
           unit: "1e10-6 1/bar"

@@ -105,13 +105,16 @@ class MappingsExtractor:
 
         # Enum handling
         range_ = slot.get("range")
+        is_multivalued = slot.get("multivalued", False)
         if range_ in self.enum_index:
-            self._handle_enum(slot_name, self.enum_index[range_], path)
+            self._handle_enum(
+                slot_name, self.enum_index[range_], path, multivalued=is_multivalued
+            )
 
     # ----------------------------
     # Enum handler
     # ----------------------------
-    def _handle_enum(self, slot_name, enum, path):
+    def _handle_enum(self, slot_name, enum, path, multivalued):
         """Collect mappings for all permissible values of an enum.
 
         Args:
@@ -128,7 +131,9 @@ class MappingsExtractor:
 
             for m in mappings:
                 for norm in self._normalise_mapping(m):
-                    self._add_mapping(path, norm, enum_value=pv_name)
+                    self._add_mapping(
+                        path, norm, enum_value=pv_name, multivalued=multivalued
+                    )
 
     # ----------------------------
     # Extract engine mappings
@@ -179,7 +184,7 @@ class MappingsExtractor:
     # ----------------------------
     # Add to forward + reverse maps
     # ----------------------------
-    def _add_mapping(self, path, mapping, enum_value=None):
+    def _add_mapping(self, path, mapping, enum_value=None, multivalued=False):
         """Add a normalized mapping to the forward and reverse indexes.
 
         Args:
@@ -217,10 +222,17 @@ class MappingsExtractor:
             self.reverse[engine] = {}
 
         if key not in self.reverse[engine]:
-            self.reverse[engine][key] = {"by_path": {}}
+            self.reverse[engine][key] = {
+                "by_path": {},
+                "path_metadata": {},
+            }
 
         rev = self.reverse[engine][key]
         rev["by_path"].setdefault(path, {})
+
+        if multivalued:
+            rev["path_metadata"].setdefault(path, {})
+            rev["path_metadata"][path]["multivalued"] = True
 
         if enum_value:
             raw_value = mapping.get("value")

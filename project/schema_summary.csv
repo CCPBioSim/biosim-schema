@@ -23,13 +23,16 @@ settings,integrator,time_step,Integration Step,"Time between integration steps i
 settings,integrator,number_of_steps,Number Of Steps,"Number of integration steps performed in the simulation, given as an integer.",,,integer
 settings,integrator,simulation_time,Simulation Time,"Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.",,ns,float
 settings,barostat,barostat_algorithm,Barostat Algorithm,Barostat algorithm used to set the pressure in a simulation.,,,string
-settings,barostat,compressibility,Compressibility,"Compressibility of the simulated system, given as a float.",,1/bar,list
-settings,barostat,target_pressure,Target Pressure,"Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).",,bar,list
+settings,barostat,compressibility,Compressibility,"Compressibility of the simulated system, given as a float.",,1/bar,float
+settings,barostat,compressibility_vector,Compressibility Vector,"Compressibility of the simulated system, given as a float.",,1/bar,list
+settings,barostat,target_pressure,Target Pressure,"Target/reference pressure set to reach in the simulation, given as a float.",,bar,float
+settings,barostat,target_pressure_vector,Target Pressure Vector,"Target/reference pressure set to reach in the simulation, given as a 3x3 array.",,bar,list
 settings,barostat,pressure_time_constant,Pressure Time Constant,"Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.",,ns,float
 settings,barostat,pressure_coupling_frequency,Pressure Coupling Frequency,"Step frequency to apply the barostat, given as an integer.",,,integer
 settings,barostat,pressure_coupling_type,Pressure Coupling Type,Coupling type for adjusting box vectors.,,,string
 settings,thermostat,thermostat_algorithm,Thermostat Algorithm,Thermostat algorithm used to set the temperature in a simulation.,,,string
-settings,thermostat,target_temperature,Target Temperature,"Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",,K,list
+settings,thermostat,target_temperature,Target Temperature,"Target/reference temperature set to reach in the simulation, given as a float.",,K,float
+settings,thermostat,target_temperature_vector,Target Temperature Vector,"Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",,K,list
 settings,thermostat,collision_frequency,Collision Frequency,"Collision frequency for the integrator, given as a float.",,1/ps,float
 settings,thermostat,temperature_time_constant,Temperature Time Constant,"Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).",,ns,list
 settings,thermostat,coupling_group,Coupling Group,"A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string",,,string
@@ -55,7 +58,7 @@ topology,particles,system_charge,System Charge,Total electrostatic charge of the
 topology,particles,coarse_grained,Coarse Grained?,Are atoms coarse-grained?,,,boolean
 topology,particles,resolution,Resolution,Resolution of simulated molecules.,,,string
 trajectory,simulation_box,box_dimensions,Box Dimensions,The lengths/dimensions of the box used to simulate the system.,,nm,list
-trajectory,simulation_box,box_angles,Box Angles,The angles of the box used to simulate the system.,,degrees,list
+trajectory,simulation_box,box_angles,Box Angles,The angles of the box used to simulate the system.,,degree,list
 trajectory,simulation_box,box_type,Box Type,Types of box used to simulate the system.,,,string
 trajectory,simulation_box,periodic_boundary_conditions,Periodic Boundary Conditions,What directions in a simulation cell periodic boundaries are set if they are turned on.,,,string
 trajectory,trajectory_output,positions,Positions?,Are per-frame positions included in the trajectory?,,,boolean

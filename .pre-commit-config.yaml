@@ -4,9 +4,9 @@ repos:
     hooks:
       - id: ruff-check
         args: [--fix]
-        exclude: ^project/linkml/
+        exclude: ^project/
       - id: ruff-format
-        exclude: ^project/linkml/
+        exclude: ^project/
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
@@ -16,7 +16,9 @@ repos:
       - id: check-yaml
       - id: check-toml
       - id: end-of-file-fixer
+        exclude: ^project/
       - id: trailing-whitespace
+        exclude: ^project/
       - id: check-case-conflict
       - id: check-ast
 

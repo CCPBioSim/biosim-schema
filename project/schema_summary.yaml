@@ -118,7 +118,9 @@ composition:
           label: Unique Molecule Count
           placeholder: '1'
           typehint: integer
+      hint: Entity counts across the simulated system.
       label: System Counts
+  hint: Composition of simulated system.
   label: Composition
 compute:
   fields:
@@ -169,6 +171,7 @@ compute:
           hint: Number of hardware threads per physical core.
           label: Threads Per Core
           typehint: integer
+      hint: Computer hardware used to perform simulation.
       label: Hardware
     performance:
       fields:
@@ -182,6 +185,7 @@ compute:
           hint: Total elapsed runtime of the simulation.
           label: Wall Time
           typehint: float
+      hint: Compute performance during simulation.
       label: Performance
     software:
       fields:
@@ -202,7 +206,9 @@ compute:
           hint: Job scheduler used for simulation execution.
           label: Scheduler
           typehint: string
+      hint: Computer software used to perform simulation.
       label: Software
+  hint: Computational environment information.
   label: Compute
 observables:
   fields:
@@ -246,6 +252,7 @@ observables:
           typehint: list
       hint: Average values of observables outputted from the simulation.
       label: Simulation Averages
+  hint: Simulation observables.
   label: Observables
 potentials:
   fields:
@@ -345,6 +352,7 @@ potentials:
           typehint: string
       hint: Force field for water molecules.
       label: Water Potential
+  hint: Force field potentials used to describe simulated particles.
   label: Potentials
 settings:
   fields:
@@ -358,6 +366,11 @@ settings:
           default_unit: 1/bar
           hint: Compressibility of the simulated system, given as a float.
           label: Compressibility
+          typehint: float
+        compressibility_vector:
+          default_unit: 1/bar
+          hint: Compressibility of the simulated system, given as a float.
+          label: Compressibility Vector
           typehint: list
         pressure_coupling_frequency:
           hint: Step frequency to apply the barostat, given as an integer.
@@ -376,8 +389,14 @@ settings:
         target_pressure:
           default_unit: bar
           hint: Target/reference pressure set to reach in the simulation, given as
-            a float or a list (e.g. 1, 1).
+            a float.
           label: Target Pressure
+          typehint: float
+        target_pressure_vector:
+          default_unit: bar
+          hint: Target/reference pressure set to reach in the simulation, given as
+            a 3x3 array.
+          label: Target Pressure Vector
           typehint: list
       hint: Barostat information.
       label: Barostat
@@ -488,8 +507,14 @@ settings:
         target_temperature:
           default_unit: K
           hint: Target/reference temperature set to reach in the simulation, given
-            as a list (e.g. 300, 300).
+            as a float.
           label: Target Temperature
+          typehint: float
+        target_temperature_vector:
+          default_unit: K
+          hint: Target/reference temperature set to reach in the simulation, given
+            as a list (e.g. 300, 300).
+          label: Target Temperature Vector
           typehint: list
         temperature_time_constant:
           default_unit: ns
@@ -503,6 +528,7 @@ settings:
           typehint: string
       hint: thermostat information.
       label: Thermostat
+  hint: Simulation settings
   label: Settings
 stages:
   fields:
@@ -600,6 +626,7 @@ stages:
           typehint: string
       hint: Setup stage of a simulation.
       label: Setup
+  hint: Simulation stages
   label: Stages
 topology:
   fields:
@@ -641,13 +668,14 @@ topology:
           typehint: float
       hint: Particles information
       label: Particles
+  hint: Topology information.
   label: Topology
 trajectory:
   fields:
     simulation_box:
       fields:
         box_angles:
-          default_unit: degrees
+          default_unit: degree
           hint: The angles of the box used to simulate the system.
           label: Box Angles
           typehint: list
@@ -704,4 +732,5 @@ trajectory:
           typehint: boolean
       hint: Information included in trajectory files.
       label: Trajectory Output
+  hint: Trajectory information.
   label: Trajectory

@@ -1,178 +1,185 @@
--- # Class: SimulationMetadata
+-- # Class: SimulationMetadata Description: root class for biosim-schema
 --     * Slot: id
---     * Slot: stages_id
---     * Slot: settings_id
---     * Slot: observables_id
---     * Slot: topology_id
---     * Slot: trajectory_id
---     * Slot: composition_id
---     * Slot: potentials_id
---     * Slot: compute_id
--- # Class: LengthQuantity
---     * Slot: id
---     * Slot: value
---     * Slot: value_unit
--- # Class: VolumeQuantity
+--     * Slot: stages_id Description: Simulation stages
+--     * Slot: settings_id Description: Simulation settings
+--     * Slot: observables_id Description: Simulation observables.
+--     * Slot: topology_id Description: Topology information.
+--     * Slot: trajectory_id Description: Trajectory information.
+--     * Slot: composition_id Description: Composition of simulated system.
+--     * Slot: potentials_id Description: Force field potentials used to describe simulated particles.
+--     * Slot: compute_id Description: Computational environment information.
+-- # Class: LengthQuantity Description: A quantity representing length.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: TimeQuantity
+-- # Class: VolumeQuantity Description: A quantity representing volume.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: FrequencyQuantity
+-- # Class: TimeQuantity Description: A quantity representing time.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: FrictionCoefficientQuantity
+-- # Class: FrequencyQuantity Description: A quantity representing frequency.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: MolarEnergyQuantity
+-- # Class: FrictionCoefficientQuantity Description: A quantity representing friction coefficients.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: EnergyQuantity
+-- # Class: MolarEnergyQuantity Description: A quantity representing molar energy.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: TemperatureQuantity
+-- # Class: EnergyQuantity Description: A quantity representing energy.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: PressureQuantity
+-- # Class: TemperatureQuantity Description: A quantity representing temperature.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: MassQuantity
+-- # Class: PressureQuantity Description: A quantity representing pressure.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: ConcentrationQuantity
+-- # Class: CompressibilityQuantity Description: A quantity representing compressibility.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: ForceQuantity
+-- # Class: MassQuantity Description: A quantity representing mass.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: ChargeQuantity
+-- # Class: ConcentrationQuantity Description: A quantity representing concentration.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: AngleQuantity
+-- # Class: ForceQuantity Description: A quantity representing force.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: ByteQuantity
+-- # Class: ChargeQuantity Description: A quantity representing charge.
 --     * Slot: id
 --     * Slot: value
 --     * Slot: value_unit
--- # Class: VectorLengthQuantity Description: A quantity representing 3D lengths/dimensions
+-- # Class: AngleQuantity Description: A quantity representing angles.
+--     * Slot: id
+--     * Slot: value
+--     * Slot: value_unit
+-- # Class: ByteQuantity Description: A quantity representing bytes.
+--     * Slot: id
+--     * Slot: value
+--     * Slot: value_unit
+-- # Class: VectorLengthQuantity Description: A quantity representing 3D lengths/dimensions.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: VectorAngleQuantity Description: A quantity representing 3D angles
+-- # Class: VectorAngleQuantity Description: A quantity representing 3D angles.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: VectorVolumeQuantity
+-- # Class: VectorVolumeQuantity Description: A quantity representing volume as via 3 length dimensions.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: VectorCompressibilityQuantity
+-- # Class: VectorCompressibilityQuantity Description: A quantity representing compressibility in 3D.
 --     * Slot: id
 --     * Slot: vector_value
 --     * Slot: value_unit
--- # Class: VectorPressureQuantity
+-- # Class: VectorPressureQuantity Description: A quantity representing pressure in 3D.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: VectorTemperatureQuantity Description: Temperature values for multiple coupling groups
+-- # Class: VectorTemperatureQuantity Description: Temperature values for multiple coupling groups.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: VectorTimeQuantity Description: Time values for multiple coupling groups
+-- # Class: VectorTimeQuantity Description: Time values for multiple coupling groups.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: MatrixPressureQuantity
+-- # Class: MatrixPressureQuantity Description: A quantity representing pressure vectors in 3D.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: MatrixCompressibilityQuantity
+-- # Class: MatrixCompressibilityQuantity Description: A quantity representing compressibility vectors in 3D.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: MatrixQuantity
+-- # Class: MatrixQuantity Description: A quantity representing general vectors in 3D.
 --     * Slot: id
 --     * Slot: value_unit
--- # Class: SimulationStages
+-- # Class: SimulationStages Description: Stages of simulation workflow.
 --     * Slot: id
 --     * Slot: setup_id Description: Setup stage of a simulation.
 --     * Slot: minimisation_id Description: Minimisation stage of a simulation.
 --     * Slot: equilibration_id Description: Equilibration stage of a simulation.
 --     * Slot: production_id Description: Production stage of a simulation.
 --     * Slot: analysis_id Description: Analysis stage of a simulation.
--- # Class: Setup
+-- # Class: Setup Description: Setup stage of simulation workflow.
 --     * Slot: id
 --     * Slot: setup_tool Description: Name of the tool used to setup simulation.
--- # Class: Minimisation
+-- # Class: Minimisation Description: Minimisation stage of simulation workflow.
 --     * Slot: id
 --     * Slot: number_of_minimisation_steps Description: Number of integration steps performed during minimisation of the system, given as an integer.
 --     * Slot: energy_tolerance_id Description: Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float.
 --     * Slot: minimisation_distance_step_size_id Description: The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.
--- # Class: Equilibration
+-- # Class: Equilibration Description: Equilibration stage of simulation workflow.
 --     * Slot: id
--- # Class: Production
+-- # Class: Production Description: Production stage of simulation workflow.
 --     * Slot: id
 --     * Slot: simulation_software_version Description: Version of software used to perform simulation step.
 -- # Class: Analysis Description: Analysis stage of simulation workflow.
 --     * Slot: id
--- # Class: SimulationSettings
+-- # Class: SimulationSettings Description: Settings in simulation.
 --     * Slot: id
 --     * Slot: ensemble_id Description: Ensemble information.
 --     * Slot: integrator_id Description: Integrator information.
 --     * Slot: barostat_id Description: Barostat information.
 --     * Slot: thermostat_id Description: thermostat information.
 --     * Slot: interactions_id Description: Interaction information.
--- # Class: Ensemble
+-- # Class: Ensemble Description: Simulation ensemble/thermodynamic properties.
 --     * Slot: id
 --     * Slot: ensemble_type Description: List of ensemble types used in the simulation.
 --     * Slot: random_seed Description: Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer.
--- # Class: Interactions
+-- # Class: Interactions Description: Settings used to define particle interactions.
 --     * Slot: id
 --     * Slot: restraints Description: Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).
 --     * Slot: bond_length_constraints_algorithm Description: Constraints applied to bonds between two particles in the simulated system.
 --     * Slot: long_range_interaction_method Description: Method used to describe long-range interactions between particles.
 --     * Slot: electrostatic_cutoff_distance_id Description: Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.
 --     * Slot: vdw_cutoff_distance_id Description: Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.
--- # Class: Integrator
+-- # Class: Integrator Description: Settings used for the simulation integrator.
 --     * Slot: id
 --     * Slot: integrator_algorithm Description: List of integrator algorithms used to integrate the simulation.
 --     * Slot: number_of_steps Description: Number of integration steps performed in the simulation, given as an integer.
 --     * Slot: frame_step_id Description: Time between saved snapshots/frames in a simulation, given as a float.
 --     * Slot: time_step_id Description: Time between integration steps in a simulation, given as a float.
 --     * Slot: simulation_time_id Description: Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.
--- # Class: Barostat
+-- # Class: Barostat Description: Settings used for the simulation barostat.
 --     * Slot: id
 --     * Slot: barostat_algorithm Description: List of barostat algorithms used in the simulation.
 --     * Slot: pressure_coupling_frequency Description: Step frequency to apply the barostat, given as an integer.
 --     * Slot: pressure_coupling_type Description: List of coupling types for adjusting box vectors.
 --     * Slot: compressibility_id Description: Compressibility of the simulated system, given as a float.
---     * Slot: target_pressure_id Description: Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).
+--     * Slot: compressibility_vector_id Description: Compressibility of the simulated system, given as a float.
+--     * Slot: target_pressure_id Description: Target/reference pressure set to reach in the simulation, given as a float.
+--     * Slot: target_pressure_vector_id Description: Target/reference pressure set to reach in the simulation, given as a 3x3 array.
 --     * Slot: pressure_time_constant_id Description: Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.
--- # Class: Thermostat
+-- # Class: Thermostat Description: Settings used for the simulation thermostat.
 --     * Slot: id
 --     * Slot: thermostat_algorithm Description: List of thermostat algorithms used in the simulation.
 --     * Slot: coupling_group Description: A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string
 --     * Slot: chain_length Description: Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.
---     * Slot: target_temperature_id Description: Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
+--     * Slot: target_temperature_id Description: Target/reference temperature set to reach in the simulation, given as a float.
+--     * Slot: target_temperature_vector_id Description: Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
 --     * Slot: collision_frequency_id Description: Collision frequency for the integrator, given as a float.
 --     * Slot: temperature_time_constant_id Description: Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).
 --     * Slot: friction_coefficient_id Description: Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.
--- # Class: SystemComposition
+-- # Class: SystemComposition Description: Molecular composition of simulated system.
 --     * Slot: id
---     * Slot: system_counts_id
--- # Class: SystemCounts
+--     * Slot: system_counts_id Description: Entity counts across the simulated system.
+-- # Class: SystemCounts Description: Entity counts across the simulated system.
 --     * Slot: id
 --     * Slot: total_molecule_count Description: Total number of simulated molecules, defined as bonded atoms or beads.
 --     * Slot: total_atom_count Description: Total number of atoms in the simulation.
 --     * Slot: unique_molecule_count Description: Number of unique simulated molecules, defined as bonded atoms or beads.
 --     * Slot: salt_concentration_id Description: Concentration of salt in the solution.
--- # Class: MoleculeID
+-- # Class: MoleculeID Description: Identifiers of a molecule type in the simulated system.
 --     * Slot: id
 --     * Slot: PDB_ID Description: Protein Data Bank identifier
 --     * Slot: UNIPROT_ID Description: UniProt accession ID
@@ -192,10 +199,10 @@
 --     * Slot: SystemComposition_id Description: Autocreated FK slot
 --     * Slot: molecular_weight_id Description: The molecular weight of a molecule.
 --     * Slot: molecule_charge_id Description: Electrostatic charge of a molecule.
--- # Class: SimulationObservables
+-- # Class: SimulationObservables Description: Simulation observables outputted from simulation.
 --     * Slot: id
 --     * Slot: simulation_averages_id Description: Average values of observables outputted from the simulation.
--- # Class: SimulationAverages
+-- # Class: SimulationAverages Description: Average values of observables outputted from the simulation.
 --     * Slot: id
 --     * Slot: average_kinetic_energy_id Description: Average kinetic energy sampled from the simulation, given as a float.
 --     * Slot: average_potential_energy_id Description: Average potential energy sampled from the simulation, given as a float.
@@ -204,32 +211,32 @@
 --     * Slot: average_temperature_id Description: Average temperature sampled from the simulation, given as a float.
 --     * Slot: average_volume_id Description: Average volume sampled from the simulation, given as a float.
 --     * Slot: average_volume_vector_id Description: Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10).
--- # Class: TopologyMetadata
+-- # Class: TopologyMetadata Description: Topology information.
 --     * Slot: id
 --     * Slot: connectivity_id Description: Particle connectivity information
 --     * Slot: particles_id Description: Particles information
--- # Class: Connectivity
+-- # Class: Connectivity Description: Connectivity information included in the topology.
 --     * Slot: id
 --     * Slot: bonds Description: Are bond parameters present in the topology?
 --     * Slot: dihedrals Description: Are dihedral parameters present in the topology?
--- # Class: Particles
+-- # Class: Particles Description: Particle information included in the topology.
 --     * Slot: id
 --     * Slot: masses Description: Are masses present in the topology?
 --     * Slot: fixed_charges Description: Are fixed charges on atoms included in the topology?
 --     * Slot: coarse_grained Description: Are atoms coarse-grained?
 --     * Slot: resolution Description: Resolution of simulated system.
 --     * Slot: system_charge_id Description: Total electrostatic charge of the system given by the elementary charge (e).
--- # Class: TrajectoryMetadata
+-- # Class: TrajectoryMetadata Description: Trajectory information.
 --     * Slot: id
 --     * Slot: simulation_box_id Description: Information about the simulation box.
 --     * Slot: trajectory_output_id Description: Information included in trajectory files.
--- # Class: SimulationBox
+-- # Class: SimulationBox Description: Simulation box information
 --     * Slot: id
 --     * Slot: box_type Description: The type of box used to simuluate the system.
 --     * Slot: periodic_boundary_conditions Description: What directions in a simulation cell periodic boundaries are set if they are turned on.
 --     * Slot: box_dimensions_id Description: The lengths/dimensions of the box used to simulate the system.
 --     * Slot: box_angles_id Description: The angles of the box used to simulate the system.
--- # Class: Trajectories
+-- # Class: Trajectories Description: Information in trajectory files.
 --     * Slot: id
 --     * Slot: positions Description: Are per-frame positions included in the trajectory?
 --     * Slot: forces Description: Are per-frame forces included in the trajectory?
@@ -239,7 +246,7 @@
 --     * Slot: water Description: Are water molecules included in the trajectory?
 --     * Slot: replica Description: Is this trajectory a replica of another provided trajectory?
 --     * Slot: frame_count Description: Total number of snapshots that make up a trajectory.
--- # Class: PotentialMetadata
+-- # Class: PotentialMetadata Description: Potentials used for various modelled molecules.
 --     * Slot: id
 --     * Slot: water_potential_id Description: Force field for water molecules.
 --     * Slot: protein_potential_id Description: Force field for proteins.
@@ -249,44 +256,44 @@
 --     * Slot: polymer_potential_id Description: Force field for polymers (excluding proteins and nucleic acids).
 --     * Slot: general_potential_id Description: Force field for molecules (in general).
 --     * Slot: machine_learned_potential_id Description: ML force field for molecules (in general).
--- # Class: WaterPotential
+-- # Class: WaterPotential Description: Potential used for water molecules.
 --     * Slot: id
 --     * Slot: water_potential_name Description: Force field used to describe water molecules.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: ProteinPotential
+-- # Class: ProteinPotential Description: Potential used for protein molecules.
 --     * Slot: id
 --     * Slot: protein_potential_name Description: Force field used to describe proteins.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: LipidPotential
+-- # Class: LipidPotential Description: Potential used for lipid molecules.
 --     * Slot: id
 --     * Slot: lipid_potential_name Description: Force field used to describe lipids.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: NucleicPotential
+-- # Class: NucleicPotential Description: Potential used for nucleic acid molecules.
 --     * Slot: id
 --     * Slot: nucleic_potential_name Description: Force field used to describe nucleic acids.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: CarbohydratePotential
+-- # Class: CarbohydratePotential Description: Potential used for carbohydrate molecules.
 --     * Slot: id
 --     * Slot: carbohydrate_potential_name Description: Force field used to describe carbohydrate.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: PolymerPotential
+-- # Class: PolymerPotential Description: Potential used for polymers molecules.
 --     * Slot: id
 --     * Slot: polymer_potential_name Description: Force field used to describe polymers (excluding proteins and nucleic acids).
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: GeneralPotential
+-- # Class: GeneralPotential Description: Potential used for molecules.
 --     * Slot: id
 --     * Slot: general_potential_name Description: Force field used to describe molecules.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: MachineLearnedPotential
+-- # Class: MachineLearnedPotential Description: Machine learned potential used for molecules.
 --     * Slot: id
 --     * Slot: machine_learned_potential_name Description: ML force field used to describe molecules.
 --     * Slot: modified Description: Has the initial model been modified from the original?
--- # Class: ComputationalEnvironment
+-- # Class: ComputationalEnvironment Description: Computational environment used to perform simulation.
 --     * Slot: id
---     * Slot: hardware_id
---     * Slot: software_id
---     * Slot: performance_id
--- # Class: Hardware
+--     * Slot: hardware_id Description: Computer hardware used to perform simulation.
+--     * Slot: software_id Description: Computer software used to perform simulation.
+--     * Slot: performance_id Description: Compute performance during simulation.
+-- # Class: Hardware Description: Computer hardware used to perform simulation.
 --     * Slot: id
 --     * Slot: execution_platform Description: Broad type of system used to run the simulation workload.
 --     * Slot: node_type Description: Compute node profile used for the simulation run.
@@ -299,13 +306,13 @@
 --     * Slot: GPU_vendor Description: GPU vendor used by the compute nodes, if applicable.
 --     * Slot: GPUs_per_node Description: Number of GPUs present in each compute node.
 --     * Slot: memory_per_node_id Description: Amount of memory installed per compute node.
--- # Class: Software
+-- # Class: Software Description: Computer software used to perform simulation.
 --     * Slot: id
 --     * Slot: operating_system Description: Operating system installed on the hardware used to perform the simulation.
 --     * Slot: scheduler Description: Workload manager or job scheduler used to launch the simulation.
 --     * Slot: MPI_library Description: MPI implementation used for distributed parallel execution.
 --     * Slot: container_runtime Description: Container runtime used to execute the simulation environment, if any.
--- # Class: Performance
+-- # Class: Performance Description: Compute performance during simulation.
 --     * Slot: id
 --     * Slot: wall_time_id Description: Total elapsed runtime of the simulation.
 --     * Slot: energy_consumption_id Description: Total energy consumed by the simulation run.
@@ -442,6 +449,14 @@ CREATE TABLE "PressureQuantity" (
 );
 CREATE INDEX "ix_PressureQuantity_id" ON "PressureQuantity" (id);
 
+CREATE TABLE "CompressibilityQuantity" (
+	id INTEGER NOT NULL,
+	value FLOAT,
+	value_unit VARCHAR(5),
+	PRIMARY KEY (id)
+);
+CREATE INDEX "ix_CompressibilityQuantity_id" ON "CompressibilityQuantity" (id);
+
 CREATE TABLE "MassQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
@@ -477,7 +492,7 @@ CREATE INDEX "ix_ChargeQuantity_id" ON "ChargeQuantity" (id);
 CREATE TABLE "AngleQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(7),
+	value_unit VARCHAR(6),
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_AngleQuantity_id" ON "AngleQuantity" (id);
@@ -499,7 +514,7 @@ CREATE INDEX "ix_VectorLengthQuantity_id" ON "VectorLengthQuantity" (id);
 
 CREATE TABLE "VectorAngleQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(7),
+	value_unit VARCHAR(6),
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorAngleQuantity_id" ON "VectorAngleQuantity" (id);
@@ -735,11 +750,15 @@ CREATE TABLE "Barostat" (
 	pressure_coupling_frequency INTEGER,
 	pressure_coupling_type VARCHAR(15),
 	compressibility_id INTEGER,
+	compressibility_vector_id INTEGER,
 	target_pressure_id INTEGER,
+	target_pressure_vector_id INTEGER,
 	pressure_time_constant_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY(compressibility_id) REFERENCES "MatrixCompressibilityQuantity" (id),
-	FOREIGN KEY(target_pressure_id) REFERENCES "MatrixPressureQuantity" (id),
+	FOREIGN KEY(compressibility_id) REFERENCES "CompressibilityQuantity" (id),
+	FOREIGN KEY(compressibility_vector_id) REFERENCES "MatrixCompressibilityQuantity" (id),
+	FOREIGN KEY(target_pressure_id) REFERENCES "PressureQuantity" (id),
+	FOREIGN KEY(target_pressure_vector_id) REFERENCES "MatrixPressureQuantity" (id),
 	FOREIGN KEY(pressure_time_constant_id) REFERENCES "TimeQuantity" (id)
 );
 CREATE INDEX "ix_Barostat_id" ON "Barostat" (id);
@@ -750,11 +769,13 @@ CREATE TABLE "Thermostat" (
 	coupling_group TEXT,
 	chain_length INTEGER,
 	target_temperature_id INTEGER,
+	target_temperature_vector_id INTEGER,
 	collision_frequency_id INTEGER,
 	temperature_time_constant_id INTEGER,
 	friction_coefficient_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY(target_temperature_id) REFERENCES "VectorTemperatureQuantity" (id),
+	FOREIGN KEY(target_temperature_id) REFERENCES "TemperatureQuantity" (id),
+	FOREIGN KEY(target_temperature_vector_id) REFERENCES "VectorTemperatureQuantity" (id),
 	FOREIGN KEY(collision_frequency_id) REFERENCES "FrequencyQuantity" (id),
 	FOREIGN KEY(temperature_time_constant_id) REFERENCES "VectorTimeQuantity" (id),
 	FOREIGN KEY(friction_coefficient_id) REFERENCES "FrictionCoefficientQuantity" (id)
@@ -917,8 +938,8 @@ CREATE TABLE "VectorTimeQuantity_vector_value" (
 	PRIMARY KEY ("VectorTimeQuantity_id", vector_value),
 	FOREIGN KEY("VectorTimeQuantity_id") REFERENCES "VectorTimeQuantity" (id)
 );
-CREATE INDEX "ix_VectorTimeQuantity_vector_value_vector_value" ON "VectorTimeQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorTimeQuantity_vector_value_VectorTimeQuantity_id" ON "VectorTimeQuantity_vector_value" ("VectorTimeQuantity_id");
+CREATE INDEX "ix_VectorTimeQuantity_vector_value_vector_value" ON "VectorTimeQuantity_vector_value" (vector_value);
 
 CREATE TABLE "MatrixPressureQuantity_vector_value" (
 	"MatrixPressureQuantity_id" INTEGER,
@@ -926,8 +947,8 @@ CREATE TABLE "MatrixPressureQuantity_vector_value" (
 	PRIMARY KEY ("MatrixPressureQuantity_id", vector_value),
 	FOREIGN KEY("MatrixPressureQuantity_id") REFERENCES "MatrixPressureQuantity" (id)
 );
-CREATE INDEX "ix_MatrixPressureQuantity_vector_value_MatrixPressureQuantity_id" ON "MatrixPressureQuantity_vector_value" ("MatrixPressureQuantity_id");
 CREATE INDEX "ix_MatrixPressureQuantity_vector_value_vector_value" ON "MatrixPressureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_MatrixPressureQuantity_vector_value_MatrixPressureQuantity_id" ON "MatrixPressureQuantity_vector_value" ("MatrixPressureQuantity_id");
 
 CREATE TABLE "MatrixCompressibilityQuantity_vector_value" (
 	"MatrixCompressibilityQuantity_id" INTEGER,
@@ -953,8 +974,8 @@ CREATE TABLE "Equilibration_simulation_tool" (
 	PRIMARY KEY ("Equilibration_id", simulation_tool),
 	FOREIGN KEY("Equilibration_id") REFERENCES "Equilibration" (id)
 );
-CREATE INDEX "ix_Equilibration_simulation_tool_simulation_tool" ON "Equilibration_simulation_tool" (simulation_tool);
 CREATE INDEX "ix_Equilibration_simulation_tool_Equilibration_id" ON "Equilibration_simulation_tool" ("Equilibration_id");
+CREATE INDEX "ix_Equilibration_simulation_tool_simulation_tool" ON "Equilibration_simulation_tool" (simulation_tool);
 
 CREATE TABLE "Equilibration_simulation_software" (
 	"Equilibration_id" INTEGER,
@@ -980,8 +1001,8 @@ CREATE TABLE "Production_simulation_software" (
 	PRIMARY KEY ("Production_id", simulation_software),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
 CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
+CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
 
 CREATE TABLE "Production_simulation_method" (
 	"Production_id" INTEGER,
@@ -989,8 +1010,8 @@ CREATE TABLE "Production_simulation_method" (
 	PRIMARY KEY ("Production_id", simulation_method),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_method_Production_id" ON "Production_simulation_method" ("Production_id");
 CREATE INDEX "ix_Production_simulation_method_simulation_method" ON "Production_simulation_method" (simulation_method);
+CREATE INDEX "ix_Production_simulation_method_Production_id" ON "Production_simulation_method" ("Production_id");
 
 CREATE TABLE "Analysis_analysis_tool" (
 	"Analysis_id" INTEGER,
@@ -1003,12 +1024,12 @@ CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool"
 
 CREATE TABLE "Analysis_analysis_software" (
 	"Analysis_id" INTEGER,
-	analysis_software VARCHAR(19),
+	analysis_software VARCHAR(31),
 	PRIMARY KEY ("Analysis_id", analysis_software),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_software_analysis_software" ON "Analysis_analysis_software" (analysis_software);
 CREATE INDEX "ix_Analysis_analysis_software_Analysis_id" ON "Analysis_analysis_software" ("Analysis_id");
+CREATE INDEX "ix_Analysis_analysis_software_analysis_software" ON "Analysis_analysis_software" (analysis_software);
 
 CREATE TABLE "Analysis_analysis_method" (
 	"Analysis_id" INTEGER,
@@ -1016,8 +1037,8 @@ CREATE TABLE "Analysis_analysis_method" (
 	PRIMARY KEY ("Analysis_id", analysis_method),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_method_analysis_method" ON "Analysis_analysis_method" (analysis_method);
 CREATE INDEX "ix_Analysis_analysis_method_Analysis_id" ON "Analysis_analysis_method" ("Analysis_id");
+CREATE INDEX "ix_Analysis_analysis_method_analysis_method" ON "Analysis_analysis_method" (analysis_method);
 
 CREATE TABLE "SimulationStages" (
 	id INTEGER NOT NULL,
@@ -1114,8 +1135,8 @@ CREATE TABLE "Minimisation_simulation_tool" (
 	PRIMARY KEY ("Minimisation_id", simulation_tool),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_simulation_tool_simulation_tool" ON "Minimisation_simulation_tool" (simulation_tool);
 CREATE INDEX "ix_Minimisation_simulation_tool_Minimisation_id" ON "Minimisation_simulation_tool" ("Minimisation_id");
+CREATE INDEX "ix_Minimisation_simulation_tool_simulation_tool" ON "Minimisation_simulation_tool" (simulation_tool);
 
 CREATE TABLE "Minimisation_simulation_software" (
 	"Minimisation_id" INTEGER,

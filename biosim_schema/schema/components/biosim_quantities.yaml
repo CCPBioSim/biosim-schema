@@ -115,6 +115,16 @@ classes:
         range: PressureUnit
         ifabsent: string(bar)
 
+  CompressibilityQuantity:
+    description:
+      A quantity representing compressibility.
+    attributes:
+      value:
+        range: float
+      value_unit:
+        range: CompressibilityUnit
+        ifabsent: string(1/bar)
+
   MassQuantity:
     description:
       A quantity representing mass.
@@ -166,7 +176,7 @@ classes:
         range: float
       value_unit:
         range: AngleUnit
-        ifabsent: string(degrees)
+        ifabsent: string(degree)
 
   ByteQuantity:
     description:
@@ -200,7 +210,7 @@ classes:
         minimum_cardinality: 3
       value_unit:
         range: AngleUnit
-        ifabsent: string(degrees)
+        ifabsent: string(degree)
 
   VectorVolumeQuantity:
     description: A quantity representing volume as via 3 length dimensions.

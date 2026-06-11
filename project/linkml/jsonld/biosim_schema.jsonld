@@ -6,6 +6,7 @@
     "https://CCPBioSim.github.io/biosim-schema"
   ],
   "id": "https://CCPBioSim.ac.uk/biosim-schema/",
+  "version": "0.0.2",
   "imports": [
     "linkml:types",
     "./components/biosim_quantities",
@@ -376,6 +377,7 @@
     {
       "name": "LengthUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthUnit",
+      "description": "Units for length quantity.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
@@ -413,6 +415,7 @@
     {
       "name": "VolumeUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeUnit",
+      "description": "Units for volume quantity.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
@@ -451,10 +454,12 @@
     {
       "name": "ConcentrationUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationUnit",
+      "description": "Units for concentration quantity.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
           "text": "M",
+          "description": "Molar concentration",
           "meaning": "qudt:MOL-PER-M3",
           "unit": {
             "ucum_code": "MOL-PER-M3",
@@ -474,13 +479,22 @@
     {
       "name": "ChargeUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeUnit",
+      "description": "Units for charge quantity.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
-          "text": "e"
+          "text": "e",
+          "description": "Electric charge carried by a single proton or by a single electron.",
+          "meaning": "qudt:E",
+          "unit": {
+            "ucum_code": "e",
+            "has_quantity_kind": "ElectricCharge"
+          }
         },
         {
           "text": "C",
+          "description": "The SI unit of electric charge. One coulomb is the amount of charge accumulated in one second by a current of one ampere.",
+          "meaning": "qudt:C",
           "unit": {
             "ucum_code": "C",
             "has_quantity_kind": "ChargeNumber"
@@ -593,10 +607,12 @@
     {
       "name": "FrictionCoefficientUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientUnit",
+      "description": "Relationship between applied forces and the resulting resistance to motion.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
           "text": "a/ps",
+          "description": "atomic mass unit per picosecond",
           "aliases": [
             "a/ps",
             "a ps\u207b\u00b9",
@@ -606,6 +622,7 @@
         },
         {
           "text": "kg/s",
+          "description": "kilograms per second",
           "aliases": [
             "kg/s",
             "kg s\u207b\u00b9",
@@ -618,10 +635,12 @@
     {
       "name": "TemperatureUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureUnit",
+      "description": "Units to describe temperature.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
           "text": "K",
+          "description": "Kelvin",
           "aliases": [
             "K",
             "Kelvin"
@@ -629,6 +648,7 @@
         },
         {
           "text": "\u00b0C",
+          "description": "degrees Celcius.",
           "aliases": [
             "\u00b0C",
             "C",
@@ -637,6 +657,7 @@
         },
         {
           "text": "\u00b0F",
+          "description": "degrees Fahrenheit.",
           "aliases": [
             "\u00b0F",
             "F",
@@ -648,16 +669,19 @@
     {
       "name": "PressureUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit",
+      "description": "Units to describe pressure.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
           "text": "bar",
+          "description": "bar",
           "aliases": [
             "Bar"
           ]
         },
         {
           "text": "Pa",
+          "description": "Pascal",
           "aliases": [
             "Pascal"
           ]
@@ -667,10 +691,12 @@
     {
       "name": "CompressibilityUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityUnit",
+      "description": "measures how the system volume responds to pressure changes.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
           "text": "1/bar",
+          "description": "reciprocal bar",
           "meaning": "qudt:PER-BAR",
           "annotations": [
             {
@@ -686,6 +712,7 @@
         },
         {
           "text": "1/Pa",
+          "description": "reciprocal Pascal",
           "meaning": "qudt:PER-PA",
           "annotations": [
             {
@@ -708,11 +735,41 @@
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
-          "text": "degrees",
+          "text": "degree",
           "description": "Angle units in degree.",
+          "meaning": "qudt:DEG",
+          "annotations": [
+            {
+              "tag": "ucum_code",
+              "value": "deg"
+            },
+            {
+              "tag": "has_quantity_kind",
+              "value": "Angle"
+            }
+          ],
           "aliases": [
-            "degrees",
+            "degree",
             "\u00b0"
+          ]
+        },
+        {
+          "text": "radian",
+          "description": "Angle units in radian.",
+          "meaning": "qudt:RAD",
+          "annotations": [
+            {
+              "tag": "ucum_code",
+              "value": "rad"
+            },
+            {
+              "tag": "has_quantity_kind",
+              "value": "Angle"
+            }
+          ],
+          "aliases": [
+            "radian",
+            "rad"
           ]
         }
       ]
@@ -780,6 +837,7 @@
     {
       "name": "ForceUnit",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceUnit",
+      "description": "Units for force.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "permissible_values": [
         {
@@ -833,7 +891,7 @@
         },
         {
           "text": "Da",
-          "description": "daltons",
+          "description": "Dalton",
           "meaning": "qudt:Dalton",
           "aliases": [
             "Da",
@@ -899,7 +957,8 @@
           "description": "An action inside cpptraj, that also helps make pdb-format files compatible with LEaP. It is particularly useful for carbohydrates."
         },
         {
-          "text": "packmol"
+          "text": "packmol",
+          "description": "PACKMOL creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space."
         },
         {
           "text": "packmol_memgen",
@@ -1046,6 +1105,25 @@
           "aliases": [
             "LMOD",
             "lmod"
+          ]
+        },
+        {
+          "text": "None",
+          "description": "No minimisation.",
+          "annotations": [
+            {
+              "tag": "engine_mapping",
+              "value": [
+                {
+                  "engine": "amber",
+                  "key": "imin",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "aliases": [
+            "None"
           ]
         }
       ]
@@ -1442,6 +1520,7 @@
         },
         {
           "text": "PLUMED",
+          "description": "PLUMED is an open-source, community-developed library used in Molecular Dynamics (MD) to perform free-energy calculations, enhance sampling algorithms, and analyze simulation trajectories. It acts as a plugin or standalone engine to manipulate forces and biases on the fly.",
           "aliases": [
             "PLUMED",
             "plumed"
@@ -1449,6 +1528,7 @@
         },
         {
           "text": "MDanalysis",
+          "description": "MDAnalysis is an object-oriented Python library for structural and temporal analysis of molecular dynamics (MD) simulation trajectories.",
           "aliases": [
             "MDanalysis",
             "mdanalysis"
@@ -1463,21 +1543,26 @@
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "permissible_values": [
         {
-          "text": "VMD",
+          "text": "Visual Molecular Dynamics (VMD)",
+          "description": "VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular systems using 3-D graphics and built-in scripting.",
           "aliases": [
+            "Visual Molecular Dynamics (VMD)",
             "VMD",
             "vmd"
           ]
         },
         {
-          "text": "Schrodinger Maestro",
+          "text": "Schr\u00f6dinger Maestro",
+          "description": "Schr\u00f6dinger Maestro is the primary graphical user interface (GUI) and workspace for the Schr\u00f6dinger computational suite. It allows scientists to build, visualize, and analyze 3D molecular structures",
           "aliases": [
+            "Schr\u00f6dinger Maestro",
             "Schrodinger Maestro",
             "schrodinger_maestro"
           ]
         },
         {
           "text": "PyMOL",
+          "description": "PyMOL is an advanced molecular visualization and structural analysis software used extensively in biochemistry, pharmacology, and structural biology.",
           "aliases": [
             "PyMOL",
             "pymol"
@@ -1485,6 +1570,7 @@
         },
         {
           "text": "Avogadro",
+          "description": "Avogadro is an advanced, free, and open-source 3D molecular editor and visualization tool designed for computational chemistry, bioinformatics, and materials science.",
           "aliases": [
             "Avogadro",
             "avogadro"
@@ -2346,6 +2432,7 @@
       "permissible_values": [
         {
           "text": "Cubic",
+          "description": "3D rectangular prism where all sides are equal in length",
           "annotations": [
             {
               "tag": "engine_mapping",
@@ -2365,6 +2452,7 @@
         },
         {
           "text": "Tetragonal",
+          "description": "Simulation boundaries form a rectangular prism, where two sides are equal (a = b \u2260 c) and all angles are exactly 90\u00b0.",
           "annotations": [
             {
               "tag": "engine_mapping",
@@ -2384,6 +2472,7 @@
         },
         {
           "text": "Orthorhombic",
+          "description": "3D unit cell defined by three mutually perpendicular axes of unequal length (a \u2260 b \u2260 c), where all angles are exactly 90\u00b0",
           "annotations": [
             {
               "tag": "engine_mapping",
@@ -2403,6 +2492,7 @@
         },
         {
           "text": "Truncated Octahedron",
+          "description": "A 14-sided 3D shape (8 hexagonal and 6 square faces) used as a simulation cell in molecular dynamics. Because its geometry closely approximates a sphere, it is ideal for solvating roughly spherical or globular proteins",
           "annotations": [
             {
               "tag": "engine_mapping",
@@ -2422,6 +2512,7 @@
         },
         {
           "text": "Triclinic",
+          "description": "Non-orthogonal simulation cell defined by three arbitrary, non-coplanar vectors. Unlike standard cubic or orthorhombic boxes (which have 90\u00b0 angles), triclinic boxes can have arbitrary angles and varying edge lengths to model sheared systems, complex crystal lattices, and anisotropic stress tensors",
           "annotations": [
             {
               "tag": "engine_mapping",
@@ -2608,10 +2699,12 @@
           "description": "DNA force field that adds some new torsion modifications, aimed at non-B double helices, as of Amber24, is the current recommended DNA force field."
         },
         {
-          "text": "OL24"
+          "text": "OL24",
+          "description": "OL24 is a 2024 DNA force field tested on both canonical and non-canonical DNA."
         },
         {
-          "text": "OL3"
+          "text": "OL3",
+          "description": "The Amber OL3 force field is a parameter set for simulations of RNA."
         },
         {
           "text": "bsc1",
@@ -2955,6 +3048,7 @@
     {
       "name": "stages",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages",
+      "description": "Simulation stages",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "owner": "SimulationMetadata",
@@ -2969,6 +3063,7 @@
     {
       "name": "settings",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings",
+      "description": "Simulation settings",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "owner": "SimulationMetadata",
@@ -2983,6 +3078,7 @@
     {
       "name": "composition",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition",
+      "description": "Composition of simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "owner": "SimulationMetadata",
@@ -2997,6 +3093,7 @@
     {
       "name": "observables",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/observables",
+      "description": "Simulation observables.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/observables",
       "owner": "SimulationMetadata",
@@ -3011,6 +3108,7 @@
     {
       "name": "topology",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology",
+      "description": "Topology information.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology",
       "owner": "SimulationMetadata",
@@ -3025,6 +3123,7 @@
     {
       "name": "trajectory",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
+      "description": "Trajectory information.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "owner": "SimulationMetadata",
@@ -3039,6 +3138,7 @@
     {
       "name": "potentials",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
+      "description": "Force field potentials used to describe simulated particles.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "owner": "SimulationMetadata",
@@ -3053,6 +3153,7 @@
     {
       "name": "compute",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute",
+      "description": "Computational environment information.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "owner": "SimulationMetadata",
@@ -3119,19 +3220,6 @@
     {
       "name": "minimisation",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation",
-      "annotations": [
-        {
-          "tag": "engine_mapping",
-          "value": [
-            {
-              "engine": "amber",
-              "key": "imin",
-              "value": 1
-            }
-          ],
-          "@type": "Annotation"
-        }
-      ],
       "description": "Minimisation stage of a simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation",
@@ -3875,11 +3963,6 @@
               "unit": "K"
             },
             {
-              "engine": "gromacs",
-              "key": "ref-t",
-              "unit": "K"
-            },
-            {
               "engine": "lammps",
               "key": "temp",
               "unit": "K"
@@ -3888,14 +3971,70 @@
           "@type": "Annotation"
         }
       ],
-      "description": "Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",
+      "description": "Target/reference temperature set to reach in the simulation, given as a float.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature",
       "owner": "Thermostat",
       "domain_of": [
         "Thermostat"
       ],
+      "range": "TemperatureQuantity",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "target_temperature_vector",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature_vector",
+      "annotations": [
+        {
+          "tag": "engine_mapping",
+          "value": [
+            {
+              "engine": "gromacs",
+              "key": "ref-t",
+              "unit": "K"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/target_temperature_vector",
+      "owner": "Thermostat",
+      "domain_of": [
+        "Thermostat"
+      ],
       "range": "VectorTemperatureQuantity",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "target_pressure_vector",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure_vector",
+      "annotations": [
+        {
+          "tag": "engine_mapping",
+          "value": [
+            {
+              "engine": "gromacs",
+              "key": "ref-p",
+              "unit": "bar"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Target/reference pressure set to reach in the simulation, given as a 3x3 array.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure_vector",
+      "owner": "Barostat",
+      "domain_of": [
+        "Barostat"
+      ],
+      "range": "MatrixPressureQuantity",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -3908,11 +4047,6 @@
           "tag": "engine_mapping",
           "value": [
             {
-              "engine": "gromacs",
-              "key": "ref-p",
-              "unit": "bar"
-            },
-            {
               "engine": "amber",
               "key": "pres0",
               "unit": "bar"
@@ -3921,14 +4055,52 @@
           "@type": "Annotation"
         }
       ],
-      "description": "Target/reference pressure set to reach in the simulation, given as a float or a list (e.g. 1, 1).",
+      "description": "Target/reference pressure set to reach in the simulation, given as a float.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/target_pressure",
       "owner": "Barostat",
       "domain_of": [
         "Barostat"
       ],
-      "range": "MatrixPressureQuantity",
+      "range": "PressureQuantity",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "compressibility_vector",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility_vector",
+      "annotations": [
+        {
+          "tag": "engine_mapping",
+          "value": [
+            {
+              "engine": "gromacs",
+              "key": "compressibility",
+              "unit": "1/bar"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Compressibility of the simulated system, given as a float.",
+      "examples": [
+        {
+          "value": "44.6 1e10-6 1/bar",
+          "@type": "Example"
+        },
+        {
+          "value": "4.5e-5 1/bar",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/compressibility_vector",
+      "owner": "Barostat",
+      "domain_of": [
+        "Barostat"
+      ],
+      "range": "MatrixCompressibilityQuantity",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -3940,11 +4112,6 @@
         {
           "tag": "engine_mapping",
           "value": [
-            {
-              "engine": "gromacs",
-              "key": "compressibility",
-              "unit": "1/bar"
-            },
             {
               "engine": "amber",
               "key": "comp",
@@ -3971,7 +4138,7 @@
       "domain_of": [
         "Barostat"
       ],
-      "range": "MatrixCompressibilityQuantity",
+      "range": "CompressibilityQuantity",
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -4411,6 +4578,7 @@
     {
       "name": "system_counts",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/system_counts",
+      "description": "Entity counts across the simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "aliases": [
         "System Counts"
@@ -5861,6 +6029,7 @@
     {
       "name": "hardware",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/hardware",
+      "description": "Computer hardware used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/hardware",
       "owner": "ComputationalEnvironment",
@@ -5875,6 +6044,7 @@
     {
       "name": "software",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/software",
+      "description": "Computer software used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/software",
       "owner": "ComputationalEnvironment",
@@ -5889,6 +6059,7 @@
     {
       "name": "performance",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/performance",
+      "description": "Compute performance during simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/performance",
       "owner": "ComputationalEnvironment",
@@ -6349,7 +6520,6 @@
         "PressureQuantity"
       ],
       "range": "float",
-      "minimum_value": 0,
       "@type": "SlotDefinition"
     },
     {
@@ -6363,6 +6533,31 @@
         "PressureQuantity"
       ],
       "range": "PressureUnit",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "compressibilityQuantity__value",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value",
+      "alias": "value",
+      "owner": "CompressibilityQuantity",
+      "domain_of": [
+        "CompressibilityQuantity"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "compressibilityQuantity__value_unit",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit",
+      "ifabsent": "string(1/bar)",
+      "alias": "value_unit",
+      "owner": "CompressibilityQuantity",
+      "domain_of": [
+        "CompressibilityQuantity"
+      ],
+      "range": "CompressibilityUnit",
       "@type": "SlotDefinition"
     },
     {
@@ -6484,7 +6679,7 @@
       "name": "angleQuantity__value_unit",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit",
-      "ifabsent": "string(degrees)",
+      "ifabsent": "string(degree)",
       "alias": "value_unit",
       "owner": "AngleQuantity",
       "domain_of": [
@@ -6565,7 +6760,7 @@
       "name": "vectorAngleQuantity__value_unit",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit",
-      "ifabsent": "string(degrees)",
+      "ifabsent": "string(degree)",
       "alias": "value_unit",
       "owner": "VectorAngleQuantity",
       "domain_of": [
@@ -6832,6 +7027,7 @@
     {
       "name": "SimulationMetadata",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/SimulationMetadata",
+      "description": "root class for biosim-schema",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slots": [
         "stages",
@@ -6851,6 +7047,7 @@
     {
       "name": "LengthQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/LengthQuantity",
+      "description": "A quantity representing length.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "lengthQuantity__value",
@@ -6877,6 +7074,7 @@
     {
       "name": "VolumeQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VolumeQuantity",
+      "description": "A quantity representing volume.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "volumeQuantity__value",
@@ -6903,6 +7101,7 @@
     {
       "name": "TimeQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity",
+      "description": "A quantity representing time.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "timeQuantity__value",
@@ -6929,6 +7128,7 @@
     {
       "name": "FrequencyQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity",
+      "description": "A quantity representing frequency.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "frequencyQuantity__value",
@@ -6955,6 +7155,7 @@
     {
       "name": "FrictionCoefficientQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/FrictionCoefficientQuantity",
+      "description": "A quantity representing friction coefficients.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "frictionCoefficientQuantity__value",
@@ -6981,6 +7182,7 @@
     {
       "name": "MolarEnergyQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/MolarEnergyQuantity",
+      "description": "A quantity representing molar energy.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "molarEnergyQuantity__value",
@@ -7007,6 +7209,7 @@
     {
       "name": "EnergyQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/EnergyQuantity",
+      "description": "A quantity representing energy.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "energyQuantity__value",
@@ -7032,6 +7235,7 @@
     {
       "name": "TemperatureQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/TemperatureQuantity",
+      "description": "A quantity representing temperature.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "temperatureQuantity__value",
@@ -7058,6 +7262,7 @@
     {
       "name": "PressureQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureQuantity",
+      "description": "A quantity representing pressure.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "pressureQuantity__value",
@@ -7068,7 +7273,6 @@
         {
           "name": "value",
           "range": "float",
-          "minimum_value": 0,
           "@type": "SlotDefinition"
         },
         {
@@ -7082,8 +7286,35 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "CompressibilityQuantity",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityQuantity",
+      "description": "A quantity representing compressibility.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
+      "slots": [
+        "compressibilityQuantity__value",
+        "compressibilityQuantity__value_unit"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "value",
+          "range": "float",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "value_unit",
+          "ifabsent": "string(1/bar)",
+          "range": "CompressibilityUnit",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/CompressibilityQuantity",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "MassQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/MassQuantity",
+      "description": "A quantity representing mass.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "massQuantity__value",
@@ -7110,6 +7341,7 @@
     {
       "name": "ConcentrationQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ConcentrationQuantity",
+      "description": "A quantity representing concentration.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "concentrationQuantity__value",
@@ -7136,6 +7368,7 @@
     {
       "name": "ForceQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity",
+      "description": "A quantity representing force.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "forceQuantity__value",
@@ -7162,6 +7395,7 @@
     {
       "name": "ChargeQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity",
+      "description": "A quantity representing charge.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "chargeQuantity__value",
@@ -7187,6 +7421,7 @@
     {
       "name": "AngleQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/AngleQuantity",
+      "description": "A quantity representing angles.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "angleQuantity__value",
@@ -7201,7 +7436,7 @@
         },
         {
           "name": "value_unit",
-          "ifabsent": "string(degrees)",
+          "ifabsent": "string(degree)",
           "range": "AngleUnit",
           "@type": "SlotDefinition"
         }
@@ -7212,6 +7447,7 @@
     {
       "name": "ByteQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity",
+      "description": "A quantity representing bytes.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "byteQuantity__value",
@@ -7237,7 +7473,7 @@
     {
       "name": "VectorLengthQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorLengthQuantity",
-      "description": "A quantity representing 3D lengths/dimensions",
+      "description": "A quantity representing 3D lengths/dimensions.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorLengthQuantity__vector_value",
@@ -7266,7 +7502,7 @@
     {
       "name": "VectorAngleQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorAngleQuantity",
-      "description": "A quantity representing 3D angles",
+      "description": "A quantity representing 3D angles.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorAngleQuantity__vector_value",
@@ -7284,7 +7520,7 @@
         },
         {
           "name": "value_unit",
-          "ifabsent": "string(degrees)",
+          "ifabsent": "string(degree)",
           "range": "AngleUnit",
           "@type": "SlotDefinition"
         }
@@ -7295,6 +7531,7 @@
     {
       "name": "VectorVolumeQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorVolumeQuantity",
+      "description": "A quantity representing volume as via 3 length dimensions.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorVolumeQuantity__vector_value",
@@ -7322,6 +7559,7 @@
     {
       "name": "VectorCompressibilityQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorCompressibilityQuantity",
+      "description": "A quantity representing compressibility in 3D.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorCompressibilityQuantity__vector_value",
@@ -7352,6 +7590,7 @@
     {
       "name": "VectorPressureQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorPressureQuantity",
+      "description": "A quantity representing pressure in 3D.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorPressureQuantity__vector_value",
@@ -7380,7 +7619,7 @@
     {
       "name": "VectorTemperatureQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTemperatureQuantity",
-      "description": "Temperature values for multiple coupling groups",
+      "description": "Temperature values for multiple coupling groups.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorTemperatureQuantity__vector_value",
@@ -7407,7 +7646,7 @@
     {
       "name": "VectorTimeQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/VectorTimeQuantity",
-      "description": "Time values for multiple coupling groups",
+      "description": "Time values for multiple coupling groups.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "vectorTimeQuantity__vector_value",
@@ -7434,6 +7673,7 @@
     {
       "name": "MatrixPressureQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity",
+      "description": "A quantity representing pressure vectors in 3D.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "matrixPressureQuantity__vector_value",
@@ -7477,6 +7717,7 @@
     {
       "name": "MatrixCompressibilityQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity",
+      "description": "A quantity representing compressibility vectors in 3D.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "matrixCompressibilityQuantity__vector_value",
@@ -7520,6 +7761,7 @@
     {
       "name": "MatrixQuantity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity",
+      "description": "A quantity representing general vectors in 3D.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slots": [
         "matrixQuantity__vector_value",
@@ -7549,6 +7791,7 @@
     {
       "name": "SimulationStages",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages",
+      "description": "Stages of simulation workflow.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slots": [
         "setup",
@@ -7564,6 +7807,7 @@
     {
       "name": "Setup",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/Setup",
+      "description": "Setup stage of simulation workflow.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slots": [
         "setup_tool"
@@ -7575,6 +7819,7 @@
     {
       "name": "Minimisation",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/Minimisation",
+      "description": "Minimisation stage of simulation workflow.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slots": [
         "energy_tolerance",
@@ -7591,6 +7836,7 @@
     {
       "name": "Equilibration",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/Equilibration",
+      "description": "Equilibration stage of simulation workflow.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slots": [
         "simulation_tool",
@@ -7603,6 +7849,7 @@
     {
       "name": "Production",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/Production",
+      "description": "Production stage of simulation workflow.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slots": [
         "simulation_tool",
@@ -7631,6 +7878,7 @@
     {
       "name": "SimulationSettings",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings",
+      "description": "Settings in simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slots": [
         "ensemble",
@@ -7646,6 +7894,7 @@
     {
       "name": "Ensemble",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/Ensemble",
+      "description": "Simulation ensemble/thermodynamic properties.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slots": [
         "ensemble_type",
@@ -7658,6 +7907,7 @@
     {
       "name": "Interactions",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/Interactions",
+      "description": "Settings used to define particle interactions.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slots": [
         "restraints",
@@ -7673,6 +7923,7 @@
     {
       "name": "Integrator",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/Integrator",
+      "description": "Settings used for the simulation integrator.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slots": [
         "integrator_algorithm",
@@ -7688,11 +7939,14 @@
     {
       "name": "Barostat",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/Barostat",
+      "description": "Settings used for the simulation barostat.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slots": [
         "barostat_algorithm",
         "compressibility",
+        "compressibility_vector",
         "target_pressure",
+        "target_pressure_vector",
         "pressure_time_constant",
         "pressure_coupling_frequency",
         "pressure_coupling_type"
@@ -7704,10 +7958,12 @@
     {
       "name": "Thermostat",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/Thermostat",
+      "description": "Settings used for the simulation thermostat.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slots": [
         "thermostat_algorithm",
         "target_temperature",
+        "target_temperature_vector",
         "collision_frequency",
         "temperature_time_constant",
         "coupling_group",
@@ -7721,6 +7977,7 @@
     {
       "name": "SystemComposition",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition",
+      "description": "Molecular composition of simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "slots": [
         "system_counts",
@@ -7733,6 +7990,7 @@
     {
       "name": "SystemCounts",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/SystemCounts",
+      "description": "Entity counts across the simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "slots": [
         "total_molecule_count",
@@ -7747,6 +8005,7 @@
     {
       "name": "MoleculeID",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID",
+      "description": "Identifiers of a molecule type in the simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "slots": [
         "PDB_ID",
@@ -7774,6 +8033,7 @@
     {
       "name": "SimulationObservables",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables",
+      "description": "Simulation observables outputted from simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/observables",
       "slots": [
         "simulation_averages"
@@ -7785,6 +8045,7 @@
     {
       "name": "SimulationAverages",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationAverages",
+      "description": "Average values of observables outputted from the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/observables",
       "slots": [
         "average_kinetic_energy",
@@ -7802,6 +8063,7 @@
     {
       "name": "TopologyMetadata",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata",
+      "description": "Topology information.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/topology",
       "slots": [
         "connectivity",
@@ -7814,6 +8076,7 @@
     {
       "name": "Connectivity",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/Connectivity",
+      "description": "Connectivity information included in the topology.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/topology",
       "slots": [
         "bonds",
@@ -7826,6 +8089,7 @@
     {
       "name": "Particles",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/Particles",
+      "description": "Particle information included in the topology.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/topology",
       "slots": [
         "masses",
@@ -7841,6 +8105,7 @@
     {
       "name": "TrajectoryMetadata",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata",
+      "description": "Trajectory information.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slots": [
         "simulation_box",
@@ -7853,6 +8118,7 @@
     {
       "name": "SimulationBox",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/SimulationBox",
+      "description": "Simulation box information",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slots": [
         "box_dimensions",
@@ -7867,6 +8133,7 @@
     {
       "name": "Trajectories",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/Trajectories",
+      "description": "Information in trajectory files.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slots": [
         "positions",
@@ -7885,6 +8152,7 @@
     {
       "name": "PotentialMetadata",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata",
+      "description": "Potentials used for various modelled molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "water_potential",
@@ -7903,6 +8171,7 @@
     {
       "name": "WaterPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential",
+      "description": "Potential used for water molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "water_potential_name",
@@ -7915,6 +8184,7 @@
     {
       "name": "ProteinPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential",
+      "description": "Potential used for protein molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "protein_potential_name",
@@ -7927,6 +8197,7 @@
     {
       "name": "LipidPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential",
+      "description": "Potential used for lipid molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "lipid_potential_name",
@@ -7939,6 +8210,7 @@
     {
       "name": "NucleicPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/NucleicPotential",
+      "description": "Potential used for nucleic acid molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "nucleic_potential_name",
@@ -7951,6 +8223,7 @@
     {
       "name": "CarbohydratePotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/CarbohydratePotential",
+      "description": "Potential used for carbohydrate molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "carbohydrate_potential_name",
@@ -7963,6 +8236,7 @@
     {
       "name": "PolymerPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential",
+      "description": "Potential used for polymers molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "polymer_potential_name",
@@ -7975,6 +8249,7 @@
     {
       "name": "GeneralPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential",
+      "description": "Potential used for molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "general_potential_name",
@@ -7987,6 +8262,7 @@
     {
       "name": "MachineLearnedPotential",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/MachineLearnedPotential",
+      "description": "Machine learned potential used for molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slots": [
         "machine_learned_potential_name",
@@ -7999,6 +8275,7 @@
     {
       "name": "ComputationalEnvironment",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment",
+      "description": "Computational environment used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slots": [
         "hardware",
@@ -8012,6 +8289,7 @@
     {
       "name": "Hardware",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/Hardware",
+      "description": "Computer hardware used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slots": [
         "execution_platform",
@@ -8033,6 +8311,7 @@
     {
       "name": "Software",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/Software",
+      "description": "Computer software used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slots": [
         "operating_system",
@@ -8047,6 +8326,7 @@
     {
       "name": "Performance",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/Performance",
+      "description": "Compute performance during simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slots": [
         "wall_time",
@@ -8059,9 +8339,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-06-03T09:32:49",
-  "source_file_size": 2410,
-  "generation_date": "2026-06-09T14:10:52",
+  "source_file_date": "2026-06-10T15:27:45",
+  "source_file_size": 2847,
+  "generation_date": "2026-06-11T20:04:16",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

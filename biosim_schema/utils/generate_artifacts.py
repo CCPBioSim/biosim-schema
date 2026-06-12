@@ -79,7 +79,15 @@ class ArtifactPaths:
 
 
 def repo_root() -> Path:
-    """Return the repository root based on this module location."""
+    """Return the repository root.
+
+    Prefer the current working directory so installed console scripts still
+    operate on the checked-out source tree in CI/Read the Docs.
+    """
+    cwd = Path.cwd()
+    if (cwd / "biosim_schema" / "schema" / "biosim_schema.yaml").exists():
+        return cwd
+
     return Path(__file__).resolve().parents[2]
 
 

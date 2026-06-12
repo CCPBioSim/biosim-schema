@@ -729,7 +729,7 @@
         {
           "key": "box_angles",
           "value": null,
-          "unit": "degrees"
+          "unit": "degree"
         }
       ],
       "SimulationMetadata.trajectory.simulation_box.box_type": {

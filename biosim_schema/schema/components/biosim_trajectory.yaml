@@ -84,7 +84,7 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: box_angles
-          unit: degrees
+          unit: degree
 
   box_type:
     description:

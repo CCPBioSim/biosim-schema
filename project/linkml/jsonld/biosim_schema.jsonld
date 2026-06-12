@@ -5626,7 +5626,7 @@
             {
               "engine": "toptrajparser",
               "key": "box_angles",
-              "unit": "degrees"
+              "unit": "degree"
             }
           ],
           "@type": "Annotation"
@@ -8341,7 +8341,7 @@
   "source_file": "biosim_schema.yaml",
   "source_file_date": "2026-06-10T15:27:45",
   "source_file_size": 2847,
-  "generation_date": "2026-06-11T20:04:16",
+  "generation_date": "2026-06-12T16:49:57",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

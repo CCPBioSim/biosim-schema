@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-11T20:04:17
+# Generation date: 2026-06-12T16:49:58
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/

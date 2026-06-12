@@ -911,8 +911,8 @@ CREATE TABLE "VectorVolumeQuantity_vector_value" (
 	PRIMARY KEY ("VectorVolumeQuantity_id", vector_value),
 	FOREIGN KEY("VectorVolumeQuantity_id") REFERENCES "VectorVolumeQuantity" (id)
 );
-CREATE INDEX "ix_VectorVolumeQuantity_vector_value_vector_value" ON "VectorVolumeQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorVolumeQuantity_vector_value_VectorVolumeQuantity_id" ON "VectorVolumeQuantity_vector_value" ("VectorVolumeQuantity_id");
+CREATE INDEX "ix_VectorVolumeQuantity_vector_value_vector_value" ON "VectorVolumeQuantity_vector_value" (vector_value);
 
 CREATE TABLE "VectorPressureQuantity_vector_value" (
 	"VectorPressureQuantity_id" INTEGER,
@@ -947,8 +947,8 @@ CREATE TABLE "MatrixPressureQuantity_vector_value" (
 	PRIMARY KEY ("MatrixPressureQuantity_id", vector_value),
 	FOREIGN KEY("MatrixPressureQuantity_id") REFERENCES "MatrixPressureQuantity" (id)
 );
-CREATE INDEX "ix_MatrixPressureQuantity_vector_value_vector_value" ON "MatrixPressureQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_MatrixPressureQuantity_vector_value_MatrixPressureQuantity_id" ON "MatrixPressureQuantity_vector_value" ("MatrixPressureQuantity_id");
+CREATE INDEX "ix_MatrixPressureQuantity_vector_value_vector_value" ON "MatrixPressureQuantity_vector_value" (vector_value);
 
 CREATE TABLE "MatrixCompressibilityQuantity_vector_value" (
 	"MatrixCompressibilityQuantity_id" INTEGER,
@@ -983,8 +983,8 @@ CREATE TABLE "Equilibration_simulation_software" (
 	PRIMARY KEY ("Equilibration_id", simulation_software),
 	FOREIGN KEY("Equilibration_id") REFERENCES "Equilibration" (id)
 );
-CREATE INDEX "ix_Equilibration_simulation_software_Equilibration_id" ON "Equilibration_simulation_software" ("Equilibration_id");
 CREATE INDEX "ix_Equilibration_simulation_software_simulation_software" ON "Equilibration_simulation_software" (simulation_software);
+CREATE INDEX "ix_Equilibration_simulation_software_Equilibration_id" ON "Equilibration_simulation_software" ("Equilibration_id");
 
 CREATE TABLE "Production_simulation_tool" (
 	"Production_id" INTEGER,
@@ -992,8 +992,8 @@ CREATE TABLE "Production_simulation_tool" (
 	PRIMARY KEY ("Production_id", simulation_tool),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_tool_simulation_tool" ON "Production_simulation_tool" (simulation_tool);
 CREATE INDEX "ix_Production_simulation_tool_Production_id" ON "Production_simulation_tool" ("Production_id");
+CREATE INDEX "ix_Production_simulation_tool_simulation_tool" ON "Production_simulation_tool" (simulation_tool);
 
 CREATE TABLE "Production_simulation_software" (
 	"Production_id" INTEGER,
@@ -1001,8 +1001,8 @@ CREATE TABLE "Production_simulation_software" (
 	PRIMARY KEY ("Production_id", simulation_software),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
 CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
+CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
 
 CREATE TABLE "Production_simulation_method" (
 	"Production_id" INTEGER,
@@ -1019,8 +1019,8 @@ CREATE TABLE "Analysis_analysis_tool" (
 	PRIMARY KEY ("Analysis_id", analysis_tool),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool" ("Analysis_id");
+CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 
 CREATE TABLE "Analysis_analysis_software" (
 	"Analysis_id" INTEGER,
@@ -1028,8 +1028,8 @@ CREATE TABLE "Analysis_analysis_software" (
 	PRIMARY KEY ("Analysis_id", analysis_software),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_software_Analysis_id" ON "Analysis_analysis_software" ("Analysis_id");
 CREATE INDEX "ix_Analysis_analysis_software_analysis_software" ON "Analysis_analysis_software" (analysis_software);
+CREATE INDEX "ix_Analysis_analysis_software_Analysis_id" ON "Analysis_analysis_software" ("Analysis_id");
 
 CREATE TABLE "Analysis_analysis_method" (
 	"Analysis_id" INTEGER,
@@ -1126,8 +1126,8 @@ CREATE TABLE "Minimisation_minimisation_algorithm" (
 	PRIMARY KEY ("Minimisation_id", minimisation_algorithm),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_minimisation_algorithm_Minimisation_id" ON "Minimisation_minimisation_algorithm" ("Minimisation_id");
 CREATE INDEX "ix_Minimisation_minimisation_algorithm_minimisation_algorithm" ON "Minimisation_minimisation_algorithm" (minimisation_algorithm);
+CREATE INDEX "ix_Minimisation_minimisation_algorithm_Minimisation_id" ON "Minimisation_minimisation_algorithm" ("Minimisation_id");
 
 CREATE TABLE "Minimisation_simulation_tool" (
 	"Minimisation_id" INTEGER,

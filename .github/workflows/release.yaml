@@ -143,6 +143,22 @@ jobs:
     needs: tag
     runs-on: ubuntu-24.04
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate artifacts and package
+        run: |
+          pip install .
+          python biosim_schema/utils/generate_artifacts.py derived
+          python biosim_schema/utils/generate_artifacts.py project
+          tar -czf biosim-schema-artifacts.tar.gz biosim_schema/schema/ project/
 
       - name: create release
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
@@ -150,3 +166,4 @@ jobs:
           name: v${{ github.event.inputs.version }}
           generate_release_notes: true
           tag_name: ${{ github.event.inputs.version }}
+          files: biosim-schema-artifacts.tar.gz

@@ -2,7 +2,7 @@
 id: https://CCPBioSim.ac.uk/biosim-schema/
 name: biosim-schema
 title: biosim-schema
-version: 0.0.2
+version: 0.0.3
 description: |-
   Schema for Biomolecular Simulation Data
 license: MIT

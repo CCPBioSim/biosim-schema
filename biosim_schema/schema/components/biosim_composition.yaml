@@ -59,7 +59,11 @@ slots:
       Concentration of salt in the solution.
     range: ConcentrationQuantity # class
     examples:
-        - value: 1
+      - value: 0.1
+    annotations:
+      example:
+        - value: 0.1
+          value_unit: M
 
   total_atom_count:
     description:
@@ -72,6 +76,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: total_atom_count
+      example:
+        - value: 1
 
   total_molecule_count:
     description:
@@ -84,6 +90,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: total_molecule_count
+      example:
+        - value: 1
 
   atom_count:
     description:
@@ -96,6 +104,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: atom_count
+      example:
+        - value: 1
 
   molecule_count:
     description:
@@ -108,6 +118,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: molecule_count
+      example:
+        - value: 1
 
   monomer_count:
     description:
@@ -120,6 +132,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: monomer_count
+      example:
+        - value: 1
 
   molecular_weight:
     description:
@@ -132,6 +146,9 @@ slots:
         - engine: toptrajparser
           key: molecular_weight
           unit: g/mol
+      example:
+        - value: 18.0
+          value_unit: g/mol
 
   molecule_charge:
     description:
@@ -145,6 +162,9 @@ slots:
         - engine: toptrajparser
           key: molecule_charge
           unit: e
+      example:
+        - value: -1.0
+          value_unit: e
 
   unique_molecule_count:
     description:
@@ -157,6 +177,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: unique_molecule_count
+      example:
+        - value: 1
 
   system_counts:
     description:
@@ -194,6 +216,8 @@ slots:
       database: "PDB"
       prefix: "pdb"
       base_uri: "https://identifiers.org/pdb:"
+      example:
+        - value: "2VB1"
 
   UNIPROT_ID:
     is_a: identifier
@@ -208,6 +232,8 @@ slots:
       database: "UNIPROT"
       prefix: "uniprot"
       base_uri: "https://identifiers.org/uniprot:"
+      example:
+        - value: "P0DP23"
 
   EMDB_ID:
     is_a: identifier
@@ -222,6 +248,8 @@ slots:
       database: "EMDB"
       prefix: "emdb"
       base_uri: "https://identifiers.org/emdb:"
+      example:
+        - value: "EMD-1001"
 
   alphafold_ID:
     is_a: identifier
@@ -235,6 +263,8 @@ slots:
     annotations:
       database: "AlphaFoldDB"
       base_uri: "https://alphafold.ebi.ac.uk/entry/"
+      example:
+        - value: "AF-P12345-F1"
 
   PubChem_CID:
     is_a: identifier
@@ -250,6 +280,8 @@ slots:
       database: "PubChem"
       prefix: "pubchem.compound"
       base_uri: "https://identifiers.org/pubchem.compound:"
+      example:
+        - value: "100101"
 
   InChIKey:
     is_a: identifier
@@ -268,6 +300,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: InChIKey
+      example:
+        - value: "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
 
   SMILES:
     description:
@@ -282,6 +316,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: SMILES
+      example:
+        - value: "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
 
   InChI:
     description:
@@ -296,6 +332,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: InChI
+      example:
+        - value: "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
 
   molecular_formula:
     description:
@@ -308,16 +346,28 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: molecular_formula
+      example:
+        - value: "C8H10N4O2"
 
   predicted_structure:
     description:
       Are the molecule positions derived from a prediction?
+    examples:
+      - value: "True"
     range: boolean
+    annotations:
+      example:
+        - value: "True"
 
   modified:
     description:
       Has the initial model been modified from the original?
+    examples:
+      - value: "True"
     range: boolean
+    annotations:
+      example:
+        - value: "True"
 
   protein_sequence:
     description:
@@ -331,6 +381,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: protein_sequence
+      example:
+        - value: "DRVYIHPF"
 
   nucleic_sequence:
     description:
@@ -344,3 +396,5 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: nucleic_sequence
+      example:
+        - value: "ATGCATCGATCGATCGATCG"

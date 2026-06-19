@@ -165,15 +165,15 @@ class WebFormFieldExtractor:
         if self._get_annotation(slot, "textarea"):
             result["type"] = "textarea"
 
+        example = self._get_annotation(slot, "example")
+        if example:
+            result["example"] = example[0]
+
         if "unit" in slot:
             symbol = slot["unit"]["symbol"]
             result["units"] = [symbol]
             result["label"] += f" ({symbol})"
 
-        if "pattern" in slot:
-            result["placeholder"] = (
-                slot["examples"][0]["value"] if "examples" in slot else None
-            )
         if "pattern" in slot:
             result["pattern"] = slot["pattern"]
         if "examples" in slot:
@@ -208,6 +208,9 @@ class WebFormFieldExtractor:
             ],
             "multiple": slot.get("multivalued", False),
         }
+        example = self._get_annotation(slot, "example")
+        if example:
+            result["example"] = example[0]
         return self._apply_ui_annotations(slot, result)
 
     def _render_class_node(self, slot, context):
@@ -266,12 +269,18 @@ class WebFormFieldExtractor:
                     "placeholder": vector_placeholder,
                 }
 
-        return {
+        result = {
             "type": "quantity",
             "label": self._get_label(slot),
             "hint": slot.get("description"),
             "fields": fields,
         }
+
+        example = self._get_annotation(slot, "example")
+        if example:
+            result["example"] = example[0]
+
+        return result
 
     # =========================================================
     # TYPE CHECKS

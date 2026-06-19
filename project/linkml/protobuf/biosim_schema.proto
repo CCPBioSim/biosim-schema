@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.11.0
-// version: 0.0.2
+// version: 0.0.3
 // Analysis stage of simulation workflow.
 message Analysis
  {
@@ -24,7 +24,7 @@ message Barostat
   pressureQuantity targetPressure = 0
   matrixPressureQuantity targetPressureVector = 0
   timeQuantity pressureTimeConstant = 0
-  integer pressureCouplingFrequency = 0
+  frequencyQuantity pressureCouplingFrequency = 0
   pressureCouplingType pressureCouplingType = 0
  }
 // A quantity representing bytes.

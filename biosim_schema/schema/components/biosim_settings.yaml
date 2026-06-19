@@ -120,11 +120,18 @@ slots:
         - engine: lammps
           key: timestep
           unit: fs
+      example:
+        - value: 2.0e-15
+          value_unit: s
 
   frame_step:
     range: TimeQuantity # class
     description:
       Time between saved snapshots/frames in a simulation, given as a float.
+    annotations:
+      example:
+        - value: 1.0e-11
+          value_unit: s
 
   number_of_steps:
     range: integer
@@ -136,50 +143,78 @@ slots:
           key: nstlim
         - engine: gromacs
           key: nsteps
+      example:
+        - value: 10000
 
   simulation_time:
     range: TimeQuantity # class
     description:
       Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.
+    annotations:
+      example:
+        - value: 1.0e-6
+          value_unit: s
 
   restraints:
     description:
       Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).
     range: boolean
+    annotations:
+      example:
+        - value: "True"
 
   integrator_algorithm:
     description:
       List of integrator algorithms used to integrate the simulation.
     range: IntegratorAlgorithm # enum
+    annotations:
+      example:
+        - value: "Velocity-Verlet"
 
   barostat_algorithm:
     description:
       List of barostat algorithms used in the simulation.
     range: BarostatAlgorithm # enum
+    annotations:
+      example:
+        - value: "Nose-Hoover"
 
   pressure_coupling_type:
     description:
       List of coupling types for adjusting box vectors.
     range: PressureCouplingType # enum
+    annotations:
+      example:
+        - value: "isotropic"
 
   pressure_coupling_frequency:
     description:
-      Step frequency to apply the barostat, given as an integer.
-    range: integer
+      Step frequency to apply the barostat.
+    range: FrequencyQuantity
     annotations:
       engine_mapping:
         - engine: gromacs
           key: nstpcouple
+          unit: 1/ps
+      example:
+        - value: 2.0
+          value_unit: 1/ps
 
   thermostat_algorithm:
     description:
       List of thermostat algorithms used in the simulation.
     range: ThermostatAlgorithm # enum
+    annotations:
+      example:
+        - value: Bussi
 
   ensemble_type:
     description:
       List of ensemble types used in the simulation.
     range: EnsembleType # enum
+    annotations:
+      example:
+        - value: NPT
 
   random_seed:
     description:
@@ -191,21 +226,29 @@ slots:
           key: ig
         - engine: gromacs
           key: ld-seed
+      example:
+        - value: 123456
 
   temperature_time_constant:
     description:
-      Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).
+      Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1).
     range: VectorTimeQuantity # class
     annotations:
       engine_mapping:
         - engine: gromacs
           key: tau-t
           unit: ps
+      example:
+        - value: [1.0e-13, 1.0e-13]
+          value_unit: s
 
   coupling_group:
     description:
       A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string
     range: string
+    annotations:
+      example:
+        - value: protein
 
   chain_length:
     description:
@@ -218,6 +261,8 @@ slots:
           key: nhc_chain_length
         - engine: gromacs
           key: nh-chain-length
+      example:
+        - value: 5
 
   friction_coefficient:
     description:
@@ -228,6 +273,9 @@ slots:
         - engine: gromacs
           key: bd-fric
           unit: a/ps
+      example:
+        - value: 0.1
+          value_unit: a/ps
 
   collision_frequency:
     description:
@@ -238,6 +286,9 @@ slots:
         - engine: amber
           key: gamma_ln
           unit: 1/ps
+      example:
+        - value: 0.1
+          value_unit: 1/ps
 
   target_temperature:
     description:
@@ -251,6 +302,9 @@ slots:
         - engine: lammps
           key: temp
           unit: K
+      example:
+        - value: 300
+          value_unit: K
 
   target_temperature_vector:
     description:
@@ -261,6 +315,9 @@ slots:
         - engine: gromacs
           key: ref-t
           unit: K
+      example:
+        - value: [300, 300]
+          value_unit: K
 
   # target_pressure_vector:
   #   description:
@@ -284,6 +341,9 @@ slots:
         - engine: gromacs
           key: ref-p
           unit: bar
+      example:
+        - value: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+          value_unit: bar
 
   target_pressure:
     description:
@@ -294,37 +354,48 @@ slots:
         - engine: amber
           key: pres0
           unit: bar
+      example:
+        - value: 1
+          value_unit: bar
 
   compressibility_vector:
     description:
       Compressibility of the simulated system, given as a float.
     range: MatrixCompressibilityQuantity # class
+    examples:
+      - value: 4.46e-5
     annotations:
       engine_mapping:
         - engine: gromacs
           key: compressibility
           unit: "1/bar"
-    examples:
-      - value: 44.6 1e10-6 1/bar
-      - value: 4.5e-5 1/bar
+      example:
+        - value: 4.46e-5
+          value_unit: 1/bar
 
   compressibility:
     description:
       Compressibility of the simulated system, given as a float.
     range: CompressibilityQuantity # class
+    examples:
+      - value: 44.6e-6
+      - value: 4.5e-5
     annotations:
       engine_mapping:
         - engine: amber
           key: comp
           unit: "1e10-6 1/bar"
-    examples:
-      - value: 44.6 1e10-6 1/bar
-      - value: 4.5e-5 1/bar
+      example:
+        - value: 44.6e-6
+          value_unit: 1/bar
 
   pressure_time_constant:
     description:
       Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.
     range: TimeQuantity # class
+    examples:
+      - value: 1.0
+      - value: 5.0
     annotations:
       engine_mapping:
         - engine: gromacs
@@ -333,19 +404,25 @@ slots:
         - engine: amber
           key: taup
           unit: ps
-    examples:
-      - value: 1.0 ps
-      - value: 5.0 ps
+      example:
+        - value: 5e-12
+          value_unit: s
 
   bond_length_constraints_algorithm:
     description:
       Constraints applied to bonds between two particles in the simulated system.
     range: BondLengthConstraintsAlgorithm # enum
+    annotations:
+      example:
+        - value: SHAKE
 
   electrostatic_cutoff_distance:
     description:
       Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.
     range: LengthQuantity
+    examples:
+      - value: 1.0
+      - value: 1.2
     annotations:
       engine_mapping:
         - engine: gromacs
@@ -354,27 +431,33 @@ slots:
         - engine: amber
           key: cut
           unit: Å
-    examples:
-      - value: 10 Å
-      - value: 1.2 nm
+      example:
+        - value: 1.2
+          value_unit: nm
 
   vdw_cutoff_distance:
     description:
       Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.
     range: LengthQuantity # class
+    examples:
+      - value: 1.0
+      - value: 1.2
     annotations:
       engine_mapping:
         - engine: gromacs
           key: rvdw
           unit: nm
-    examples:
-      - value: 10 Å
-      - value: 1.2 nm
+      example:
+        - value: 1.2
+          value_unit: nm
 
   long_range_interaction_method:
     description:
       Method used to describe long-range interactions between particles.
     range: LongRangeInteractionMethod # enum
+    annotations:
+      example:
+        - value: P3M
 
 enums:
 

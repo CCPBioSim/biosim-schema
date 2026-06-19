@@ -49,7 +49,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: TimeUnit
-        ifabsent: string(ns)
+        ifabsent: string(s)
 
   FrequencyQuantity:
     description:
@@ -265,7 +265,7 @@ classes:
         multivalued: true
       value_unit:
         range: TimeUnit
-        ifabsent: string(ns)
+        ifabsent: string(s)
 
   MatrixPressureQuantity:
     description: A quantity representing pressure vectors in 3D.

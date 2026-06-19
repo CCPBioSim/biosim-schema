@@ -1,5 +1,5 @@
 # metamodel_version: 1.11.0
-# version: 0.0.2
+# version: 0.0.3
 BASE <https://CCPBioSim.ac.uk/biosim-schema/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -106,7 +106,8 @@ linkml:Sparqlpath xsd:string
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_time_constant>
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/TimeQuantity> ? ;
-          <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_frequency> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_frequency>
+          @<https://CCPBioSim.ac.uk/biosim-schema/quantities/FrequencyQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_type> [
              <https://CCPBioSim.ac.uk/biosim-schema/settings/PressureCouplingType#isotropic>
              <https://CCPBioSim.ac.uk/biosim-schema/settings/PressureCouplingType#semi-isotropic>

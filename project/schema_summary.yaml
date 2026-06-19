@@ -3,6 +3,8 @@ composition:
     molecule_ID:
       fields:
         InChI:
+          example:
+            value: InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3
           hint: The International Chemical Identifier (InChi) is a textual identifier
             for chemical substances, designed to provide a standard way to encode
             molecular information
@@ -10,6 +12,8 @@ composition:
           placeholder: InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3
           typehint: string
         InChIKey:
+          example:
+            value: RYYVLZVUVIJVGH-UHFFFAOYSA-N
           hint: The condensed, 27 character InChIKey, which is a hashed version of
             the full InChI (using the SHA-256 algorithm), designed to allow for easy
             web searches of chemical compounds.
@@ -17,17 +21,23 @@ composition:
           placeholder: RYYVLZVUVIJVGH-UHFFFAOYSA-N
           typehint: string
         PDB_ID:
+          example:
+            value: 2VB1
           hint: Protein Data Bank identifier
           label: PDB ID
           placeholder: 2VB1
           typehint: string
         PubChem_CID:
+          example:
+            value: '100101'
           hint: PubChem CID of chemical molecules and their activities against biological
             assays.
           label: PubChem CID
           placeholder: '100101'
           typehint: string
         SMILES:
+          example:
+            value: CN1C=NC2=C1C(=O)N(C(=O)N2C)C
           hint: Simplified Molecular Input Line Entry System (SMILES) ASCII-based
             line notation used to describe chemical structures. It represents molecular
             graphs with atoms and bonds, allowing software to convert these short
@@ -36,60 +46,88 @@ composition:
           placeholder: CN1C=NC2=C1C(=O)N(C(=O)N2C)C
           typehint: string
         UNIPROT_ID:
+          example:
+            value: P0DP23
           hint: UniProt accession ID
           label: UNIPROT ID
           placeholder: P0DP23
           typehint: string
         alphafold_ID:
+          example:
+            value: AF-P12345-F1
           hint: AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)
           label: AlphaFold ID
           placeholder: AF-P12345-F1
           typehint: string
         atom_count:
+          example:
+            value: 1
           hint: Number of atoms in a molecule.
           label: Atom Count
           placeholder: '1'
           typehint: integer
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
         molecular_formula:
+          example:
+            value: C8H10N4O2
           hint: The molecular formula of a molecule\
           label: Molecular Formula
           placeholder: C8H10N4O2
           typehint: string
         molecular_weight:
           default_unit: g/mol
+          example:
+            value: 18.0
+            value_unit: g/mol
           hint: The molecular weight of a molecule.
           label: Molecular Weight
           typehint: float
         molecule_charge:
           default_unit: e
+          example:
+            value: -1.0
+            value_unit: e
           hint: Electrostatic charge of a molecule.
           label: Molecule Charge
           typehint: float
         molecule_count:
+          example:
+            value: 1
           hint: Number of instances of a given molecule, defined as bonded atoms or
             beads.
           label: Molecule Count
           placeholder: '1'
           typehint: integer
         monomer_count:
+          example:
+            value: 1
           hint: Number of monomeric units in a polymer(e.g. protein or nucleic acid).
           label: Monomer Count
           placeholder: '1'
           typehint: integer
         nucleic_sequence:
+          example:
+            value: ATGCATCGATCGATCGATCG
           hint: One letter sequence for nucleic acid nucleotides.
           label: Nucleic Sequence
           placeholder: ATGCATCGATCGATCGATCG
           typehint: string
         predicted_structure:
+          example:
+            value: 'True'
           hint: Are the molecule positions derived from a prediction?
           label: Predicted Structure?
+          placeholder: 'True'
           typehint: boolean
         protein_sequence:
+          example:
+            value: DRVYIHPF
           hint: One letter sequence for protein amino acids.
           label: Protein Sequence
           placeholder: DRVYIHPF
@@ -100,20 +138,29 @@ composition:
       fields:
         salt_concentration:
           default_unit: M
+          example:
+            value: 0.1
+            value_unit: M
           hint: Concentration of salt in the solution.
           label: Salt Concentration
           typehint: float
         total_atom_count:
+          example:
+            value: 1
           hint: Total number of atoms in the simulation.
           label: Total Atom Count
           placeholder: '1'
           typehint: integer
         total_molecule_count:
+          example:
+            value: 1
           hint: Total number of simulated molecules, defined as bonded atoms or beads.
           label: Total Molecule Count
           placeholder: '1'
           typehint: integer
         unique_molecule_count:
+          example:
+            value: 1
           hint: Number of unique simulated molecules, defined as bonded atoms or beads.
           label: Unique Molecule Count
           placeholder: '1'
@@ -127,47 +174,70 @@ compute:
     hardware:
       fields:
         CPU_architecture:
+          example:
+            value: x86
           hint: CPU architecture used by the compute nodes.
           label: CPU Architecture
           typehint: string
         CPU_vendor:
+          example:
+            value: AMD
           hint: Vendor of the CPU used in the compute nodes.
           label: CPU Vendor
           typehint: string
         GPU_vendor:
+          example:
+            value: AMD
           hint: Vendor of the GPU used in the compute nodes.
           label: GPU Vendor
           typehint: string
         GPUs_per_node:
+          example:
+            value: 1
           hint: Number of GPUs present in each compute node.
           label: GPUs Per Node
           typehint: integer
         cores_per_socket:
+          example:
+            value: 2
           hint: Number of physical CPU cores in each socket.
           label: Cores Per Socket
           typehint: integer
         execution_platform:
+          example:
+            value: HPC Cluster
           hint: Type of platform used to run the simulation.
           label: Execution Platform
           typehint: string
         memory_per_node:
           default_unit: GB
+          example:
+            value: 2
+            value_unit: GB
           hint: Amount of memory installed per compute node.
           label: Memory Per Node
           typehint: float
         node_count:
+          example:
+            value: '2'
           hint: Number of compute nodes used for the run.
           label: Node Count
           typehint: integer
         node_type:
+          example:
+            value: CPU Only
           hint: Type of compute node used in the system.
           label: Node Type
           typehint: string
         sockets_per_node:
+          example:
+            value: 2
           hint: Number of physical CPU sockets in each compute node.
           label: Sockets Per Node
           typehint: integer
         threads_per_core:
+          example:
+            value: 2
           hint: Number of hardware threads per physical core.
           label: Threads Per Core
           typehint: integer
@@ -177,11 +247,17 @@ compute:
       fields:
         energy_consumption:
           default_unit: kWh
+          example:
+            value: 0.119
+            value_unit: kWh
           hint: Total energy consumed by the simulation run.
           label: Energy Consumption
           typehint: float
         wall_time:
-          default_unit: ns
+          default_unit: s
+          example:
+            value: 3600
+            value_unit: s
           hint: Total elapsed runtime of the simulation.
           label: Wall Time
           typehint: float
@@ -190,19 +266,27 @@ compute:
     software:
       fields:
         MPI_library:
+          example:
+            value: OpenMPI
           hint: MPI implementation used for message passing.
           label: MPI Library
           typehint: string
         container_runtime:
+          example:
+            value: Docker
           hint: Container runtime used to package and run software.
           label: Container Runtime
           typehint: string
         operating_system:
+          example:
+            value: Linux
           hint: List of operating systems installed on the hardware used to perform
             the simulation.
           label: Operating System
           typehint: string
         scheduler:
+          example:
+            value: SLURM
           hint: Job scheduler used for simulation execution.
           label: Scheduler
           typehint: string
@@ -216,36 +300,60 @@ observables:
       fields:
         average_enthalpy:
           default_unit: kJ/mol
+          example:
+            value: -3.2
+            value_unit: kJ/mol
           hint: Average enthalpy sampled from the simulation, given as a float.
           label: Average Enthalpy
           typehint: float
         average_kinetic_energy:
           default_unit: kJ/mol
+          example:
+            value: -2.4
+            value_unit: kJ/mol
           hint: Average kinetic energy sampled from the simulation, given as a float.
           label: Average Kinetic Energy
           typehint: float
         average_potential_energy:
           default_unit: kJ/mol
+          example:
+            value: -5.6
+            value_unit: kJ/mol
           hint: Average potential energy sampled from the simulation, given as a float.
           label: Average Potential Energy
           typehint: float
         average_pressure:
           default_unit: bar
+          example:
+            value: 1
+            value_unit: bar
           hint: Average pressure sampled from the simulation, given as a float.
           label: Average Pressure
           typehint: float
         average_temperature:
           default_unit: K
+          example:
+            value: 300
+            value_unit: K
           hint: Average temperature sampled from the simulation, given as a float.
           label: Average Temperature
           typehint: float
         average_volume:
           default_unit: nm³
+          example:
+            value: 100
+            value_unit: nm³
           hint: Average volume sampled from the simulation, given as a float.
           label: Average Volume
           typehint: float
         average_volume_vector:
           default_unit: nm
+          example:
+            value:
+            - 1
+            - 1
+            - 1
+            value_unit: nm
           hint: Average volume sampled from the simulation, given as a list, (e.g.
             10, 10, 10).
           label: Average Volume Vector
@@ -259,58 +367,83 @@ potentials:
     carbohydrate_potential:
       fields:
         carbohydrate_potential_name:
+          example:
+            value: GLYCAM06
           hint: Force fields used to parametrize carbohydrates in a simulation.
           label: Carbohydrate Potential Name
           typehint: string
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
       hint: Force field for carbohydrates.
       label: Carbohydrate Potential
     general_potential:
       fields:
         general_potential_name:
+          example:
+            value: GAFF2
           hint: Force fields used to parametrize molecules in a simulation.
           label: General Potential Name
           typehint: string
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
       hint: Force field for molecules (in general).
       label: General Potential
     lipid_potential:
       fields:
         lipid_potential_name:
+          example:
+            value: LIPID21
           hint: Force fields used to parametrize lipids in a simulation.
           label: Lipid Potential Name
           typehint: string
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
       hint: Force field for lipids.
       label: Lipid Potential
     machine_learned_potential:
       fields:
         machine_learned_potential_name:
+          example:
+            value: ANI
           hint: Machine learned potentials.
           label: Machine Learned Potential Name
           typehint: string
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
       hint: ML force field for molecules (in general).
       label: Machine Learned Potential
     nucleic_potential:
       fields:
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
         nucleic_potential_name:
+          example:
+            value: ff99OL3
           hint: Force fields used to parametrize nucleic acids in a simulation.
           label: Nucleic Potential Name
           typehint: string
@@ -319,10 +452,15 @@ potentials:
     polymer_potential:
       fields:
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
         polymer_potential_name:
+          example:
+            value: LignAmb25
           hint: Force fields used to parametrize polymers in a simulation.
           label: Polymer Potential Name
           typehint: string
@@ -331,10 +469,15 @@ potentials:
     protein_potential:
       fields:
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
         protein_potential_name:
+          example:
+            value: ff19SB
           hint: Force fields used to parametrize amino acids in proteins in a simulation.
           label: Protein Potential Name
           typehint: string
@@ -343,10 +486,15 @@ potentials:
     water_potential:
       fields:
         modified:
+          example:
+            value: 'True'
           hint: Has the initial model been modified from the original?
           label: Modified?
+          placeholder: 'True'
           typehint: boolean
         water_potential_name:
+          example:
+            value: TIP3P
           hint: Force fields used to parametrize water molecules in a simulation.
           label: Water Potential Name
           typehint: string
@@ -359,41 +507,73 @@ settings:
     barostat:
       fields:
         barostat_algorithm:
+          example:
+            value: Nose-Hoover
           hint: Barostat algorithm used to set the pressure in a simulation.
           label: Barostat Algorithm
           typehint: string
         compressibility:
           default_unit: 1/bar
+          example:
+            value: 4.46e-05
+            value_unit: 1/bar
           hint: Compressibility of the simulated system, given as a float.
           label: Compressibility
           typehint: float
         compressibility_vector:
           default_unit: 1/bar
+          example:
+            value: 4.46e-05
+            value_unit: 1/bar
           hint: Compressibility of the simulated system, given as a float.
           label: Compressibility Vector
           typehint: list
         pressure_coupling_frequency:
-          hint: Step frequency to apply the barostat, given as an integer.
+          default_unit: 1/ps
+          example:
+            value: 2.0
+            value_unit: 1/ps
+          hint: Step frequency to apply the barostat.
           label: Pressure Coupling Frequency
-          typehint: integer
+          typehint: float
         pressure_coupling_type:
+          example:
+            value: isotropic
           hint: Coupling type for adjusting box vectors.
           label: Pressure Coupling Type
           typehint: string
         pressure_time_constant:
-          default_unit: ns
+          default_unit: s
+          example:
+            value: 5e-12
+            value_unit: s
           hint: Time constant/step (relaxation time of pressure) used for coupling
             the system pressure, given as a float.
           label: Pressure Time Constant
           typehint: float
         target_pressure:
           default_unit: bar
+          example:
+            value: 1
+            value_unit: bar
           hint: Target/reference pressure set to reach in the simulation, given as
             a float.
           label: Target Pressure
           typehint: float
         target_pressure_vector:
           default_unit: bar
+          example:
+            value:
+            - - 1
+              - 0
+              - 0
+            - - 0
+              - 1
+              - 0
+            - - 0
+              - 0
+              - 1
+            value_unit: bar
           hint: Target/reference pressure set to reach in the simulation, given as
             a 3x3 array.
           label: Target Pressure Vector
@@ -403,10 +583,14 @@ settings:
     ensemble:
       fields:
         ensemble_type:
+          example:
+            value: NPT
           hint: Ensemble used in a simulation
           label: Ensemble Type
           typehint: string
         random_seed:
+          example:
+            value: 123456
           hint: Random number used to set (a) distribution of velocities across particles
             at the start of a simulation and (b) pseudo-random values for dynamics/couplings,
             given as an integer.
@@ -417,28 +601,41 @@ settings:
     integrator:
       fields:
         frame_step:
-          default_unit: ns
+          default_unit: s
+          example:
+            value: 1.0e-11
+            value_unit: s
           hint: Time between saved snapshots/frames in a simulation, given as a float.
           label: Frame Step
           typehint: float
         integrator_algorithm:
+          example:
+            value: Velocity-Verlet
           hint: Algorithm used to integrate the simulation.
           label: Integrator Algorithm
           typehint: string
         number_of_steps:
+          example:
+            value: 10000
           hint: Number of integration steps performed in the simulation, given as
             an integer.
           label: Number Of Steps
           typehint: integer
         simulation_time:
-          default_unit: ns
+          default_unit: s
+          example:
+            value: 1.0e-06
+            value_unit: s
           hint: Total time molecular dynamics have been sampled in a simulation trajectory,
             often given by the number of integration steps multiplied by the simulation
             time step used by the integrator, given as a float.
           label: Simulation Time
           typehint: float
         time_step:
-          default_unit: ns
+          default_unit: s
+          example:
+            value: 2.0e-15
+            value_unit: s
           hint: Time between integration steps in a simulation, given as a float.
           label: Integration Step
           typehint: float
@@ -447,6 +644,8 @@ settings:
     interactions:
       fields:
         bond_length_constraints_algorithm:
+          example:
+            value: SHAKE
           hint: Fix specific molecular degrees of freedom—typically fast bond vibrations
             involving hydrogen atoms. By eliminating these high-frequency motions,
             constraints allow for larger integration time steps (e.g., 2 fs instead
@@ -456,22 +655,32 @@ settings:
           typehint: string
         electrostatic_cutoff_distance:
           default_unit: nm
+          example:
+            value: 1.2
+            value_unit: nm
           hint: Distance in Angstrom at which a electrostatic interaction is turned
             off and a long-range non-bonded method is turned on, given as a float.
           label: Electrostatic Cutoff Distance
           typehint: float
         long_range_interaction_method:
+          example:
+            value: P3M
           hint: Method used to implement long-range interactions of point charges
             in the simulation.
           label: Long Range Interaction Method
           typehint: string
         restraints:
+          example:
+            value: 'True'
           hint: Are any positional restraints applied to molecule dynamics? (Restraints
             usually use harmonic potentials to keep a value near a target).
           label: Restraints?
           typehint: boolean
         vdw_cutoff_distance:
           default_unit: nm
+          example:
+            value: 1.2
+            value_unit: nm
           hint: Distance in Angstrom at which a Van der Waals interaction is turned
             off and a long-range non-bonded method is turned on.
           label: Vdw Cutoff Distance
@@ -481,6 +690,8 @@ settings:
     thermostat:
       fields:
         chain_length:
+          example:
+            value: 5
           hint: Usually required in the Nosé-Hoover thermostat, the chain length (e.g.,
             nh-chain-length in GROMACS) is used to maintain canonical distribution,
             given as an integer.
@@ -488,10 +699,15 @@ settings:
           typehint: integer
         collision_frequency:
           default_unit: 1/ps
+          example:
+            value: 0.1
+            value_unit: 1/ps
           hint: Collision frequency for the integrator, given as a float.
           label: Collision Frequency
           typehint: float
         coupling_group:
+          example:
+            value: protein
           hint: A subset of atoms for which temperature is controlled, often needed
             for simulating complex systems (e.g., protein in water), used in gromacs,
             given as a string
@@ -499,6 +715,9 @@ settings:
           typehint: string
         friction_coefficient:
           default_unit: a/ps
+          example:
+            value: 0.1
+            value_unit: a/ps
           hint: Usually used in the Langevin thermostat, the friction coefficient
             determines the strength of coupling between a system and a heat bath,
             given as a float.
@@ -506,23 +725,38 @@ settings:
           typehint: float
         target_temperature:
           default_unit: K
+          example:
+            value: 300
+            value_unit: K
           hint: Target/reference temperature set to reach in the simulation, given
             as a float.
           label: Target Temperature
           typehint: float
         target_temperature_vector:
           default_unit: K
+          example:
+            value:
+            - 300
+            - 300
+            value_unit: K
           hint: Target/reference temperature set to reach in the simulation, given
             as a list (e.g. 300, 300).
           label: Target Temperature Vector
           typehint: list
         temperature_time_constant:
-          default_unit: ns
+          default_unit: s
+          example:
+            value:
+            - 1.0e-13
+            - 1.0e-13
+            value_unit: s
           hint: Time constant for coupling the system temperature in seconds units,
-            given as a list (e.g. 300, 300).
+            given as a list (e.g. 0.1, 0.1).
           label: Temperature Time Constant
           typehint: list
         thermostat_algorithm:
+          example:
+            value: Bussi
           hint: Thermostat algorithm used to set the temperature in a simulation.
           label: Thermostat Algorithm
           typehint: string
@@ -535,14 +769,20 @@ stages:
     analysis:
       fields:
         analysis_method:
+          example:
+            value: RMSD
           hint: Methods used to analyse simulation outputs.
           label: Analysis Method
           typehint: string
         analysis_software:
+          example:
+            value: Visual Molecular Dynamics (VMD)
           hint: Software used to analyse simulation outputs.
           label: Analysis Software
           typehint: string
         analysis_tool:
+          example:
+            value: CPPTRAJ
           hint: Tools used to analyse simulation outputs.
           label: Analysis Tool
           typehint: string
@@ -551,11 +791,15 @@ stages:
     equilibration:
       fields:
         simulation_software:
+          example:
+            value: Amber
           hint: Simulation software used to perform molecular dynamics simulations
             and related functions.
           label: Simulation Software
           typehint: string
         simulation_tool:
+          example:
+            value: sander
           hint: Tools/utility used within simulation engines to perform simulations.
           label: Simulation Tool
           typehint: string
@@ -565,33 +809,47 @@ stages:
       fields:
         energy_tolerance:
           default_unit: kJ/mol/nm
+          example:
+            value: 1000
+            value_unit: kJ/mol/nm
           hint: Tolerance energy for when minimization stops, this is when the maximum
             force on any atom is less than this value (default is often 1000 kJ/mol/nm
             or 10−4kcal), given as a float.
           label: Energy Tolerance
           typehint: float
         minimisation_algorithm:
+          example:
+            value: Steepest Descent
           hint: Algorithm used to minimise particle interactions.
           label: Minimisation Algorithm
           typehint: string
         minimisation_distance_step_size:
           default_unit: nm
+          example:
+            value: 0.01
+            value_unit: nm
           hint: The distance the algorithm moves in a single step, controls how large
             a step the optimizer takes during the initial phase of minimizing the
             potential energy of a structure, given as a float.
           label: Minimisation Distance Step Size
           typehint: float
         number_of_minimisation_steps:
+          example:
+            value: 5000
           hint: Number of integration steps performed during minimisation of the system,
             given as an integer.
           label: Number Of Minimisation Steps
           typehint: integer
         simulation_software:
+          example:
+            value: Amber
           hint: Simulation software used to perform molecular dynamics simulations
             and related functions.
           label: Simulation Software
           typehint: string
         simulation_tool:
+          example:
+            value: sander
           hint: Tools/utility used within simulation engines to perform simulations.
           label: Simulation Tool
           typehint: string
@@ -600,19 +858,27 @@ stages:
     production:
       fields:
         simulation_method:
+          example:
+            value: Steered Molecular Dynamics (SMD)
           hint: Options for simulation methods.
           label: Simulation Method
           typehint: string
         simulation_software:
+          example:
+            value: Amber
           hint: Simulation software used to perform molecular dynamics simulations
             and related functions.
           label: Simulation Software
           typehint: string
         simulation_software_version:
+          example:
+            value: '2014'
           hint: Version of software used to perform simulation step.
           label: Simulation Software Version
           typehint: string
         simulation_tool:
+          example:
+            value: sander
           hint: Tools/utility used within simulation engines to perform simulations.
           label: Simulation Tool
           typehint: string
@@ -621,6 +887,8 @@ stages:
     setup:
       fields:
         setup_tool:
+          example:
+            value: pdb4amber
           hint: Tool used to setup a system for simulation.
           label: Setup Tool
           typehint: string
@@ -633,10 +901,14 @@ topology:
     connectivity:
       fields:
         bonds:
+          example:
+            value: 'True'
           hint: Are bond parameters present in the topology?
           label: Bonds?
           typehint: boolean
         dihedrals:
+          example:
+            value: 'True'
           hint: Are dihedral parameters present in the topology?
           label: Dihedrals?
           typehint: boolean
@@ -645,23 +917,34 @@ topology:
     particles:
       fields:
         coarse_grained:
+          example:
+            value: 'True'
           hint: Are atoms coarse-grained?
           label: Coarse Grained?
           typehint: boolean
         fixed_charges:
+          example:
+            value: 'True'
           hint: Are fixed charges on atoms included in the topology?
           label: Fixed Charges?
           typehint: boolean
         masses:
+          example:
+            value: 'True'
           hint: Are masses present in the topology?
           label: Masses?
           typehint: boolean
         resolution:
+          example:
+            value: All Atom
           hint: Resolution of simulated molecules.
           label: Resolution
           typehint: string
         system_charge:
           default_unit: e
+          example:
+            value: 0.0
+            value_unit: e
           hint: Total electrostatic charge of the system given by the elementary charge
             (e).
           label: System Charge
@@ -676,19 +959,35 @@ trajectory:
       fields:
         box_angles:
           default_unit: degree
+          example:
+            value:
+            - 90
+            - 90
+            - 90
+            value_unit: degree
           hint: The angles of the box used to simulate the system.
           label: Box Angles
           typehint: list
         box_dimensions:
           default_unit: nm
+          example:
+            value:
+            - 10
+            - 10
+            - 10
+            value_unit: nm
           hint: The lengths/dimensions of the box used to simulate the system.
           label: Box Dimensions
           typehint: list
         box_type:
+          example:
+            value: Cubic
           hint: Types of box used to simulate the system.
           label: Box Type
           typehint: string
         periodic_boundary_conditions:
+          example:
+            value: xyz
           hint: What directions in a simulation cell periodic boundaries are set if
             they are turned on.
           label: Periodic Boundary Conditions
@@ -698,35 +997,51 @@ trajectory:
     trajectory_output:
       fields:
         energies:
+          example:
+            value: 'True'
           hint: Are per-frame energies included in the trajectory?
           label: Energies?
           typehint: boolean
         forces:
+          example:
+            value: 'True'
           hint: Are per-frame forces included in the trajectory?
           label: Forces?
           typehint: boolean
         frame_count:
+          example:
+            value: 10000
           hint: Total number of snapshots that make up a trajectory.
           label: Frame Count
           placeholder: '1'
           typehint: integer
         polarizable_charges:
+          example:
+            value: 'True'
           hint: Are per-frame polarizable charges included in the trajectory?
           label: Polarizable Charges?
           typehint: boolean
         positions:
+          example:
+            value: 'True'
           hint: Are per-frame positions included in the trajectory?
           label: Positions?
           typehint: boolean
         replica:
+          example:
+            value: 'True'
           hint: Is this trajectory a replica of another provided trajectory?
           label: Replica?
           typehint: boolean
         velocities:
+          example:
+            value: 'True'
           hint: Are per-frame velocities included in the trajectory?
           label: Velocities?
           typehint: boolean
         water:
+          example:
+            value: 'True'
           hint: Are water molecules included in the trajectory?
           label: Water?
           typehint: boolean

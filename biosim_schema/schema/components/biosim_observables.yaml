@@ -40,6 +40,9 @@ slots:
         - engine: amber
           key: "TEMP(K)"
           unit: K
+      example:
+        - value: 300
+          value_unit: K
 
   average_pressure:
     description:
@@ -53,6 +56,9 @@ slots:
         - engine: amber
           key: PRESS
           unit: bar
+      example:
+        - value: 1
+          value_unit: bar
 
   average_volume:
     description:
@@ -63,6 +69,9 @@ slots:
         - engine: amber
           key: VOLUME
           unit: A^3
+      example:
+        - value: 100
+          value_unit: nm³
 
   average_volume_vector:
     description:
@@ -73,6 +82,9 @@ slots:
         - engine: gromacs
           key: ["Box-X", "Box-Y", "Box-Z"]
           unit: "nm"
+      example:
+        - value: [1,1,1]
+          value_unit: nm
 
   average_potential_energy:
     description:
@@ -86,6 +98,9 @@ slots:
         - engine: amber
           key: EPtot
           unit: kcal/mol
+      example:
+        - value: -5.6
+          value_unit: kJ/mol
 
   average_kinetic_energy:
     description:
@@ -99,6 +114,9 @@ slots:
         - engine: amber
           key: EKtot
           unit: kcal/mol
+      example:
+        - value: -2.4
+          value_unit: kJ/mol
 
   average_enthalpy:
     description:
@@ -112,3 +130,6 @@ slots:
         - engine: amber
           key: Etot
           unit: kcal/mol
+      example:
+        - value: -3.2
+          value_unit: kJ/mol

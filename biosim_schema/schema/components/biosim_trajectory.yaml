@@ -38,12 +38,12 @@ slots:
   simulation_box:
     description:
       Information about the simulation box.
-    range: SimulationBox
+    range: SimulationBox # class
 
   trajectory_output:
     description:
       Information included in trajectory files.
-    range: Trajectories
+    range: Trajectories # class
 
   frame_count:
     description:
@@ -56,11 +56,16 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: frame_count
+      example:
+        - value: 10000
 
   periodic_boundary_conditions:
     description:
       What directions in a simulation cell periodic boundaries are set if they are turned on.
-    range: PeriodicBoundaryConditions
+    range: PeriodicBoundaryConditions # class
+    annotations:
+      example:
+        - value: xyz
 
   box_dimensions:
     range: VectorLengthQuantity
@@ -73,6 +78,9 @@ slots:
         - engine: toptrajparser
           key: box_dimensions
           unit: Ang
+      example:
+        - value: [10, 10, 10]
+          value_unit: nm
 
   box_angles:
     range: VectorAngleQuantity
@@ -85,11 +93,17 @@ slots:
         - engine: toptrajparser
           key: box_angles
           unit: degree
+      example:
+        - value: [90, 90, 90]
+          value_unit: degree
 
   box_type:
     description:
       The type of box used to simuluate the system.
     range: BoxType # enum
+    annotations:
+      example:
+        - value: Cubic
 
   positions:
     description:
@@ -99,6 +113,9 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: positions
+      example:
+        - value: "True"
+
   forces:
     description:
       Are per-frame forces included in the trajectory?
@@ -107,6 +124,9 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: forces
+      example:
+        - value: "True"
+
   velocities:
     description:
       Are per-frame velocities included in the trajectory?
@@ -115,14 +135,25 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: velocities
+      example:
+        - value: "True"
+
   energies:
     description:
       Are per-frame energies included in the trajectory?
     range: boolean
+    annotations:
+      example:
+        - value: "True"
+
   polarizable_charges:
     description:
       Are per-frame polarizable charges included in the trajectory?
     range: boolean
+    annotations:
+      example:
+        - value: "True"
+
   water:
     description:
       Are water molecules included in the trajectory?
@@ -131,11 +162,16 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: water
+      example:
+        - value: "True"
 
   replica:
     description:
       Is this trajectory a replica of another provided trajectory?
     range: boolean
+    annotations:
+      example:
+        - value: "True"
 
 enums:
 

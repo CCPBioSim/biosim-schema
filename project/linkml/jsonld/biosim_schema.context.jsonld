@@ -522,7 +522,7 @@
          "@id": "composition/predicted_structure"
       },
       "pressure_coupling_frequency": {
-         "@type": "xsd:integer",
+         "@type": "@id",
          "@id": "settings/pressure_coupling_frequency"
       },
       "pressure_coupling_type": {

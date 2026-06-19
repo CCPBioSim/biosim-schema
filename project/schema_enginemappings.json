@@ -170,7 +170,8 @@
       "SimulationMetadata.settings.barostat.pressure_coupling_frequency": [
         {
           "key": "nstpcouple",
-          "value": null
+          "value": null,
+          "unit": "1/ps"
         }
       ],
       "SimulationMetadata.settings.barostat.pressure_coupling_type": {

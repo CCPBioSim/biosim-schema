@@ -18,7 +18,7 @@ from pathlib import Path
 
 import yaml
 
-METADATA_KEYS = ("label", "hint", "typehint", "placeholder", "units")
+METADATA_KEYS = ("label", "hint", "typehint", "placeholder", "units", "example")
 """tuple[str, ...]: Field metadata keys copied from each webform node into the summary."""
 
 
@@ -125,6 +125,7 @@ def _flatten_rows(node, path):
         "placeholder_text": node.get("placeholder", ""),
         "default_unit": node.get("default_unit", ""),
         "data_type": node.get("typehint", ""),
+        "example": node.get("example", ""),
     }
     return [row]
 
@@ -153,6 +154,7 @@ def write_summary_csv(summary, output_path):
         "placeholder_text",
         "default_unit",
         "data_type",
+        "example",
     ]
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
@@ -202,6 +204,11 @@ def main():
         yaml.dump(
             summary, f, default_flow_style=False, allow_unicode=True, sort_keys=True
         )
+
+    # output as json
+    json_path = yaml_path.with_suffix(".json")
+    with open(json_path, "w") as fp:
+        json.dump(summary, fp)
 
     # flatten and output as csv
     csv_path = yaml_path.with_suffix(".csv")

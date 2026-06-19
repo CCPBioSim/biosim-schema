@@ -87,6 +87,9 @@ slots:
     range: WaterPotentialName # enum
     description:
       Force field used to describe water molecules.
+    annotations:
+      example:
+        - value: TIP3P
 
   protein_potential:
     range: ProteinPotential # class
@@ -97,6 +100,9 @@ slots:
     range: ProteinPotentialName # enum
     description:
       Force field used to describe proteins.
+    annotations:
+      example:
+        - value: ff19SB
 
   lipid_potential:
     range: LipidPotential # class
@@ -107,6 +113,9 @@ slots:
     range: LipidPotentialName # enum
     description:
       Force field used to describe lipids.
+    annotations:
+      example:
+        - value: LIPID21
 
   nucleic_potential:
     range: NucleicPotential # class
@@ -117,6 +126,9 @@ slots:
     range: NucleicPotentialName # enum
     description:
       Force field used to describe nucleic acids.
+    annotations:
+      example:
+        - value: ff99OL3
 
   carbohydrate_potential:
     range: CarbohydratePotential # class
@@ -127,6 +139,9 @@ slots:
     range: CarbohydratePotentialName # enum
     description:
       Force field used to describe carbohydrate.
+    annotations:
+      example:
+        - value: GLYCAM06
 
   polymer_potential:
     range: PolymerPotential # class
@@ -137,6 +152,9 @@ slots:
     range: PolymerPotentialName # enum
     description:
       Force field used to describe polymers (excluding proteins and nucleic acids).
+    annotations:
+      example:
+        - value: LignAmb25
 
   general_potential:
     range: GeneralPotential # class
@@ -147,6 +165,9 @@ slots:
     range: GeneralPotentialName # enum
     description:
       Force field used to describe molecules.
+    annotations:
+      example:
+        - value: GAFF2
 
   machine_learned_potential:
     range: MachineLearnedPotential # class
@@ -157,6 +178,9 @@ slots:
     range: MachineLearnedPotentialName # enum
     description:
       ML force field used to describe molecules.
+    annotations:
+      example:
+        - value: ANI
 
 enums:
 

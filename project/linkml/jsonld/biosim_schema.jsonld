@@ -6,7 +6,7 @@
     "https://CCPBioSim.github.io/biosim-schema"
   ],
   "id": "https://CCPBioSim.ac.uk/biosim-schema/",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "imports": [
     "linkml:types",
     "./components/biosim_quantities",
@@ -3249,6 +3249,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 5000
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Number of integration steps performed during minimisation of the system, given as an integer.",
@@ -3309,6 +3318,17 @@
     {
       "name": "setup_tool",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/setup_tool",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "pdb4amber"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Name of the tool used to setup simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/setup_tool",
@@ -3335,6 +3355,16 @@
               "engine": "amber",
               "key": "drms",
               "unit": "10\u22124 kcal/mol/\u00c5"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1000,
+              "value_unit": "kJ/mol/nm"
             }
           ],
           "@type": "Annotation"
@@ -3372,6 +3402,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 0.01,
+              "value_unit": "nm"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.",
@@ -3390,6 +3430,17 @@
     {
       "name": "minimisation_algorithm",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_algorithm",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Steepest Descent"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Name of the method used to minimise the molecular system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/minimisation_algorithm",
@@ -3404,6 +3455,17 @@
     {
       "name": "simulation_software",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Amber"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Name of software used to perform simulation step.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_software",
@@ -3430,6 +3492,15 @@
           "tag": "ui_readonly",
           "value": true,
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "2014"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Version of software used to perform simulation step.",
@@ -3445,6 +3516,17 @@
     {
       "name": "simulation_method",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_method",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Steered Molecular Dynamics (SMD)"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Method used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_method",
@@ -3459,6 +3541,17 @@
     {
       "name": "simulation_tool",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "sander"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Tool used to perform simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/simulation_tool",
@@ -3475,6 +3568,17 @@
     {
       "name": "analysis_software",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_software",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Visual Molecular Dynamics (VMD)"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Name of software used to analyse simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_software",
@@ -3489,6 +3593,17 @@
     {
       "name": "analysis_method",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_method",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "RMSD"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Name of the method used to analyse simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_method",
@@ -3503,6 +3618,17 @@
     {
       "name": "analysis_tool",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_tool",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "CPPTRAJ"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Name of the tool used to analyse simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/stages",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/stages/analysis_tool",
@@ -3613,6 +3739,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2e-15,
+              "value_unit": "s"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Time between integration steps in a simulation, given as a float.",
@@ -3635,6 +3771,18 @@
     {
       "name": "frame_step",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/frame_step",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1e-11,
+              "value_unit": "s"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Time between saved snapshots/frames in a simulation, given as a float.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/frame_step",
@@ -3664,6 +3812,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 10000
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Number of integration steps performed in the simulation, given as an integer.",
@@ -3679,6 +3836,18 @@
     {
       "name": "simulation_time",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/simulation_time",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1e-06,
+              "value_unit": "s"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/simulation_time",
@@ -3694,6 +3863,17 @@
     {
       "name": "restraints",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/restraints",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/restraints",
@@ -3707,6 +3887,17 @@
     {
       "name": "integrator_algorithm",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/integrator_algorithm",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Velocity-Verlet"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "List of integrator algorithms used to integrate the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/integrator_algorithm",
@@ -3720,6 +3911,17 @@
     {
       "name": "barostat_algorithm",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/barostat_algorithm",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Nose-Hoover"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "List of barostat algorithms used in the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/barostat_algorithm",
@@ -3733,6 +3935,17 @@
     {
       "name": "pressure_coupling_type",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_type",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "isotropic"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "List of coupling types for adjusting box vectors.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_type",
@@ -3752,25 +3965,49 @@
           "value": [
             {
               "engine": "gromacs",
-              "key": "nstpcouple"
+              "key": "nstpcouple",
+              "unit": "1/ps"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2.0,
+              "value_unit": "1/ps"
             }
           ],
           "@type": "Annotation"
         }
       ],
-      "description": "Step frequency to apply the barostat, given as an integer.",
+      "description": "Step frequency to apply the barostat.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/pressure_coupling_frequency",
       "owner": "Barostat",
       "domain_of": [
         "Barostat"
       ],
-      "range": "integer",
+      "range": "FrequencyQuantity",
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "thermostat_algorithm",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat_algorithm",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Bussi"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "List of thermostat algorithms used in the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/thermostat_algorithm",
@@ -3784,6 +4021,17 @@
     {
       "name": "ensemble_type",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble_type",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "NPT"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "List of ensemble types used in the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/ensemble_type",
@@ -3808,6 +4056,15 @@
             {
               "engine": "gromacs",
               "key": "ld-seed"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 123456
             }
           ],
           "@type": "Annotation"
@@ -3837,9 +4094,22 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": [
+                1e-13,
+                1e-13
+              ],
+              "value_unit": "s"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
-      "description": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).",
+      "description": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1).",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/temperature_time_constant",
       "owner": "Thermostat",
@@ -3854,6 +4124,17 @@
     {
       "name": "coupling_group",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/coupling_group",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "protein"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/coupling_group",
@@ -3878,6 +4159,15 @@
             {
               "engine": "gromacs",
               "key": "nh-chain-length"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 5
             }
           ],
           "@type": "Annotation"
@@ -3908,6 +4198,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 0.1,
+              "value_unit": "a/ps"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.",
@@ -3933,6 +4233,16 @@
               "engine": "amber",
               "key": "gamma_ln",
               "unit": "1/ps"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 0.1,
+              "value_unit": "1/ps"
             }
           ],
           "@type": "Annotation"
@@ -3969,6 +4279,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 300,
+              "value_unit": "K"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Target/reference temperature set to reach in the simulation, given as a float.",
@@ -3994,6 +4314,19 @@
               "engine": "gromacs",
               "key": "ref-t",
               "unit": "K"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": [
+                300,
+                300
+              ],
+              "value_unit": "K"
             }
           ],
           "@type": "Annotation"
@@ -4025,6 +4358,32 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "value_unit": "bar"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Target/reference pressure set to reach in the simulation, given as a 3x3 array.",
@@ -4050,6 +4409,16 @@
               "engine": "amber",
               "key": "pres0",
               "unit": "bar"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1,
+              "value_unit": "bar"
             }
           ],
           "@type": "Annotation"
@@ -4081,16 +4450,22 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 4.46e-05,
+              "value_unit": "1/bar"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Compressibility of the simulated system, given as a float.",
       "examples": [
         {
-          "value": "44.6 1e10-6 1/bar",
-          "@type": "Example"
-        },
-        {
-          "value": "4.5e-5 1/bar",
+          "value": "4.46e-05",
           "@type": "Example"
         }
       ],
@@ -4119,16 +4494,26 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 4.46e-05,
+              "value_unit": "1/bar"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Compressibility of the simulated system, given as a float.",
       "examples": [
         {
-          "value": "44.6 1e10-6 1/bar",
+          "value": "4.46e-05",
           "@type": "Example"
         },
         {
-          "value": "4.5e-5 1/bar",
+          "value": "4.5e-05",
           "@type": "Example"
         }
       ],
@@ -4162,16 +4547,26 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "5e-12",
+              "value_unit": "s"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.",
       "examples": [
         {
-          "value": "1.0 ps",
+          "value": "1.0",
           "@type": "Example"
         },
         {
-          "value": "5.0 ps",
+          "value": "5.0",
           "@type": "Example"
         }
       ],
@@ -4189,6 +4584,17 @@
     {
       "name": "bond_length_constraints_algorithm",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/bond_length_constraints_algorithm",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "SHAKE"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Constraints applied to bonds between two particles in the simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/bond_length_constraints_algorithm",
@@ -4218,16 +4624,26 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1.2,
+              "value_unit": "nm"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.",
       "examples": [
         {
-          "value": "10 \u00c5",
+          "value": "1.0",
           "@type": "Example"
         },
         {
-          "value": "1.2 nm",
+          "value": "1.2",
           "@type": "Example"
         }
       ],
@@ -4256,16 +4672,26 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1.2,
+              "value_unit": "nm"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.",
       "examples": [
         {
-          "value": "10 \u00c5",
+          "value": "1.0",
           "@type": "Example"
         },
         {
-          "value": "1.2 nm",
+          "value": "1.2",
           "@type": "Example"
         }
       ],
@@ -4283,6 +4709,17 @@
     {
       "name": "long_range_interaction_method",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/long_range_interaction_method",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "P3M"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Method used to describe long-range interactions between particles.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/settings",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/settings/long_range_interaction_method",
@@ -4296,10 +4733,22 @@
     {
       "name": "salt_concentration",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/salt_concentration",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 0.1,
+              "value_unit": "M"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Concentration of salt in the solution.",
       "examples": [
         {
-          "value": "1",
+          "value": "0.1",
           "@type": "Example"
         }
       ],
@@ -4324,6 +4773,15 @@
             {
               "engine": "toptrajparser",
               "key": "total_atom_count"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
             }
           ],
           "@type": "Annotation"
@@ -4359,6 +4817,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Total number of simulated molecules, defined as bonded atoms or beads.",
@@ -4388,6 +4855,15 @@
             {
               "engine": "toptrajparser",
               "key": "atom_count"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
             }
           ],
           "@type": "Annotation"
@@ -4423,6 +4899,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Number of instances of a given molecule, defined as bonded atoms or beads.",
@@ -4452,6 +4937,15 @@
             {
               "engine": "toptrajparser",
               "key": "monomer_count"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
             }
           ],
           "@type": "Annotation"
@@ -4485,6 +4979,16 @@
               "engine": "toptrajparser",
               "key": "molecular_weight",
               "unit": "g/mol"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 18.0,
+              "value_unit": "g/mol"
             }
           ],
           "@type": "Annotation"
@@ -4522,6 +5026,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": -1.0,
+              "value_unit": "e"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Electrostatic charge of a molecule.",
@@ -4553,6 +5067,15 @@
             {
               "engine": "toptrajparser",
               "key": "unique_molecule_count"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
             }
           ],
           "@type": "Annotation"
@@ -4643,6 +5166,15 @@
           "tag": "base_uri",
           "value": "https://identifiers.org/pdb:",
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "2VB1"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Protein Data Bank identifier",
@@ -4683,6 +5215,15 @@
         {
           "tag": "base_uri",
           "value": "https://identifiers.org/uniprot:",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "P0DP23"
+            }
+          ],
           "@type": "Annotation"
         }
       ],
@@ -4725,6 +5266,15 @@
           "tag": "base_uri",
           "value": "https://identifiers.org/emdb:",
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "EMD-1001"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Electron Microscopy Data Bank ID",
@@ -4756,6 +5306,15 @@
         {
           "tag": "base_uri",
           "value": "https://alphafold.ebi.ac.uk/entry/",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "AF-P12345-F1"
+            }
+          ],
           "@type": "Annotation"
         }
       ],
@@ -4797,6 +5356,15 @@
         {
           "tag": "base_uri",
           "value": "https://identifiers.org/pubchem.compound:",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "100101"
+            }
+          ],
           "@type": "Annotation"
         }
       ],
@@ -4849,6 +5417,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
@@ -4882,6 +5459,15 @@
             {
               "engine": "toptrajparser",
               "key": "SMILES"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
             }
           ],
           "@type": "Annotation"
@@ -4920,6 +5506,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
@@ -4955,6 +5550,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "C8H10N4O2"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "The molecular formula of a molecule\\",
@@ -4977,7 +5581,24 @@
     {
       "name": "predicted_structure",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/predicted_structure",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Are the molecule positions derived from a prediction?",
+      "examples": [
+        {
+          "value": "True",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/predicted_structure",
       "owner": "MoleculeID",
@@ -4990,7 +5611,24 @@
     {
       "name": "modified",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/modified",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Has the initial model been modified from the original?",
+      "examples": [
+        {
+          "value": "True",
+          "@type": "Example"
+        }
+      ],
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/modified",
       "owner": "MachineLearnedPotential",
@@ -5023,6 +5661,15 @@
             {
               "engine": "toptrajparser",
               "key": "protein_sequence"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "DRVYIHPF"
             }
           ],
           "@type": "Annotation"
@@ -5060,6 +5707,15 @@
             {
               "engine": "toptrajparser",
               "key": "nucleic_sequence"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "ATGCATCGATCGATCGATCG"
             }
           ],
           "@type": "Annotation"
@@ -5116,6 +5772,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 300,
+              "value_unit": "K"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Average temperature sampled from the simulation, given as a float.",
@@ -5149,6 +5815,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1,
+              "value_unit": "bar"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Average pressure sampled from the simulation, given as a float.",
@@ -5174,6 +5850,16 @@
               "engine": "amber",
               "key": "VOLUME",
               "unit": "A^3"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 100,
+              "value_unit": "nm\u00b3"
             }
           ],
           "@type": "Annotation"
@@ -5206,6 +5892,20 @@
                 "Box-Z"
               ],
               "unit": "nm"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": [
+                1,
+                1,
+                1
+              ],
+              "value_unit": "nm"
             }
           ],
           "@type": "Annotation"
@@ -5242,6 +5942,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": -5.6,
+              "value_unit": "kJ/mol"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Average potential energy sampled from the simulation, given as a float.",
@@ -5275,6 +5985,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": -2.4,
+              "value_unit": "kJ/mol"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Average kinetic energy sampled from the simulation, given as a float.",
@@ -5305,6 +6025,16 @@
               "engine": "amber",
               "key": "Etot",
               "unit": "kcal/mol"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": -3.2,
+              "value_unit": "kJ/mol"
             }
           ],
           "@type": "Annotation"
@@ -5365,6 +6095,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Are masses present in the topology?",
@@ -5387,6 +6126,15 @@
             {
               "engine": "toptrajparser",
               "key": "bonds"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
             }
           ],
           "@type": "Annotation"
@@ -5415,6 +6163,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Are dihedral parameters present in the topology?",
@@ -5440,6 +6197,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Are fixed charges on atoms included in the topology?",
@@ -5455,6 +6221,17 @@
     {
       "name": "coarse_grained",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/coarse_grained",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Are atoms coarse-grained?",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/topology",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/coarse_grained",
@@ -5479,6 +6256,16 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 0.0,
+              "value_unit": "e"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Total electrostatic charge of the system given by the elementary charge (e).",
@@ -5497,6 +6284,17 @@
     {
       "name": "resolution",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/resolution",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "All Atom"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Resolution of simulated system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/topology",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/topology/resolution",
@@ -5550,6 +6348,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 10000
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Total number of snapshots that make up a trajectory.",
@@ -5572,6 +6379,17 @@
     {
       "name": "periodic_boundary_conditions",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/periodic_boundary_conditions",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "xyz"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "What directions in a simulation cell periodic boundaries are set if they are turned on.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/periodic_boundary_conditions",
@@ -5593,6 +6411,20 @@
               "engine": "toptrajparser",
               "key": "box_dimensions",
               "unit": "Ang"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": [
+                10,
+                10,
+                10
+              ],
+              "value_unit": "nm"
             }
           ],
           "@type": "Annotation"
@@ -5630,6 +6462,20 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": [
+                90,
+                90,
+                90
+              ],
+              "value_unit": "degree"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "The angles of the box used to simulate the system.",
@@ -5653,6 +6499,17 @@
     {
       "name": "box_type",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_type",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Cubic"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "The type of box used to simuluate the system.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/box_type",
@@ -5673,6 +6530,15 @@
             {
               "engine": "toptrajparser",
               "key": "positions"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
             }
           ],
           "@type": "Annotation"
@@ -5701,6 +6567,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Are per-frame forces included in the trajectory?",
@@ -5726,6 +6601,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Are per-frame velocities included in the trajectory?",
@@ -5741,6 +6625,17 @@
     {
       "name": "energies",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/energies",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Are per-frame energies included in the trajectory?",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/energies",
@@ -5754,6 +6649,17 @@
     {
       "name": "polarizable_charges",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/polarizable_charges",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Are per-frame polarizable charges included in the trajectory?",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/polarizable_charges",
@@ -5777,6 +6683,15 @@
             }
           ],
           "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
         }
       ],
       "description": "Are water molecules included in the trajectory?",
@@ -5792,6 +6707,17 @@
     {
       "name": "replica",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/replica",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Is this trajectory a replica of another provided trajectory?",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/trajectory",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/trajectory/replica",
@@ -5820,6 +6746,17 @@
     {
       "name": "water_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "TIP3P"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe water molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/water_potential_name",
@@ -5848,6 +6785,17 @@
     {
       "name": "protein_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "ff19SB"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe proteins.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/protein_potential_name",
@@ -5876,6 +6824,17 @@
     {
       "name": "lipid_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "LIPID21"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe lipids.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name",
@@ -5904,6 +6863,17 @@
     {
       "name": "nucleic_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "ff99OL3"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe nucleic acids.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/nucleic_potential_name",
@@ -5932,6 +6902,17 @@
     {
       "name": "carbohydrate_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "GLYCAM06"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe carbohydrate.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/carbohydrate_potential_name",
@@ -5960,6 +6941,17 @@
     {
       "name": "polymer_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "LignAmb25"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe polymers (excluding proteins and nucleic acids).",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name",
@@ -5988,6 +6980,17 @@
     {
       "name": "general_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/general_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "GAFF2"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Force field used to describe molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/general_potential_name",
@@ -6016,6 +7019,17 @@
     {
       "name": "machine_learned_potential_name",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "ANI"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "ML force field used to describe molecules.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/potentials",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/potentials/machine_learned_potential_name",
@@ -6074,6 +7088,17 @@
     {
       "name": "operating_system",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/operating_system",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Linux"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Operating system installed on the hardware used to perform the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/operating_system",
@@ -6087,6 +7112,17 @@
     {
       "name": "scheduler",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/scheduler",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "SLURM"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Workload manager or job scheduler used to launch the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/scheduler",
@@ -6100,6 +7136,17 @@
     {
       "name": "MPI_library",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/MPI_library",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "OpenMPI"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "MPI implementation used for distributed parallel execution.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/MPI_library",
@@ -6113,6 +7160,17 @@
     {
       "name": "container_runtime",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/container_runtime",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "Docker"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Container runtime used to execute the simulation environment, if any.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/container_runtime",
@@ -6126,6 +7184,18 @@
     {
       "name": "wall_time",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/wall_time",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 3600,
+              "value_unit": "s"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Total elapsed runtime of the simulation.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/wall_time",
@@ -6141,6 +7211,18 @@
     {
       "name": "energy_consumption",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/energy_consumption",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 0.119,
+              "value_unit": "kWh"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Total energy consumed by the simulation run.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/energy_consumption",
@@ -6156,6 +7238,17 @@
     {
       "name": "execution_platform",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/execution_platform",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "HPC Cluster"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Broad type of system used to run the simulation workload.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/execution_platform",
@@ -6169,6 +7262,17 @@
     {
       "name": "node_type",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/node_type",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "CPU Only"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Compute node profile used for the simulation run.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/node_type",
@@ -6182,6 +7286,17 @@
     {
       "name": "node_count",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/node_count",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "2"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Number of compute nodes used for the run.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/node_count",
@@ -6196,6 +7311,17 @@
     {
       "name": "CPU_vendor",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_vendor",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "AMD"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "CPU vendor used in the compute nodes.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_vendor",
@@ -6209,6 +7335,17 @@
     {
       "name": "CPU_architecture",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_architecture",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "x86"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "CPU instruction-set architecture of the compute nodes.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/CPU_architecture",
@@ -6222,6 +7359,17 @@
     {
       "name": "sockets_per_node",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/sockets_per_node",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Number of physical CPU sockets in each compute node.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/sockets_per_node",
@@ -6236,6 +7384,17 @@
     {
       "name": "cores_per_socket",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/cores_per_socket",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Number of physical CPU cores in each socket.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/cores_per_socket",
@@ -6250,6 +7409,17 @@
     {
       "name": "threads_per_core",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/threads_per_core",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Number of hardware threads per physical core.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/threads_per_core",
@@ -6264,6 +7434,17 @@
     {
       "name": "GPU_vendor",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/GPU_vendor",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "AMD"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "GPU vendor used by the compute nodes, if applicable.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/GPU_vendor",
@@ -6277,6 +7458,17 @@
     {
       "name": "GPUs_per_node",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/GPUs_per_node",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 1
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Number of GPUs present in each compute node.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/GPUs_per_node",
@@ -6291,6 +7483,18 @@
     {
       "name": "memory_per_node",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/memory_per_node",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2,
+              "value_unit": "GB"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
       "description": "Amount of memory installed per compute node.",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/compute",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/memory_per_node",
@@ -6372,7 +7576,7 @@
       "name": "timeQuantity__value_unit",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit",
-      "ifabsent": "string(ns)",
+      "ifabsent": "string(s)",
       "alias": "value_unit",
       "owner": "TimeQuantity",
       "domain_of": [
@@ -6897,7 +8101,7 @@
       "name": "vectorTimeQuantity__value_unit",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit",
-      "ifabsent": "string(ns)",
+      "ifabsent": "string(s)",
       "alias": "value_unit",
       "owner": "VectorTimeQuantity",
       "domain_of": [
@@ -7117,7 +8321,7 @@
         },
         {
           "name": "value_unit",
-          "ifabsent": "string(ns)",
+          "ifabsent": "string(s)",
           "range": "TimeUnit",
           "@type": "SlotDefinition"
         }
@@ -7662,7 +8866,7 @@
         },
         {
           "name": "value_unit",
-          "ifabsent": "string(ns)",
+          "ifabsent": "string(s)",
           "range": "TimeUnit",
           "@type": "SlotDefinition"
         }
@@ -8339,9 +9543,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-06-10T15:27:45",
+  "source_file_date": "2026-06-15T10:06:40",
   "source_file_size": 2847,
-  "generation_date": "2026-06-12T16:49:57",
+  "generation_date": "2026-06-19T17:27:26",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

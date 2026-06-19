@@ -26,7 +26,10 @@
               "mdgx",
               "parmed"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "pdb4amber"
+            }
           }
         }
       },
@@ -46,7 +49,6 @@
                 "label": "Value",
                 "typehint": "float",
                 "hint": null,
-                "placeholder": null,
                 "pattern": "^[+-]?\\d+(\\.\\d+)?$"
               },
               "value_unit": {
@@ -60,13 +62,20 @@
                 "multiple": false,
                 "default": "kJ/mol/nm"
               }
+            },
+            "example": {
+              "value": 1000,
+              "value_unit": "kJ/mol/nm"
             }
           },
           "number_of_minimisation_steps": {
             "type": "text",
             "label": "Number Of Minimisation Steps",
             "typehint": "integer",
-            "hint": "Number of integration steps performed during minimisation of the system, given as an integer."
+            "hint": "Number of integration steps performed during minimisation of the system, given as an integer.",
+            "example": {
+              "value": 5000
+            }
           },
           "minimisation_distance_step_size": {
             "type": "quantity",
@@ -91,6 +100,10 @@
                 "multiple": false,
                 "default": "nm"
               }
+            },
+            "example": {
+              "value": 0.01,
+              "value_unit": "nm"
             }
           },
           "minimisation_algorithm": {
@@ -105,7 +118,10 @@
               "LMOD",
               "None"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "Steepest Descent"
+            }
           },
           "simulation_tool": {
             "type": "select",
@@ -117,7 +133,10 @@
               "gem.pmemd",
               "mdrun"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "sander"
+            }
           },
           "simulation_software": {
             "type": "select",
@@ -136,7 +155,10 @@
               "ACEMD",
               "CP2K"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "Amber"
+            }
           }
         }
       },
@@ -156,7 +178,10 @@
               "gem.pmemd",
               "mdrun"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "sander"
+            }
           },
           "simulation_software": {
             "type": "select",
@@ -175,7 +200,10 @@
               "ACEMD",
               "CP2K"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "Amber"
+            }
           }
         }
       },
@@ -195,7 +223,10 @@
               "gem.pmemd",
               "mdrun"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "sander"
+            }
           },
           "simulation_software": {
             "type": "select",
@@ -214,13 +245,19 @@
               "ACEMD",
               "CP2K"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "Amber"
+            }
           },
           "simulation_software_version": {
             "type": "text",
             "label": "Simulation Software Version",
             "typehint": "string",
             "hint": "Version of software used to perform simulation step.",
+            "example": {
+              "value": "2014"
+            },
             "extracted_only": true,
             "readonly": true
           },
@@ -252,7 +289,10 @@
               "X-ray and CryoEM Refinement",
               "Locally Enhanced Sampling"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "Steered Molecular Dynamics (SMD)"
+            }
           }
         }
       },
@@ -281,7 +321,10 @@
               "PLUMED",
               "MDanalysis"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "CPPTRAJ"
+            }
           },
           "analysis_software": {
             "type": "select",
@@ -293,7 +336,10 @@
               "PyMOL",
               "Avogadro"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "Visual Molecular Dynamics (VMD)"
+            }
           },
           "analysis_method": {
             "type": "select",
@@ -308,7 +354,10 @@
               "Radius of Gyration",
               "BAR/PBSA"
             ],
-            "multiple": true
+            "multiple": true,
+            "example": {
+              "value": "RMSD"
+            }
           }
         }
       }
@@ -336,13 +385,19 @@
               "NVE",
               "μVT"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "NPT"
+            }
           },
           "random_seed": {
             "type": "text",
             "label": "Random Seed",
             "typehint": "integer",
-            "hint": "Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer."
+            "hint": "Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer.",
+            "example": {
+              "value": 123456
+            }
           }
         }
       },
@@ -362,7 +417,10 @@
               "Verlet",
               "Euler"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "Velocity-Verlet"
+            }
           },
           "frame_step": {
             "type": "quantity",
@@ -389,8 +447,12 @@
                   "fs"
                 ],
                 "multiple": false,
-                "default": "ns"
+                "default": "s"
               }
+            },
+            "example": {
+              "value": 1e-11,
+              "value_unit": "s"
             }
           },
           "time_step": {
@@ -418,15 +480,22 @@
                   "fs"
                 ],
                 "multiple": false,
-                "default": "ns"
+                "default": "s"
               }
+            },
+            "example": {
+              "value": 2e-15,
+              "value_unit": "s"
             }
           },
           "number_of_steps": {
             "type": "text",
             "label": "Number Of Steps",
             "typehint": "integer",
-            "hint": "Number of integration steps performed in the simulation, given as an integer."
+            "hint": "Number of integration steps performed in the simulation, given as an integer.",
+            "example": {
+              "value": 10000
+            }
           },
           "simulation_time": {
             "type": "quantity",
@@ -453,8 +522,12 @@
                   "fs"
                 ],
                 "multiple": false,
-                "default": "ns"
+                "default": "s"
               }
+            },
+            "example": {
+              "value": 1e-06,
+              "value_unit": "s"
             }
           }
         }
@@ -477,7 +550,10 @@
               "Monte Carlo",
               "Martyna-Tuckerman-Tobias-Klein"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "Nose-Hoover"
+            }
           },
           "compressibility": {
             "type": "quantity",
@@ -489,7 +565,7 @@
                 "label": "Value",
                 "typehint": "float",
                 "hint": null,
-                "placeholder": "44.6"
+                "placeholder": "4.46e"
               },
               "value_unit": {
                 "type": "select",
@@ -502,6 +578,10 @@
                 "multiple": false,
                 "default": "1/bar"
               }
+            },
+            "example": {
+              "value": 4.46e-05,
+              "value_unit": "1/bar"
             }
           },
           "compressibility_vector": {
@@ -514,7 +594,7 @@
                 "label": "Vector Value",
                 "typehint": "float",
                 "hint": null,
-                "placeholder": "44.6 1e10-6 1/bar"
+                "placeholder": "4.46e-05"
               },
               "value_unit": {
                 "type": "select",
@@ -527,6 +607,10 @@
                 "multiple": false,
                 "default": "1/bar"
               }
+            },
+            "example": {
+              "value": 4.46e-05,
+              "value_unit": "1/bar"
             }
           },
           "target_pressure": {
@@ -551,6 +635,10 @@
                 "multiple": false,
                 "default": "bar"
               }
+            },
+            "example": {
+              "value": 1,
+              "value_unit": "bar"
             }
           },
           "target_pressure_vector": {
@@ -575,6 +663,26 @@
                 "multiple": false,
                 "default": "bar"
               }
+            },
+            "example": {
+              "value": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "value_unit": "bar"
             }
           },
           "pressure_time_constant": {
@@ -603,15 +711,41 @@
                   "fs"
                 ],
                 "multiple": false,
-                "default": "ns"
+                "default": "s"
               }
+            },
+            "example": {
+              "value": "5e-12",
+              "value_unit": "s"
             }
           },
           "pressure_coupling_frequency": {
-            "type": "text",
+            "type": "quantity",
             "label": "Pressure Coupling Frequency",
-            "typehint": "integer",
-            "hint": "Step frequency to apply the barostat, given as an integer."
+            "hint": "Step frequency to apply the barostat.",
+            "fields": {
+              "value": {
+                "type": "text",
+                "label": "Value",
+                "typehint": "float",
+                "hint": null,
+                "min": 0
+              },
+              "value_unit": {
+                "type": "select",
+                "label": "Value Unit",
+                "hint": "Units used to describe frequency.",
+                "options": [
+                  "1/ps"
+                ],
+                "multiple": false,
+                "default": "1/ps"
+              }
+            },
+            "example": {
+              "value": 2.0,
+              "value_unit": "1/ps"
+            }
           },
           "pressure_coupling_type": {
             "type": "select",
@@ -623,7 +757,10 @@
               "anisotropic",
               "surface tension"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "isotropic"
+            }
           }
         }
       },
@@ -644,7 +781,10 @@
               "Nose-Hoover",
               "Bussi"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "Bussi"
+            }
           },
           "target_temperature": {
             "type": "quantity",
@@ -670,6 +810,10 @@
                 "multiple": false,
                 "default": "K"
               }
+            },
+            "example": {
+              "value": 300,
+              "value_unit": "K"
             }
           },
           "target_temperature_vector": {
@@ -695,6 +839,13 @@
                 "multiple": false,
                 "default": "K"
               }
+            },
+            "example": {
+              "value": [
+                300,
+                300
+              ],
+              "value_unit": "K"
             }
           },
           "collision_frequency": {
@@ -719,12 +870,16 @@
                 "multiple": false,
                 "default": "1/ps"
               }
+            },
+            "example": {
+              "value": 0.1,
+              "value_unit": "1/ps"
             }
           },
           "temperature_time_constant": {
             "type": "quantity",
             "label": "Temperature Time Constant",
-            "hint": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).",
+            "hint": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1).",
             "fields": {
               "vector_value": {
                 "type": "text",
@@ -745,21 +900,34 @@
                   "fs"
                 ],
                 "multiple": false,
-                "default": "ns"
+                "default": "s"
               }
+            },
+            "example": {
+              "value": [
+                1e-13,
+                1e-13
+              ],
+              "value_unit": "s"
             }
           },
           "coupling_group": {
             "type": "text",
             "label": "Coupling Group",
             "typehint": "string",
-            "hint": "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string"
+            "hint": "A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string",
+            "example": {
+              "value": "protein"
+            }
           },
           "chain_length": {
             "type": "text",
             "label": "Chain Length",
             "typehint": "integer",
             "hint": "Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.",
+            "example": {
+              "value": 5
+            },
             "min": 0
           },
           "friction_coefficient": {
@@ -785,6 +953,10 @@
                 "multiple": false,
                 "default": "a/ps"
               }
+            },
+            "example": {
+              "value": 0.1,
+              "value_unit": "a/ps"
             }
           }
         }
@@ -799,7 +971,10 @@
             "type": "checkbox",
             "label": "Restraints?",
             "typehint": "boolean",
-            "hint": "Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target)."
+            "hint": "Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).",
+            "example": {
+              "value": "True"
+            }
           },
           "electrostatic_cutoff_distance": {
             "type": "quantity",
@@ -812,7 +987,7 @@
                 "typehint": "float",
                 "hint": null,
                 "min": 0,
-                "placeholder": "10"
+                "placeholder": "1.0"
               },
               "value_unit": {
                 "type": "select",
@@ -825,6 +1000,10 @@
                 "multiple": false,
                 "default": "nm"
               }
+            },
+            "example": {
+              "value": 1.2,
+              "value_unit": "nm"
             }
           },
           "vdw_cutoff_distance": {
@@ -838,7 +1017,7 @@
                 "typehint": "float",
                 "hint": null,
                 "min": 0,
-                "placeholder": "10"
+                "placeholder": "1.0"
               },
               "value_unit": {
                 "type": "select",
@@ -851,6 +1030,10 @@
                 "multiple": false,
                 "default": "nm"
               }
+            },
+            "example": {
+              "value": 1.2,
+              "value_unit": "nm"
             }
           },
           "bond_length_constraints_algorithm": {
@@ -864,7 +1047,10 @@
               "LINCS",
               "CCMA"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "SHAKE"
+            }
           },
           "long_range_interaction_method": {
             "type": "select",
@@ -878,7 +1064,10 @@
               "FMM",
               "RF"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "P3M"
+            }
           }
         }
       }
@@ -906,7 +1095,6 @@
                 "label": "Value",
                 "typehint": "float",
                 "hint": null,
-                "placeholder": null,
                 "pattern": "^[+-]?\\d+(\\.\\d+)?$"
               },
               "value_unit": {
@@ -920,6 +1108,10 @@
                 "multiple": false,
                 "default": "kJ/mol"
               }
+            },
+            "example": {
+              "value": -2.4,
+              "value_unit": "kJ/mol"
             }
           },
           "average_potential_energy": {
@@ -932,7 +1124,6 @@
                 "label": "Value",
                 "typehint": "float",
                 "hint": null,
-                "placeholder": null,
                 "pattern": "^[+-]?\\d+(\\.\\d+)?$"
               },
               "value_unit": {
@@ -946,6 +1137,10 @@
                 "multiple": false,
                 "default": "kJ/mol"
               }
+            },
+            "example": {
+              "value": -5.6,
+              "value_unit": "kJ/mol"
             }
           },
           "average_enthalpy": {
@@ -958,7 +1153,6 @@
                 "label": "Value",
                 "typehint": "float",
                 "hint": null,
-                "placeholder": null,
                 "pattern": "^[+-]?\\d+(\\.\\d+)?$"
               },
               "value_unit": {
@@ -972,6 +1166,10 @@
                 "multiple": false,
                 "default": "kJ/mol"
               }
+            },
+            "example": {
+              "value": -3.2,
+              "value_unit": "kJ/mol"
             }
           },
           "average_pressure": {
@@ -996,6 +1194,10 @@
                 "multiple": false,
                 "default": "bar"
               }
+            },
+            "example": {
+              "value": 1,
+              "value_unit": "bar"
             }
           },
           "average_temperature": {
@@ -1022,6 +1224,10 @@
                 "multiple": false,
                 "default": "K"
               }
+            },
+            "example": {
+              "value": 300,
+              "value_unit": "K"
             }
           },
           "average_volume": {
@@ -1047,6 +1253,10 @@
                 "multiple": false,
                 "default": "nm³"
               }
+            },
+            "example": {
+              "value": 100,
+              "value_unit": "nm³"
             }
           },
           "average_volume_vector": {
@@ -1071,6 +1281,14 @@
                 "multiple": false,
                 "default": "nm"
               }
+            },
+            "example": {
+              "value": [
+                1,
+                1,
+                1
+              ],
+              "value_unit": "nm"
             }
           }
         }
@@ -1093,13 +1311,19 @@
             "type": "checkbox",
             "label": "Bonds?",
             "typehint": "boolean",
-            "hint": "Are bond parameters present in the topology?"
+            "hint": "Are bond parameters present in the topology?",
+            "example": {
+              "value": "True"
+            }
           },
           "dihedrals": {
             "type": "checkbox",
             "label": "Dihedrals?",
             "typehint": "boolean",
-            "hint": "Are dihedral parameters present in the topology?"
+            "hint": "Are dihedral parameters present in the topology?",
+            "example": {
+              "value": "True"
+            }
           }
         }
       },
@@ -1113,13 +1337,19 @@
             "type": "checkbox",
             "label": "Masses?",
             "typehint": "boolean",
-            "hint": "Are masses present in the topology?"
+            "hint": "Are masses present in the topology?",
+            "example": {
+              "value": "True"
+            }
           },
           "fixed_charges": {
             "type": "checkbox",
             "label": "Fixed Charges?",
             "typehint": "boolean",
-            "hint": "Are fixed charges on atoms included in the topology?"
+            "hint": "Are fixed charges on atoms included in the topology?",
+            "example": {
+              "value": "True"
+            }
           },
           "system_charge": {
             "type": "quantity",
@@ -1143,13 +1373,20 @@
                 "multiple": false,
                 "default": "e"
               }
+            },
+            "example": {
+              "value": 0.0,
+              "value_unit": "e"
             }
           },
           "coarse_grained": {
             "type": "checkbox",
             "label": "Coarse Grained?",
             "typehint": "boolean",
-            "hint": "Are atoms coarse-grained?"
+            "hint": "Are atoms coarse-grained?",
+            "example": {
+              "value": "True"
+            }
           },
           "resolution": {
             "type": "select",
@@ -1161,7 +1398,10 @@
               "Coarse-Grained",
               "Mesoscale"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "All Atom"
+            }
           }
         }
       }
@@ -1202,6 +1442,14 @@
                 "multiple": false,
                 "default": "nm"
               }
+            },
+            "example": {
+              "value": [
+                10,
+                10,
+                10
+              ],
+              "value_unit": "nm"
             }
           },
           "box_angles": {
@@ -1227,6 +1475,14 @@
                 "multiple": false,
                 "default": "degree"
               }
+            },
+            "example": {
+              "value": [
+                90,
+                90,
+                90
+              ],
+              "value_unit": "degree"
             }
           },
           "box_type": {
@@ -1240,7 +1496,10 @@
               "Truncated Octahedron",
               "Triclinic"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "Cubic"
+            }
           },
           "periodic_boundary_conditions": {
             "type": "select",
@@ -1253,7 +1512,10 @@
               "xz",
               "yz"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "xyz"
+            }
           }
         }
       },
@@ -1267,49 +1529,73 @@
             "type": "checkbox",
             "label": "Positions?",
             "typehint": "boolean",
-            "hint": "Are per-frame positions included in the trajectory?"
+            "hint": "Are per-frame positions included in the trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "forces": {
             "type": "checkbox",
             "label": "Forces?",
             "typehint": "boolean",
-            "hint": "Are per-frame forces included in the trajectory?"
+            "hint": "Are per-frame forces included in the trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "velocities": {
             "type": "checkbox",
             "label": "Velocities?",
             "typehint": "boolean",
-            "hint": "Are per-frame velocities included in the trajectory?"
+            "hint": "Are per-frame velocities included in the trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "polarizable_charges": {
             "type": "checkbox",
             "label": "Polarizable Charges?",
             "typehint": "boolean",
-            "hint": "Are per-frame polarizable charges included in the trajectory?"
+            "hint": "Are per-frame polarizable charges included in the trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "energies": {
             "type": "checkbox",
             "label": "Energies?",
             "typehint": "boolean",
-            "hint": "Are per-frame energies included in the trajectory?"
+            "hint": "Are per-frame energies included in the trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "water": {
             "type": "checkbox",
             "label": "Water?",
             "typehint": "boolean",
-            "hint": "Are water molecules included in the trajectory?"
+            "hint": "Are water molecules included in the trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "replica": {
             "type": "checkbox",
             "label": "Replica?",
             "typehint": "boolean",
-            "hint": "Is this trajectory a replica of another provided trajectory?"
+            "hint": "Is this trajectory a replica of another provided trajectory?",
+            "example": {
+              "value": "True"
+            }
           },
           "frame_count": {
             "type": "text",
             "label": "Frame Count",
             "typehint": "integer",
             "hint": "Total number of snapshots that make up a trajectory.",
+            "example": {
+              "value": 10000
+            },
             "placeholder": "1",
             "min": 0
           }
@@ -1334,6 +1620,9 @@
             "label": "Total Molecule Count",
             "typehint": "integer",
             "hint": "Total number of simulated molecules, defined as bonded atoms or beads.",
+            "example": {
+              "value": 1
+            },
             "placeholder": "1",
             "min": 0
           },
@@ -1342,6 +1631,9 @@
             "label": "Total Atom Count",
             "typehint": "integer",
             "hint": "Total number of atoms in the simulation.",
+            "example": {
+              "value": 1
+            },
             "placeholder": "1",
             "min": 0
           },
@@ -1350,6 +1642,9 @@
             "label": "Unique Molecule Count",
             "typehint": "integer",
             "hint": "Number of unique simulated molecules, defined as bonded atoms or beads.",
+            "example": {
+              "value": 1
+            },
             "placeholder": "1",
             "min": 0
           },
@@ -1364,7 +1659,7 @@
                 "typehint": "float",
                 "hint": null,
                 "min": 0,
-                "placeholder": "1"
+                "placeholder": "0.1"
               },
               "value_unit": {
                 "type": "select",
@@ -1376,6 +1671,10 @@
                 "multiple": false,
                 "default": "M"
               }
+            },
+            "example": {
+              "value": 0.1,
+              "value_unit": "M"
             }
           }
         }
@@ -1391,8 +1690,11 @@
             "label": "PDB ID",
             "typehint": "string",
             "hint": "Protein Data Bank identifier",
-            "placeholder": "2VB1",
+            "example": {
+              "value": "2VB1"
+            },
             "pattern": "^[0-9A-Za-z]{4}$",
+            "placeholder": "2VB1",
             "base_uri": "https://identifiers.org/pdb:"
           },
           "UNIPROT_ID": {
@@ -1400,8 +1702,11 @@
             "label": "UNIPROT ID",
             "typehint": "string",
             "hint": "UniProt accession ID",
-            "placeholder": "P0DP23",
+            "example": {
+              "value": "P0DP23"
+            },
             "pattern": "^[A-Z0-9]{6,10}$",
+            "placeholder": "P0DP23",
             "base_uri": "https://identifiers.org/uniprot:"
           },
           "SMILES": {
@@ -1409,24 +1714,33 @@
             "label": "SMILES",
             "typehint": "string",
             "hint": "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",
-            "placeholder": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
-            "pattern": "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$"
+            "example": {
+              "value": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+            },
+            "pattern": "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$",
+            "placeholder": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
           },
           "InChI": {
             "type": "text",
             "label": "InChI",
             "typehint": "string",
             "hint": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
-            "placeholder": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",
-            "pattern": "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$"
+            "example": {
+              "value": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
+            },
+            "pattern": "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$",
+            "placeholder": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
           },
           "InChIKey": {
             "type": "text",
             "label": "InChIKey",
             "typehint": "string",
             "hint": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
-            "placeholder": "RYYVLZVUVIJVGH-UHFFFAOYSA-N",
+            "example": {
+              "value": "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
+            },
             "pattern": "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$",
+            "placeholder": "RYYVLZVUVIJVGH-UHFFFAOYSA-N",
             "base_uri": "https://identifiers.org/inchikey:"
           },
           "alphafold_ID": {
@@ -1434,8 +1748,11 @@
             "label": "AlphaFold ID",
             "typehint": "string",
             "hint": "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",
-            "placeholder": "AF-P12345-F1",
+            "example": {
+              "value": "AF-P12345-F1"
+            },
             "pattern": "^AF-[A-Z0-9]+-F1$",
+            "placeholder": "AF-P12345-F1",
             "base_uri": "https://alphafold.ebi.ac.uk/entry/"
           },
           "PubChem_CID": {
@@ -1443,8 +1760,11 @@
             "label": "PubChem CID",
             "typehint": "string",
             "hint": "PubChem CID of chemical molecules and their activities against biological assays.",
-            "placeholder": "100101",
+            "example": {
+              "value": "100101"
+            },
             "pattern": "^\\d+$",
+            "placeholder": "100101",
             "base_uri": "https://identifiers.org/pubchem.compound:"
           },
           "protein_sequence": {
@@ -1452,36 +1772,53 @@
             "label": "Protein Sequence",
             "typehint": "string",
             "hint": "One letter sequence for protein amino acids.",
-            "placeholder": "DRVYIHPF",
-            "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$"
+            "example": {
+              "value": "DRVYIHPF"
+            },
+            "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$",
+            "placeholder": "DRVYIHPF"
           },
           "nucleic_sequence": {
             "type": "textarea",
             "label": "Nucleic Sequence",
             "typehint": "string",
             "hint": "One letter sequence for nucleic acid nucleotides.",
-            "placeholder": "ATGCATCGATCGATCGATCG",
-            "pattern": "^[ACGTURYSWKMBDHVN]+$"
+            "example": {
+              "value": "ATGCATCGATCGATCGATCG"
+            },
+            "pattern": "^[ACGTURYSWKMBDHVN]+$",
+            "placeholder": "ATGCATCGATCGATCGATCG"
           },
           "predicted_structure": {
             "type": "checkbox",
             "label": "Predicted Structure?",
             "typehint": "boolean",
-            "hint": "Are the molecule positions derived from a prediction?"
+            "hint": "Are the molecule positions derived from a prediction?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           },
           "molecular_formula": {
             "type": "text",
             "label": "Molecular Formula",
             "typehint": "string",
             "hint": "The molecular formula of a molecule\\",
-            "placeholder": "C8H10N4O2",
-            "pattern": "^([A-Z][a-z]?\\d*)+$"
+            "example": {
+              "value": "C8H10N4O2"
+            },
+            "pattern": "^([A-Z][a-z]?\\d*)+$",
+            "placeholder": "C8H10N4O2"
           },
           "molecular_weight": {
             "type": "quantity",
@@ -1507,6 +1844,10 @@
                 "multiple": false,
                 "default": "g/mol"
               }
+            },
+            "example": {
+              "value": 18.0,
+              "value_unit": "g/mol"
             }
           },
           "molecule_charge": {
@@ -1532,6 +1873,10 @@
                 "multiple": false,
                 "default": "e"
               }
+            },
+            "example": {
+              "value": -1.0,
+              "value_unit": "e"
             }
           },
           "molecule_count": {
@@ -1539,6 +1884,9 @@
             "label": "Molecule Count",
             "typehint": "integer",
             "hint": "Number of instances of a given molecule, defined as bonded atoms or beads.",
+            "example": {
+              "value": 1
+            },
             "placeholder": "1",
             "min": 0
           },
@@ -1547,6 +1895,9 @@
             "label": "Atom Count",
             "typehint": "integer",
             "hint": "Number of atoms in a molecule.",
+            "example": {
+              "value": 1
+            },
             "placeholder": "1",
             "min": 0
           },
@@ -1555,6 +1906,9 @@
             "label": "Monomer Count",
             "typehint": "integer",
             "hint": "Number of monomeric units in a polymer(e.g. protein or nucleic acid).",
+            "example": {
+              "value": 1
+            },
             "placeholder": "1",
             "min": 0
           }
@@ -1595,13 +1949,20 @@
               "SPC/Fw",
               "q-SPC/Fw"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "TIP3P"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1632,13 +1993,20 @@
               "ff14SB_modAA",
               "ff19SB_modAA"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "ff19SB"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1655,13 +2023,20 @@
             "options": [
               "LIPID21"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "LIPID21"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1688,13 +2063,20 @@
               "bsc1",
               "terminal_monophosphate"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "ff99OL3"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1713,13 +2095,20 @@
               "GLYCAM_06EP",
               "GLYCAM_06j-1"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "GLYCAM06"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1736,13 +2125,20 @@
             "options": [
               "LignAmb25"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "LignAmb25"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1764,13 +2160,20 @@
               "GROMOS",
               "CHARMM"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "GAFF2"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       },
@@ -1791,13 +2194,20 @@
               "UMA",
               "AceFF"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "ANI"
+            }
           },
           "modified": {
             "type": "checkbox",
             "label": "Modified?",
             "typehint": "boolean",
-            "hint": "Has the initial model been modified from the original?"
+            "hint": "Has the initial model been modified from the original?",
+            "example": {
+              "value": "True"
+            },
+            "placeholder": "True"
           }
         }
       }
@@ -1824,7 +2234,10 @@
               "Cloud VM",
               "Local"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "HPC Cluster"
+            }
           },
           "node_type": {
             "type": "select",
@@ -1835,13 +2248,19 @@
               "GPU Accelerated",
               "Hybrid CPU GPU"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "CPU Only"
+            }
           },
           "node_count": {
             "type": "text",
             "label": "Node Count",
             "typehint": "integer",
             "hint": "Number of compute nodes used for the run.",
+            "example": {
+              "value": "2"
+            },
             "min": 1
           },
           "CPU_vendor": {
@@ -1854,7 +2273,10 @@
               "ARM",
               "Other"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "AMD"
+            }
           },
           "CPU_architecture": {
             "type": "select",
@@ -1864,13 +2286,19 @@
               "x86",
               "ARM"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "x86"
+            }
           },
           "sockets_per_node": {
             "type": "text",
             "label": "Sockets Per Node",
             "typehint": "integer",
             "hint": "Number of physical CPU sockets in each compute node.",
+            "example": {
+              "value": 2
+            },
             "min": 1
           },
           "cores_per_socket": {
@@ -1878,6 +2306,9 @@
             "label": "Cores Per Socket",
             "typehint": "integer",
             "hint": "Number of physical CPU cores in each socket.",
+            "example": {
+              "value": 2
+            },
             "min": 1
           },
           "threads_per_core": {
@@ -1885,6 +2316,9 @@
             "label": "Threads Per Core",
             "typehint": "integer",
             "hint": "Number of hardware threads per physical core.",
+            "example": {
+              "value": 2
+            },
             "min": 1
           },
           "GPU_vendor": {
@@ -1897,13 +2331,19 @@
               "Intel",
               "None"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "AMD"
+            }
           },
           "GPUs_per_node": {
             "type": "text",
             "label": "GPUs Per Node",
             "typehint": "integer",
             "hint": "Number of GPUs present in each compute node.",
+            "example": {
+              "value": 1
+            },
             "min": 0
           },
           "memory_per_node": {
@@ -1928,6 +2368,10 @@
                 "multiple": false,
                 "default": "GB"
               }
+            },
+            "example": {
+              "value": 2,
+              "value_unit": "GB"
             }
           }
         }
@@ -1947,7 +2391,10 @@
               "macOS",
               "Windows"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "Linux"
+            }
           },
           "scheduler": {
             "type": "select",
@@ -1960,7 +2407,10 @@
               "SGE",
               "None"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "SLURM"
+            }
           },
           "MPI_library": {
             "type": "select",
@@ -1973,7 +2423,10 @@
               "MVAPICH2",
               "None"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "OpenMPI"
+            }
           },
           "container_runtime": {
             "type": "select",
@@ -1985,7 +2438,10 @@
               "Podman",
               "None"
             ],
-            "multiple": false
+            "multiple": false,
+            "example": {
+              "value": "Docker"
+            }
           }
         }
       },
@@ -2020,8 +2476,12 @@
                   "fs"
                 ],
                 "multiple": false,
-                "default": "ns"
+                "default": "s"
               }
+            },
+            "example": {
+              "value": 3600,
+              "value_unit": "s"
             }
           },
           "energy_consumption": {
@@ -2045,6 +2505,10 @@
                 "multiple": false,
                 "default": "kWh"
               }
+            },
+            "example": {
+              "value": 0.119,
+              "value_unit": "kWh"
             }
           }
         }

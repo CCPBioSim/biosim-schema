@@ -6,7 +6,7 @@
       "integrator_algorithm": "Leap-frog",
       "time_step": {
         "value": 0.0,
-        "value_unit": "ps"
+        "value_unit": "s"
       }
     },
     "ensemble": {
@@ -56,10 +56,13 @@
         "value_unit": "bar"
       },
       "pressure_time_constant": {
-        "value": 2,
-        "value_unit": "ps"
+        "value": 0.0,
+        "value_unit": "s"
       },
-      "pressure_coupling_frequency": 50,
+      "pressure_coupling_frequency": {
+        "value": 50,
+        "value_unit": "1/ps"
+      },
       "pressure_coupling_type": "isotropic"
     },
     "thermostat": {
@@ -73,10 +76,10 @@
       },
       "temperature_time_constant": {
         "vector_value": [
-          0.1,
-          0.1
+          0.0,
+          0.0
         ],
-        "value_unit": "ps"
+        "value_unit": "s"
       },
       "chain_length": 0,
       "friction_coefficient": {

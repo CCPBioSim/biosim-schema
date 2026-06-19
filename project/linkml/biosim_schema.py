@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-12T16:49:58
+# Generation date: 2026-06-19T17:27:27
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.11.0"
-version = "0.0.2"
+version = "0.0.3"
 
 # Namespaces
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
@@ -193,7 +193,7 @@ class TimeQuantity(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.TimeQuantity
 
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "TimeUnit"]] = 'ns'
+    value_unit: Optional[Union[str, "TimeUnit"]] = 's'
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.value is not None and not isinstance(self.value, float):
@@ -698,7 +698,7 @@ class VectorTimeQuantity(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorTimeQuantity
 
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "TimeUnit"]] = 'ns'
+    value_unit: Optional[Union[str, "TimeUnit"]] = 's'
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if not isinstance(self.vector_value, list):
@@ -1140,7 +1140,7 @@ class Barostat(YAMLRoot):
     target_pressure: Optional[Union[dict, PressureQuantity]] = None
     target_pressure_vector: Optional[Union[dict, MatrixPressureQuantity]] = None
     pressure_time_constant: Optional[Union[dict, TimeQuantity]] = None
-    pressure_coupling_frequency: Optional[int] = None
+    pressure_coupling_frequency: Optional[Union[dict, FrequencyQuantity]] = None
     pressure_coupling_type: Optional[Union[str, "PressureCouplingType"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1162,8 +1162,8 @@ class Barostat(YAMLRoot):
         if self.pressure_time_constant is not None and not isinstance(self.pressure_time_constant, TimeQuantity):
             self.pressure_time_constant = TimeQuantity(**as_dict(self.pressure_time_constant))
 
-        if self.pressure_coupling_frequency is not None and not isinstance(self.pressure_coupling_frequency, int):
-            self.pressure_coupling_frequency = int(self.pressure_coupling_frequency)
+        if self.pressure_coupling_frequency is not None and not isinstance(self.pressure_coupling_frequency, FrequencyQuantity):
+            self.pressure_coupling_frequency = FrequencyQuantity(**as_dict(self.pressure_coupling_frequency))
 
         if self.pressure_coupling_type is not None and not isinstance(self.pressure_coupling_type, PressureCouplingType):
             self.pressure_coupling_type = PressureCouplingType(self.pressure_coupling_type)
@@ -3604,7 +3604,7 @@ slots.pressure_coupling_type = Slot(uri=BIOSIM_SCHEMA['settings/pressure_couplin
                    model_uri=BIOSIM_SCHEMA.pressure_coupling_type, domain=None, range=Optional[Union[str, "PressureCouplingType"]])
 
 slots.pressure_coupling_frequency = Slot(uri=BIOSIM_SCHEMA['settings/pressure_coupling_frequency'], name="pressure_coupling_frequency", curie=BIOSIM_SCHEMA.curie('settings/pressure_coupling_frequency'),
-                   model_uri=BIOSIM_SCHEMA.pressure_coupling_frequency, domain=None, range=Optional[int])
+                   model_uri=BIOSIM_SCHEMA.pressure_coupling_frequency, domain=None, range=Optional[Union[dict, FrequencyQuantity]])
 
 slots.thermostat_algorithm = Slot(uri=BIOSIM_SCHEMA['settings/thermostat_algorithm'], name="thermostat_algorithm", curie=BIOSIM_SCHEMA.curie('settings/thermostat_algorithm'),
                    model_uri=BIOSIM_SCHEMA.thermostat_algorithm, domain=None, range=Optional[Union[str, "ThermostatAlgorithm"]])

@@ -189,6 +189,10 @@ def generate_summary(paths: ArtifactPaths) -> None:
 
     write_summary_csv(summary, str(paths.summary_csv_path))
 
+    json_path = paths.summary_csv_path.with_suffix(".json")
+    with open(json_path, "w") as fp:
+        json.dump(summary, fp, indent=2)
+
 
 def generate_derived(paths: ArtifactPaths) -> None:
     """Generate derived schema artefacts used by downstream tools."""

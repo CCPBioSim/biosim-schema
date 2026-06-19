@@ -140,11 +140,15 @@
                     "description": "Compressibility of the simulated system, given as a float."
                 },
                 "pressure_coupling_frequency": {
-                    "description": "Step frequency to apply the barostat, given as an integer.",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FrequencyQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Step frequency to apply the barostat."
                 },
                 "pressure_coupling_type": {
                     "$ref": "#/$defs/PressureCouplingType",
@@ -2396,7 +2400,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300)."
+                    "description": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1)."
                 },
                 "thermostat_algorithm": {
                     "$ref": "#/$defs/ThermostatAlgorithm",
@@ -2893,5 +2897,5 @@
     },
     "title": "biosim-schema",
     "type": "object",
-    "version": "0.0.2"
+    "version": "0.0.3"
 }

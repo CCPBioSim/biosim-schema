@@ -41,7 +41,9 @@ settings:
     pressure_time_constant:
       value: 2
       value_unit: ps
-    pressure_coupling_frequency: 50
+    pressure_coupling_frequency:
+      value: 50
+      value_unit: 1/ps
     pressure_coupling_type: isotropic
   thermostat:
     thermostat_algorithm: Berendsen

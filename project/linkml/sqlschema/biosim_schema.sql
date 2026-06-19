@@ -153,13 +153,13 @@
 -- # Class: Barostat Description: Settings used for the simulation barostat.
 --     * Slot: id
 --     * Slot: barostat_algorithm Description: List of barostat algorithms used in the simulation.
---     * Slot: pressure_coupling_frequency Description: Step frequency to apply the barostat, given as an integer.
 --     * Slot: pressure_coupling_type Description: List of coupling types for adjusting box vectors.
 --     * Slot: compressibility_id Description: Compressibility of the simulated system, given as a float.
 --     * Slot: compressibility_vector_id Description: Compressibility of the simulated system, given as a float.
 --     * Slot: target_pressure_id Description: Target/reference pressure set to reach in the simulation, given as a float.
 --     * Slot: target_pressure_vector_id Description: Target/reference pressure set to reach in the simulation, given as a 3x3 array.
 --     * Slot: pressure_time_constant_id Description: Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.
+--     * Slot: pressure_coupling_frequency_id Description: Step frequency to apply the barostat.
 -- # Class: Thermostat Description: Settings used for the simulation thermostat.
 --     * Slot: id
 --     * Slot: thermostat_algorithm Description: List of thermostat algorithms used in the simulation.
@@ -168,7 +168,7 @@
 --     * Slot: target_temperature_id Description: Target/reference temperature set to reach in the simulation, given as a float.
 --     * Slot: target_temperature_vector_id Description: Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
 --     * Slot: collision_frequency_id Description: Collision frequency for the integrator, given as a float.
---     * Slot: temperature_time_constant_id Description: Time constant for coupling the system temperature in seconds units, given as a list (e.g. 300, 300).
+--     * Slot: temperature_time_constant_id Description: Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1).
 --     * Slot: friction_coefficient_id Description: Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.
 -- # Class: SystemComposition Description: Molecular composition of simulated system.
 --     * Slot: id
@@ -747,19 +747,20 @@ CREATE INDEX "ix_Integrator_id" ON "Integrator" (id);
 CREATE TABLE "Barostat" (
 	id INTEGER NOT NULL,
 	barostat_algorithm VARCHAR(30),
-	pressure_coupling_frequency INTEGER,
 	pressure_coupling_type VARCHAR(15),
 	compressibility_id INTEGER,
 	compressibility_vector_id INTEGER,
 	target_pressure_id INTEGER,
 	target_pressure_vector_id INTEGER,
 	pressure_time_constant_id INTEGER,
+	pressure_coupling_frequency_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY(compressibility_id) REFERENCES "CompressibilityQuantity" (id),
 	FOREIGN KEY(compressibility_vector_id) REFERENCES "MatrixCompressibilityQuantity" (id),
 	FOREIGN KEY(target_pressure_id) REFERENCES "PressureQuantity" (id),
 	FOREIGN KEY(target_pressure_vector_id) REFERENCES "MatrixPressureQuantity" (id),
-	FOREIGN KEY(pressure_time_constant_id) REFERENCES "TimeQuantity" (id)
+	FOREIGN KEY(pressure_time_constant_id) REFERENCES "TimeQuantity" (id),
+	FOREIGN KEY(pressure_coupling_frequency_id) REFERENCES "FrequencyQuantity" (id)
 );
 CREATE INDEX "ix_Barostat_id" ON "Barostat" (id);
 
@@ -920,8 +921,8 @@ CREATE TABLE "VectorPressureQuantity_vector_value" (
 	PRIMARY KEY ("VectorPressureQuantity_id", vector_value),
 	FOREIGN KEY("VectorPressureQuantity_id") REFERENCES "VectorPressureQuantity" (id)
 );
-CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
 CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
 
 CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	"VectorTemperatureQuantity_id" INTEGER,
@@ -992,8 +993,8 @@ CREATE TABLE "Production_simulation_tool" (
 	PRIMARY KEY ("Production_id", simulation_tool),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_tool_Production_id" ON "Production_simulation_tool" ("Production_id");
 CREATE INDEX "ix_Production_simulation_tool_simulation_tool" ON "Production_simulation_tool" (simulation_tool);
+CREATE INDEX "ix_Production_simulation_tool_Production_id" ON "Production_simulation_tool" ("Production_id");
 
 CREATE TABLE "Production_simulation_software" (
 	"Production_id" INTEGER,
@@ -1135,8 +1136,8 @@ CREATE TABLE "Minimisation_simulation_tool" (
 	PRIMARY KEY ("Minimisation_id", simulation_tool),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_simulation_tool_Minimisation_id" ON "Minimisation_simulation_tool" ("Minimisation_id");
 CREATE INDEX "ix_Minimisation_simulation_tool_simulation_tool" ON "Minimisation_simulation_tool" (simulation_tool);
+CREATE INDEX "ix_Minimisation_simulation_tool_Minimisation_id" ON "Minimisation_simulation_tool" ("Minimisation_id");
 
 CREATE TABLE "Minimisation_simulation_software" (
 	"Minimisation_id" INTEGER,

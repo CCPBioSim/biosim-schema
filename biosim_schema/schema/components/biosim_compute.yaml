@@ -95,93 +95,145 @@ slots:
     description:
       Operating system installed on the hardware used to perform the simulation.
     range: OperatingSystem
+    annotations:
+      example:
+        - value: Linux
 
   scheduler:
     description:
       Workload manager or job scheduler used to launch the simulation.
     range: Scheduler
+    annotations:
+      example:
+        - value: SLURM
 
   MPI_library:
     description:
       MPI implementation used for distributed parallel execution.
     range: MPILibrary
+    annotations:
+      example:
+        - value: OpenMPI
 
   container_runtime:
     description:
       Container runtime used to execute the simulation environment, if any.
     range: ContainerRuntime
-
+    annotations:
+      example:
+        - value: Docker
 
   wall_time:
     description:
       Total elapsed runtime of the simulation.
     range: TimeQuantity
+    annotations:
+      example:
+        - value: 3600
+          value_unit: s
 
   energy_consumption:
     description:
       Total energy consumed by the simulation run.
     range: EnergyQuantity
-
+    annotations:
+      example:
+        - value: 0.119
+          value_unit: kWh
 
   execution_platform:
     description:
       Broad type of system used to run the simulation workload.
     range: ExecutionPlatform
+    annotations:
+      example:
+        - value: "HPC Cluster"
 
   node_type:
     description:
       Compute node profile used for the simulation run.
     range: NodeType
+    annotations:
+      example:
+        - value: "CPU Only"
 
   node_count:
     description:
       Number of compute nodes used for the run.
     range: integer
     minimum_value: 1
+    annotations:
+      example:
+        - value: "2"
 
   CPU_vendor:
     description:
       CPU vendor used in the compute nodes.
     range: CpuVendor
+    annotations:
+      example:
+        - value: "AMD"
 
   CPU_architecture:
     description:
       CPU instruction-set architecture of the compute nodes.
     range: CpuArchitecture
+    annotations:
+      example:
+        - value: "x86"
 
   sockets_per_node:
     description:
       Number of physical CPU sockets in each compute node.
     range: integer
     minimum_value: 1
+    annotations:
+      example:
+        - value: 2
 
   cores_per_socket:
     description:
       Number of physical CPU cores in each socket.
     range: integer
     minimum_value: 1
+    annotations:
+      example:
+        - value: 2
 
   threads_per_core:
     description:
       Number of hardware threads per physical core.
     range: integer
     minimum_value: 1
+    annotations:
+      example:
+        - value: 2
 
   GPU_vendor:
     description:
       GPU vendor used by the compute nodes, if applicable.
     range: GpuVendor
+    annotations:
+      example:
+        - value: "AMD"
 
   GPUs_per_node:
     description:
       Number of GPUs present in each compute node.
     range: integer
     minimum_value: 0
+    annotations:
+      example:
+        - value: 1
 
   memory_per_node:
     description:
       Amount of memory installed per compute node.
     range: ByteQuantity
+    annotations:
+      example:
+        - value: 2
+          value_unit: GB
 
 enums:
 

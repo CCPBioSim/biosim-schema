@@ -31,11 +31,11 @@ slots:
 
   connectivity:
     description: Particle connectivity information
-    range: Connectivity
+    range: Connectivity # class
 
   particles:
     description: Particles information
-    range: Particles
+    range: Particles # class
 
   masses:
     description:
@@ -45,6 +45,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: masses
+      example:
+        - value: "True"
 
   bonds:
     description:
@@ -54,6 +56,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: bonds
+      example:
+        - value: "True"
 
   dihedrals:
     description:
@@ -63,6 +67,8 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: dihedrals
+      example:
+        - value: "True"
 
   fixed_charges:
     description:
@@ -72,11 +78,16 @@ slots:
       engine_mapping:
         - engine: toptrajparser
           key: fixed_charges
+      example:
+        - value: "True"
 
   coarse_grained:
     description:
       Are atoms coarse-grained?
     range: boolean
+    annotations:
+      example:
+        - value: "True"
 
   system_charge:
     description:
@@ -88,11 +99,17 @@ slots:
         - engine: toptrajparser
           key: system_charge
           unit: e
+      example:
+        - value: 0.0
+          value_unit: e
 
   resolution:
     description:
       Resolution of simulated system.
     range: ModelResolution # enum
+    annotations:
+      example:
+        - value: "All Atom"
 
 enums:
 

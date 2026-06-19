@@ -80,6 +80,8 @@ slots:
           key: maxcyc
         - engine: gromacs
           key: nsteps
+      example:
+        - value: 5000
 
   equilibration:
     description:
@@ -100,6 +102,9 @@ slots:
     description:
       Name of the tool used to setup simulation.
     range: SetupTool # enum
+    annotations:
+      example:
+        - value: pdb4amber
 
   energy_tolerance:
     description:
@@ -114,6 +119,9 @@ slots:
         - engine: amber
           key: drms
           unit: "10−4 kcal/mol/Å"
+      example:
+        - value: 1000
+          value_unit: kJ/mol/nm
 
   minimisation_distance_step_size:
     description:
@@ -128,18 +136,27 @@ slots:
         - engine: gromacs
           key: emstep
           unit: nm
+      example:
+        - value: 0.01
+          value_unit: nm
 
   minimisation_algorithm:
     description:
       Name of the method used to minimise the molecular system.
     range: MinimisationAlgorithm # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "Steepest Descent"
 
   simulation_software:
     description:
       Name of software used to perform simulation step.
     range: SimulationSoftware # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "Amber"
 
   simulation_software_version:
     description:
@@ -148,36 +165,53 @@ slots:
     annotations:
       extracted_only: true
       ui_readonly: true
+      example:
+        - value: "2014"
 
   simulation_method:
     description:
       Method used to perform simulation.
     range: SimulationMethod # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "Steered Molecular Dynamics (SMD)"
 
   simulation_tool:
     description:
       Tool used to perform simulation.
     range: SimulationTool # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "sander"
 
   analysis_software:
     description:
       Name of software used to analyse simulation.
     range: AnalysisSoftware # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "Visual Molecular Dynamics (VMD)"
 
   analysis_method:
     description:
       Name of the method used to analyse simulation.
     range: AnalysisMethod # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "RMSD"
 
   analysis_tool:
     description:
       Name of the tool used to analyse simulation.
     range: AnalysisTool # enum
     multivalued: true
+    annotations:
+      example:
+        - value: "CPPTRAJ"
 
 enums:
 

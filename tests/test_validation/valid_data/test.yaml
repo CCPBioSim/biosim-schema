@@ -1,14 +1,13 @@
 # Simple valid example for biosim schema validation
 
 # Root class: SimulationMetadata
-stages:
 settings:
   integrator:
     number_of_steps: 50000
     integrator_algorithm: Leap-frog
     time_step:
-      value: 0
-      value_unit: ps
+      value: 2.0e-15
+      value_unit: s
   ensemble:
     ensemble_type: NPT
     random_seed: -134222081
@@ -16,15 +15,15 @@ settings:
     barostat_algorithm: Parrinello-Rahman
     compressibility_vector:
       vector_value:
-      - - 0
+      - - 4.5e-05
         - 0
         - 0
       - - 0
-        - 0
+        - 4.5e-05
         - 0
       - - 0
         - 0
-        - 0
+        - 4.5e-05
       value_unit: 1/bar
     target_pressure_vector:
       vector_value:
@@ -39,8 +38,8 @@ settings:
         - 1
       value_unit: bar
     pressure_time_constant:
-      value: 2
-      value_unit: ps
+      value: 2.0e-12
+      value_unit: s
     pressure_coupling_frequency:
       value: 50
       value_unit: 1/ps
@@ -54,9 +53,9 @@ settings:
       value_unit: K
     temperature_time_constant:
       vector_value:
-      - 0.1
-      - 0.1
-      value_unit: ps
+      - 1.0e-13
+      - 1.0e-13
+      value_unit: s
     chain_length: 0
     friction_coefficient:
       value: 0
@@ -123,7 +122,7 @@ topology:
     masses: true
     fixed_charges: true
     system_charge:
-      value: 0
+      value: 4.1e-08
       value_unit: e
 composition:
   system_counts:
@@ -135,7 +134,7 @@ composition:
     atom_count: 21
     monomer_count: 1
     molecule_charge:
-      value: 0
+      value: 4.1e-08
       value_unit: e
     molecular_weight:
       value: 180.04

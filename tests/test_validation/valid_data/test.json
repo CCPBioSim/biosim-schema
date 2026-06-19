@@ -5,7 +5,7 @@
       "number_of_steps": 50000,
       "integrator_algorithm": "Leap-frog",
       "time_step": {
-        "value": 0.0,
+        "value": 2e-15,
         "value_unit": "s"
       }
     },
@@ -18,19 +18,19 @@
       "compressibility_vector": {
         "vector_value": [
           [
-            0.0,
-            0.0,
-            0.0
-          ],
-          [
-            0.0,
+            4.5e-05,
             0.0,
             0.0
           ],
           [
             0.0,
-            0.0,
+            4.5e-05,
             0.0
+          ],
+          [
+            0.0,
+            0.0,
+            4.5e-05
           ]
         ],
         "value_unit": "1/bar"
@@ -56,7 +56,7 @@
         "value_unit": "bar"
       },
       "pressure_time_constant": {
-        "value": 0.0,
+        "value": 2e-12,
         "value_unit": "s"
       },
       "pressure_coupling_frequency": {
@@ -76,8 +76,8 @@
       },
       "temperature_time_constant": {
         "vector_value": [
-          0.0,
-          0.0
+          1e-13,
+          1e-13
         ],
         "value_unit": "s"
       },
@@ -170,7 +170,7 @@
       "masses": true,
       "fixed_charges": true,
       "system_charge": {
-        "value": 0.0,
+        "value": 4.1e-08,
         "value_unit": "e"
       }
     }
@@ -187,7 +187,7 @@
         "atom_count": 21,
         "monomer_count": 1,
         "molecule_charge": {
-          "value": 0.0,
+          "value": 4.1e-08,
           "value_unit": "e"
         },
         "molecular_weight": {

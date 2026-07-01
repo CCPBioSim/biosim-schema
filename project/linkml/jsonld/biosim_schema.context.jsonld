@@ -258,6 +258,36 @@
          },
          "@id": "compute/execution_platform"
       },
+      "file_hash": {
+         "@id": "files/file_hash"
+      },
+      "file_hash_algorithm": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "files/file_hash_algorithm"
+      },
+      "file_name": {
+         "@id": "files/file_name"
+      },
+      "file_role": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "files/file_role"
+      },
+      "file_size": {
+         "@type": "@id",
+         "@id": "files/file_size"
+      },
+      "files": {
+         "@type": "@id",
+         "@id": "files"
+      },
       "fixed_charges": {
          "@type": "xsd:boolean",
          "@id": "topology/fixed_charges"
@@ -802,6 +832,9 @@
       },
       "Equilibration": {
          "@id": "stages/Equilibration"
+      },
+      "FileMetadata": {
+         "@id": "files/FileMetadata"
       },
       "ForceQuantity": {
          "@id": "quantities/ForceQuantity"

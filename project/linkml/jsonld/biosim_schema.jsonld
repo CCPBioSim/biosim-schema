@@ -17,7 +17,8 @@
     "./components/biosim_topology",
     "./components/biosim_trajectory",
     "./components/biosim_potentials",
-    "./components/biosim_compute"
+    "./components/biosim_compute",
+    "./components/biosim_files"
   ],
   "license": "MIT",
   "prefixes": [
@@ -3042,6 +3043,44 @@
           "description": "No GPU present."
         }
       ]
+    },
+    {
+      "name": "FileHashAlgorithm",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "permissible_values": [
+        {
+          "text": "sha256"
+        },
+        {
+          "text": "md5"
+        }
+      ]
+    },
+    {
+      "name": "FileRole",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/FileRole",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "permissible_values": [
+        {
+          "text": "topology"
+        },
+        {
+          "text": "trajectory"
+        },
+        {
+          "text": "metadata"
+        },
+        {
+          "text": "log"
+        },
+        {
+          "text": "parameter"
+        },
+        {
+          "text": "other"
+        }
+      ]
     }
   ],
   "slots": [
@@ -3161,6 +3200,33 @@
         "SimulationMetadata"
       ],
       "range": "ComputationalEnvironment",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "files",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "annotations": [
+        {
+          "tag": "webform_exclude",
+          "value": [
+            {
+              "value": true
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Files associated with this simulation metadata record.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "owner": "SimulationMetadata",
+      "domain_of": [
+        "SimulationMetadata"
+      ],
+      "range": "FileMetadata",
+      "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -7508,6 +7574,131 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "file_name",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_name",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "topology.prmtop"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Name of the file.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_name",
+      "owner": "FileMetadata",
+      "domain_of": [
+        "FileMetadata"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "file_size",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_size",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": 2,
+              "value_unit": "GB"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Size of the file.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_size",
+      "owner": "FileMetadata",
+      "domain_of": [
+        "FileMetadata"
+      ],
+      "range": "ByteQuantity",
+      "inlined": true,
+      "inlined_as_list": true,
+      "minimum_value": 0,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "file_hash",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_hash",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "9b2c..."
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Cryptographic hash of the file contents.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_hash",
+      "owner": "FileMetadata",
+      "domain_of": [
+        "FileMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "file_hash_algorithm",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_hash_algorithm",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "sha256"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Algorithm used to calculate the file hash.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_hash_algorithm",
+      "owner": "FileMetadata",
+      "domain_of": [
+        "FileMetadata"
+      ],
+      "range": "FileHashAlgorithm",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "file_role",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_role",
+      "annotations": [
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "topology"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Role of the file in the simulation submission.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/file_role",
+      "owner": "FileMetadata",
+      "domain_of": [
+        "FileMetadata"
+      ],
+      "range": "FileRole",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "lengthQuantity__value",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/quantities",
       "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/quantities/value",
@@ -8241,7 +8432,8 @@
         "trajectory",
         "composition",
         "potentials",
-        "compute"
+        "compute",
+        "files"
       ],
       "slot_usage": {},
       "class_uri": "https://CCPBioSim.ac.uk/biosim-schema/SimulationMetadata",
@@ -9539,13 +9731,29 @@
       "slot_usage": {},
       "class_uri": "https://CCPBioSim.ac.uk/biosim-schema/compute/Performance",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "FileMetadata",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata",
+      "description": "Metadata about uploaded or referenced files.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/files",
+      "slots": [
+        "file_name",
+        "file_size",
+        "file_hash",
+        "file_hash_algorithm",
+        "file_role"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.11.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-06-15T10:06:40",
-  "source_file_size": 2847,
-  "generation_date": "2026-06-19T17:27:26",
+  "source_file_date": "2026-07-01T09:33:30",
+  "source_file_size": 3115,
+  "generation_date": "2026-07-01T09:33:40",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",
@@ -9559,6 +9767,7 @@
     "./components/biosim_trajectory.context.jsonld",
     "./components/biosim_potentials.context.jsonld",
     "./components/biosim_compute.context.jsonld",
+    "./components/biosim_files.context.jsonld",
     {
       "@base": "https://CCPBioSim.ac.uk/biosim-schema/"
     }

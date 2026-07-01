@@ -88,6 +88,15 @@ message Equilibration
  repeated  simulationTool simulationTool = 0
  repeated  simulationSoftware simulationSoftware = 0
  }
+// Metadata about uploaded or referenced files.
+message FileMetadata
+ {
+  string fileName = 0
+  byteQuantity fileSize = 0
+  string fileHash = 0
+  fileHashAlgorithm fileHashAlgorithm = 0
+  fileRole fileRole = 0
+ }
 // A quantity representing force.
 message ForceQuantity
  {
@@ -318,6 +327,7 @@ message SimulationMetadata
   systemComposition composition = 0
   potentialMetadata potentials = 0
   computationalEnvironment compute = 0
+ repeated  fileMetadata files = 0
  }
 // Simulation observables outputted from simulation.
 message SimulationObservables

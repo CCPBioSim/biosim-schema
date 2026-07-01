@@ -80,6 +80,9 @@ class WebFormFieldExtractor:
     def _render_class_fields(self, class_name, context=None):
         """Render all slots of a class as a dict of form field definitions.
 
+        Slots annotated with ``webform_exclude`` are skipped, allowing schema fields
+        to remain valid for data records without appearing in the generated webform.
+
         Args:
             class_name: Name of the class to render.
             context: Optional render context; a fresh one is created if not provided.
@@ -90,7 +93,11 @@ class WebFormFieldExtractor:
         if context is None:
             context = RenderContext()
         cls = self.class_index[class_name]
-        return {s: self._render_slot(s, context) for s in cls.get("slots", [])}
+        return {
+            s: self._render_slot(s, context)
+            for s in cls.get("slots", [])
+            if not self._get_annotation(self.slot_index[s], "webform_exclude")
+        }
 
     def _render_slot(self, slot_name, context):
         """Render a slot directly to a form field definition.

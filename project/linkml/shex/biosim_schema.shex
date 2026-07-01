@@ -232,6 +232,26 @@ linkml:Sparqlpath xsd:string
     )
 }
 
+<https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata> CLOSED {
+    (  $<https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata_tes> (  <https://CCPBioSim.ac.uk/biosim-schema/files/file_name>
+          @linkml:String ;
+          <https://CCPBioSim.ac.uk/biosim-schema/files/file_size> @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ByteQuantity>
+          ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/files/file_hash> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/files/file_hash_algorithm> [
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm#sha256>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm#md5> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/files/file_role> [ <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#topology>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#trajectory>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#metadata>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#log>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#parameter>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#other> ] ?
+       ) ;
+       rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata> ] ?
+    )
+}
+
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity> CLOSED {
     (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/ForceQuantity_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value> @linkml:Float ? ;
@@ -730,7 +750,8 @@ linkml:Sparqlpath xsd:string
           <trajectory> @<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata> ? ;
           <composition> @<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> ? ;
           <potentials> @<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> ? ;
-          <compute> @<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> ?
+          <compute> @<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> ? ;
+          <files> @<https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata> *
        ) ;
        rdf:type [ <SimulationMetadata> ] ?
     )

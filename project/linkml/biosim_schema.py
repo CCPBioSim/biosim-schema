@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-19T17:27:27
+# Generation date: 2026-07-01T09:33:41
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -101,6 +101,7 @@ class SimulationMetadata(YAMLRoot):
     composition: Optional[Union[dict, "SystemComposition"]] = None
     potentials: Optional[Union[dict, "PotentialMetadata"]] = None
     compute: Optional[Union[dict, "ComputationalEnvironment"]] = None
+    files: Optional[Union[Union[dict, "FileMetadata"], list[Union[dict, "FileMetadata"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.stages is not None and not isinstance(self.stages, SimulationStages):
@@ -126,6 +127,8 @@ class SimulationMetadata(YAMLRoot):
 
         if self.compute is not None and not isinstance(self.compute, ComputationalEnvironment):
             self.compute = ComputationalEnvironment(**as_dict(self.compute))
+
+        self._normalize_inlined_as_list(slot_name="files", slot_type=FileMetadata, key_name="file_name", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2021,6 +2024,45 @@ class Performance(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
+class FileMetadata(YAMLRoot):
+    """
+    Metadata about uploaded or referenced files.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOSIM_SCHEMA["files/FileMetadata"]
+    class_class_curie: ClassVar[str] = "biosim_schema:files/FileMetadata"
+    class_name: ClassVar[str] = "FileMetadata"
+    class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.FileMetadata
+
+    file_name: str = None
+    file_size: Optional[Union[dict, ByteQuantity]] = None
+    file_hash: Optional[str] = None
+    file_hash_algorithm: Optional[Union[str, "FileHashAlgorithm"]] = None
+    file_role: Optional[Union[str, "FileRole"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.file_name):
+            self.MissingRequiredField("file_name")
+        if not isinstance(self.file_name, str):
+            self.file_name = str(self.file_name)
+
+        if self.file_size is not None and not isinstance(self.file_size, ByteQuantity):
+            self.file_size = ByteQuantity(**as_dict(self.file_size))
+
+        if self.file_hash is not None and not isinstance(self.file_hash, str):
+            self.file_hash = str(self.file_hash)
+
+        if self.file_hash_algorithm is not None and not isinstance(self.file_hash_algorithm, FileHashAlgorithm):
+            self.file_hash_algorithm = FileHashAlgorithm(self.file_hash_algorithm)
+
+        if self.file_role is not None and not isinstance(self.file_role, FileRole):
+            self.file_role = FileRole(self.file_role)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class LengthUnit(EnumDefinitionImpl):
     """
@@ -3473,6 +3515,28 @@ class GpuVendor(EnumDefinitionImpl):
                 text="None",
                 description="No GPU present."))
 
+class FileHashAlgorithm(EnumDefinitionImpl):
+
+    sha256 = PermissibleValue(text="sha256")
+    md5 = PermissibleValue(text="md5")
+
+    _defn = EnumDefinition(
+        name="FileHashAlgorithm",
+    )
+
+class FileRole(EnumDefinitionImpl):
+
+    topology = PermissibleValue(text="topology")
+    trajectory = PermissibleValue(text="trajectory")
+    metadata = PermissibleValue(text="metadata")
+    log = PermissibleValue(text="log")
+    parameter = PermissibleValue(text="parameter")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="FileRole",
+    )
+
 # Slots
 class slots:
     pass
@@ -3500,6 +3564,9 @@ slots.potentials = Slot(uri=BIOSIM_SCHEMA.potentials, name="potentials", curie=B
 
 slots.compute = Slot(uri=BIOSIM_SCHEMA.compute, name="compute", curie=BIOSIM_SCHEMA.curie('compute'),
                    model_uri=BIOSIM_SCHEMA.compute, domain=None, range=Optional[Union[dict, ComputationalEnvironment]])
+
+slots.files = Slot(uri=BIOSIM_SCHEMA.files, name="files", curie=BIOSIM_SCHEMA.curie('files'),
+                   model_uri=BIOSIM_SCHEMA.files, domain=None, range=Optional[Union[Union[dict, FileMetadata], list[Union[dict, FileMetadata]]]])
 
 slots.engine_mapping = Slot(uri=BIOSIM_SCHEMA.engine_mapping, name="engine_mapping", curie=BIOSIM_SCHEMA.curie('engine_mapping'),
                    model_uri=BIOSIM_SCHEMA.engine_mapping, domain=None, range=Optional[Union[str, list[str]]])
@@ -3951,6 +4018,21 @@ slots.GPUs_per_node = Slot(uri=BIOSIM_SCHEMA['compute/GPUs_per_node'], name="GPU
 
 slots.memory_per_node = Slot(uri=BIOSIM_SCHEMA['compute/memory_per_node'], name="memory_per_node", curie=BIOSIM_SCHEMA.curie('compute/memory_per_node'),
                    model_uri=BIOSIM_SCHEMA.memory_per_node, domain=None, range=Optional[Union[dict, ByteQuantity]])
+
+slots.file_name = Slot(uri=BIOSIM_SCHEMA['files/file_name'], name="file_name", curie=BIOSIM_SCHEMA.curie('files/file_name'),
+                   model_uri=BIOSIM_SCHEMA.file_name, domain=None, range=str)
+
+slots.file_size = Slot(uri=BIOSIM_SCHEMA['files/file_size'], name="file_size", curie=BIOSIM_SCHEMA.curie('files/file_size'),
+                   model_uri=BIOSIM_SCHEMA.file_size, domain=None, range=Optional[Union[dict, ByteQuantity]])
+
+slots.file_hash = Slot(uri=BIOSIM_SCHEMA['files/file_hash'], name="file_hash", curie=BIOSIM_SCHEMA.curie('files/file_hash'),
+                   model_uri=BIOSIM_SCHEMA.file_hash, domain=None, range=Optional[str])
+
+slots.file_hash_algorithm = Slot(uri=BIOSIM_SCHEMA['files/file_hash_algorithm'], name="file_hash_algorithm", curie=BIOSIM_SCHEMA.curie('files/file_hash_algorithm'),
+                   model_uri=BIOSIM_SCHEMA.file_hash_algorithm, domain=None, range=Optional[Union[str, "FileHashAlgorithm"]])
+
+slots.file_role = Slot(uri=BIOSIM_SCHEMA['files/file_role'], name="file_role", curie=BIOSIM_SCHEMA.curie('files/file_role'),
+                   model_uri=BIOSIM_SCHEMA.file_role, domain=None, range=Optional[Union[str, "FileRole"]])
 
 slots.lengthQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="lengthQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.lengthQuantity__value, domain=None, range=Optional[float])

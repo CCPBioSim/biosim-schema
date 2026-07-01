@@ -548,6 +548,70 @@
             "title": "ExecutionPlatform",
             "type": "string"
         },
+        "FileHashAlgorithm": {
+            "description": "",
+            "enum": [
+                "sha256",
+                "md5"
+            ],
+            "title": "FileHashAlgorithm",
+            "type": "string"
+        },
+        "FileMetadata": {
+            "additionalProperties": false,
+            "description": "Metadata about uploaded or referenced files.",
+            "properties": {
+                "file_hash": {
+                    "description": "Cryptographic hash of the file contents.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "file_hash_algorithm": {
+                    "$ref": "#/$defs/FileHashAlgorithm",
+                    "description": "Algorithm used to calculate the file hash."
+                },
+                "file_name": {
+                    "description": "Name of the file.",
+                    "type": "string"
+                },
+                "file_role": {
+                    "$ref": "#/$defs/FileRole",
+                    "description": "Role of the file in the simulation submission."
+                },
+                "file_size": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ByteQuantity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Size of the file.",
+                    "minimum": 0
+                }
+            },
+            "required": [
+                "file_name"
+            ],
+            "title": "FileMetadata",
+            "type": "object"
+        },
+        "FileRole": {
+            "description": "",
+            "enum": [
+                "topology",
+                "trajectory",
+                "metadata",
+                "log",
+                "parameter",
+                "other"
+            ],
+            "title": "FileRole",
+            "type": "string"
+        },
         "ForceQuantity": {
             "additionalProperties": false,
             "description": "A quantity representing force.",
@@ -1930,6 +1994,16 @@
                     ],
                     "description": "Computational environment information."
                 },
+                "files": {
+                    "description": "Files associated with this simulation metadata record.",
+                    "items": {
+                        "$ref": "#/$defs/FileMetadata"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "observables": {
                     "anyOf": [
                         {
@@ -2827,6 +2901,16 @@
                 }
             ],
             "description": "Computational environment information."
+        },
+        "files": {
+            "description": "Files associated with this simulation metadata record.",
+            "items": {
+                "$ref": "#/$defs/FileMetadata"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
         },
         "observables": {
             "anyOf": [

@@ -50,3 +50,7 @@ suppress_warnings = [
 
 html_theme = 'furo'
 html_static_path = ['_static']
+html_theme_options = {
+    "dark_logo": "logos/biosim-schema-logo-light-text.png",
+    "light_logo": "logos/biosim-schema-logo-dark-text.png",
+}

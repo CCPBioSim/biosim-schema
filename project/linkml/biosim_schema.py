@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-02T16:27:19
+# Generation date: 2026-07-02T17:05:26
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.11.0"
-version = "0.0.4"
+version = "0.0.5"
 
 # Namespaces
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')

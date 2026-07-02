@@ -1,6 +1,6 @@
 # Contributing to biosim-schema
 
-Thank you for your interest in contributing to **REPO-NAME**!
+Thank you for your interest in contributing to **biosim-schema**!
 
 We’re excited to collaborate with developers, researchers, and community members to make biosim-schema better for everyone.
 
@@ -11,7 +11,7 @@ This guide explains how to set up your environment, make changes, and submit the
 ## Getting Started
 
 Before contributing, please review the [Developer Guide]().
-It covers REPO-NAME’s architecture, setup instructions, and contribution workflow.
+It covers biosim-schema’s architecture, setup instructions, and contribution workflow.
 
 If you’re new to the project, we also recommend:
 - Reading the [README](../README.md) for an overview and installation details.
@@ -62,4 +62,4 @@ Well-documented issues help us address problems faster and keep biosim-schema st
 
 ---
 
-Thank you for helping improve **REPO-NAME**, your contributions make open source stronger!
+Thank you for helping improve **biosim-schema**, your contributions make open source stronger!

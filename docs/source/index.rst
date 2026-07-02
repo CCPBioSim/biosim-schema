@@ -6,6 +6,19 @@
 BioSim Schema Documentation
 ===========================
 
+``biosim-schema`` is available at http://github.com/CCPBioSim/biosim-schema
+
+.. image:: /_static/logos/biosim-schema-logo-dark-text.png
+   :width: 250px
+   :align: center
+   :class: only-light
+
+.. image:: /_static/logos/biosim-schema-logo-light-text.png
+   :width: 250px
+   :align: center
+   :class: only-dark
+
+
 BioSim Schema provides a LinkML-based, reusable metadata model for biomolecular
 simulation data, with tooling to validate terms and generate downstream
 artefacts for BioSimDR workflows. These docs are for schema users and
@@ -17,8 +30,8 @@ workflows, generation/CI behavior, and where to find the schema reference.
    :maxdepth: 2
    :caption: Contents:
 
+   schema_intro
    installation
    usage
    contributing
    development_workflow
-   schema_intro

@@ -1,6 +1,14 @@
 biosim-schema
 ==============================
-A repository for the biomolecular simulation metadata schema used in the BioSimDR project. This schema is used to generate
+
+<p align="center">
+    <img src="docs/_static/logos/biosim-schema-logo-light-text.png#gh-dark-mode-only" alt="biosim-schema logo" width="300"/>
+    <img src="docs/_static/logos/biosim-schema-logo-dark-text.png#gh-light-mode-only" alt="biosim-schema logo" width="300"/>
+</p>
+
+A repository for the biomolecular simulation metadata schema used in the BioSimDR project. It provides the canonical schema, field definitions, and validation assets used to standardize simulation metadata.
+
+See the [biosim-schema documentation](https://biosim-schema.readthedocs.io/en/latest/) for more information.
 
 ## Project Status
 

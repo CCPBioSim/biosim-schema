@@ -1,8 +1,3 @@
-.. CCPBioSim-biosim-schema documentation master file, created by
-   sphinx-quickstart on Wed Dec 10 16:51:51 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 BioSim Schema Documentation
 ===========================
 
@@ -35,3 +30,21 @@ workflows, generation/CI behavior, and where to find the schema reference.
    usage
    contributing
    development_workflow
+
+
+Funding
+=======
+
+Contributors to biosim-schema were supported by
+
+.. image::  _static/logos/psdi-logo.png
+   :height: 100px
+   :target: https://www.psdi.ac.uk/
+
+.. image:: _static/logos/cosec-logo.png
+   :height: 100px
+   :target: https://www.cosec.ac.uk/
+
+.. image:: _static/logos/CCPBioSim-logo.png
+   :height: 100px
+   :target: https://www.ccpbiosim.ac.uk/

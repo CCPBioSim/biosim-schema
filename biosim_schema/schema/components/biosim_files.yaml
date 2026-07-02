@@ -1,0 +1,70 @@
+id: https://CCPBioSim.ac.uk/biosim-schema/files
+name: biosim-files
+
+prefixes:
+  biosim_schema: https://CCPBioSim.ac.uk/biosim-schema/
+
+classes:
+  FileMetadata:
+    description: Metadata about uploaded or referenced files.
+    slots:
+      - file_name
+      - file_size
+      - file_hash
+      - file_hash_algorithm
+      - file_role
+
+slots:
+
+  file_name:
+    description: Name of the file.
+    range: string
+    required: true
+    annotations:
+      example:
+        - value: topology.prmtop
+
+  file_size:
+    description: Size of the file.
+    range: ByteQuantity
+    minimum_value: 0
+    annotations:
+      example:
+        - value: 2
+          value_unit: GB
+
+  file_hash:
+    description: Cryptographic hash of the file contents.
+    range: string
+    annotations:
+      example:
+        - value: 9b2c...
+
+  file_hash_algorithm:
+    description: Algorithm used to calculate the file hash.
+    range: FileHashAlgorithm
+    annotations:
+      example:
+        - value: sha256
+
+  file_role:
+    description: Role of the file in the simulation submission.
+    range: FileRole
+    annotations:
+      example:
+        - value: topology
+
+enums:
+  FileHashAlgorithm:
+    permissible_values:
+      sha256:
+      md5:
+
+  FileRole:
+    permissible_values:
+      topology:
+      trajectory:
+      metadata:
+      log:
+      parameter:
+      other:

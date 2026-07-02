@@ -1,10 +1,18 @@
-.. CCPBioSim-biosim-schema documentation master file, created by
-   sphinx-quickstart on Wed Dec 10 16:51:51 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 BioSim Schema Documentation
 ===========================
+
+``biosim-schema`` is available at http://github.com/CCPBioSim/biosim-schema
+
+.. image:: /_static/logos/biosim-schema-logo-dark-text.png
+   :width: 250px
+   :align: center
+   :class: only-light
+
+.. image:: /_static/logos/biosim-schema-logo-light-text.png
+   :width: 250px
+   :align: center
+   :class: only-dark
+
 
 BioSim Schema provides a LinkML-based, reusable metadata model for biomolecular
 simulation data, with tooling to validate terms and generate downstream
@@ -17,8 +25,26 @@ workflows, generation/CI behavior, and where to find the schema reference.
    :maxdepth: 2
    :caption: Contents:
 
+   schema_intro
    installation
    usage
    contributing
    development_workflow
-   schema_intro
+
+
+Funding
+=======
+
+Contributors to biosim-schema were supported by
+
+.. image::  _static/logos/psdi-logo.png
+   :height: 100px
+   :target: https://www.psdi.ac.uk/
+
+.. image:: _static/logos/cosec-logo.png
+   :height: 100px
+   :target: https://www.cosec.ac.uk/
+
+.. image:: _static/logos/CCPBioSim-logo.png
+   :height: 100px
+   :target: https://www.ccpbiosim.ac.uk/

@@ -36,6 +36,7 @@ imports:
   - ./components/biosim_trajectory
   - ./components/biosim_potentials
   - ./components/biosim_compute
+  - ./components/biosim_files
 
 classes:
 
@@ -52,6 +53,8 @@ classes:
       - composition # class
       - potentials # class
       - compute # class
+      - files # class
+      - biosim_schema_version # slot
 
 
 # slots with units initially in SI where possible
@@ -88,6 +91,22 @@ slots:
   compute:
     description: Computational environment information.
     range: ComputationalEnvironment # class
+
+  files:
+    description: Files associated with this simulation metadata record.
+    range: FileMetadata
+    multivalued: true
+    inlined_as_list: true
+    annotations:
+      webform_exclude:
+        - value: true
+
+  biosim_schema_version:
+    description: Version of biosim-schema used to populate metadata.
+    range: string
+    annotations:
+      webform_exclude:
+        - value: true
 
   engine_mapping:
     description: Mapping from engine-specific parameter names to schema slots

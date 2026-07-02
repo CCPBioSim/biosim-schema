@@ -1972,6 +1972,13 @@
             "additionalProperties": false,
             "description": "root class for biosim-schema",
             "properties": {
+                "biosim_schema_version": {
+                    "description": "Version of biosim-schema used to populate metadata.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "composition": {
                     "anyOf": [
                         {
@@ -2880,6 +2887,13 @@
     "description": "root class for biosim-schema",
     "metamodel_version": "1.11.0",
     "properties": {
+        "biosim_schema_version": {
+            "description": "Version of biosim-schema used to populate metadata.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
         "composition": {
             "anyOf": [
                 {

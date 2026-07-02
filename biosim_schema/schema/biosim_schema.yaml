@@ -54,6 +54,7 @@ classes:
       - potentials # class
       - compute # class
       - files # class
+      - biosim_schema_version # slot
 
 
 # slots with units initially in SI where possible
@@ -96,6 +97,13 @@ slots:
     range: FileMetadata
     multivalued: true
     inlined_as_list: true
+    annotations:
+      webform_exclude:
+        - value: true
+
+  biosim_schema_version:
+    description: Version of biosim-schema used to populate metadata.
+    range: string
     annotations:
       webform_exclude:
         - value: true

@@ -3232,6 +3232,30 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "biosim_schema_version",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/biosim_schema_version",
+      "annotations": [
+        {
+          "tag": "webform_exclude",
+          "value": [
+            {
+              "value": true
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Version of biosim-schema used to populate metadata.",
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/biosim_schema_version",
+      "owner": "SimulationMetadata",
+      "domain_of": [
+        "SimulationMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "engine_mapping",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/engine_mapping",
       "description": "Mapping from engine-specific parameter names to schema slots",
@@ -8433,7 +8457,8 @@
         "composition",
         "potentials",
         "compute",
-        "files"
+        "files",
+        "biosim_schema_version"
       ],
       "slot_usage": {},
       "class_uri": "https://CCPBioSim.ac.uk/biosim-schema/SimulationMetadata",
@@ -9751,9 +9776,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-07-01T09:33:30",
-  "source_file_size": 3115,
-  "generation_date": "2026-07-01T09:33:40",
+  "source_file_date": "2026-07-02T15:53:45",
+  "source_file_size": 3327,
+  "generation_date": "2026-07-02T15:53:52",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

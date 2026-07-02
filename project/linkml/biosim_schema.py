@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-01T09:33:41
+# Generation date: 2026-07-02T15:53:53
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -102,6 +102,7 @@ class SimulationMetadata(YAMLRoot):
     potentials: Optional[Union[dict, "PotentialMetadata"]] = None
     compute: Optional[Union[dict, "ComputationalEnvironment"]] = None
     files: Optional[Union[Union[dict, "FileMetadata"], list[Union[dict, "FileMetadata"]]]] = empty_list()
+    biosim_schema_version: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.stages is not None and not isinstance(self.stages, SimulationStages):
@@ -129,6 +130,9 @@ class SimulationMetadata(YAMLRoot):
             self.compute = ComputationalEnvironment(**as_dict(self.compute))
 
         self._normalize_inlined_as_list(slot_name="files", slot_type=FileMetadata, key_name="file_name", keyed=False)
+
+        if self.biosim_schema_version is not None and not isinstance(self.biosim_schema_version, str):
+            self.biosim_schema_version = str(self.biosim_schema_version)
 
         super().__post_init__(**kwargs)
 
@@ -3567,6 +3571,9 @@ slots.compute = Slot(uri=BIOSIM_SCHEMA.compute, name="compute", curie=BIOSIM_SCH
 
 slots.files = Slot(uri=BIOSIM_SCHEMA.files, name="files", curie=BIOSIM_SCHEMA.curie('files'),
                    model_uri=BIOSIM_SCHEMA.files, domain=None, range=Optional[Union[Union[dict, FileMetadata], list[Union[dict, FileMetadata]]]])
+
+slots.biosim_schema_version = Slot(uri=BIOSIM_SCHEMA.biosim_schema_version, name="biosim_schema_version", curie=BIOSIM_SCHEMA.curie('biosim_schema_version'),
+                   model_uri=BIOSIM_SCHEMA.biosim_schema_version, domain=None, range=Optional[str])
 
 slots.engine_mapping = Slot(uri=BIOSIM_SCHEMA.engine_mapping, name="engine_mapping", curie=BIOSIM_SCHEMA.curie('engine_mapping'),
                    model_uri=BIOSIM_SCHEMA.engine_mapping, domain=None, range=Optional[Union[str, list[str]]])

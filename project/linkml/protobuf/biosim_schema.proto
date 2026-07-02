@@ -328,6 +328,7 @@ message SimulationMetadata
   potentialMetadata potentials = 0
   computationalEnvironment compute = 0
  repeated  fileMetadata files = 0
+  string biosimSchemaVersion = 0
  }
 // Simulation observables outputted from simulation.
 message SimulationObservables

@@ -105,6 +105,9 @@
          },
          "@id": "settings/barostat_algorithm"
       },
+      "biosim_schema_version": {
+         "@id": "biosim_schema_version"
+      },
       "bond_length_constraints_algorithm": {
          "@context": {
             "text": "skos:notation",

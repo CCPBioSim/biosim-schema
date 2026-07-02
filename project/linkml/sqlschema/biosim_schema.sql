@@ -1,5 +1,6 @@
 -- # Class: SimulationMetadata Description: root class for biosim-schema
 --     * Slot: id
+--     * Slot: biosim_schema_version Description: Version of biosim-schema used to populate metadata.
 --     * Slot: stages_id Description: Simulation stages
 --     * Slot: settings_id Description: Simulation settings
 --     * Slot: observables_id Description: Simulation observables.
@@ -929,8 +930,8 @@ CREATE TABLE "VectorPressureQuantity_vector_value" (
 	PRIMARY KEY ("VectorPressureQuantity_id", vector_value),
 	FOREIGN KEY("VectorPressureQuantity_id") REFERENCES "VectorPressureQuantity" (id)
 );
-CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
+CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
 
 CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	"VectorTemperatureQuantity_id" INTEGER,
@@ -947,8 +948,8 @@ CREATE TABLE "VectorTimeQuantity_vector_value" (
 	PRIMARY KEY ("VectorTimeQuantity_id", vector_value),
 	FOREIGN KEY("VectorTimeQuantity_id") REFERENCES "VectorTimeQuantity" (id)
 );
-CREATE INDEX "ix_VectorTimeQuantity_vector_value_vector_value" ON "VectorTimeQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorTimeQuantity_vector_value_VectorTimeQuantity_id" ON "VectorTimeQuantity_vector_value" ("VectorTimeQuantity_id");
+CREATE INDEX "ix_VectorTimeQuantity_vector_value_vector_value" ON "VectorTimeQuantity_vector_value" (vector_value);
 
 CREATE TABLE "MatrixPressureQuantity_vector_value" (
 	"MatrixPressureQuantity_id" INTEGER,
@@ -974,8 +975,8 @@ CREATE TABLE "MatrixQuantity_vector_value" (
 	PRIMARY KEY ("MatrixQuantity_id", vector_value),
 	FOREIGN KEY("MatrixQuantity_id") REFERENCES "MatrixQuantity" (id)
 );
-CREATE INDEX "ix_MatrixQuantity_vector_value_MatrixQuantity_id" ON "MatrixQuantity_vector_value" ("MatrixQuantity_id");
 CREATE INDEX "ix_MatrixQuantity_vector_value_vector_value" ON "MatrixQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_MatrixQuantity_vector_value_MatrixQuantity_id" ON "MatrixQuantity_vector_value" ("MatrixQuantity_id");
 
 CREATE TABLE "Equilibration_simulation_tool" (
 	"Equilibration_id" INTEGER,
@@ -992,8 +993,8 @@ CREATE TABLE "Equilibration_simulation_software" (
 	PRIMARY KEY ("Equilibration_id", simulation_software),
 	FOREIGN KEY("Equilibration_id") REFERENCES "Equilibration" (id)
 );
-CREATE INDEX "ix_Equilibration_simulation_software_simulation_software" ON "Equilibration_simulation_software" (simulation_software);
 CREATE INDEX "ix_Equilibration_simulation_software_Equilibration_id" ON "Equilibration_simulation_software" ("Equilibration_id");
+CREATE INDEX "ix_Equilibration_simulation_software_simulation_software" ON "Equilibration_simulation_software" (simulation_software);
 
 CREATE TABLE "Production_simulation_tool" (
 	"Production_id" INTEGER,
@@ -1019,8 +1020,8 @@ CREATE TABLE "Production_simulation_method" (
 	PRIMARY KEY ("Production_id", simulation_method),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_method_Production_id" ON "Production_simulation_method" ("Production_id");
 CREATE INDEX "ix_Production_simulation_method_simulation_method" ON "Production_simulation_method" (simulation_method);
+CREATE INDEX "ix_Production_simulation_method_Production_id" ON "Production_simulation_method" ("Production_id");
 
 CREATE TABLE "Analysis_analysis_tool" (
 	"Analysis_id" INTEGER,
@@ -1028,8 +1029,8 @@ CREATE TABLE "Analysis_analysis_tool" (
 	PRIMARY KEY ("Analysis_id", analysis_tool),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool" ("Analysis_id");
+CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 
 CREATE TABLE "Analysis_analysis_software" (
 	"Analysis_id" INTEGER,
@@ -1037,8 +1038,8 @@ CREATE TABLE "Analysis_analysis_software" (
 	PRIMARY KEY ("Analysis_id", analysis_software),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_software_Analysis_id" ON "Analysis_analysis_software" ("Analysis_id");
 CREATE INDEX "ix_Analysis_analysis_software_analysis_software" ON "Analysis_analysis_software" (analysis_software);
+CREATE INDEX "ix_Analysis_analysis_software_Analysis_id" ON "Analysis_analysis_software" ("Analysis_id");
 
 CREATE TABLE "Analysis_analysis_method" (
 	"Analysis_id" INTEGER,
@@ -1046,8 +1047,8 @@ CREATE TABLE "Analysis_analysis_method" (
 	PRIMARY KEY ("Analysis_id", analysis_method),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_method_Analysis_id" ON "Analysis_analysis_method" ("Analysis_id");
 CREATE INDEX "ix_Analysis_analysis_method_analysis_method" ON "Analysis_analysis_method" (analysis_method);
+CREATE INDEX "ix_Analysis_analysis_method_Analysis_id" ON "Analysis_analysis_method" ("Analysis_id");
 
 CREATE TABLE "SimulationStages" (
 	id INTEGER NOT NULL,
@@ -1158,6 +1159,7 @@ CREATE INDEX "ix_Minimisation_simulation_software_simulation_software" ON "Minim
 
 CREATE TABLE "SimulationMetadata" (
 	id INTEGER NOT NULL,
+	biosim_schema_version TEXT,
 	stages_id INTEGER,
 	settings_id INTEGER,
 	observables_id INTEGER,

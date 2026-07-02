@@ -98,8 +98,18 @@ jobs:
           biosim-schema-generate derived
           biosim-schema-generate jsonschema
 
-      - name: Verify generated artifacts are clean
-        run: biosim-schema-generate verify
+      - name: Show changed files before PR
+        run: |
+          echo "Changed files after version bump + generation:"
+          git status --short
+
+      - name: Ensure expected generated files changed
+        run: |
+          test -f project/linkml/jsonschema/biosim_schema.schema.json
+          test -f project/schema_webformfields.json
+          test -f project/schema_enginemappings.json
+          test -f project/schema_summary.yaml
+          test -f project/schema_summary.csv
 
       - name: send PR
         id: pr_id

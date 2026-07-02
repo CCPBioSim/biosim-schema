@@ -96,7 +96,7 @@ jobs:
       - name: Regenerate versioned artifacts
         run: |
           biosim-schema-generate derived
-          biosim-schema-generate project
+          biosim-schema-generate jsonschema
 
       - name: Verify generated artifacts are clean
         run: biosim-schema-generate verify

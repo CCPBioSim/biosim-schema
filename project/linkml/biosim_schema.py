@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-02T17:05:26
+# Generation date: 2026-08-04T11:43:14
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.11.0"
-version = "0.0.5"
+version = "0.0.6"
 
 # Namespaces
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
@@ -3808,7 +3808,7 @@ slots.InChI = Slot(uri=BIOSIM_SCHEMA['composition/InChI'], name="InChI", curie=B
 
 slots.molecular_formula = Slot(uri=BIOSIM_SCHEMA['composition/molecular_formula'], name="molecular_formula", curie=BIOSIM_SCHEMA.curie('composition/molecular_formula'),
                    model_uri=BIOSIM_SCHEMA.molecular_formula, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^([A-Z][a-z]?\d*)+$'))
+                   pattern=re.compile(r'^([A-Z][a-z]?\d*)+([+-]|\d+[+-])?$'))
 
 slots.predicted_structure = Slot(uri=BIOSIM_SCHEMA['composition/predicted_structure'], name="predicted_structure", curie=BIOSIM_SCHEMA.curie('composition/predicted_structure'),
                    model_uri=BIOSIM_SCHEMA.predicted_structure, domain=None, range=Optional[Union[bool, Bool]])

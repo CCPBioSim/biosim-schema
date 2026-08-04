@@ -1343,7 +1343,7 @@
                 },
                 "molecular_formula": {
                     "description": "The molecular formula of a molecule\\",
-                    "pattern": "^([A-Z][a-z]?\\d*)+$",
+                    "pattern": "^([A-Z][a-z]?\\d*)+([+-]|\\d+[+-])?$",
                     "type": [
                         "string",
                         "null"

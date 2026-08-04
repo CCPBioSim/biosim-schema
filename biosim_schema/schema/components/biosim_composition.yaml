@@ -338,9 +338,10 @@ slots:
   molecular_formula:
     description:
       The molecular formula of a molecule\
-    pattern: "^([A-Z][a-z]?\\d*)+$"
+    pattern: "^([A-Z][a-z]?\\d*)+([+-]|\\d+[+-])?$"
     examples:
       - value: "C8H10N4O2"
+      - value: "C10H16N+"
     range: string
     annotations:
       engine_mapping:

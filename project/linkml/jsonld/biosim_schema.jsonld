@@ -6,7 +6,7 @@
     "https://CCPBioSim.github.io/biosim-schema"
   ],
   "id": "https://CCPBioSim.ac.uk/biosim-schema/",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "imports": [
     "linkml:types",
     "./components/biosim_quantities",
@@ -5656,6 +5656,10 @@
         {
           "value": "C8H10N4O2",
           "@type": "Example"
+        },
+        {
+          "value": "C10H16N+",
+          "@type": "Example"
         }
       ],
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
@@ -5665,7 +5669,7 @@
         "MoleculeID"
       ],
       "range": "string",
-      "pattern": "^([A-Z][a-z]?\\d*)+$",
+      "pattern": "^([A-Z][a-z]?\\d*)+([+-]|\\d+[+-])?$",
       "@type": "SlotDefinition"
     },
     {
@@ -9776,9 +9780,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-07-02T16:35:32",
+  "source_file_date": "2026-07-02T18:34:16",
   "source_file_size": 3327,
-  "generation_date": "2026-07-02T17:05:26",
+  "generation_date": "2026-08-04T11:43:14",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

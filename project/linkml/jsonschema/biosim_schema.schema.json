@@ -1410,6 +1410,20 @@
                         "string",
                         "null"
                     ]
+                },
+                "simulated_molecule_name": {
+                    "description": "Molecule name used in the simulation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "simulated_particle_names": {
+                    "description": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "MoleculeID",
@@ -2317,7 +2331,7 @@
                     "items": {
                         "$ref": "#/$defs/MoleculeID"
                     },
-                    "maxItems": 20,
+                    "maxItems": 200,
                     "type": [
                         "array",
                         "null"

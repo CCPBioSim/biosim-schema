@@ -88,6 +88,9 @@ slots:
     annotations:
       example:
         - value: "True"
+      engine_mapping:
+        - engine: toptrajparser
+          key: coarse_grained
 
   system_charge:
     description:

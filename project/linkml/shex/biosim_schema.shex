@@ -513,7 +513,9 @@ linkml:Sparqlpath xsd:string
           @<https://CCPBioSim.ac.uk/biosim-schema/quantities/ChargeQuantity> ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/molecule_count> @linkml:Integer ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/atom_count> @linkml:Integer ? ;
-          <https://CCPBioSim.ac.uk/biosim-schema/composition/monomer_count> @linkml:Integer ?
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/monomer_count> @linkml:Integer ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/simulated_particle_names> @linkml:String ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/composition/simulated_molecule_name> @linkml:String ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID> ] ?
     )

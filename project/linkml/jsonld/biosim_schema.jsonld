@@ -5059,6 +5059,77 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "simulated_particle_names",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/simulated_particle_names",
+      "annotations": [
+        {
+          "tag": "engine_mapping",
+          "value": [
+            {
+              "engine": "toptrajparser",
+              "key": "simulated_particle_names"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "example",
+          "value": [
+            {
+              "value": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
+      "examples": [
+        {
+          "value": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/simulated_particle_names",
+      "owner": "MoleculeID",
+      "domain_of": [
+        "MoleculeID"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "simulated_molecule_name",
+      "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/simulated_molecule_name",
+      "annotations": [
+        {
+          "tag": "engine_mapping",
+          "value": [
+            {
+              "engine": "toptrajparser",
+              "key": "simulated_molecule_name"
+            }
+          ],
+          "@type": "Annotation"
+        }
+      ],
+      "description": "Molecule name used in the simulation.",
+      "examples": [
+        {
+          "value": "POPS",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
+      "slot_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/simulated_molecule_name",
+      "owner": "MoleculeID",
+      "domain_of": [
+        "MoleculeID"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "molecular_weight",
       "definition_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/molecular_weight",
       "annotations": [
@@ -5223,7 +5294,7 @@
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
-      "maximum_cardinality": 20,
+      "maximum_cardinality": 200,
       "@type": "SlotDefinition"
     },
     {
@@ -6321,6 +6392,16 @@
           "value": [
             {
               "value": "True"
+            }
+          ],
+          "@type": "Annotation"
+        },
+        {
+          "tag": "engine_mapping",
+          "value": [
+            {
+              "engine": "toptrajparser",
+              "key": "coarse_grained"
             }
           ],
           "@type": "Annotation"
@@ -9449,7 +9530,9 @@
         "molecule_charge",
         "molecule_count",
         "atom_count",
-        "monomer_count"
+        "monomer_count",
+        "simulated_particle_names",
+        "simulated_molecule_name"
       ],
       "slot_usage": {},
       "class_uri": "https://CCPBioSim.ac.uk/biosim-schema/composition/MoleculeID",
@@ -9782,7 +9865,7 @@
   "source_file": "biosim_schema.yaml",
   "source_file_date": "2026-07-02T18:34:16",
   "source_file_size": 3327,
-  "generation_date": "2026-08-04T11:43:14",
+  "generation_date": "2026-08-06T12:33:52",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

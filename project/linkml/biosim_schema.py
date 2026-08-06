@@ -1,5 +1,5 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-04T11:43:14
+# Generation date: 2026-08-06T12:33:52
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -1315,6 +1315,8 @@ class MoleculeID(YAMLRoot):
     molecule_count: Optional[int] = None
     atom_count: Optional[int] = None
     monomer_count: Optional[int] = None
+    simulated_particle_names: Optional[str] = None
+    simulated_molecule_name: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.PDB_ID is not None and not isinstance(self.PDB_ID, str):
@@ -1367,6 +1369,12 @@ class MoleculeID(YAMLRoot):
 
         if self.monomer_count is not None and not isinstance(self.monomer_count, int):
             self.monomer_count = int(self.monomer_count)
+
+        if self.simulated_particle_names is not None and not isinstance(self.simulated_particle_names, str):
+            self.simulated_particle_names = str(self.simulated_particle_names)
+
+        if self.simulated_molecule_name is not None and not isinstance(self.simulated_molecule_name, str):
+            self.simulated_molecule_name = str(self.simulated_molecule_name)
 
         super().__post_init__(**kwargs)
 
@@ -3754,6 +3762,12 @@ slots.molecule_count = Slot(uri=BIOSIM_SCHEMA['composition/molecule_count'], nam
 
 slots.monomer_count = Slot(uri=BIOSIM_SCHEMA['composition/monomer_count'], name="monomer_count", curie=BIOSIM_SCHEMA.curie('composition/monomer_count'),
                    model_uri=BIOSIM_SCHEMA.monomer_count, domain=None, range=Optional[int])
+
+slots.simulated_particle_names = Slot(uri=BIOSIM_SCHEMA['composition/simulated_particle_names'], name="simulated_particle_names", curie=BIOSIM_SCHEMA.curie('composition/simulated_particle_names'),
+                   model_uri=BIOSIM_SCHEMA.simulated_particle_names, domain=None, range=Optional[str])
+
+slots.simulated_molecule_name = Slot(uri=BIOSIM_SCHEMA['composition/simulated_molecule_name'], name="simulated_molecule_name", curie=BIOSIM_SCHEMA.curie('composition/simulated_molecule_name'),
+                   model_uri=BIOSIM_SCHEMA.simulated_molecule_name, domain=None, range=Optional[str])
 
 slots.molecular_weight = Slot(uri=BIOSIM_SCHEMA['composition/molecular_weight'], name="molecular_weight", curie=BIOSIM_SCHEMA.curie('composition/molecular_weight'),
                    model_uri=BIOSIM_SCHEMA.molecular_weight, domain=None, range=Optional[Union[dict, MassQuantity]])

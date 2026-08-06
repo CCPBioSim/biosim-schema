@@ -640,6 +640,12 @@
          },
          "@id": "stages/setup_tool"
       },
+      "simulated_molecule_name": {
+         "@id": "composition/simulated_molecule_name"
+      },
+      "simulated_particle_names": {
+         "@id": "composition/simulated_particle_names"
+      },
       "simulation_averages": {
          "@type": "@id",
          "@id": "observables/simulation_averages"

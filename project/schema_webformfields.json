@@ -1911,9 +1911,26 @@
             },
             "placeholder": "1",
             "min": 0
+          },
+          "simulated_particle_names": {
+            "type": "text",
+            "label": "Simulated Particle Names",
+            "typehint": "string",
+            "hint": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
+            "example": {
+              "value": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
+            },
+            "placeholder": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
+          },
+          "simulated_molecule_name": {
+            "type": "text",
+            "label": "Simulated Molecule Name",
+            "typehint": "string",
+            "hint": "Molecule name used in the simulation.",
+            "placeholder": "POPS"
           }
         },
-        "max": 20
+        "max": 200
       }
     }
   },

@@ -975,6 +975,21 @@
             "example": {
               "value": 1
             }
+          },
+          "simulated_particle_names": {
+            "label": "Simulated Particle Names",
+            "hint": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
+            "typehint": "string",
+            "placeholder": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",
+            "example": {
+              "value": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
+            }
+          },
+          "simulated_molecule_name": {
+            "label": "Simulated Molecule Name",
+            "hint": "Molecule name used in the simulation.",
+            "typehint": "string",
+            "placeholder": "POPS"
           }
         }
       }

@@ -132,6 +132,19 @@ composition:
           label: Protein Sequence
           placeholder: DRVYIHPF
           typehint: string
+        simulated_molecule_name:
+          hint: Molecule name used in the simulation.
+          label: Simulated Molecule Name
+          placeholder: POPS
+          typehint: string
+        simulated_particle_names:
+          example:
+            value: CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B
+          hint: List of particle names (e.g. atoms or beads) that describe a simulated
+            molecule
+          label: Simulated Particle Names
+          placeholder: CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B
+          typehint: string
       hint: Persistent identifier of a molecule being simulated.
       label: Molecule ID
     system_counts:

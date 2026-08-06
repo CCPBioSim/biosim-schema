@@ -232,6 +232,8 @@ message MoleculeID
   integer moleculeCount = 0
   integer atomCount = 0
   integer monomerCount = 0
+  string simulatedParticleNames = 0
+  string simulatedMoleculeName = 0
  }
 // Potential used for nucleic acid molecules.
 message NucleicPotential

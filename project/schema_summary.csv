@@ -90,6 +90,8 @@ composition,molecule_ID,molecule_charge,Molecule Charge,Electrostatic charge of 
 composition,molecule_ID,molecule_count,Molecule Count,"Number of instances of a given molecule, defined as bonded atoms or beads.",1,,integer,{'value': 1}
 composition,molecule_ID,atom_count,Atom Count,Number of atoms in a molecule.,1,,integer,{'value': 1}
 composition,molecule_ID,monomer_count,Monomer Count,Number of monomeric units in a polymer(e.g. protein or nucleic acid).,1,,integer,{'value': 1}
+composition,molecule_ID,simulated_particle_names,Simulated Particle Names,List of particle names (e.g. atoms or beads) that describe a simulated molecule,"CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",,string,"{'value': 'CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B'}"
+composition,molecule_ID,simulated_molecule_name,Simulated Molecule Name,Molecule name used in the simulation.,POPS,,string,
 potentials,water_potential,water_potential_name,Water Potential Name,Force fields used to parametrize water molecules in a simulation.,,,string,{'value': 'TIP3P'}
 potentials,water_potential,modified,Modified?,Has the initial model been modified from the original?,True,,boolean,{'value': 'True'}
 potentials,protein_potential,protein_potential_name,Protein Potential Name,Force fields used to parametrize amino acids in proteins in a simulation.,,,string,{'value': 'ff19SB'}

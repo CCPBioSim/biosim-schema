@@ -719,6 +719,12 @@
           "unit": "e"
         }
       ],
+      "SimulationMetadata.topology.particles.coarse_grained": [
+        {
+          "key": "coarse_grained",
+          "value": null
+        }
+      ],
       "SimulationMetadata.trajectory.simulation_box.box_dimensions": [
         {
           "key": "box_dimensions",
@@ -878,6 +884,18 @@
       "SimulationMetadata.composition.molecule_ID.monomer_count": [
         {
           "key": "monomer_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.simulated_particle_names": [
+        {
+          "key": "simulated_particle_names",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.simulated_molecule_name": [
+        {
+          "key": "simulated_molecule_name",
           "value": null
         }
       ]
@@ -1511,6 +1529,12 @@
         },
         "path_metadata": {}
       },
+      "coarse_grained": {
+        "by_path": {
+          "SimulationMetadata.topology.particles.coarse_grained": {}
+        },
+        "path_metadata": {}
+      },
       "box_dimensions": {
         "by_path": {
           "SimulationMetadata.trajectory.simulation_box.box_dimensions": {}
@@ -1656,6 +1680,18 @@
       "monomer_count": {
         "by_path": {
           "SimulationMetadata.composition.molecule_ID.monomer_count": {}
+        },
+        "path_metadata": {}
+      },
+      "simulated_particle_names": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.simulated_particle_names": {}
+        },
+        "path_metadata": {}
+      },
+      "simulated_molecule_name": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.simulated_molecule_name": {}
         },
         "path_metadata": {}
       }

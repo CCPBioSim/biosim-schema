@@ -197,6 +197,8 @@
 --     * Slot: molecule_count Description: Number of instances of a given molecule, defined as bonded atoms or beads.
 --     * Slot: atom_count Description: Number of atoms in a molecule.
 --     * Slot: monomer_count Description: Number of monomeric units in a polymer(e.g. protein or nucleic acid).
+--     * Slot: simulated_particle_names Description: List of particle names (e.g. atoms or beads) that describe a simulated molecule
+--     * Slot: simulated_molecule_name Description: Molecule name used in the simulation.
 --     * Slot: SystemComposition_id Description: Autocreated FK slot
 --     * Slot: molecular_weight_id Description: The molecular weight of a molecule.
 --     * Slot: molecule_charge_id Description: Electrostatic charge of a molecule.
@@ -903,8 +905,8 @@ CREATE TABLE "VectorLengthQuantity_vector_value" (
 	PRIMARY KEY ("VectorLengthQuantity_id", vector_value),
 	FOREIGN KEY("VectorLengthQuantity_id") REFERENCES "VectorLengthQuantity" (id)
 );
-CREATE INDEX "ix_VectorLengthQuantity_vector_value_VectorLengthQuantity_id" ON "VectorLengthQuantity_vector_value" ("VectorLengthQuantity_id");
 CREATE INDEX "ix_VectorLengthQuantity_vector_value_vector_value" ON "VectorLengthQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorLengthQuantity_vector_value_VectorLengthQuantity_id" ON "VectorLengthQuantity_vector_value" ("VectorLengthQuantity_id");
 
 CREATE TABLE "VectorAngleQuantity_vector_value" (
 	"VectorAngleQuantity_id" INTEGER,
@@ -912,8 +914,8 @@ CREATE TABLE "VectorAngleQuantity_vector_value" (
 	PRIMARY KEY ("VectorAngleQuantity_id", vector_value),
 	FOREIGN KEY("VectorAngleQuantity_id") REFERENCES "VectorAngleQuantity" (id)
 );
-CREATE INDEX "ix_VectorAngleQuantity_vector_value_VectorAngleQuantity_id" ON "VectorAngleQuantity_vector_value" ("VectorAngleQuantity_id");
 CREATE INDEX "ix_VectorAngleQuantity_vector_value_vector_value" ON "VectorAngleQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorAngleQuantity_vector_value_VectorAngleQuantity_id" ON "VectorAngleQuantity_vector_value" ("VectorAngleQuantity_id");
 
 CREATE TABLE "VectorVolumeQuantity_vector_value" (
 	"VectorVolumeQuantity_id" INTEGER,
@@ -930,8 +932,8 @@ CREATE TABLE "VectorPressureQuantity_vector_value" (
 	PRIMARY KEY ("VectorPressureQuantity_id", vector_value),
 	FOREIGN KEY("VectorPressureQuantity_id") REFERENCES "VectorPressureQuantity" (id)
 );
-CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
 CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
 
 CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	"VectorTemperatureQuantity_id" INTEGER,
@@ -939,8 +941,8 @@ CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	PRIMARY KEY ("VectorTemperatureQuantity_id", vector_value),
 	FOREIGN KEY("VectorTemperatureQuantity_id") REFERENCES "VectorTemperatureQuantity" (id)
 );
-CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_VectorTemperatureQuantity_id" ON "VectorTemperatureQuantity_vector_value" ("VectorTemperatureQuantity_id");
 CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_vector_value" ON "VectorTemperatureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_VectorTemperatureQuantity_id" ON "VectorTemperatureQuantity_vector_value" ("VectorTemperatureQuantity_id");
 
 CREATE TABLE "VectorTimeQuantity_vector_value" (
 	"VectorTimeQuantity_id" INTEGER,
@@ -957,8 +959,8 @@ CREATE TABLE "MatrixPressureQuantity_vector_value" (
 	PRIMARY KEY ("MatrixPressureQuantity_id", vector_value),
 	FOREIGN KEY("MatrixPressureQuantity_id") REFERENCES "MatrixPressureQuantity" (id)
 );
-CREATE INDEX "ix_MatrixPressureQuantity_vector_value_MatrixPressureQuantity_id" ON "MatrixPressureQuantity_vector_value" ("MatrixPressureQuantity_id");
 CREATE INDEX "ix_MatrixPressureQuantity_vector_value_vector_value" ON "MatrixPressureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_MatrixPressureQuantity_vector_value_MatrixPressureQuantity_id" ON "MatrixPressureQuantity_vector_value" ("MatrixPressureQuantity_id");
 
 CREATE TABLE "MatrixCompressibilityQuantity_vector_value" (
 	"MatrixCompressibilityQuantity_id" INTEGER,
@@ -975,8 +977,8 @@ CREATE TABLE "MatrixQuantity_vector_value" (
 	PRIMARY KEY ("MatrixQuantity_id", vector_value),
 	FOREIGN KEY("MatrixQuantity_id") REFERENCES "MatrixQuantity" (id)
 );
-CREATE INDEX "ix_MatrixQuantity_vector_value_MatrixQuantity_id" ON "MatrixQuantity_vector_value" ("MatrixQuantity_id");
 CREATE INDEX "ix_MatrixQuantity_vector_value_vector_value" ON "MatrixQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_MatrixQuantity_vector_value_MatrixQuantity_id" ON "MatrixQuantity_vector_value" ("MatrixQuantity_id");
 
 CREATE TABLE "Equilibration_simulation_tool" (
 	"Equilibration_id" INTEGER,
@@ -984,8 +986,8 @@ CREATE TABLE "Equilibration_simulation_tool" (
 	PRIMARY KEY ("Equilibration_id", simulation_tool),
 	FOREIGN KEY("Equilibration_id") REFERENCES "Equilibration" (id)
 );
-CREATE INDEX "ix_Equilibration_simulation_tool_Equilibration_id" ON "Equilibration_simulation_tool" ("Equilibration_id");
 CREATE INDEX "ix_Equilibration_simulation_tool_simulation_tool" ON "Equilibration_simulation_tool" (simulation_tool);
+CREATE INDEX "ix_Equilibration_simulation_tool_Equilibration_id" ON "Equilibration_simulation_tool" ("Equilibration_id");
 
 CREATE TABLE "Equilibration_simulation_software" (
 	"Equilibration_id" INTEGER,
@@ -1011,8 +1013,8 @@ CREATE TABLE "Production_simulation_software" (
 	PRIMARY KEY ("Production_id", simulation_software),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
 CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
+CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
 
 CREATE TABLE "Production_simulation_method" (
 	"Production_id" INTEGER,
@@ -1029,8 +1031,8 @@ CREATE TABLE "Analysis_analysis_tool" (
 	PRIMARY KEY ("Analysis_id", analysis_tool),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool" ("Analysis_id");
+CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 
 CREATE TABLE "Analysis_analysis_software" (
 	"Analysis_id" INTEGER,
@@ -1154,8 +1156,8 @@ CREATE TABLE "Minimisation_simulation_software" (
 	PRIMARY KEY ("Minimisation_id", simulation_software),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_simulation_software_Minimisation_id" ON "Minimisation_simulation_software" ("Minimisation_id");
 CREATE INDEX "ix_Minimisation_simulation_software_simulation_software" ON "Minimisation_simulation_software" (simulation_software);
+CREATE INDEX "ix_Minimisation_simulation_software_Minimisation_id" ON "Minimisation_simulation_software" ("Minimisation_id");
 
 CREATE TABLE "SimulationMetadata" (
 	id INTEGER NOT NULL,
@@ -1197,6 +1199,8 @@ CREATE TABLE "MoleculeID" (
 	molecule_count INTEGER,
 	atom_count INTEGER,
 	monomer_count INTEGER,
+	simulated_particle_names TEXT,
+	simulated_molecule_name TEXT,
 	"SystemComposition_id" INTEGER,
 	molecular_weight_id INTEGER,
 	molecule_charge_id INTEGER,

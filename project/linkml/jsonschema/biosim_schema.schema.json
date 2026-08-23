@@ -552,7 +552,8 @@
             "description": "",
             "enum": [
                 "sha256",
-                "md5"
+                "md5",
+                "xxh3_64"
             ],
             "title": "FileHashAlgorithm",
             "type": "string"

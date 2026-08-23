@@ -36,7 +36,7 @@ keywords = ["biosim", "schema", "molecular dynamics", "linkml"]
 dependencies = [
     "linkml==1.11.1",
     "linkml-runtime==1.11.1",
-    "check-jsonschema==0.37.4",
+    "check-jsonschema==0.38.0",
 ]
 
 [project.urls]

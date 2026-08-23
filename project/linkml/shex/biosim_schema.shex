@@ -1,5 +1,5 @@
 # metamodel_version: 1.11.0
-# version: 0.0.6
+# version: 0.0.7
 BASE <https://CCPBioSim.ac.uk/biosim-schema/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -240,7 +240,8 @@ linkml:Sparqlpath xsd:string
           <https://CCPBioSim.ac.uk/biosim-schema/files/file_hash> @linkml:String ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/files/file_hash_algorithm> [
              <https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm#sha256>
-             <https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm#md5> ] ? ;
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm#md5>
+             <https://CCPBioSim.ac.uk/biosim-schema/files/FileHashAlgorithm#xxh3_64> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/files/file_role> [ <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#topology>
              <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#trajectory>
              <https://CCPBioSim.ac.uk/biosim-schema/files/FileRole#metadata>

@@ -51,7 +51,7 @@ class ClassBuild:
     name: str
     field_lines: list[str] = field(default_factory=list)
     mapping: dict = field(default_factory=dict)
-    depends_on: set[str] = field(default_factory=set)
+    depends_on: list[str] = field(default_factory=list)
 
 
 class MarshmallowGenerator:
@@ -117,7 +117,9 @@ class MarshmallowGenerator:
             )
             build.field_lines.append(f"    {name} = {field_expr}")
             build.mapping[name] = mapping
-            build.depends_on |= depends
+            for dep in depends:
+                if dep not in build.depends_on:
+                    build.depends_on.append(dep)
             if is_nested:
                 # remember which nested class produced this mapping, filled later
                 build.mapping[name]["_nested_class"] = range_name

@@ -55,6 +55,10 @@ class ArtifactPaths:
         return self.project_dir / "jsonschema" / f"{self.schema_name}.schema.json"
 
     @property
+    def invenio_path(self) -> Path:
+        return self.project_dir / "invenio" / f"{self.schema_name}_fields.py"
+
+    @property
     def docs_dir(self) -> Path:
         return self.repo_root / "docs"
 
@@ -371,6 +375,7 @@ def main() -> None:
             paths.summary_yaml_path,
             paths.summary_csv_path,
             paths.jsonschema_path,
+            paths.invenio_path,
         ]
 
         if args.include_docs:

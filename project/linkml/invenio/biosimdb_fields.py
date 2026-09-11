@@ -137,26 +137,8 @@ class MatrixQuantitySchema(Schema):
     value_unit = SanitizedUnicode(allow_none=True)
 
 
-class AnalysisSchema(Schema):
-    analysis_tool = fields.List(fields.String(validate=OneOf(['mdout_analyzer.py', 'ambpdb', 'CPPTRAJ', 'PYTRAJ', 'MMPBSA.py', 'Free Energy Workflow (FEW)', 'edgember', 'SAX-RISM', 'SAX-MD', 'MoFT', 'ndfes', 'PLUMED', 'MDanalysis'])), allow_none=True)
-    analysis_software = fields.List(fields.String(validate=OneOf(['Visual Molecular Dynamics (VMD)', 'Schrödinger Maestro', 'PyMOL', 'Avogadro'])), allow_none=True)
-    analysis_method = fields.List(fields.String(validate=OneOf(['RMSD', 'DSSP', 'GIST', 'Hydrogen Bonds', 'Connolly surface', 'Radius of Gyration', 'BAR/PBSA'])), allow_none=True)
-
-
 class SetupSchema(Schema):
     setup_tool = fields.String(validate=OneOf(['pdb4amber', 'prepareforleap', 'packmol', 'packmol_memgen', 'LEaP', 'antechamber', 'pyMSMT', 'mdgx', 'parmed']), allow_none=True)
-
-
-class ProductionSchema(Schema):
-    simulation_tool = fields.List(fields.String(validate=OneOf(['sander', 'pmemd', 'gem.pmemd', 'mdrun'])), allow_none=True)
-    simulation_software = fields.List(fields.String(validate=OneOf(['Amber', 'GROMACS', 'LAMMPS', 'NAMD', 'OpenMM', 'CHARMM', 'DL_POLY', 'HOOMD-blue', 'Desmond', 'ACEMD', 'CP2K'])), allow_none=True)
-    simulation_software_version = SanitizedUnicode(allow_none=True)
-    simulation_method = fields.List(fields.String(validate=OneOf(['Self-guided Langevin Dynamics', 'Accelerated Molecular Dynamics', 'Gaussian Accelerated Molecular Dynamics', 'Targeted Molecular Dynamics', 'Nudged Elastic Band Calculations', 'Adaptive String Method', 'LMOD method', 'DL-FIND Optimization', 'Thermodynamic Integration (TI)', 'Linear Interaction Energies (LIE)', 'Replica Exchange Molecular Dynamics (REMD)', 'Adaptively Biased Molecular Dynamics (ABMD)', 'Steered Molecular Dynamics (SMD)', 'Umbrella Sampling', 'Metadynamics', 'Swarms of Trajectories String Method', 'Constant pH Molecular Dynamics', 'Constant Redox Potential Molecular Dynamics', 'Continuous Constant pH Molecular Dynamics', 'NMR Refinement', 'X-ray and CryoEM Refinement', 'Locally Enhanced Sampling'])), allow_none=True)
-
-
-class EquilibrationSchema(Schema):
-    simulation_tool = fields.List(fields.String(validate=OneOf(['sander', 'pmemd', 'gem.pmemd', 'mdrun'])), allow_none=True)
-    simulation_software = fields.List(fields.String(validate=OneOf(['Amber', 'GROMACS', 'LAMMPS', 'NAMD', 'OpenMM', 'CHARMM', 'DL_POLY', 'HOOMD-blue', 'Desmond', 'ACEMD', 'CP2K'])), allow_none=True)
 
 
 class MinimisationSchema(Schema):
@@ -168,12 +150,35 @@ class MinimisationSchema(Schema):
     simulation_software = fields.List(fields.String(validate=OneOf(['Amber', 'GROMACS', 'LAMMPS', 'NAMD', 'OpenMM', 'CHARMM', 'DL_POLY', 'HOOMD-blue', 'Desmond', 'ACEMD', 'CP2K'])), allow_none=True)
 
 
+class EquilibrationSchema(Schema):
+    simulation_tool = fields.List(fields.String(validate=OneOf(['sander', 'pmemd', 'gem.pmemd', 'mdrun'])), allow_none=True)
+    simulation_software = fields.List(fields.String(validate=OneOf(['Amber', 'GROMACS', 'LAMMPS', 'NAMD', 'OpenMM', 'CHARMM', 'DL_POLY', 'HOOMD-blue', 'Desmond', 'ACEMD', 'CP2K'])), allow_none=True)
+
+
+class ProductionSchema(Schema):
+    simulation_tool = fields.List(fields.String(validate=OneOf(['sander', 'pmemd', 'gem.pmemd', 'mdrun'])), allow_none=True)
+    simulation_software = fields.List(fields.String(validate=OneOf(['Amber', 'GROMACS', 'LAMMPS', 'NAMD', 'OpenMM', 'CHARMM', 'DL_POLY', 'HOOMD-blue', 'Desmond', 'ACEMD', 'CP2K'])), allow_none=True)
+    simulation_software_version = SanitizedUnicode(allow_none=True)
+    simulation_method = fields.List(fields.String(validate=OneOf(['Self-guided Langevin Dynamics', 'Accelerated Molecular Dynamics', 'Gaussian Accelerated Molecular Dynamics', 'Targeted Molecular Dynamics', 'Nudged Elastic Band Calculations', 'Adaptive String Method', 'LMOD method', 'DL-FIND Optimization', 'Thermodynamic Integration (TI)', 'Linear Interaction Energies (LIE)', 'Replica Exchange Molecular Dynamics (REMD)', 'Adaptively Biased Molecular Dynamics (ABMD)', 'Steered Molecular Dynamics (SMD)', 'Umbrella Sampling', 'Metadynamics', 'Swarms of Trajectories String Method', 'Constant pH Molecular Dynamics', 'Constant Redox Potential Molecular Dynamics', 'Continuous Constant pH Molecular Dynamics', 'NMR Refinement', 'X-ray and CryoEM Refinement', 'Locally Enhanced Sampling'])), allow_none=True)
+
+
+class AnalysisSchema(Schema):
+    analysis_tool = fields.List(fields.String(validate=OneOf(['mdout_analyzer.py', 'ambpdb', 'CPPTRAJ', 'PYTRAJ', 'MMPBSA.py', 'Free Energy Workflow (FEW)', 'edgember', 'SAX-RISM', 'SAX-MD', 'MoFT', 'ndfes', 'PLUMED', 'MDanalysis'])), allow_none=True)
+    analysis_software = fields.List(fields.String(validate=OneOf(['Visual Molecular Dynamics (VMD)', 'Schrödinger Maestro', 'PyMOL', 'Avogadro'])), allow_none=True)
+    analysis_method = fields.List(fields.String(validate=OneOf(['RMSD', 'DSSP', 'GIST', 'Hydrogen Bonds', 'Connolly surface', 'Radius of Gyration', 'BAR/PBSA'])), allow_none=True)
+
+
 class SimulationStagesSchema(Schema):
     setup = fields.Nested(SetupSchema, allow_none=True)
     minimisation = fields.Nested(MinimisationSchema, allow_none=True)
     equilibration = fields.Nested(EquilibrationSchema, allow_none=True)
     production = fields.Nested(ProductionSchema, allow_none=True)
     analysis = fields.Nested(AnalysisSchema, allow_none=True)
+
+
+class EnsembleSchema(Schema):
+    ensemble_type = fields.String(validate=OneOf(['NPT', 'NVT', 'NVE', 'μVT']), allow_none=True)
+    random_seed = fields.Integer(allow_none=True)
 
 
 class IntegratorSchema(Schema):
@@ -206,11 +211,6 @@ class ThermostatSchema(Schema):
     friction_coefficient = fields.Nested(FrictionCoefficientQuantitySchema, allow_none=True)
 
 
-class EnsembleSchema(Schema):
-    ensemble_type = fields.String(validate=OneOf(['NPT', 'NVT', 'NVE', 'μVT']), allow_none=True)
-    random_seed = fields.Integer(allow_none=True)
-
-
 class InteractionsSchema(Schema):
     restraints = fields.Boolean(allow_none=True)
     electrostatic_cutoff_distance = fields.Nested(LengthQuantitySchema, allow_none=True)
@@ -225,6 +225,13 @@ class SimulationSettingsSchema(Schema):
     barostat = fields.Nested(BarostatSchema, allow_none=True)
     thermostat = fields.Nested(ThermostatSchema, allow_none=True)
     interactions = fields.Nested(InteractionsSchema, allow_none=True)
+
+
+class SystemCountsSchema(Schema):
+    total_molecule_count = fields.Integer(allow_none=True)
+    total_atom_count = fields.Integer(allow_none=True)
+    unique_molecule_count = fields.Integer(allow_none=True)
+    salt_concentration = fields.Nested(ConcentrationQuantitySchema, allow_none=True)
 
 
 class MoleculeIDSchema(Schema):
@@ -249,13 +256,6 @@ class MoleculeIDSchema(Schema):
     simulated_molecule_name = SanitizedUnicode(allow_none=True)
 
 
-class SystemCountsSchema(Schema):
-    total_molecule_count = fields.Integer(allow_none=True)
-    total_atom_count = fields.Integer(allow_none=True)
-    unique_molecule_count = fields.Integer(allow_none=True)
-    salt_concentration = fields.Nested(ConcentrationQuantitySchema, allow_none=True)
-
-
 class SystemCompositionSchema(Schema):
     system_counts = fields.Nested(SystemCountsSchema, allow_none=True)
     molecule_ID = fields.List(fields.Nested(MoleculeIDSchema), allow_none=True)
@@ -275,17 +275,17 @@ class SimulationObservablesSchema(Schema):
     simulation_averages = fields.Nested(SimulationAveragesSchema, allow_none=True)
 
 
+class ConnectivitySchema(Schema):
+    bonds = fields.Boolean(allow_none=True)
+    dihedrals = fields.Boolean(allow_none=True)
+
+
 class ParticlesSchema(Schema):
     masses = fields.Boolean(allow_none=True)
     fixed_charges = fields.Boolean(allow_none=True)
     system_charge = fields.Nested(ChargeQuantitySchema, allow_none=True)
     coarse_grained = fields.Boolean(allow_none=True)
     resolution = fields.String(validate=OneOf(['All Atom', 'United Atom', 'Coarse-Grained', 'Mesoscale']), allow_none=True)
-
-
-class ConnectivitySchema(Schema):
-    bonds = fields.Boolean(allow_none=True)
-    dihedrals = fields.Boolean(allow_none=True)
 
 
 class TopologyMetadataSchema(Schema):
@@ -316,13 +316,13 @@ class TrajectoryMetadataSchema(Schema):
     trajectory_output = fields.Nested(TrajectoriesSchema, allow_none=True)
 
 
-class NucleicPotentialSchema(Schema):
-    nucleic_potential_name = fields.String(validate=OneOf(['ff99-bsc0', 'ff99OL3', 'LJbb', 'ROC', 'Shaw', 'OL15', 'OL21', 'OL24', 'OL3', 'bsc1', 'terminal_monophosphate']), allow_none=True)
+class WaterPotentialSchema(Schema):
+    water_potential_name = fields.String(validate=OneOf(['OPC', 'OPC3', 'OPC3POL', 'POL3', 'TIP3P', 'TIP3PFB', 'TIP4PFB', 'TIP4P', 'TIP5P', 'TIP4PEW', 'SPCE', 'SPCEB', 'SPC/Fw', 'q-SPC/Fw']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
-class WaterPotentialSchema(Schema):
-    water_potential_name = fields.String(validate=OneOf(['OPC', 'OPC3', 'OPC3POL', 'POL3', 'TIP3P', 'TIP3PFB', 'TIP4PFB', 'TIP4P', 'TIP5P', 'TIP4PEW', 'SPCE', 'SPCEB', 'SPC/Fw', 'q-SPC/Fw']), allow_none=True)
+class ProteinPotentialSchema(Schema):
+    protein_potential_name = fields.String(validate=OneOf(['ff19SB', 'ff99SB', 'ff99SB-ILDN', 'ff99SB-disp', 'ff14SB', 'ff14SBonlysc', 'ff15ipq', 'fb15', 'ff03', 'ff03ua', 'phosaa10', 'phosaa14SB', 'phosaa19SB', 'ff14SB_modAA', 'ff19SB_modAA']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
@@ -331,8 +331,8 @@ class LipidPotentialSchema(Schema):
     modified = fields.Boolean(allow_none=True)
 
 
-class ProteinPotentialSchema(Schema):
-    protein_potential_name = fields.String(validate=OneOf(['ff19SB', 'ff99SB', 'ff99SB-ILDN', 'ff99SB-disp', 'ff14SB', 'ff14SBonlysc', 'ff15ipq', 'fb15', 'ff03', 'ff03ua', 'phosaa10', 'phosaa14SB', 'phosaa19SB', 'ff14SB_modAA', 'ff19SB_modAA']), allow_none=True)
+class NucleicPotentialSchema(Schema):
+    nucleic_potential_name = fields.String(validate=OneOf(['ff99-bsc0', 'ff99OL3', 'LJbb', 'ROC', 'Shaw', 'OL15', 'OL21', 'OL24', 'OL3', 'bsc1', 'terminal_monophosphate']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
@@ -367,18 +367,6 @@ class PotentialMetadataSchema(Schema):
     machine_learned_potential = fields.Nested(MachineLearnedPotentialSchema, allow_none=True)
 
 
-class SoftwareSchema(Schema):
-    operating_system = fields.String(validate=OneOf(['Linux', 'macOS', 'Windows']), allow_none=True)
-    scheduler = fields.String(validate=OneOf(['SLURM', 'PBS', 'LSF', 'SGE', 'None']), allow_none=True)
-    MPI_library = fields.String(validate=OneOf(['OpenMPI', 'MPICH', 'IntelMPI', 'MVAPICH2', 'None']), allow_none=True)
-    container_runtime = fields.String(validate=OneOf(['Apptainer', 'Docker', 'Podman', 'None']), allow_none=True)
-
-
-class PerformanceSchema(Schema):
-    wall_time = fields.Nested(TimeQuantitySchema, allow_none=True)
-    energy_consumption = fields.Nested(EnergyQuantitySchema, allow_none=True)
-
-
 class HardwareSchema(Schema):
     execution_platform = fields.String(validate=OneOf(['HPC Cluster', 'Cloud VM', 'Local']), allow_none=True)
     node_type = fields.String(validate=OneOf(['CPU only', 'GPU Accelerated', 'Hybrid CPU GPU']), allow_none=True)
@@ -391,6 +379,18 @@ class HardwareSchema(Schema):
     GPU_vendor = fields.String(validate=OneOf(['Nvidia', 'AMD', 'Intel', 'None']), allow_none=True)
     GPUs_per_node = fields.Integer(allow_none=True)
     memory_per_node = fields.Nested(ByteQuantitySchema, allow_none=True)
+
+
+class SoftwareSchema(Schema):
+    operating_system = fields.String(validate=OneOf(['Linux', 'macOS', 'Windows']), allow_none=True)
+    scheduler = fields.String(validate=OneOf(['SLURM', 'PBS', 'LSF', 'SGE', 'None']), allow_none=True)
+    MPI_library = fields.String(validate=OneOf(['OpenMPI', 'MPICH', 'IntelMPI', 'MVAPICH2', 'None']), allow_none=True)
+    container_runtime = fields.String(validate=OneOf(['Apptainer', 'Docker', 'Podman', 'None']), allow_none=True)
+
+
+class PerformanceSchema(Schema):
+    wall_time = fields.Nested(TimeQuantitySchema, allow_none=True)
+    energy_consumption = fields.Nested(EnergyQuantitySchema, allow_none=True)
 
 
 class ComputationalEnvironmentSchema(Schema):

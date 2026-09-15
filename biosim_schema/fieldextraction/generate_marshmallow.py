@@ -83,9 +83,17 @@ class MarshmallowGenerator:
             base_mapping = {"type": PRIMITIVE_MAPPING.get(range_name, "text")}
             depends = set()
 
+        # handle lists and nested lists
         if slot.multivalued:
-            base_field = f"fields.List({base_field})"
-            # ES: list of objects/scalars uses the same mapping as a single item
+            depth = 1
+            if slot.array is not None:
+                depth = (
+                    slot.array.maximum_number_dimensions
+                    or slot.array.minimum_number_dimensions
+                    or 1
+                )
+            for _ in range(depth):
+                base_field = f"fields.List({base_field})"
 
         kwargs = []
         if slot.required:
@@ -191,9 +199,13 @@ class MarshmallowGenerator:
             slot = self.view.induced_slot(slot_name, root)
             if self.view.get_class(slot.range) is not None:
                 nested = schema_class_name(slot.range)
-                fields_lines.append(
-                    f'    "{slot_name}": fields.Nested({nested}, allow_none=True),'
-                )
+                if slot.multivalued:
+                    nested_field = (
+                        f"fields.List(fields.Nested({nested}), allow_none=True)"
+                    )
+                else:
+                    nested_field = f"fields.Nested({nested}, allow_none=True)"
+                fields_lines.append(f'    "{slot_name}": {nested_field},')
             else:
                 _, field_expr, _, _, _, _ = self._field_and_mapping_for_slot(
                     root, slot_name

@@ -28,6 +28,7 @@ from biosim_schema.fieldextraction.extract_summary import (
     write_summary_csv,
 )
 from biosim_schema.fieldextraction.extract_webform_fields import WebFormFieldExtractor
+from biosim_schema.fieldextraction.generate_marshmallow import MarshmallowGenerator
 
 
 @dataclass(frozen=True)
@@ -52,6 +53,10 @@ class ArtifactPaths:
     @property
     def jsonschema_path(self) -> Path:
         return self.project_dir / "jsonschema" / f"{self.schema_name}.schema.json"
+
+    @property
+    def invenio_path(self) -> Path:
+        return self.project_dir / "invenio" / f"{self.schema_name}_fields.py"
 
     @property
     def docs_dir(self) -> Path:
@@ -194,12 +199,22 @@ def generate_summary(paths: ArtifactPaths) -> None:
         json.dump(summary, fp, indent=2)
 
 
+def generate_invenio_marshmallow(paths: ArtifactPaths) -> None:
+    """Generate Invenio-compatible Marshmallow schemas + ES mappings."""
+    generator = MarshmallowGenerator(str(paths.schema_path))
+    code = generator.generate()
+    out_path = paths.project_dir / "invenio" / "biosimdb_fields.py"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(code, encoding="utf-8")
+
+
 def generate_derived(paths: ArtifactPaths) -> None:
     """Generate derived schema artefacts used by downstream tools."""
 
     generate_webform_fields(paths)
     generate_engine_mappings(paths)
     generate_summary(paths)
+    generate_invenio_marshmallow(paths)
 
 
 def fix_generated_docs(linkml_docs_dir: Path) -> None:
@@ -360,6 +375,7 @@ def main() -> None:
             paths.summary_yaml_path,
             paths.summary_csv_path,
             paths.jsonschema_path,
+            paths.invenio_path,
         ]
 
         if args.include_docs:

@@ -50,6 +50,11 @@ Source = "https://github.com/jkalayan/biosim-schema"
 #
 
 [project.optional-dependencies]
+invenio = [
+    "marshmallow>=3.20,<4",
+    "marshmallow-utils>=0.9,<1",
+]
+
 testing = [
     "pytest>=9.0,<10.0",
     "pytest-cov>=7.0,<8.0",

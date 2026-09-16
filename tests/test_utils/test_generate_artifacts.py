@@ -132,10 +132,13 @@ def test_generate_derived_calls_expected_generators(monkeypatch, tmp_path):
         mod, "generate_engine_mappings", lambda p: calls.append("mappings")
     )
     monkeypatch.setattr(mod, "generate_summary", lambda p: calls.append("summary"))
+    monkeypatch.setattr(
+        mod, "generate_invenio_marshmallow", lambda p: calls.append("marshmallow")
+    )
 
     mod.generate_derived(paths)
 
-    assert calls == ["webform", "mappings", "summary"]
+    assert calls == ["webform", "mappings", "summary", "marshmallow"]
 
 
 def test_main_dispatches_jsonld(monkeypatch, tmp_path):

@@ -1,0 +1,47 @@
+{% set name = "biosim-schema" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  script: |
+    python -m pip install . -vv --no-deps
+  entry_points:
+    - biosim-schema-generate=biosim_schema.utils.generate_artifacts:main
+
+requirements:
+  host:
+    - python >=3.12
+    - pip
+    - flit-core >=3.4,<4
+  run:
+    - python >=3.12
+    - linkml >=1.11.1,<2.0
+    - linkml-runtime >=1.11.1,<2.0
+    - check-jsonschema >=0.38.0,<1.0
+
+test:
+  imports:
+    - biosim_schema
+    - biosim_schema.fieldextraction
+
+  commands:
+    - biosim-schema-generate --help
+
+about:
+  home: https://github.com/CCPBioSim/biosim-schema
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  license_url: https://github.com/CCPBioSim/biosim-schema/blob/main/LICENSE
+  summary: Schema for biomolecular simulation metadata.
+  description: "BioSim Schema provides a LinkML-based, reusable metadata model for biomolecular simulation data, with tooling to validate terms and generate downstream artefacts for BioSimDR workflows. These docs are for schema users and contributors: they explain installation, day-to-day usage, contribution workflows, generation/CI behavior, and where to find the schema reference."
+  dev_url: https://github.com/CCPBioSim/biosim-schema
+  doc_url: https://biosim-schema.readthedocs.io/en/latest/
+  doc_source_url: https://github.com/CCPBioSim/biosim-schema/blob/main/README.md

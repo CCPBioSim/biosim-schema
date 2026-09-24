@@ -51,7 +51,7 @@ Source = "https://github.com/jkalayan/biosim-schema"
 
 [project.optional-dependencies]
 invenio = [
-    "marshmallow>=3.20,<4",
+    "marshmallow>=4.3,<5",
     "marshmallow-utils>=0.9,<1",
 ]
 

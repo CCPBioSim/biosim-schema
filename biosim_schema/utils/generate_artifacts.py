@@ -75,6 +75,16 @@ class ArtifactPaths:
         return self.repo_root / "project" / "schema_enginemappings.json"
 
     @property
+    def packaged_engine_mappings_path(self) -> Path:
+        return (
+            self.repo_root
+            / "biosim_schema"
+            / "schema"
+            / "generated"
+            / "schema_enginemappings.json"
+        )
+
+    @property
     def summary_yaml_path(self) -> Path:
         return self.repo_root / "project" / "schema_summary.yaml"
 
@@ -175,6 +185,7 @@ def generate_engine_mappings(paths: ArtifactPaths) -> None:
     """Generate schema_enginemappings.json from compiled JSON-LD."""
     result = MappingsExtractor(str(paths.jsonld_path)).extract()
     write_json(paths.engine_mappings_path, result)
+    write_json(paths.packaged_engine_mappings_path, result)
 
 
 def generate_summary(paths: ArtifactPaths) -> None:
@@ -372,6 +383,7 @@ def main() -> None:
         files_to_check = [
             paths.webform_fields_path,
             paths.engine_mappings_path,
+            paths.packaged_engine_mappings_path,
             paths.summary_yaml_path,
             paths.summary_csv_path,
             paths.jsonschema_path,

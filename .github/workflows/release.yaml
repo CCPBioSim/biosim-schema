@@ -23,7 +23,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
       with:
-        python-version: 3.14.7
+        python-version: 3.14.8
 
     - name: Checkout repository (full history and tags)
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -74,7 +74,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: 3.14.7
+          python-version: 3.14.8
 
       - name: Change version in repo (init and schema) and CITATION.cff
         run: |
@@ -248,7 +248,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
       with:
-        python-version: 3.14.7
+        python-version: 3.14.8
 
     - name: Install flit
       run: |
@@ -282,7 +282,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@be893c923ea9cf1cf7cd510fbdde27c7e18cbdcb # v4.1.0
         with:
           miniforge-variant: Miniforge3
-          python-version: "3.14.7"
+          python-version: "3.14.8"
           auto-activate: true
           activate-environment: base
           conda-remove-defaults: true

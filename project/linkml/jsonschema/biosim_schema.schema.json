@@ -3509,5 +3509,5 @@
     },
     "title": "biosim-schema",
     "type": "object",
-    "version": "1.0.1"
+    "version": "1.1.0"
 }

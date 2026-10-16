@@ -6,7 +6,7 @@
     "https://CCPBioSim.github.io/biosim-schema"
   ],
   "id": "https://CCPBioSim.ac.uk/biosim-schema/",
-  "version": "0.0.7",
+  "version": "1.0.1",
   "imports": [
     "linkml:types",
     "./components/biosim_quantities",
@@ -5743,6 +5743,10 @@
         {
           "value": "C10H16N+",
           "@type": "Example"
+        },
+        {
+          "value": "C40H46N20O18P3-3",
+          "@type": "Example"
         }
       ],
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/composition",
@@ -5752,7 +5756,7 @@
         "MoleculeID"
       ],
       "range": "string",
-      "pattern": "^([A-Z][a-z]?\\d*)+([+-]|\\d+[+-])?$",
+      "pattern": "^([A-Z][a-z]?\\d*)+([+-]\\d*|\\d+[+-])?$",
       "@type": "SlotDefinition"
     },
     {
@@ -8432,7 +8436,6 @@
         "MatrixPressureQuantity"
       ],
       "range": "float",
-      "multivalued": true,
       "array": {
         "minimum_number_dimensions": 2,
         "maximum_number_dimensions": 2,
@@ -8475,7 +8478,6 @@
         "MatrixCompressibilityQuantity"
       ],
       "range": "float",
-      "multivalued": true,
       "array": {
         "minimum_number_dimensions": 2,
         "maximum_number_dimensions": 2,
@@ -8518,7 +8520,6 @@
         "MatrixQuantity"
       ],
       "range": "float",
-      "multivalued": true,
       "array": {
         "minimum_number_dimensions": 2,
         "maximum_number_dimensions": 2,
@@ -9202,7 +9203,6 @@
         {
           "name": "vector_value",
           "range": "float",
-          "multivalued": true,
           "array": {
             "minimum_number_dimensions": 2,
             "maximum_number_dimensions": 2,
@@ -9246,7 +9246,6 @@
         {
           "name": "vector_value",
           "range": "float",
-          "multivalued": true,
           "array": {
             "minimum_number_dimensions": 2,
             "maximum_number_dimensions": 2,
@@ -9290,7 +9289,6 @@
         {
           "name": "vector_value",
           "range": "float",
-          "multivalued": true,
           "array": {
             "minimum_number_dimensions": 2,
             "maximum_number_dimensions": 2,
@@ -9873,11 +9871,10 @@
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.11.0",
+  "metamodel_version": "1.12.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-08-20T11:44:02",
+  "source_file_date": "2026-10-16T10:01:46",
   "source_file_size": 3327,
-  "generation_date": "2026-08-23T10:28:49",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

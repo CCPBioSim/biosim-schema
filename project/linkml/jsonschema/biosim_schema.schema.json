@@ -94,14 +94,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AngleUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/AngleUnit"
                 }
             },
             "title": "AngleQuantity",
@@ -121,14 +114,7 @@
             "description": "Settings used for the simulation barostat.",
             "properties": {
                 "barostat_algorithm": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/BarostatAlgorithm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/BarostatAlgorithm",
                     "description": "List of barostat algorithms used in the simulation."
                 },
                 "compressibility": {
@@ -140,11 +126,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Compressibility of the simulated system, given as a float.",
-                    "examples": [
-                        "4.46e-05",
-                        "4.5e-05"
-                    ]
+                    "description": "Compressibility of the simulated system, given as a float."
                 },
                 "compressibility_vector": {
                     "anyOf": [
@@ -155,10 +137,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Compressibility of the simulated system, given as a float.",
-                    "examples": [
-                        "4.46e-05"
-                    ]
+                    "description": "Compressibility of the simulated system, given as a float."
                 },
                 "pressure_coupling_frequency": {
                     "anyOf": [
@@ -172,14 +151,7 @@
                     "description": "Step frequency to apply the barostat."
                 },
                 "pressure_coupling_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureCouplingType"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/PressureCouplingType",
                     "description": "List of coupling types for adjusting box vectors."
                 },
                 "pressure_time_constant": {
@@ -191,11 +163,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.",
-                    "examples": [
-                        "1.0",
-                        "5.0"
-                    ]
+                    "description": "Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float."
                 },
                 "target_pressure": {
                     "anyOf": [
@@ -271,14 +239,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ByteUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ByteUnit"
                 }
             },
             "title": "ByteQuantity",
@@ -298,21 +259,11 @@
             "description": "Potential used for carbohydrate molecules.",
             "properties": {
                 "carbohydrate_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CarbohydratePotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/CarbohydratePotentialName",
                     "description": "Force field used to describe carbohydrate."
                 },
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -343,14 +294,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ChargeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ChargeUnit"
                 }
             },
             "title": "ChargeQuantity",
@@ -376,14 +320,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CompressibilityUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/CompressibilityUnit"
                 }
             },
             "title": "CompressibilityQuantity",
@@ -451,14 +388,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ConcentrationUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ConcentrationUnit"
                 }
             },
             "title": "ConcentrationQuantity",
@@ -536,14 +466,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/EnergyUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/EnergyUnit"
                 }
             },
             "title": "EnergyQuantity",
@@ -562,14 +485,7 @@
             "description": "Simulation ensemble/thermodynamic properties.",
             "properties": {
                 "ensemble_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/EnsembleType"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/EnsembleType",
                     "description": "List of ensemble types used in the simulation."
                 },
                 "random_seed": {
@@ -654,14 +570,7 @@
                     ]
                 },
                 "file_hash_algorithm": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/FileHashAlgorithm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/FileHashAlgorithm",
                     "description": "Algorithm used to calculate the file hash."
                 },
                 "file_name": {
@@ -669,14 +578,7 @@
                     "type": "string"
                 },
                 "file_role": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/FileRole"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/FileRole",
                     "description": "Role of the file in the simulation submission."
                 },
                 "file_size": {
@@ -723,14 +625,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ForceUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ForceUnit"
                 }
             },
             "title": "ForceQuantity",
@@ -757,14 +652,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/FrequencyUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/FrequencyUnit"
                 }
             },
             "title": "FrequencyQuantity",
@@ -790,14 +678,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/FrictionCoefficientUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/FrictionCoefficientUnit"
                 }
             },
             "title": "FrictionCoefficientQuantity",
@@ -817,21 +698,11 @@
             "description": "Potential used for molecules.",
             "properties": {
                 "general_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/GeneralPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/GeneralPotentialName",
                     "description": "Force field used to describe molecules."
                 },
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -870,36 +741,15 @@
             "description": "Computer hardware used to perform simulation.",
             "properties": {
                 "CPU_architecture": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CpuArchitecture"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/CpuArchitecture",
                     "description": "CPU instruction-set architecture of the compute nodes."
                 },
                 "CPU_vendor": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CpuVendor"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/CpuVendor",
                     "description": "CPU vendor used in the compute nodes."
                 },
                 "GPU_vendor": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/GpuVendor"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/GpuVendor",
                     "description": "GPU vendor used by the compute nodes, if applicable."
                 },
                 "GPUs_per_node": {
@@ -919,14 +769,7 @@
                     ]
                 },
                 "execution_platform": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ExecutionPlatform"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/ExecutionPlatform",
                     "description": "Broad type of system used to run the simulation workload."
                 },
                 "memory_per_node": {
@@ -949,14 +792,7 @@
                     ]
                 },
                 "node_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/NodeType"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/NodeType",
                     "description": "Compute node profile used for the simulation run."
                 },
                 "sockets_per_node": {
@@ -995,14 +831,7 @@
                     "description": "Time between saved snapshots/frames in a simulation, given as a float."
                 },
                 "integrator_algorithm": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/IntegratorAlgorithm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/IntegratorAlgorithm",
                     "description": "List of integrator algorithms used to integrate the simulation."
                 },
                 "number_of_steps": {
@@ -1054,14 +883,7 @@
             "description": "Settings used to define particle interactions.",
             "properties": {
                 "bond_length_constraints_algorithm": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/BondLengthConstraintsAlgorithm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/BondLengthConstraintsAlgorithm",
                     "description": "Constraints applied to bonds between two particles in the simulated system."
                 },
                 "electrostatic_cutoff_distance": {
@@ -1073,21 +895,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.",
-                    "examples": [
-                        "1.0",
-                        "1.2"
-                    ]
+                    "description": "Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float."
                 },
                 "long_range_interaction_method": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LongRangeInteractionMethod"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/LongRangeInteractionMethod",
                     "description": "Method used to describe long-range interactions between particles."
                 },
                 "restraints": {
@@ -1106,11 +917,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.",
-                    "examples": [
-                        "1.0",
-                        "1.2"
-                    ]
+                    "description": "Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on."
                 }
             },
             "title": "Interactions",
@@ -1128,14 +935,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LengthUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/LengthUnit"
                 }
             },
             "title": "LengthQuantity",
@@ -1155,21 +955,11 @@
             "description": "Potential used for lipid molecules.",
             "properties": {
                 "lipid_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LipidPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/LipidPotentialName",
                     "description": "Force field used to describe lipids."
                 },
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -1217,21 +1007,11 @@
             "description": "Machine learned potential used for molecules.",
             "properties": {
                 "machine_learned_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/MachineLearnedPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/MachineLearnedPotentialName",
                     "description": "ML force field used to describe molecules."
                 },
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -1265,14 +1045,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/MassUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/MassUnit"
                 }
             },
             "title": "MassQuantity",
@@ -1292,30 +1065,24 @@
             "description": "A quantity representing compressibility vectors in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CompressibilityUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/CompressibilityUnit"
                 },
                 "vector_value": {
                     "items": {
-                        "items": {
-                            "type": [
-                                "number",
-                                "null"
-                            ]
-                        },
-                        "maxItems": 3,
-                        "minItems": 3,
-                        "type": "array"
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
                     },
-                    "maxItems": 3,
-                    "minItems": 3,
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
             "title": "MatrixCompressibilityQuantity",
@@ -1326,30 +1093,24 @@
             "description": "A quantity representing pressure vectors in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/PressureUnit"
                 },
                 "vector_value": {
                     "items": {
-                        "items": {
-                            "type": [
-                                "number",
-                                "null"
-                            ]
-                        },
-                        "maxItems": 3,
-                        "minItems": 3,
-                        "type": "array"
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
                     },
-                    "maxItems": 3,
-                    "minItems": 3,
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
             "title": "MatrixPressureQuantity",
@@ -1367,15 +1128,20 @@
                 },
                 "vector_value": {
                     "items": {
-                        "items": {
-                            "type": [
-                                "number",
-                                "null"
-                            ]
-                        },
-                        "type": "array"
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
             "title": "MatrixQuantity",
@@ -1486,14 +1252,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/MolarEnergyUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/MolarEnergyUnit"
                 }
             },
             "title": "MolarEnergyQuantity",
@@ -1514,9 +1273,6 @@
             "properties": {
                 "InChI": {
                     "description": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
-                    "examples": [
-                        "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
-                    ],
                     "pattern": "^InChI=1S?/[A-Za-z0-9.+\\-]+(/[a-z][^/]*)*$",
                     "type": [
                         "string",
@@ -1525,9 +1281,6 @@
                 },
                 "InChIKey": {
                     "description": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
-                    "examples": [
-                        "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
-                    ],
                     "pattern": "^[A-Z]{14}-[A-Z]{10}(-[A-Z])?$",
                     "type": [
                         "string",
@@ -1536,9 +1289,6 @@
                 },
                 "PDB_ID": {
                     "description": "Protein Data Bank identifier",
-                    "examples": [
-                        "2VB1"
-                    ],
                     "pattern": "^[0-9A-Za-z]{4}$",
                     "type": [
                         "string",
@@ -1547,9 +1297,6 @@
                 },
                 "PubChem_CID": {
                     "description": "PubChem CID of chemical molecules and their activities against biological assays.",
-                    "examples": [
-                        "100101"
-                    ],
                     "pattern": "^\\d+$",
                     "type": [
                         "string",
@@ -1558,9 +1305,6 @@
                 },
                 "SMILES": {
                     "description": "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",
-                    "examples": [
-                        "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-                    ],
                     "pattern": "^[A-Za-z0-9@+\\-\\[\\]()=#$:./\\\\%*]+$",
                     "type": [
                         "string",
@@ -1569,9 +1313,6 @@
                 },
                 "UNIPROT_ID": {
                     "description": "UniProt accession ID",
-                    "examples": [
-                        "P0DP23"
-                    ],
                     "pattern": "^[A-Z0-9]{6,10}$",
                     "type": [
                         "string",
@@ -1580,9 +1321,6 @@
                 },
                 "alphafold_ID": {
                     "description": "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",
-                    "examples": [
-                        "AF-P12345-F1"
-                    ],
                     "pattern": "^AF-[A-Z0-9]+-F1$",
                     "type": [
                         "string",
@@ -1591,9 +1329,6 @@
                 },
                 "atom_count": {
                     "description": "Number of atoms in a molecule.",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -1602,9 +1337,6 @@
                 },
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -1612,11 +1344,6 @@
                 },
                 "molecular_formula": {
                     "description": "The molecular formula of a molecule\\",
-                    "examples": [
-                        "C8H10N4O2",
-                        "C10H16N+",
-                        "C40H46N20O18P3-3"
-                    ],
                     "pattern": "^([A-Z][a-z]?\\d*)+([+-]\\d*|\\d+[+-])?$",
                     "type": [
                         "string",
@@ -1632,10 +1359,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The molecular weight of a molecule.",
-                    "examples": [
-                        "18.0"
-                    ]
+                    "description": "The molecular weight of a molecule."
                 },
                 "molecule_charge": {
                     "anyOf": [
@@ -1647,16 +1371,10 @@
                         }
                     ],
                     "description": "Electrostatic charge of a molecule.",
-                    "examples": [
-                        "-1.0"
-                    ],
                     "pattern": "^[+-]?\\d+(\\.\\d+)?$"
                 },
                 "molecule_count": {
                     "description": "Number of instances of a given molecule, defined as bonded atoms or beads.",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -1665,9 +1383,6 @@
                 },
                 "monomer_count": {
                     "description": "Number of monomeric units in a polymer(e.g. protein or nucleic acid).",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -1676,9 +1391,6 @@
                 },
                 "nucleic_sequence": {
                     "description": "One letter sequence for nucleic acid nucleotides.",
-                    "examples": [
-                        "ATGCATCGATCGATCGATCG"
-                    ],
                     "pattern": "^[ACGTURYSWKMBDHVN]+$",
                     "type": [
                         "string",
@@ -1687,9 +1399,6 @@
                 },
                 "predicted_structure": {
                     "description": "Are the molecule positions derived from a prediction?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
@@ -1697,9 +1406,6 @@
                 },
                 "protein_sequence": {
                     "description": "One letter sequence for protein amino acids.",
-                    "examples": [
-                        "DRVYIHPF"
-                    ],
                     "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$",
                     "type": [
                         "string",
@@ -1708,9 +1414,6 @@
                 },
                 "simulated_molecule_name": {
                     "description": "Molecule name used in the simulation.",
-                    "examples": [
-                        "POPS"
-                    ],
                     "type": [
                         "string",
                         "null"
@@ -1718,9 +1421,6 @@
                 },
                 "simulated_particle_names": {
                     "description": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
-                    "examples": [
-                        "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
-                    ],
                     "type": [
                         "string",
                         "null"
@@ -1746,23 +1446,13 @@
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
                     ]
                 },
                 "nucleic_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/NucleicPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/NucleicPotentialName",
                     "description": "Force field used to describe nucleic acids."
                 }
             },
@@ -1823,14 +1513,7 @@
                     ]
                 },
                 "resolution": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ModelResolution"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/ModelResolution",
                     "description": "Resolution of simulated system."
                 },
                 "system_charge": {
@@ -1897,23 +1580,13 @@
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
                     ]
                 },
                 "polymer_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PolymerPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/PolymerPotentialName",
                     "description": "Force field used to describe polymers (excluding proteins and nucleic acids)."
                 }
             },
@@ -2046,14 +1719,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/PressureUnit"
                 }
             },
             "title": "PressureQuantity",
@@ -2119,23 +1785,13 @@
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
                     ]
                 },
                 "protein_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ProteinPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/ProteinPotentialName",
                     "description": "Force field used to describe proteins."
                 }
             },
@@ -2181,14 +1837,7 @@
             "description": "Setup stage of simulation workflow.",
             "properties": {
                 "setup_tool": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/SetupTool"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/SetupTool",
                     "description": "Name of the tool used to setup simulation."
                 }
             },
@@ -2309,10 +1958,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The angles of the box used to simulate the system.",
-                    "examples": [
-                        "[90, 90, 90]"
-                    ]
+                    "description": "The angles of the box used to simulate the system."
                 },
                 "box_dimensions": {
                     "anyOf": [
@@ -2323,31 +1969,14 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The lengths/dimensions of the box used to simulate the system.",
-                    "examples": [
-                        "[10, 10, 10]"
-                    ]
+                    "description": "The lengths/dimensions of the box used to simulate the system."
                 },
                 "box_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/BoxType"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/BoxType",
                     "description": "The type of box used to simuluate the system."
                 },
                 "periodic_boundary_conditions": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PeriodicBoundaryConditions"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/PeriodicBoundaryConditions",
                     "description": "What directions in a simulation cell periodic boundaries are set if they are turned on."
                 }
             },
@@ -2675,47 +2304,19 @@
             "description": "Computer software used to perform simulation.",
             "properties": {
                 "MPI_library": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/MPILibrary"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/MPILibrary",
                     "description": "MPI implementation used for distributed parallel execution."
                 },
                 "container_runtime": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ContainerRuntime"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/ContainerRuntime",
                     "description": "Container runtime used to execute the simulation environment, if any."
                 },
                 "operating_system": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/OperatingSystem"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/OperatingSystem",
                     "description": "Operating system installed on the hardware used to perform the simulation."
                 },
                 "scheduler": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Scheduler"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/Scheduler",
                     "description": "Workload manager or job scheduler used to launch the simulation."
                 }
             },
@@ -2765,16 +2366,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Concentration of salt in the solution.",
-                    "examples": [
-                        "0.1"
-                    ]
+                    "description": "Concentration of salt in the solution."
                 },
                 "total_atom_count": {
                     "description": "Total number of atoms in the simulation.",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -2783,9 +2378,6 @@
                 },
                 "total_molecule_count": {
                     "description": "Total number of simulated molecules, defined as bonded atoms or beads.",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -2794,9 +2386,6 @@
                 },
                 "unique_molecule_count": {
                     "description": "Number of unique simulated molecules, defined as bonded atoms or beads.",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -2819,14 +2408,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TemperatureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TemperatureUnit"
                 }
             },
             "title": "TemperatureQuantity",
@@ -2917,14 +2499,7 @@
                     "description": "Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1)."
                 },
                 "thermostat_algorithm": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ThermostatAlgorithm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/ThermostatAlgorithm",
                     "description": "List of thermostat algorithms used in the simulation."
                 }
             },
@@ -2955,14 +2530,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TimeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TimeUnit"
                 }
             },
             "title": "TimeQuantity",
@@ -3031,9 +2599,6 @@
                 },
                 "frame_count": {
                     "description": "Total number of snapshots that make up a trajectory.",
-                    "examples": [
-                        1
-                    ],
                     "minimum": 0,
                     "type": [
                         "integer",
@@ -3114,14 +2679,7 @@
             "description": "A quantity representing 3D angles.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AngleUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/AngleUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3143,29 +2701,24 @@
             "description": "A quantity representing compressibility in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CompressibilityUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/CompressibilityUnit"
                 },
                 "vector_value": {
                     "items": {
-                        "items": {
-                            "items": {
-                                "type": [
-                                    "number",
-                                    "null"
-                                ]
-                            },
-                            "type": "array"
-                        },
-                        "type": "array"
+                        "additionalProperties": true,
+                        "type": [
+                            "null",
+                            "boolean",
+                            "object",
+                            "number",
+                            "string",
+                            "array"
+                        ]
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
             "title": "VectorCompressibilityQuantity",
@@ -3176,14 +2729,7 @@
             "description": "A quantity representing 3D lengths/dimensions.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LengthUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/LengthUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3205,14 +2751,7 @@
             "description": "A quantity representing pressure in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/PressureUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3234,14 +2773,7 @@
             "description": "Temperature values for multiple coupling groups.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TemperatureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TemperatureUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3261,14 +2793,7 @@
             "description": "Time values for multiple coupling groups.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TimeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TimeUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3288,14 +2813,7 @@
             "description": "A quantity representing volume as via 3 length dimensions.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LengthUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/LengthUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3322,14 +2840,7 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/VolumeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/VolumeUnit"
                 }
             },
             "title": "VolumeQuantity",
@@ -3350,23 +2861,13 @@
             "properties": {
                 "modified": {
                     "description": "Has the initial model been modified from the original?",
-                    "examples": [
-                        true
-                    ],
                     "type": [
                         "boolean",
                         "null"
                     ]
                 },
                 "water_potential_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/WaterPotentialName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/WaterPotentialName",
                     "description": "Force field used to describe water molecules."
                 }
             },
@@ -3397,9 +2898,9 @@
     },
     "$id": "https://CCPBioSim.ac.uk/biosim-schema/",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "additionalProperties": false,
+    "additionalProperties": true,
     "description": "root class for biosim-schema",
-    "metamodel_version": "1.12.0",
+    "metamodel_version": "1.11.0",
     "properties": {
         "biosim_schema_version": {
             "description": "Version of biosim-schema used to populate metadata.",

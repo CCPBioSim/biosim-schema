@@ -1,5 +1,4 @@
 # Auto generated from biosim_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-23T10:28:50
 # Schema: biosim-schema
 #
 # id: https://CCPBioSim.ac.uk/biosim-schema/
@@ -59,8 +58,8 @@ from rdflib import (
 from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
-metamodel_version = "1.11.0"
-version = "0.0.7"
+metamodel_version = "1.12.0"
+version = "1.0.1"
 
 # Namespaces
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
@@ -730,13 +729,12 @@ class MatrixPressureQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MatrixPressureQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MatrixPressureQuantity
 
-    vector_value: Optional[Union[float, list[float]]] = empty_list()
+    vector_value: Optional[float] = None
     value_unit: Optional[Union[str, "PressureUnit"]] = 'bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if not isinstance(self.vector_value, list):
-            self.vector_value = [self.vector_value] if self.vector_value is not None else []
-        self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
+        if self.vector_value is not None and not isinstance(self.vector_value, float):
+            self.vector_value = float(self.vector_value)
 
         if self.value_unit is not None and not isinstance(self.value_unit, PressureUnit):
             self.value_unit = PressureUnit(self.value_unit)
@@ -756,13 +754,12 @@ class MatrixCompressibilityQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MatrixCompressibilityQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MatrixCompressibilityQuantity
 
-    vector_value: Optional[Union[float, list[float]]] = empty_list()
+    vector_value: Optional[float] = None
     value_unit: Optional[Union[str, "CompressibilityUnit"]] = '1/bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if not isinstance(self.vector_value, list):
-            self.vector_value = [self.vector_value] if self.vector_value is not None else []
-        self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
+        if self.vector_value is not None and not isinstance(self.vector_value, float):
+            self.vector_value = float(self.vector_value)
 
         if self.value_unit is not None and not isinstance(self.value_unit, CompressibilityUnit):
             self.value_unit = CompressibilityUnit(self.value_unit)
@@ -782,13 +779,12 @@ class MatrixQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MatrixQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MatrixQuantity
 
-    vector_value: Optional[Union[float, list[float]]] = empty_list()
+    vector_value: Optional[float] = None
     value_unit: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if not isinstance(self.vector_value, list):
-            self.vector_value = [self.vector_value] if self.vector_value is not None else []
-        self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
+        if self.vector_value is not None and not isinstance(self.vector_value, float):
+            self.vector_value = float(self.vector_value)
 
         if self.value_unit is not None and not isinstance(self.value_unit, str):
             self.value_unit = str(self.value_unit)
@@ -3841,7 +3837,7 @@ slots.InChI = Slot(uri=BIOSIM_SCHEMA['composition/InChI'], name="InChI", curie=B
 
 slots.molecular_formula = Slot(uri=BIOSIM_SCHEMA['composition/molecular_formula'], name="molecular_formula", curie=BIOSIM_SCHEMA.curie('composition/molecular_formula'),
                    model_uri=BIOSIM_SCHEMA.molecular_formula, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^([A-Z][a-z]?\d*)+([+-]|\d+[+-])?$'))
+                   pattern=re.compile(r'^([A-Z][a-z]?\d*)+([+-]\d*|\d+[+-])?$'))
 
 slots.predicted_structure = Slot(uri=BIOSIM_SCHEMA['composition/predicted_structure'], name="predicted_structure", curie=BIOSIM_SCHEMA.curie('composition/predicted_structure'),
                    model_uri=BIOSIM_SCHEMA.predicted_structure, domain=None, range=Optional[Union[bool, Bool]])
@@ -4215,19 +4211,19 @@ slots.vectorTimeQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_
                    model_uri=BIOSIM_SCHEMA.vectorTimeQuantity__value_unit, domain=None, range=Optional[Union[str, "TimeUnit"]])
 
 slots.matrixPressureQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="matrixPressureQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
-                   model_uri=BIOSIM_SCHEMA.matrixPressureQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
+                   model_uri=BIOSIM_SCHEMA.matrixPressureQuantity__vector_value, domain=None, range=Optional[float])
 
 slots.matrixPressureQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="matrixPressureQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
                    model_uri=BIOSIM_SCHEMA.matrixPressureQuantity__value_unit, domain=None, range=Optional[Union[str, "PressureUnit"]])
 
 slots.matrixCompressibilityQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="matrixCompressibilityQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
-                   model_uri=BIOSIM_SCHEMA.matrixCompressibilityQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
+                   model_uri=BIOSIM_SCHEMA.matrixCompressibilityQuantity__vector_value, domain=None, range=Optional[float])
 
 slots.matrixCompressibilityQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="matrixCompressibilityQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
                    model_uri=BIOSIM_SCHEMA.matrixCompressibilityQuantity__value_unit, domain=None, range=Optional[Union[str, "CompressibilityUnit"]])
 
 slots.matrixQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="matrixQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
-                   model_uri=BIOSIM_SCHEMA.matrixQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
+                   model_uri=BIOSIM_SCHEMA.matrixQuantity__vector_value, domain=None, range=Optional[float])
 
 slots.matrixQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="matrixQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
                    model_uri=BIOSIM_SCHEMA.matrixQuantity__value_unit, domain=None, range=Optional[str])

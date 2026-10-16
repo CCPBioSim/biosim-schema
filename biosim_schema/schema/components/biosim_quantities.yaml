@@ -272,7 +272,6 @@ classes:
     attributes:
       vector_value:
         range: float
-        multivalued: true
         array:
           minimum_number_dimensions: 2
           maximum_number_dimensions: 2
@@ -290,7 +289,6 @@ classes:
     attributes:
       vector_value:
         range: float
-        multivalued: true
         array:
           minimum_number_dimensions: 2
           maximum_number_dimensions: 2
@@ -308,7 +306,6 @@ classes:
     attributes:
       vector_value:
         range: float
-        multivalued: true
         array:
           minimum_number_dimensions: 2
           maximum_number_dimensions: 2

@@ -1,5 +1,5 @@
-# metamodel_version: 1.11.0
-# version: 0.0.7
+# metamodel_version: 1.12.0
+# version: 1.0.1
 BASE <https://CCPBioSim.ac.uk/biosim-schema/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -422,7 +422,7 @@ linkml:Sparqlpath xsd:string
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> CLOSED {
     (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity_tes> ( 
-          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [ qudt:PER-BAR qudt:PER-PA ] ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixCompressibilityQuantity> ] ?
@@ -431,7 +431,7 @@ linkml:Sparqlpath xsd:string
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity> CLOSED {
     (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixPressureQuantity_tes> ( 
-          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> [
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#bar>
              <https://CCPBioSim.ac.uk/biosim-schema/quantities/PressureUnit#Pa> ] ?
@@ -442,7 +442,7 @@ linkml:Sparqlpath xsd:string
 
 <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> CLOSED {
     (  $<https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity_tes> ( 
-          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float * ;
+          <https://CCPBioSim.ac.uk/biosim-schema/quantities/vector_value> @linkml:Float ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/quantities/value_unit> @linkml:String ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/quantities/MatrixQuantity> ] ?

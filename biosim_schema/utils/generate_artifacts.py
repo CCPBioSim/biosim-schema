@@ -129,7 +129,7 @@ def generate_project(paths: ArtifactPaths) -> None:
             "-d",
             str(paths.project_dir),
             "--generator-arguments",
-            "diagram-type: plantuml_class_diagram",
+            "{markdown: {diagram-type: plantuml_class_diagram}}",
             "--exclude",
             "owl",
             "--exclude",
@@ -152,7 +152,7 @@ def generate_jsonld(paths: ArtifactPaths) -> None:
             "-d",
             str(paths.project_dir),
             "--generator-arguments",
-            "diagram-type: plantuml_class_diagram",
+            "{markdown: {diagram-type: plantuml_class_diagram}}",
         ],
         cwd=paths.repo_root,
     )
@@ -169,7 +169,7 @@ def generate_jsonschema(paths: ArtifactPaths) -> None:
             "-d",
             str(paths.project_dir),
             "--generator-arguments",
-            "diagram-type: plantuml_class_diagram",
+            "{markdown: {diagram-type: plantuml_class_diagram}}",
         ],
         cwd=paths.repo_root,
     )

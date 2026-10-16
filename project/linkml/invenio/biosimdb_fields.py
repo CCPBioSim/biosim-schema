@@ -123,17 +123,17 @@ class VectorTimeQuantitySchema(Schema):
 
 
 class MatrixPressureQuantitySchema(Schema):
-    vector_value = fields.List(fields.List(fields.Float()), allow_none=True)
+    vector_value = fields.Float(allow_none=True)
     value_unit = fields.String(validate=OneOf(['bar', 'Pa']), allow_none=True)
 
 
 class MatrixCompressibilityQuantitySchema(Schema):
-    vector_value = fields.List(fields.List(fields.Float()), allow_none=True)
+    vector_value = fields.Float(allow_none=True)
     value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), allow_none=True)
 
 
 class MatrixQuantitySchema(Schema):
-    vector_value = fields.List(fields.List(fields.Float()), allow_none=True)
+    vector_value = fields.Float(allow_none=True)
     value_unit = SanitizedUnicode(allow_none=True)
 
 

@@ -1,6 +1,7 @@
-shortdesc: ""
-longdesc: ""
+shortdesc: "Data schema for biomolecular simulation metadata"
+longdesc: "The biomolecular simulation metadata schema used in the BioSimDR platform. It provides the canonical schema, field definitions, and validation assets used to standardize simulation metadata."
 category: "data-tools"
-image: ""
+image: "biosim-schema-logo.svg"
 pypi: true
 conda: true
+ghcr: false

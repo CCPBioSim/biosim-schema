@@ -1,481 +1,1053 @@
- syntax="proto3";
- package
-// metamodel_version: 1.11.0
+syntax = "proto3";
+package biosim_schema;
+// metamodel_version: 1.12.0
 // version: 1.1.0
 // Analysis stage of simulation workflow.
-message Analysis
- {
- repeated  analysisTool analysisTool = 0
- repeated  analysisSoftware analysisSoftware = 0
- repeated  analysisMethod analysisMethod = 0
- }
+message Analysis {
+  // Name of the tool used to analyse simulation.
+  repeated AnalysisTool analysis_tool = 1;
+  // Name of software used to analyse simulation.
+  repeated AnalysisSoftware analysis_software = 2;
+  // Name of the method used to analyse simulation.
+  repeated AnalysisMethod analysis_method = 3;
+}
 // A quantity representing angles.
-message AngleQuantity
- {
-  float value = 0
-  angleUnit valueUnit = 0
- }
+message AngleQuantity {
+  float value = 1;
+  AngleUnit value_unit = 2;
+}
 // Settings used for the simulation barostat.
-message Barostat
- {
-  barostatAlgorithm barostatAlgorithm = 0
-  compressibilityQuantity compressibility = 0
-  matrixCompressibilityQuantity compressibilityVector = 0
-  pressureQuantity targetPressure = 0
-  matrixPressureQuantity targetPressureVector = 0
-  timeQuantity pressureTimeConstant = 0
-  frequencyQuantity pressureCouplingFrequency = 0
-  pressureCouplingType pressureCouplingType = 0
- }
+message Barostat {
+  // List of barostat algorithms used in the simulation.
+  BarostatAlgorithm barostat_algorithm = 1;
+  // Compressibility of the simulated system, given as a float.
+  CompressibilityQuantity compressibility = 2;
+  // Compressibility of the simulated system, given as a float.
+  MatrixCompressibilityQuantity compressibility_vector = 3;
+  // Target/reference pressure set to reach in the simulation, given as a float.
+  PressureQuantity target_pressure = 4;
+  // Target/reference pressure set to reach in the simulation, given as a 3x3 array.
+  MatrixPressureQuantity target_pressure_vector = 5;
+  // Time constant/step (relaxation time of pressure) used for coupling the system pressure, given as a float.
+  TimeQuantity pressure_time_constant = 6;
+  // Step frequency to apply the barostat.
+  FrequencyQuantity pressure_coupling_frequency = 7;
+  // List of coupling types for adjusting box vectors.
+  PressureCouplingType pressure_coupling_type = 8;
+}
 // A quantity representing bytes.
-message ByteQuantity
- {
-  float value = 0
-  byteUnit valueUnit = 0
- }
+message ByteQuantity {
+  float value = 1;
+  ByteUnit value_unit = 2;
+}
 // Potential used for carbohydrate molecules.
-message CarbohydratePotential
- {
-  carbohydratePotentialName carbohydratePotentialName = 0
-  boolean modified = 0
- }
+message CarbohydratePotential {
+  // Force field used to describe carbohydrate.
+  CarbohydratePotentialName carbohydrate_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // A quantity representing charge.
-message ChargeQuantity
- {
-  float value = 0
-  chargeUnit valueUnit = 0
- }
+message ChargeQuantity {
+  float value = 1;
+  ChargeUnit value_unit = 2;
+}
 // A quantity representing compressibility.
-message CompressibilityQuantity
- {
-  float value = 0
-  compressibilityUnit valueUnit = 0
- }
+message CompressibilityQuantity {
+  float value = 1;
+  CompressibilityUnit value_unit = 2;
+}
 // Computational environment used to perform simulation.
-message ComputationalEnvironment
- {
-  hardware hardware = 0
-  software software = 0
-  performance performance = 0
- }
+message ComputationalEnvironment {
+  // Computer hardware used to perform simulation.
+  Hardware hardware = 1;
+  // Computer software used to perform simulation.
+  Software software = 2;
+  // Compute performance during simulation.
+  Performance performance = 3;
+}
 // A quantity representing concentration.
-message ConcentrationQuantity
- {
-  float value = 0
-  concentrationUnit valueUnit = 0
- }
+message ConcentrationQuantity {
+  float value = 1;
+  ConcentrationUnit value_unit = 2;
+}
 // Connectivity information included in the topology.
-message Connectivity
- {
-  boolean bonds = 0
-  boolean dihedrals = 0
- }
+message Connectivity {
+  // Are bond parameters present in the topology?
+  bool bonds = 1;
+  // Are dihedral parameters present in the topology?
+  bool dihedrals = 2;
+}
 // A quantity representing energy.
-message EnergyQuantity
- {
-  float value = 0
-  energyUnit valueUnit = 0
- }
+message EnergyQuantity {
+  float value = 1;
+  EnergyUnit value_unit = 2;
+}
 // Simulation ensemble/thermodynamic properties.
-message Ensemble
- {
-  ensembleType ensembleType = 0
-  integer randomSeed = 0
- }
+message Ensemble {
+  // List of ensemble types used in the simulation.
+  EnsembleType ensemble_type = 1;
+  // Random number used to set (a) distribution of velocities across particles at the start of a simulation and (b) pseudo-random values for dynamics/couplings, given as an integer.
+  int32 random_seed = 2;
+}
 // Equilibration stage of simulation workflow.
-message Equilibration
- {
- repeated  simulationTool simulationTool = 0
- repeated  simulationSoftware simulationSoftware = 0
- }
+message Equilibration {
+  // Tool used to perform simulation.
+  repeated SimulationTool simulation_tool = 1;
+  // Name of software used to perform simulation step.
+  repeated SimulationSoftware simulation_software = 2;
+}
 // Metadata about uploaded or referenced files.
-message FileMetadata
- {
-  string fileName = 0
-  byteQuantity fileSize = 0
-  string fileHash = 0
-  fileHashAlgorithm fileHashAlgorithm = 0
-  fileRole fileRole = 0
- }
+message FileMetadata {
+  // Name of the file.
+  string file_name = 1;
+  // Size of the file.
+  ByteQuantity file_size = 2;
+  // Cryptographic hash of the file contents.
+  string file_hash = 3;
+  // Algorithm used to calculate the file hash.
+  FileHashAlgorithm file_hash_algorithm = 4;
+  // Role of the file in the simulation submission.
+  FileRole file_role = 5;
+}
 // A quantity representing force.
-message ForceQuantity
- {
-  float value = 0
-  forceUnit valueUnit = 0
- }
+message ForceQuantity {
+  float value = 1;
+  ForceUnit value_unit = 2;
+}
 // A quantity representing frequency.
-message FrequencyQuantity
- {
-  float value = 0
-  frequencyUnit valueUnit = 0
- }
+message FrequencyQuantity {
+  float value = 1;
+  FrequencyUnit value_unit = 2;
+}
 // A quantity representing friction coefficients.
-message FrictionCoefficientQuantity
- {
-  float value = 0
-  frictionCoefficientUnit valueUnit = 0
- }
+message FrictionCoefficientQuantity {
+  float value = 1;
+  FrictionCoefficientUnit value_unit = 2;
+}
 // Potential used for molecules.
-message GeneralPotential
- {
-  generalPotentialName generalPotentialName = 0
-  boolean modified = 0
- }
+message GeneralPotential {
+  // Force field used to describe molecules.
+  GeneralPotentialName general_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // Computer hardware used to perform simulation.
-message Hardware
- {
-  executionPlatform executionPlatform = 0
-  nodeType nodeType = 0
-  integer nodeCount = 0
-  cpuVendor cPUVendor = 0
-  cpuArchitecture cPUArchitecture = 0
-  integer socketsPerNode = 0
-  integer coresPerSocket = 0
-  integer threadsPerCore = 0
-  gpuVendor gPUVendor = 0
-  integer gPUsPerNode = 0
-  byteQuantity memoryPerNode = 0
- }
+message Hardware {
+  // Broad type of system used to run the simulation workload.
+  ExecutionPlatform execution_platform = 1;
+  // Compute node profile used for the simulation run.
+  NodeType node_type = 2;
+  // Number of compute nodes used for the run.
+  int32 node_count = 3;
+  // CPU vendor used in the compute nodes.
+  CpuVendor CPU_vendor = 4;
+  // CPU instruction-set architecture of the compute nodes.
+  CpuArchitecture CPU_architecture = 5;
+  // Number of physical CPU sockets in each compute node.
+  int32 sockets_per_node = 6;
+  // Number of physical CPU cores in each socket.
+  int32 cores_per_socket = 7;
+  // Number of hardware threads per physical core.
+  int32 threads_per_core = 8;
+  // GPU vendor used by the compute nodes, if applicable.
+  GpuVendor GPU_vendor = 9;
+  // Number of GPUs present in each compute node.
+  int32 GPUs_per_node = 10;
+  // Amount of memory installed per compute node.
+  ByteQuantity memory_per_node = 11;
+}
 // Settings used for the simulation integrator.
-message Integrator
- {
-  integratorAlgorithm integratorAlgorithm = 0
-  timeQuantity frameStep = 0
-  timeQuantity timeStep = 0
-  integer numberOfSteps = 0
-  timeQuantity simulationTime = 0
- }
+message Integrator {
+  // List of integrator algorithms used to integrate the simulation.
+  IntegratorAlgorithm integrator_algorithm = 1;
+  // Time between saved snapshots/frames in a simulation, given as a float.
+  TimeQuantity frame_step = 2;
+  // Time between integration steps in a simulation, given as a float.
+  TimeQuantity time_step = 3;
+  // Number of integration steps performed in the simulation, given as an integer.
+  int32 number_of_steps = 4;
+  // Total time molecular dynamics have been sampled in a simulation trajectory, often given by the number of integration steps multiplied by the simulation time step used by the integrator, given as a float.
+  TimeQuantity simulation_time = 5;
+}
 // Settings used to define particle interactions.
-message Interactions
- {
-  boolean restraints = 0
-  lengthQuantity electrostaticCutoffDistance = 0
-  lengthQuantity vdwCutoffDistance = 0
-  bondLengthConstraintsAlgorithm bondLengthConstraintsAlgorithm = 0
-  longRangeInteractionMethod longRangeInteractionMethod = 0
- }
+message Interactions {
+  // Are any positional restraints applied to molecule dynamics? (Restraints usually use harmonic potentials to keep a value near a target).
+  bool restraints = 1;
+  // Distance in Angstrom at which a electrostatic interaction is turned off and a long-range non-bonded method is turned on, given as a float.
+  LengthQuantity electrostatic_cutoff_distance = 2;
+  // Distance in Angstrom at which a Van der Waals interaction is turned off and a long-range non-bonded method is turned on.
+  LengthQuantity vdw_cutoff_distance = 3;
+  // Constraints applied to bonds between two particles in the simulated system.
+  BondLengthConstraintsAlgorithm bond_length_constraints_algorithm = 4;
+  // Method used to describe long-range interactions between particles.
+  LongRangeInteractionMethod long_range_interaction_method = 5;
+}
 // A quantity representing length.
-message LengthQuantity
- {
-  float value = 0
-  lengthUnit valueUnit = 0
- }
+message LengthQuantity {
+  float value = 1;
+  LengthUnit value_unit = 2;
+}
 // Potential used for lipid molecules.
-message LipidPotential
- {
-  lipidPotentialName lipidPotentialName = 0
-  boolean modified = 0
- }
+message LipidPotential {
+  // Force field used to describe lipids.
+  LipidPotentialName lipid_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // Machine learned potential used for molecules.
-message MachineLearnedPotential
- {
-  machineLearnedPotentialName machineLearnedPotentialName = 0
-  boolean modified = 0
- }
+message MachineLearnedPotential {
+  // ML force field used to describe molecules.
+  MachineLearnedPotentialName machine_learned_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // A quantity representing mass.
-message MassQuantity
- {
-  float value = 0
-  massUnit valueUnit = 0
- }
+message MassQuantity {
+  float value = 1;
+  MassUnit value_unit = 2;
+}
 // A quantity representing compressibility vectors in 3D.
-message MatrixCompressibilityQuantity
- {
-  float vectorValue = 0
-  compressibilityUnit valueUnit = 0
- }
+message MatrixCompressibilityQuantity {
+  float vector_value = 1;
+  CompressibilityUnit value_unit = 2;
+}
 // A quantity representing pressure vectors in 3D.
-message MatrixPressureQuantity
- {
-  float vectorValue = 0
-  pressureUnit valueUnit = 0
- }
+message MatrixPressureQuantity {
+  float vector_value = 1;
+  PressureUnit value_unit = 2;
+}
 // A quantity representing general vectors in 3D.
-message MatrixQuantity
- {
-  float vectorValue = 0
-  string valueUnit = 0
- }
+message MatrixQuantity {
+  float vector_value = 1;
+  string value_unit = 2;
+}
 // Minimisation stage of simulation workflow.
-message Minimisation
- {
-  forceQuantity energyTolerance = 0
-  integer numberOfMinimisationSteps = 0
-  lengthQuantity minimisationDistanceStepSize = 0
- repeated  minimisationAlgorithm minimisationAlgorithm = 0
- repeated  simulationTool simulationTool = 0
- repeated  simulationSoftware simulationSoftware = 0
- }
+message Minimisation {
+  // Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float.
+  ForceQuantity energy_tolerance = 1;
+  // Number of integration steps performed during minimisation of the system, given as an integer.
+  int32 number_of_minimisation_steps = 2;
+  // The distance the algorithm moves in a single step, controls how large a step the optimizer takes during the initial phase of minimizing the potential energy of a structure, given as a float.
+  LengthQuantity minimisation_distance_step_size = 3;
+  // Name of the method used to minimise the molecular system.
+  repeated MinimisationAlgorithm minimisation_algorithm = 4;
+  // Tool used to perform simulation.
+  repeated SimulationTool simulation_tool = 5;
+  // Name of software used to perform simulation step.
+  repeated SimulationSoftware simulation_software = 6;
+}
 // A quantity representing molar energy.
-message MolarEnergyQuantity
- {
-  float value = 0
-  molarEnergyUnit valueUnit = 0
- }
+message MolarEnergyQuantity {
+  float value = 1;
+  MolarEnergyUnit value_unit = 2;
+}
 // Identifiers of a molecule type in the simulated system.
-message MoleculeID
- {
-  string pDBID = 0
-  string uNIPROTID = 0
-  string sMILES = 0
-  string inChI = 0
-  string inChIKey = 0
-  string alphafoldID = 0
-  string pubChemCID = 0
-  string proteinSequence = 0
-  string nucleicSequence = 0
-  boolean predictedStructure = 0
-  boolean modified = 0
-  string molecularFormula = 0
-  massQuantity molecularWeight = 0
-  chargeQuantity moleculeCharge = 0
-  integer moleculeCount = 0
-  integer atomCount = 0
-  integer monomerCount = 0
-  string simulatedParticleNames = 0
-  string simulatedMoleculeName = 0
- }
+message MoleculeID {
+  // Protein Data Bank identifier
+  string PDB_ID = 1;
+  // UniProt accession ID
+  string UNIPROT_ID = 2;
+  // Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.
+  string SMILES = 3;
+  // The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information
+  string InChI = 4;
+  // The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.
+  string InChIKey = 5;
+  // AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)
+  string alphafold_ID = 6;
+  // PubChem CID of chemical molecules and their activities against biological assays.
+  string PubChem_CID = 7;
+  // One letter sequence for protein amino acids.
+  string protein_sequence = 8;
+  // One letter sequence for nucleic acid nucleotides.
+  string nucleic_sequence = 9;
+  // Are the molecule positions derived from a prediction?
+  bool predicted_structure = 10;
+  // Has the initial model been modified from the original?
+  bool modified = 11;
+  // The molecular formula of a molecule\
+  string molecular_formula = 12;
+  // The molecular weight of a molecule.
+  MassQuantity molecular_weight = 13;
+  // Electrostatic charge of a molecule.
+  ChargeQuantity molecule_charge = 14;
+  // Number of instances of a given molecule, defined as bonded atoms or beads.
+  int32 molecule_count = 15;
+  // Number of atoms in a molecule.
+  int32 atom_count = 16;
+  // Number of monomeric units in a polymer(e.g. protein or nucleic acid).
+  int32 monomer_count = 17;
+  // List of particle names (e.g. atoms or beads) that describe a simulated molecule
+  string simulated_particle_names = 18;
+  // Molecule name used in the simulation.
+  string simulated_molecule_name = 19;
+}
 // Potential used for nucleic acid molecules.
-message NucleicPotential
- {
-  nucleicPotentialName nucleicPotentialName = 0
-  boolean modified = 0
- }
+message NucleicPotential {
+  // Force field used to describe nucleic acids.
+  NucleicPotentialName nucleic_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // Particle information included in the topology.
-message Particles
- {
-  boolean masses = 0
-  boolean fixedCharges = 0
-  chargeQuantity systemCharge = 0
-  boolean coarseGrained = 0
-  modelResolution resolution = 0
- }
+message Particles {
+  // Are masses present in the topology?
+  bool masses = 1;
+  // Are fixed charges on atoms included in the topology?
+  bool fixed_charges = 2;
+  // Total electrostatic charge of the system given by the elementary charge (e).
+  ChargeQuantity system_charge = 3;
+  // Are atoms coarse-grained?
+  bool coarse_grained = 4;
+  // Resolution of simulated system.
+  ModelResolution resolution = 5;
+}
 // Compute performance during simulation.
-message Performance
- {
-  timeQuantity wallTime = 0
-  energyQuantity energyConsumption = 0
- }
+message Performance {
+  // Total elapsed runtime of the simulation.
+  TimeQuantity wall_time = 1;
+  // Total energy consumed by the simulation run.
+  EnergyQuantity energy_consumption = 2;
+}
 // Potential used for polymers molecules.
-message PolymerPotential
- {
-  polymerPotentialName polymerPotentialName = 0
-  boolean modified = 0
- }
+message PolymerPotential {
+  // Force field used to describe polymers (excluding proteins and nucleic acids).
+  PolymerPotentialName polymer_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // Potentials used for various modelled molecules.
-message PotentialMetadata
- {
-  waterPotential waterPotential = 0
-  proteinPotential proteinPotential = 0
-  lipidPotential lipidPotential = 0
-  nucleicPotential nucleicPotential = 0
-  carbohydratePotential carbohydratePotential = 0
-  polymerPotential polymerPotential = 0
-  generalPotential generalPotential = 0
-  machineLearnedPotential machineLearnedPotential = 0
- }
+message PotentialMetadata {
+  // Force field for water molecules.
+  WaterPotential water_potential = 1;
+  // Force field for proteins.
+  ProteinPotential protein_potential = 2;
+  // Force field for lipids.
+  LipidPotential lipid_potential = 3;
+  // Force field for nucleic acids.
+  NucleicPotential nucleic_potential = 4;
+  // Force field for carbohydrates.
+  CarbohydratePotential carbohydrate_potential = 5;
+  // Force field for polymers (excluding proteins and nucleic acids).
+  PolymerPotential polymer_potential = 6;
+  // Force field for molecules (in general).
+  GeneralPotential general_potential = 7;
+  // ML force field for molecules (in general).
+  MachineLearnedPotential machine_learned_potential = 8;
+}
 // A quantity representing pressure.
-message PressureQuantity
- {
-  float value = 0
-  pressureUnit valueUnit = 0
- }
+message PressureQuantity {
+  float value = 1;
+  PressureUnit value_unit = 2;
+}
 // Production stage of simulation workflow.
-message Production
- {
- repeated  simulationTool simulationTool = 0
- repeated  simulationSoftware simulationSoftware = 0
-  string simulationSoftwareVersion = 0
- repeated  simulationMethod simulationMethod = 0
- }
+message Production {
+  // Tool used to perform simulation.
+  repeated SimulationTool simulation_tool = 1;
+  // Name of software used to perform simulation step.
+  repeated SimulationSoftware simulation_software = 2;
+  // Version of software used to perform simulation step.
+  string simulation_software_version = 3;
+  // Method used to perform simulation.
+  repeated SimulationMethod simulation_method = 4;
+}
 // Potential used for protein molecules.
-message ProteinPotential
- {
-  proteinPotentialName proteinPotentialName = 0
-  boolean modified = 0
- }
+message ProteinPotential {
+  // Force field used to describe proteins.
+  ProteinPotentialName protein_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
 // Setup stage of simulation workflow.
-message Setup
- {
-  setupTool setupTool = 0
- }
+message Setup {
+  // Name of the tool used to setup simulation.
+  SetupTool setup_tool = 1;
+}
 // Average values of observables outputted from the simulation.
-message SimulationAverages
- {
-  molarEnergyQuantity averageKineticEnergy = 0
-  molarEnergyQuantity averagePotentialEnergy = 0
-  molarEnergyQuantity averageEnthalpy = 0
-  pressureQuantity averagePressure = 0
-  temperatureQuantity averageTemperature = 0
-  volumeQuantity averageVolume = 0
-  vectorVolumeQuantity averageVolumeVector = 0
- }
+message SimulationAverages {
+  // Average kinetic energy sampled from the simulation, given as a float.
+  MolarEnergyQuantity average_kinetic_energy = 1;
+  // Average potential energy sampled from the simulation, given as a float.
+  MolarEnergyQuantity average_potential_energy = 2;
+  // Average enthalpy sampled from the simulation, given as a float.
+  MolarEnergyQuantity average_enthalpy = 3;
+  // Average pressure sampled from the simulation, given as a float.
+  PressureQuantity average_pressure = 4;
+  // Average temperature sampled from the simulation, given as a float.
+  TemperatureQuantity average_temperature = 5;
+  // Average volume sampled from the simulation, given as a float.
+  VolumeQuantity average_volume = 6;
+  // Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10).
+  VectorVolumeQuantity average_volume_vector = 7;
+}
 // Simulation box information
-message SimulationBox
- {
-  vectorLengthQuantity boxDimensions = 0
-  vectorAngleQuantity boxAngles = 0
-  boxType boxType = 0
-  periodicBoundaryConditions periodicBoundaryConditions = 0
- }
+message SimulationBox {
+  // The lengths/dimensions of the box used to simulate the system.
+  VectorLengthQuantity box_dimensions = 1;
+  // The angles of the box used to simulate the system.
+  VectorAngleQuantity box_angles = 2;
+  // The type of box used to simuluate the system.
+  BoxType box_type = 3;
+  // What directions in a simulation cell periodic boundaries are set if they are turned on.
+  PeriodicBoundaryConditions periodic_boundary_conditions = 4;
+}
 // root class for biosim-schema
-message SimulationMetadata
- {
-  simulationStages stages = 0
-  simulationSettings settings = 0
-  simulationObservables observables = 0
-  topologyMetadata topology = 0
-  trajectoryMetadata trajectory = 0
-  systemComposition composition = 0
-  potentialMetadata potentials = 0
-  computationalEnvironment compute = 0
- repeated  fileMetadata files = 0
-  string biosimSchemaVersion = 0
- }
+message SimulationMetadata {
+  // Simulation stages
+  SimulationStages stages = 1;
+  // Simulation settings
+  SimulationSettings settings = 2;
+  // Simulation observables.
+  SimulationObservables observables = 3;
+  // Topology information.
+  TopologyMetadata topology = 4;
+  // Trajectory information.
+  TrajectoryMetadata trajectory = 5;
+  // Composition of simulated system.
+  SystemComposition composition = 6;
+  // Force field potentials used to describe simulated particles.
+  PotentialMetadata potentials = 7;
+  // Computational environment information.
+  ComputationalEnvironment compute = 8;
+  // Files associated with this simulation metadata record.
+  repeated FileMetadata files = 9;
+  // Version of biosim-schema used to populate metadata.
+  string biosim_schema_version = 10;
+}
 // Simulation observables outputted from simulation.
-message SimulationObservables
- {
-  simulationAverages simulationAverages = 0
- }
+message SimulationObservables {
+  // Average values of observables outputted from the simulation.
+  SimulationAverages simulation_averages = 1;
+}
 // Settings in simulation.
-message SimulationSettings
- {
-  ensemble ensemble = 0
-  integrator integrator = 0
-  barostat barostat = 0
-  thermostat thermostat = 0
-  interactions interactions = 0
- }
+message SimulationSettings {
+  // Ensemble information.
+  Ensemble ensemble = 1;
+  // Integrator information.
+  Integrator integrator = 2;
+  // Barostat information.
+  Barostat barostat = 3;
+  // thermostat information.
+  Thermostat thermostat = 4;
+  // Interaction information.
+  Interactions interactions = 5;
+}
 // Stages of simulation workflow.
-message SimulationStages
- {
-  setup setup = 0
-  minimisation minimisation = 0
-  equilibration equilibration = 0
-  production production = 0
-  analysis analysis = 0
- }
+message SimulationStages {
+  // Setup stage of a simulation.
+  Setup setup = 1;
+  // Minimisation stage of a simulation.
+  Minimisation minimisation = 2;
+  // Equilibration stage of a simulation.
+  Equilibration equilibration = 3;
+  // Production stage of a simulation.
+  Production production = 4;
+  // Analysis stage of a simulation.
+  Analysis analysis = 5;
+}
 // Computer software used to perform simulation.
-message Software
- {
-  operatingSystem operatingSystem = 0
-  scheduler scheduler = 0
-  mPILibrary mPILibrary = 0
-  containerRuntime containerRuntime = 0
- }
+message Software {
+  // Operating system installed on the hardware used to perform the simulation.
+  OperatingSystem operating_system = 1;
+  // Workload manager or job scheduler used to launch the simulation.
+  Scheduler scheduler = 2;
+  // MPI implementation used for distributed parallel execution.
+  MPILibrary MPI_library = 3;
+  // Container runtime used to execute the simulation environment, if any.
+  ContainerRuntime container_runtime = 4;
+}
 // Molecular composition of simulated system.
-message SystemComposition
- {
-  systemCounts systemCounts = 0
- repeated  moleculeID moleculeID = 0
- }
+message SystemComposition {
+  // Entity counts across the simulated system.
+  SystemCounts system_counts = 1;
+  // Persistent identifier of a molecule being simulated.
+  repeated MoleculeID molecule_ID = 2;
+}
 // Entity counts across the simulated system.
-message SystemCounts
- {
-  integer totalMoleculeCount = 0
-  integer totalAtomCount = 0
-  integer uniqueMoleculeCount = 0
-  concentrationQuantity saltConcentration = 0
- }
+message SystemCounts {
+  // Total number of simulated molecules, defined as bonded atoms or beads.
+  int32 total_molecule_count = 1;
+  // Total number of atoms in the simulation.
+  int32 total_atom_count = 2;
+  // Number of unique simulated molecules, defined as bonded atoms or beads.
+  int32 unique_molecule_count = 3;
+  // Concentration of salt in the solution.
+  ConcentrationQuantity salt_concentration = 4;
+}
 // A quantity representing temperature.
-message TemperatureQuantity
- {
-  float value = 0
-  temperatureUnit valueUnit = 0
- }
+message TemperatureQuantity {
+  float value = 1;
+  TemperatureUnit value_unit = 2;
+}
 // Settings used for the simulation thermostat.
-message Thermostat
- {
-  thermostatAlgorithm thermostatAlgorithm = 0
-  temperatureQuantity targetTemperature = 0
-  vectorTemperatureQuantity targetTemperatureVector = 0
-  frequencyQuantity collisionFrequency = 0
-  vectorTimeQuantity temperatureTimeConstant = 0
-  string couplingGroup = 0
-  integer chainLength = 0
-  frictionCoefficientQuantity frictionCoefficient = 0
- }
+message Thermostat {
+  // List of thermostat algorithms used in the simulation.
+  ThermostatAlgorithm thermostat_algorithm = 1;
+  // Target/reference temperature set to reach in the simulation, given as a float.
+  TemperatureQuantity target_temperature = 2;
+  // Target/reference temperature set to reach in the simulation, given as a list (e.g. 300, 300).
+  VectorTemperatureQuantity target_temperature_vector = 3;
+  // Collision frequency for the integrator, given as a float.
+  FrequencyQuantity collision_frequency = 4;
+  // Time constant for coupling the system temperature in seconds units, given as a list (e.g. 0.1, 0.1).
+  VectorTimeQuantity temperature_time_constant = 5;
+  // A subset of atoms for which temperature is controlled, often needed for simulating complex systems (e.g., protein in water), used in gromacs, given as a string
+  string coupling_group = 6;
+  // Usually required in the Nosé-Hoover thermostat, the chain length (e.g., nh-chain-length in GROMACS) is used to maintain canonical distribution, given as an integer.
+  int32 chain_length = 7;
+  // Usually used in the Langevin thermostat, the friction coefficient determines the strength of coupling between a system and a heat bath, given as a float.
+  FrictionCoefficientQuantity friction_coefficient = 8;
+}
 // A quantity representing time.
-message TimeQuantity
- {
-  float value = 0
-  timeUnit valueUnit = 0
- }
+message TimeQuantity {
+  float value = 1;
+  TimeUnit value_unit = 2;
+}
 // Topology information.
-message TopologyMetadata
- {
-  connectivity connectivity = 0
-  particles particles = 0
- }
+message TopologyMetadata {
+  // Particle connectivity information
+  Connectivity connectivity = 1;
+  // Particles information
+  Particles particles = 2;
+}
 // Information in trajectory files.
-message Trajectories
- {
-  boolean positions = 0
-  boolean forces = 0
-  boolean velocities = 0
-  boolean polarizableCharges = 0
-  boolean energies = 0
-  boolean water = 0
-  boolean replica = 0
-  integer frameCount = 0
- }
+message Trajectories {
+  // Are per-frame positions included in the trajectory?
+  bool positions = 1;
+  // Are per-frame forces included in the trajectory?
+  bool forces = 2;
+  // Are per-frame velocities included in the trajectory?
+  bool velocities = 3;
+  // Are per-frame polarizable charges included in the trajectory?
+  bool polarizable_charges = 4;
+  // Are per-frame energies included in the trajectory?
+  bool energies = 5;
+  // Are water molecules included in the trajectory?
+  bool water = 6;
+  // Is this trajectory a replica of another provided trajectory?
+  bool replica = 7;
+  // Total number of snapshots that make up a trajectory.
+  int32 frame_count = 8;
+}
 // Trajectory information.
-message TrajectoryMetadata
- {
-  simulationBox simulationBox = 0
-  trajectories trajectoryOutput = 0
- }
+message TrajectoryMetadata {
+  // Information about the simulation box.
+  SimulationBox simulation_box = 1;
+  // Information included in trajectory files.
+  Trajectories trajectory_output = 2;
+}
 // A quantity representing 3D angles.
-message VectorAngleQuantity
- {
- repeated  float vectorValue = 0
-  angleUnit valueUnit = 0
- }
+message VectorAngleQuantity {
+  repeated float vector_value = 1;
+  AngleUnit value_unit = 2;
+}
 // A quantity representing compressibility in 3D.
-message VectorCompressibilityQuantity
- {
-  float vectorValue = 0
-  compressibilityUnit valueUnit = 0
- }
+message VectorCompressibilityQuantity {
+  float vector_value = 1;
+  CompressibilityUnit value_unit = 2;
+}
 // A quantity representing 3D lengths/dimensions.
-message VectorLengthQuantity
- {
- repeated  float vectorValue = 0
-  lengthUnit valueUnit = 0
- }
+message VectorLengthQuantity {
+  repeated float vector_value = 1;
+  LengthUnit value_unit = 2;
+}
 // A quantity representing pressure in 3D.
-message VectorPressureQuantity
- {
- repeated  float vectorValue = 0
-  pressureUnit valueUnit = 0
- }
+message VectorPressureQuantity {
+  repeated float vector_value = 1;
+  PressureUnit value_unit = 2;
+}
 // Temperature values for multiple coupling groups.
-message VectorTemperatureQuantity
- {
- repeated  float vectorValue = 0
-  temperatureUnit valueUnit = 0
- }
+message VectorTemperatureQuantity {
+  repeated float vector_value = 1;
+  TemperatureUnit value_unit = 2;
+}
 // Time values for multiple coupling groups.
-message VectorTimeQuantity
- {
- repeated  float vectorValue = 0
-  timeUnit valueUnit = 0
- }
+message VectorTimeQuantity {
+  repeated float vector_value = 1;
+  TimeUnit value_unit = 2;
+}
 // A quantity representing volume as via 3 length dimensions.
-message VectorVolumeQuantity
- {
- repeated  float vectorValue = 0
-  lengthUnit valueUnit = 0
- }
+message VectorVolumeQuantity {
+  repeated float vector_value = 1;
+  LengthUnit value_unit = 2;
+}
 // A quantity representing volume.
-message VolumeQuantity
- {
-  float value = 0
-  volumeUnit valueUnit = 0
- }
+message VolumeQuantity {
+  float value = 1;
+  VolumeUnit value_unit = 2;
+}
 // Potential used for water molecules.
-message WaterPotential
- {
-  waterPotentialName waterPotentialName = 0
-  boolean modified = 0
- }
+message WaterPotential {
+  // Force field used to describe water molecules.
+  WaterPotentialName water_potential_name = 1;
+  // Has the initial model been modified from the original?
+  bool modified = 2;
+}
+
+// Methods used to analyse simulation outputs.
+enum AnalysisMethod {
+  ANALYSIS_METHOD_UNSPECIFIED = 0;
+  ANALYSIS_METHOD_RMSD = 1;
+  ANALYSIS_METHOD_DSSP = 2;
+  ANALYSIS_METHOD_GIST = 3;
+  ANALYSIS_METHOD_HYDROGEN_BONDS = 4;
+  ANALYSIS_METHOD_CONNOLLY_SURFACE = 5;
+  ANALYSIS_METHOD_RADIUS_OF_GYRATION = 6;
+  ANALYSIS_METHOD_BAR_PBSA = 7;
+}
+// Software used to analyse simulation outputs.
+enum AnalysisSoftware {
+  ANALYSIS_SOFTWARE_UNSPECIFIED = 0;
+  ANALYSIS_SOFTWARE_VISUAL_MOLECULAR_DYNAMICS_VMD = 1;
+  ANALYSIS_SOFTWARE_SCHR_DINGER_MAESTRO = 2;
+  ANALYSIS_SOFTWARE_PY_MOL = 3;
+  ANALYSIS_SOFTWARE_AVOGADRO = 4;
+}
+// Tools used to analyse simulation outputs.
+enum AnalysisTool {
+  ANALYSIS_TOOL_UNSPECIFIED = 0;
+  ANALYSIS_TOOL_MDOUT_ANALYZER_PY = 1;
+  ANALYSIS_TOOL_AMBPDB = 2;
+  ANALYSIS_TOOL_CPPTRAJ = 3;
+  ANALYSIS_TOOL_PYTRAJ = 4;
+  ANALYSIS_TOOL_MMPBSA_PY = 5;
+  ANALYSIS_TOOL_FREE_ENERGY_WORKFLOW_FEW = 6;
+  ANALYSIS_TOOL_EDGEMBER = 7;
+  ANALYSIS_TOOL_SAX_RISM = 8;
+  ANALYSIS_TOOL_SAX_MD = 9;
+  ANALYSIS_TOOL_MO_FT = 10;
+  ANALYSIS_TOOL_NDFES = 11;
+  ANALYSIS_TOOL_PLUMED = 12;
+  ANALYSIS_TOOL_MDANALYSIS = 13;
+}
+// Units for angles.
+enum AngleUnit {
+  ANGLE_UNIT_UNSPECIFIED = 0;
+  ANGLE_UNIT_DEGREE = 1;
+  ANGLE_UNIT_RADIAN = 2;
+}
+// Barostat algorithm used to set the pressure in a simulation.
+enum BarostatAlgorithm {
+  BAROSTAT_ALGORITHM_UNSPECIFIED = 0;
+  BAROSTAT_ALGORITHM_BERENDSEN = 1;
+  BAROSTAT_ALGORITHM_ANDERSEN = 2;
+  BAROSTAT_ALGORITHM_PARRINELLO_RAHMAN = 3;
+  BAROSTAT_ALGORITHM_NOSE_HOOVER = 4;
+  BAROSTAT_ALGORITHM_MONTE_CARLO = 5;
+  BAROSTAT_ALGORITHM_MARTYNA_TUCKERMAN_TOBIAS_KLEIN = 6;
+}
+// Fix specific molecular degrees of freedom—typically fast bond vibrations involving hydrogen atoms. By eliminating these high-frequency motions, constraints allow for larger integration time steps (e.g., 2 fs instead of 0.5 fs), significantly speeding up simulations without disrupting system dynamics.
+enum BondLengthConstraintsAlgorithm {
+  BOND_LENGTH_CONSTRAINTS_ALGORITHM_UNSPECIFIED = 0;
+  BOND_LENGTH_CONSTRAINTS_ALGORITHM_SHAKE = 1;
+  BOND_LENGTH_CONSTRAINTS_ALGORITHM_RATTLE = 2;
+  BOND_LENGTH_CONSTRAINTS_ALGORITHM_SETTLE = 3;
+  BOND_LENGTH_CONSTRAINTS_ALGORITHM_LINCS = 4;
+  BOND_LENGTH_CONSTRAINTS_ALGORITHM_CCMA = 5;
+}
+// Types of box used to simulate the system.
+enum BoxType {
+  BOX_TYPE_UNSPECIFIED = 0;
+  BOX_TYPE_CUBIC = 1;
+  BOX_TYPE_TETRAGONAL = 2;
+  BOX_TYPE_ORTHORHOMBIC = 3;
+  BOX_TYPE_TRUNCATED_OCTAHEDRON = 4;
+  BOX_TYPE_TRICLINIC = 5;
+}
+// Units for Bytes.
+enum ByteUnit {
+  BYTE_UNIT_UNSPECIFIED = 0;
+  BYTE_UNIT_GB = 1;
+  BYTE_UNIT_MB = 2;
+}
+// Force fields used to parametrize carbohydrates in a simulation.
+enum CarbohydratePotentialName {
+  CARBOHYDRATE_POTENTIAL_NAME_UNSPECIFIED = 0;
+  CARBOHYDRATE_POTENTIAL_NAME_GLYCAM06 = 1;
+  CARBOHYDRATE_POTENTIAL_NAME_GLYCAM_N06_EP = 2;
+  CARBOHYDRATE_POTENTIAL_NAME_GLYCAM_N06J_N1 = 3;
+}
+// Units for charge quantity.
+enum ChargeUnit {
+  CHARGE_UNIT_UNSPECIFIED = 0;
+  CHARGE_UNIT_E = 1;
+  CHARGE_UNIT_C = 2;
+}
+// measures how the system volume responds to pressure changes.
+enum CompressibilityUnit {
+  COMPRESSIBILITY_UNIT_UNSPECIFIED = 0;
+  COMPRESSIBILITY_UNIT_N1_BAR = 1;
+  COMPRESSIBILITY_UNIT_N1_PA = 2;
+}
+// Units for concentration quantity.
+enum ConcentrationUnit {
+  CONCENTRATION_UNIT_UNSPECIFIED = 0;
+  CONCENTRATION_UNIT_M = 1;
+}
+// Container runtime used to package and run software.
+enum ContainerRuntime {
+  CONTAINER_RUNTIME_UNSPECIFIED = 0;
+  CONTAINER_RUNTIME_APPTAINER = 1;
+  CONTAINER_RUNTIME_DOCKER = 2;
+  CONTAINER_RUNTIME_PODMAN = 3;
+  CONTAINER_RUNTIME_NONE = 4;
+}
+// CPU architecture used by the compute nodes.
+enum CpuArchitecture {
+  CPU_ARCHITECTURE_UNSPECIFIED = 0;
+  CPU_ARCHITECTURE_X86 = 1;
+  CPU_ARCHITECTURE_ARM = 2;
+}
+// Vendor of the CPU used in the compute nodes.
+enum CpuVendor {
+  CPU_VENDOR_UNSPECIFIED = 0;
+  CPU_VENDOR_AMD = 1;
+  CPU_VENDOR_INTEL = 2;
+  CPU_VENDOR_ARM = 3;
+  CPU_VENDOR_OTHER = 4;
+}
+// Units for energy.
+enum EnergyUnit {
+  ENERGY_UNIT_UNSPECIFIED = 0;
+  ENERGY_UNIT_K_WH = 1;
+}
+// Ensemble used in a simulation
+enum EnsembleType {
+  ENSEMBLE_TYPE_UNSPECIFIED = 0;
+  ENSEMBLE_TYPE_NPT = 1;
+  ENSEMBLE_TYPE_NVT = 2;
+  ENSEMBLE_TYPE_NVE = 3;
+  ENSEMBLE_TYPE_VT = 4;
+}
+// Type of platform used to run the simulation.
+enum ExecutionPlatform {
+  EXECUTION_PLATFORM_UNSPECIFIED = 0;
+  EXECUTION_PLATFORM_HPC_CLUSTER = 1;
+  EXECUTION_PLATFORM_CLOUD_VM = 2;
+  EXECUTION_PLATFORM_LOCAL = 3;
+}
+enum FileHashAlgorithm {
+  FILE_HASH_ALGORITHM_UNSPECIFIED = 0;
+  FILE_HASH_ALGORITHM_SHA256 = 1;
+  FILE_HASH_ALGORITHM_MD5 = 2;
+  FILE_HASH_ALGORITHM_XXH3_N64 = 3;
+}
+enum FileRole {
+  FILE_ROLE_UNSPECIFIED = 0;
+  FILE_ROLE_TOPOLOGY = 1;
+  FILE_ROLE_TRAJECTORY = 2;
+  FILE_ROLE_METADATA = 3;
+  FILE_ROLE_LOG = 4;
+  FILE_ROLE_PARAMETER = 5;
+  FILE_ROLE_OTHER = 6;
+}
+// Units for force.
+enum ForceUnit {
+  FORCE_UNIT_UNSPECIFIED = 0;
+  FORCE_UNIT_K_J_MOL_NM = 1;
+  FORCE_UNIT_KCAL_MOL = 2;
+}
+// Units used to describe frequency.
+enum FrequencyUnit {
+  FREQUENCY_UNIT_UNSPECIFIED = 0;
+  FREQUENCY_UNIT_N1_PS = 1;
+}
+// Relationship between applied forces and the resulting resistance to motion.
+enum FrictionCoefficientUnit {
+  FRICTION_COEFFICIENT_UNIT_UNSPECIFIED = 0;
+  FRICTION_COEFFICIENT_UNIT_A_PS = 1;
+  FRICTION_COEFFICIENT_UNIT_KG_S = 2;
+}
+// Force fields used to parametrize molecules in a simulation.
+enum GeneralPotentialName {
+  GENERAL_POTENTIAL_NAME_UNSPECIFIED = 0;
+  GENERAL_POTENTIAL_NAME_GEM_PMEMD = 1;
+  GENERAL_POTENTIAL_NAME_GAFF = 2;
+  GENERAL_POTENTIAL_NAME_GAFF2 = 3;
+  GENERAL_POTENTIAL_NAME_OPLS = 4;
+  GENERAL_POTENTIAL_NAME_GROMOS = 5;
+  GENERAL_POTENTIAL_NAME_CHARMM = 6;
+}
+// Vendor of the GPU used in the compute nodes.
+enum GpuVendor {
+  GPU_VENDOR_UNSPECIFIED = 0;
+  GPU_VENDOR_NVIDIA = 1;
+  GPU_VENDOR_AMD = 2;
+  GPU_VENDOR_INTEL = 3;
+  GPU_VENDOR_NONE = 4;
+}
+// Algorithm used to integrate the simulation.
+enum IntegratorAlgorithm {
+  INTEGRATOR_ALGORITHM_UNSPECIFIED = 0;
+  INTEGRATOR_ALGORITHM_VELOCITY_VERLET = 1;
+  INTEGRATOR_ALGORITHM_LEAP_FROG = 2;
+  INTEGRATOR_ALGORITHM_VERLET = 3;
+  INTEGRATOR_ALGORITHM_EULER = 4;
+}
+// Units for length quantity.
+enum LengthUnit {
+  LENGTH_UNIT_UNSPECIFIED = 0;
+  LENGTH_UNIT_N = 1;
+  LENGTH_UNIT_NM = 2;
+}
+// Force fields used to parametrize lipids in a simulation.
+enum LipidPotentialName {
+  LIPID_POTENTIAL_NAME_UNSPECIFIED = 0;
+  LIPID_POTENTIAL_NAME_LIPID21 = 1;
+}
+// Method used to implement long-range interactions of point charges in the simulation.
+enum LongRangeInteractionMethod {
+  LONG_RANGE_INTERACTION_METHOD_UNSPECIFIED = 0;
+  LONG_RANGE_INTERACTION_METHOD_CUTOFF = 1;
+  LONG_RANGE_INTERACTION_METHOD_EWALD = 2;
+  LONG_RANGE_INTERACTION_METHOD_PME = 3;
+  LONG_RANGE_INTERACTION_METHOD_P3_M = 4;
+  LONG_RANGE_INTERACTION_METHOD_FMM = 5;
+  LONG_RANGE_INTERACTION_METHOD_RF = 6;
+}
+// MPI implementation used for message passing.
+enum MPILibrary {
+  MPILIBRARY_UNSPECIFIED = 0;
+  MPILIBRARY_OPEN_MPI = 1;
+  MPILIBRARY_MPICH = 2;
+  MPILIBRARY_INTEL_MPI = 3;
+  MPILIBRARY_MVAPICH2 = 4;
+  MPILIBRARY_NONE = 5;
+}
+// Machine learned potentials.
+enum MachineLearnedPotentialName {
+  MACHINE_LEARNED_POTENTIAL_NAME_UNSPECIFIED = 0;
+  MACHINE_LEARNED_POTENTIAL_NAME_MACE = 1;
+  MACHINE_LEARNED_POTENTIAL_NAME_ANI = 2;
+  MACHINE_LEARNED_POTENTIAL_NAME_NEQU_IP = 3;
+  MACHINE_LEARNED_POTENTIAL_NAME_UMA = 4;
+  MACHINE_LEARNED_POTENTIAL_NAME_ACE_FF = 5;
+}
+// Units for mass/molecular weight
+enum MassUnit {
+  MASS_UNIT_UNSPECIFIED = 0;
+  MASS_UNIT_G_MOL = 1;
+  MASS_UNIT_DA = 2;
+}
+// Algorithm used to minimise particle interactions.
+enum MinimisationAlgorithm {
+  MINIMISATION_ALGORITHM_UNSPECIFIED = 0;
+  MINIMISATION_ALGORITHM_STEEPEST_DESCENT = 1;
+  MINIMISATION_ALGORITHM_CONJUGATE_GRADIENT = 2;
+  MINIMISATION_ALGORITHM_L_BFGS = 3;
+  MINIMISATION_ALGORITHM_XMIN = 4;
+  MINIMISATION_ALGORITHM_LMOD = 5;
+  MINIMISATION_ALGORITHM_NONE = 6;
+}
+// Resolution of simulated molecules.
+enum ModelResolution {
+  MODEL_RESOLUTION_UNSPECIFIED = 0;
+  MODEL_RESOLUTION_ALL_ATOM = 1;
+  MODEL_RESOLUTION_UNITED_ATOM = 2;
+  MODEL_RESOLUTION_COARSE_GRAINED = 3;
+  MODEL_RESOLUTION_MESOSCALE = 4;
+}
+// Units for molar energy.
+enum MolarEnergyUnit {
+  MOLAR_ENERGY_UNIT_UNSPECIFIED = 0;
+  MOLAR_ENERGY_UNIT_KCAL_MOL = 1;
+  MOLAR_ENERGY_UNIT_K_J_MOL = 2;
+}
+// Type of compute node used in the system.
+enum NodeType {
+  NODE_TYPE_UNSPECIFIED = 0;
+  NODE_TYPE_CPU_ONLY = 1;
+  NODE_TYPE_GPU_ACCELERATED = 2;
+  NODE_TYPE_HYBRID_CPU_GPU = 3;
+}
+// Force fields used to parametrize nucleic acids in a simulation.
+enum NucleicPotentialName {
+  NUCLEIC_POTENTIAL_NAME_UNSPECIFIED = 0;
+  NUCLEIC_POTENTIAL_NAME_FF99_BSC0 = 1;
+  NUCLEIC_POTENTIAL_NAME_FF99_OL3 = 2;
+  NUCLEIC_POTENTIAL_NAME_LJBB = 3;
+  NUCLEIC_POTENTIAL_NAME_ROC = 4;
+  NUCLEIC_POTENTIAL_NAME_SHAW = 5;
+  NUCLEIC_POTENTIAL_NAME_OL15 = 6;
+  NUCLEIC_POTENTIAL_NAME_OL21 = 7;
+  NUCLEIC_POTENTIAL_NAME_OL24 = 8;
+  NUCLEIC_POTENTIAL_NAME_OL3 = 9;
+  NUCLEIC_POTENTIAL_NAME_BSC1 = 10;
+  NUCLEIC_POTENTIAL_NAME_TERMINAL_MONOPHOSPHATE = 11;
+}
+// List of operating systems installed on the hardware used to perform the simulation.
+enum OperatingSystem {
+  OPERATING_SYSTEM_UNSPECIFIED = 0;
+  OPERATING_SYSTEM_LINUX = 1;
+  OPERATING_SYSTEM_MAC_OS = 2;
+  OPERATING_SYSTEM_WINDOWS = 3;
+}
+// What directions in a simulation cell periodic boundaries are set if they are turned on.
+enum PeriodicBoundaryConditions {
+  PERIODIC_BOUNDARY_CONDITIONS_UNSPECIFIED = 0;
+  PERIODIC_BOUNDARY_CONDITIONS_NONE = 1;
+  PERIODIC_BOUNDARY_CONDITIONS_XYZ = 2;
+  PERIODIC_BOUNDARY_CONDITIONS_XY = 3;
+  PERIODIC_BOUNDARY_CONDITIONS_XZ = 4;
+  PERIODIC_BOUNDARY_CONDITIONS_YZ = 5;
+}
+// Force fields used to parametrize polymers in a simulation.
+enum PolymerPotentialName {
+  POLYMER_POTENTIAL_NAME_UNSPECIFIED = 0;
+  POLYMER_POTENTIAL_NAME_LIGN_AMB25 = 1;
+}
+// Coupling type for adjusting box vectors.
+enum PressureCouplingType {
+  PRESSURE_COUPLING_TYPE_UNSPECIFIED = 0;
+  PRESSURE_COUPLING_TYPE_ISOTROPIC = 1;
+  PRESSURE_COUPLING_TYPE_SEMI_ISOTROPIC = 2;
+  PRESSURE_COUPLING_TYPE_ANISOTROPIC = 3;
+  PRESSURE_COUPLING_TYPE_SURFACE_TENSION = 4;
+}
+// Units to describe pressure.
+enum PressureUnit {
+  PRESSURE_UNIT_UNSPECIFIED = 0;
+  PRESSURE_UNIT_BAR = 1;
+  PRESSURE_UNIT_PA = 2;
+}
+// Force fields used to parametrize amino acids in proteins in a simulation.
+enum ProteinPotentialName {
+  PROTEIN_POTENTIAL_NAME_UNSPECIFIED = 0;
+  PROTEIN_POTENTIAL_NAME_FF19_SB = 1;
+  PROTEIN_POTENTIAL_NAME_FF99_SB = 2;
+  PROTEIN_POTENTIAL_NAME_FF99_SB_ILDN = 3;
+  PROTEIN_POTENTIAL_NAME_FF99_SB_DISP = 4;
+  PROTEIN_POTENTIAL_NAME_FF14_SB = 5;
+  PROTEIN_POTENTIAL_NAME_FF14_SBONLYSC = 6;
+  PROTEIN_POTENTIAL_NAME_FF15IPQ = 7;
+  PROTEIN_POTENTIAL_NAME_FB15 = 8;
+  PROTEIN_POTENTIAL_NAME_FF03 = 9;
+  PROTEIN_POTENTIAL_NAME_FF03UA = 10;
+  PROTEIN_POTENTIAL_NAME_PHOSAA10 = 11;
+  PROTEIN_POTENTIAL_NAME_PHOSAA14_SB = 12;
+  PROTEIN_POTENTIAL_NAME_PHOSAA19_SB = 13;
+  PROTEIN_POTENTIAL_NAME_FF14_SB_MOD_AA = 14;
+  PROTEIN_POTENTIAL_NAME_FF19_SB_MOD_AA = 15;
+}
+// Job scheduler used for simulation execution.
+enum Scheduler {
+  SCHEDULER_UNSPECIFIED = 0;
+  SCHEDULER_SLURM = 1;
+  SCHEDULER_PBS = 2;
+  SCHEDULER_LSF = 3;
+  SCHEDULER_SGE = 4;
+  SCHEDULER_NONE = 5;
+}
+// Tool used to setup a system for simulation.
+enum SetupTool {
+  SETUP_TOOL_UNSPECIFIED = 0;
+  SETUP_TOOL_PDB4AMBER = 1;
+  SETUP_TOOL_PREPAREFORLEAP = 2;
+  SETUP_TOOL_PACKMOL = 3;
+  SETUP_TOOL_PACKMOL_MEMGEN = 4;
+  SETUP_TOOL_LEA_P = 5;
+  SETUP_TOOL_ANTECHAMBER = 6;
+  SETUP_TOOL_PY_MSMT = 7;
+  SETUP_TOOL_MDGX = 8;
+  SETUP_TOOL_PARMED = 9;
+}
+// Options for simulation methods.
+enum SimulationMethod {
+  SIMULATION_METHOD_UNSPECIFIED = 0;
+  SIMULATION_METHOD_SELF_GUIDED_LANGEVIN_DYNAMICS = 1;
+  SIMULATION_METHOD_ACCELERATED_MOLECULAR_DYNAMICS = 2;
+  SIMULATION_METHOD_GAUSSIAN_ACCELERATED_MOLECULAR_DYNAMICS = 3;
+  SIMULATION_METHOD_TARGETED_MOLECULAR_DYNAMICS = 4;
+  SIMULATION_METHOD_NUDGED_ELASTIC_BAND_CALCULATIONS = 5;
+  SIMULATION_METHOD_ADAPTIVE_STRING_METHOD = 6;
+  SIMULATION_METHOD_LMOD_METHOD = 7;
+  SIMULATION_METHOD_DL_FIND_OPTIMIZATION = 8;
+  SIMULATION_METHOD_THERMODYNAMIC_INTEGRATION_TI = 9;
+  SIMULATION_METHOD_LINEAR_INTERACTION_ENERGIES_LIE = 10;
+  SIMULATION_METHOD_REPLICA_EXCHANGE_MOLECULAR_DYNAMICS_REMD = 11;
+  SIMULATION_METHOD_ADAPTIVELY_BIASED_MOLECULAR_DYNAMICS_ABMD = 12;
+  SIMULATION_METHOD_STEERED_MOLECULAR_DYNAMICS_SMD = 13;
+  SIMULATION_METHOD_UMBRELLA_SAMPLING = 14;
+  SIMULATION_METHOD_METADYNAMICS = 15;
+  SIMULATION_METHOD_SWARMS_OF_TRAJECTORIES_STRING_METHOD = 16;
+  SIMULATION_METHOD_CONSTANT_P_H_MOLECULAR_DYNAMICS = 17;
+  SIMULATION_METHOD_CONSTANT_REDOX_POTENTIAL_MOLECULAR_DYNAMICS = 18;
+  SIMULATION_METHOD_CONTINUOUS_CONSTANT_P_H_MOLECULAR_DYNAMICS = 19;
+  SIMULATION_METHOD_NMR_REFINEMENT = 20;
+  SIMULATION_METHOD_X_RAY_AND_CRYO_EM_REFINEMENT = 21;
+  SIMULATION_METHOD_LOCALLY_ENHANCED_SAMPLING = 22;
+}
+// Simulation software used to perform molecular dynamics simulations and related functions.
+enum SimulationSoftware {
+  SIMULATION_SOFTWARE_UNSPECIFIED = 0;
+  SIMULATION_SOFTWARE_AMBER = 1;
+  SIMULATION_SOFTWARE_GROMACS = 2;
+  SIMULATION_SOFTWARE_LAMMPS = 3;
+  SIMULATION_SOFTWARE_NAMD = 4;
+  SIMULATION_SOFTWARE_OPEN_MM = 5;
+  SIMULATION_SOFTWARE_CHARMM = 6;
+  SIMULATION_SOFTWARE_DL_POLY = 7;
+  SIMULATION_SOFTWARE_HOOMD_BLUE = 8;
+  SIMULATION_SOFTWARE_DESMOND = 9;
+  SIMULATION_SOFTWARE_ACEMD = 10;
+  SIMULATION_SOFTWARE_CP2_K = 11;
+}
+// Tools/utility used within simulation engines to perform simulations.
+enum SimulationTool {
+  SIMULATION_TOOL_UNSPECIFIED = 0;
+  SIMULATION_TOOL_SANDER = 1;
+  SIMULATION_TOOL_PMEMD = 2;
+  SIMULATION_TOOL_GEM_PMEMD = 3;
+  SIMULATION_TOOL_MDRUN = 4;
+}
+// Units to describe temperature.
+enum TemperatureUnit {
+  TEMPERATURE_UNIT_UNSPECIFIED = 0;
+  TEMPERATURE_UNIT_K = 1;
+  TEMPERATURE_UNIT_C = 2;
+  TEMPERATURE_UNIT_F = 3;
+}
+// Thermostat algorithm used to set the temperature in a simulation.
+enum ThermostatAlgorithm {
+  THERMOSTAT_ALGORITHM_UNSPECIFIED = 0;
+  THERMOSTAT_ALGORITHM_LANGEVIN = 1;
+  THERMOSTAT_ALGORITHM_BERENDSEN = 2;
+  THERMOSTAT_ALGORITHM_ANDERSEN = 3;
+  THERMOSTAT_ALGORITHM_NOSE_HOOVER = 4;
+  THERMOSTAT_ALGORITHM_BUSSI = 5;
+}
+// Units used to describe time.
+enum TimeUnit {
+  TIME_UNIT_UNSPECIFIED = 0;
+  TIME_UNIT_S = 1;
+  TIME_UNIT_MS = 2;
+  TIME_UNIT_S_V2 = 3;
+  TIME_UNIT_NS = 4;
+  TIME_UNIT_PS = 5;
+  TIME_UNIT_FS = 6;
+}
+// Units for volume quantity.
+enum VolumeUnit {
+  VOLUME_UNIT_UNSPECIFIED = 0;
+  VOLUME_UNIT_N = 1;
+  VOLUME_UNIT_NM = 2;
+}
+// Force fields used to parametrize water molecules in a simulation.
+enum WaterPotentialName {
+  WATER_POTENTIAL_NAME_UNSPECIFIED = 0;
+  WATER_POTENTIAL_NAME_OPC = 1;
+  WATER_POTENTIAL_NAME_OPC3 = 2;
+  WATER_POTENTIAL_NAME_OPC3_POL = 3;
+  WATER_POTENTIAL_NAME_POL3 = 4;
+  WATER_POTENTIAL_NAME_TIP3_P = 5;
+  WATER_POTENTIAL_NAME_TIP3_PFB = 6;
+  WATER_POTENTIAL_NAME_TIP4_PFB = 7;
+  WATER_POTENTIAL_NAME_TIP4_P = 8;
+  WATER_POTENTIAL_NAME_TIP5_P = 9;
+  WATER_POTENTIAL_NAME_TIP4_PEW = 10;
+  WATER_POTENTIAL_NAME_SPCE = 11;
+  WATER_POTENTIAL_NAME_SPCEB = 12;
+  WATER_POTENTIAL_NAME_SPC_FW = 13;
+  WATER_POTENTIAL_NAME_Q_SPC_FW = 14;
+}

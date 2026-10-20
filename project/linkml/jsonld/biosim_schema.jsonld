@@ -9881,11 +9881,10 @@
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.11.0",
+  "metamodel_version": "1.12.0",
   "source_file": "biosim_schema.yaml",
   "source_file_date": "2026-10-16T18:20:46",
   "source_file_size": 3327,
-  "generation_date": "2026-10-20T16:01:16",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

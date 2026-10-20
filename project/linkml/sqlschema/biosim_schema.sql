@@ -385,7 +385,7 @@
 CREATE TABLE "LengthQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_LengthQuantity_id" ON "LengthQuantity" (id);
@@ -393,7 +393,7 @@ CREATE INDEX "ix_LengthQuantity_id" ON "LengthQuantity" (id);
 CREATE TABLE "VolumeQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(3),
+	value_unit VARCHAR(3) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VolumeQuantity_id" ON "VolumeQuantity" (id);
@@ -401,7 +401,7 @@ CREATE INDEX "ix_VolumeQuantity_id" ON "VolumeQuantity" (id);
 CREATE TABLE "TimeQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_TimeQuantity_id" ON "TimeQuantity" (id);
@@ -409,7 +409,7 @@ CREATE INDEX "ix_TimeQuantity_id" ON "TimeQuantity" (id);
 CREATE TABLE "FrequencyQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(4),
+	value_unit VARCHAR(4) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_FrequencyQuantity_id" ON "FrequencyQuantity" (id);
@@ -417,7 +417,7 @@ CREATE INDEX "ix_FrequencyQuantity_id" ON "FrequencyQuantity" (id);
 CREATE TABLE "FrictionCoefficientQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(4),
+	value_unit VARCHAR(4) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_FrictionCoefficientQuantity_id" ON "FrictionCoefficientQuantity" (id);
@@ -425,7 +425,7 @@ CREATE INDEX "ix_FrictionCoefficientQuantity_id" ON "FrictionCoefficientQuantity
 CREATE TABLE "MolarEnergyQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(8),
+	value_unit VARCHAR(8) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_MolarEnergyQuantity_id" ON "MolarEnergyQuantity" (id);
@@ -433,7 +433,7 @@ CREATE INDEX "ix_MolarEnergyQuantity_id" ON "MolarEnergyQuantity" (id);
 CREATE TABLE "EnergyQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(3),
+	value_unit VARCHAR(3) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_EnergyQuantity_id" ON "EnergyQuantity" (id);
@@ -441,7 +441,7 @@ CREATE INDEX "ix_EnergyQuantity_id" ON "EnergyQuantity" (id);
 CREATE TABLE "TemperatureQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_TemperatureQuantity_id" ON "TemperatureQuantity" (id);
@@ -449,7 +449,7 @@ CREATE INDEX "ix_TemperatureQuantity_id" ON "TemperatureQuantity" (id);
 CREATE TABLE "PressureQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(3),
+	value_unit VARCHAR(3) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_PressureQuantity_id" ON "PressureQuantity" (id);
@@ -457,7 +457,7 @@ CREATE INDEX "ix_PressureQuantity_id" ON "PressureQuantity" (id);
 CREATE TABLE "CompressibilityQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(5),
+	value_unit VARCHAR(5) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_CompressibilityQuantity_id" ON "CompressibilityQuantity" (id);
@@ -465,7 +465,7 @@ CREATE INDEX "ix_CompressibilityQuantity_id" ON "CompressibilityQuantity" (id);
 CREATE TABLE "MassQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(5),
+	value_unit VARCHAR(5) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_MassQuantity_id" ON "MassQuantity" (id);
@@ -473,7 +473,7 @@ CREATE INDEX "ix_MassQuantity_id" ON "MassQuantity" (id);
 CREATE TABLE "ConcentrationQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(1),
+	value_unit VARCHAR(1) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_ConcentrationQuantity_id" ON "ConcentrationQuantity" (id);
@@ -481,7 +481,7 @@ CREATE INDEX "ix_ConcentrationQuantity_id" ON "ConcentrationQuantity" (id);
 CREATE TABLE "ForceQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(10),
+	value_unit VARCHAR(10) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_ForceQuantity_id" ON "ForceQuantity" (id);
@@ -489,7 +489,7 @@ CREATE INDEX "ix_ForceQuantity_id" ON "ForceQuantity" (id);
 CREATE TABLE "ChargeQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(1),
+	value_unit VARCHAR(1) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_ChargeQuantity_id" ON "ChargeQuantity" (id);
@@ -497,7 +497,7 @@ CREATE INDEX "ix_ChargeQuantity_id" ON "ChargeQuantity" (id);
 CREATE TABLE "AngleQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(6),
+	value_unit VARCHAR(6) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_AngleQuantity_id" ON "AngleQuantity" (id);
@@ -505,28 +505,28 @@ CREATE INDEX "ix_AngleQuantity_id" ON "AngleQuantity" (id);
 CREATE TABLE "ByteQuantity" (
 	id INTEGER NOT NULL,
 	value FLOAT,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_ByteQuantity_id" ON "ByteQuantity" (id);
 
 CREATE TABLE "VectorLengthQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorLengthQuantity_id" ON "VectorLengthQuantity" (id);
 
 CREATE TABLE "VectorAngleQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(6),
+	value_unit VARCHAR(6) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorAngleQuantity_id" ON "VectorAngleQuantity" (id);
 
 CREATE TABLE "VectorVolumeQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorVolumeQuantity_id" ON "VectorVolumeQuantity" (id);
@@ -534,28 +534,28 @@ CREATE INDEX "ix_VectorVolumeQuantity_id" ON "VectorVolumeQuantity" (id);
 CREATE TABLE "VectorCompressibilityQuantity" (
 	id INTEGER NOT NULL,
 	vector_value FLOAT,
-	value_unit VARCHAR(5),
+	value_unit VARCHAR(5) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorCompressibilityQuantity_id" ON "VectorCompressibilityQuantity" (id);
 
 CREATE TABLE "VectorPressureQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(3),
+	value_unit VARCHAR(3) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorPressureQuantity_id" ON "VectorPressureQuantity" (id);
 
 CREATE TABLE "VectorTemperatureQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorTemperatureQuantity_id" ON "VectorTemperatureQuantity" (id);
 
 CREATE TABLE "VectorTimeQuantity" (
 	id INTEGER NOT NULL,
-	value_unit VARCHAR(2),
+	value_unit VARCHAR(2) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_VectorTimeQuantity_id" ON "VectorTimeQuantity" (id);
@@ -563,7 +563,7 @@ CREATE INDEX "ix_VectorTimeQuantity_id" ON "VectorTimeQuantity" (id);
 CREATE TABLE "MatrixPressureQuantity" (
 	id INTEGER NOT NULL,
 	vector_value FLOAT,
-	value_unit VARCHAR(3),
+	value_unit VARCHAR(3) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_MatrixPressureQuantity_id" ON "MatrixPressureQuantity" (id);
@@ -571,7 +571,7 @@ CREATE INDEX "ix_MatrixPressureQuantity_id" ON "MatrixPressureQuantity" (id);
 CREATE TABLE "MatrixCompressibilityQuantity" (
 	id INTEGER NOT NULL,
 	vector_value FLOAT,
-	value_unit VARCHAR(5),
+	value_unit VARCHAR(5) NOT NULL,
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_MatrixCompressibilityQuantity_id" ON "MatrixCompressibilityQuantity" (id);
@@ -902,8 +902,8 @@ CREATE TABLE "VectorLengthQuantity_vector_value" (
 	PRIMARY KEY ("VectorLengthQuantity_id", vector_value),
 	FOREIGN KEY("VectorLengthQuantity_id") REFERENCES "VectorLengthQuantity" (id)
 );
-CREATE INDEX "ix_VectorLengthQuantity_vector_value_VectorLengthQuantity_id" ON "VectorLengthQuantity_vector_value" ("VectorLengthQuantity_id");
 CREATE INDEX "ix_VectorLengthQuantity_vector_value_vector_value" ON "VectorLengthQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorLengthQuantity_vector_value_VectorLengthQuantity_id" ON "VectorLengthQuantity_vector_value" ("VectorLengthQuantity_id");
 
 CREATE TABLE "VectorAngleQuantity_vector_value" (
 	"VectorAngleQuantity_id" INTEGER,
@@ -929,8 +929,8 @@ CREATE TABLE "VectorPressureQuantity_vector_value" (
 	PRIMARY KEY ("VectorPressureQuantity_id", vector_value),
 	FOREIGN KEY("VectorPressureQuantity_id") REFERENCES "VectorPressureQuantity" (id)
 );
-CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
+CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
 
 CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	"VectorTemperatureQuantity_id" INTEGER,
@@ -938,8 +938,8 @@ CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	PRIMARY KEY ("VectorTemperatureQuantity_id", vector_value),
 	FOREIGN KEY("VectorTemperatureQuantity_id") REFERENCES "VectorTemperatureQuantity" (id)
 );
-CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_VectorTemperatureQuantity_id" ON "VectorTemperatureQuantity_vector_value" ("VectorTemperatureQuantity_id");
 CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_vector_value" ON "VectorTemperatureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_VectorTemperatureQuantity_id" ON "VectorTemperatureQuantity_vector_value" ("VectorTemperatureQuantity_id");
 
 CREATE TABLE "VectorTimeQuantity_vector_value" (
 	"VectorTimeQuantity_id" INTEGER,
@@ -974,8 +974,8 @@ CREATE TABLE "Production_simulation_tool" (
 	PRIMARY KEY ("Production_id", simulation_tool),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_tool_simulation_tool" ON "Production_simulation_tool" (simulation_tool);
 CREATE INDEX "ix_Production_simulation_tool_Production_id" ON "Production_simulation_tool" ("Production_id");
+CREATE INDEX "ix_Production_simulation_tool_simulation_tool" ON "Production_simulation_tool" (simulation_tool);
 
 CREATE TABLE "Production_simulation_software" (
 	"Production_id" INTEGER,
@@ -983,8 +983,8 @@ CREATE TABLE "Production_simulation_software" (
 	PRIMARY KEY ("Production_id", simulation_software),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
 CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
+CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
 
 CREATE TABLE "Production_simulation_method" (
 	"Production_id" INTEGER,
@@ -1001,8 +1001,8 @@ CREATE TABLE "Analysis_analysis_tool" (
 	PRIMARY KEY ("Analysis_id", analysis_tool),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool" ("Analysis_id");
 CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
+CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool" ("Analysis_id");
 
 CREATE TABLE "Analysis_analysis_software" (
 	"Analysis_id" INTEGER,
@@ -1108,8 +1108,8 @@ CREATE TABLE "Minimisation_minimisation_algorithm" (
 	PRIMARY KEY ("Minimisation_id", minimisation_algorithm),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_minimisation_algorithm_minimisation_algorithm" ON "Minimisation_minimisation_algorithm" (minimisation_algorithm);
 CREATE INDEX "ix_Minimisation_minimisation_algorithm_Minimisation_id" ON "Minimisation_minimisation_algorithm" ("Minimisation_id");
+CREATE INDEX "ix_Minimisation_minimisation_algorithm_minimisation_algorithm" ON "Minimisation_minimisation_algorithm" (minimisation_algorithm);
 
 CREATE TABLE "Minimisation_simulation_tool" (
 	"Minimisation_id" INTEGER,
@@ -1126,8 +1126,8 @@ CREATE TABLE "Minimisation_simulation_software" (
 	PRIMARY KEY ("Minimisation_id", simulation_software),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_simulation_software_Minimisation_id" ON "Minimisation_simulation_software" ("Minimisation_id");
 CREATE INDEX "ix_Minimisation_simulation_software_simulation_software" ON "Minimisation_simulation_software" (simulation_software);
+CREATE INDEX "ix_Minimisation_simulation_software_Minimisation_id" ON "Minimisation_simulation_software" ("Minimisation_id");
 
 CREATE TABLE "SimulationMetadata" (
 	id INTEGER NOT NULL,

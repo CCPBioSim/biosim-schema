@@ -27,6 +27,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: LengthUnit
+        required: true
         ifabsent: string(nm) # default unit for this quantity
 
   VolumeQuantity:
@@ -38,6 +39,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: VolumeUnit
+        required: true
         ifabsent: string(nm³)
 
   TimeQuantity:
@@ -49,6 +51,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: TimeUnit
+        required: true
         ifabsent: string(s)
 
   FrequencyQuantity:
@@ -60,6 +63,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: FrequencyUnit
+        required: true
         ifabsent: string(1/ps)
 
   FrictionCoefficientQuantity:
@@ -71,6 +75,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: FrictionCoefficientUnit
+        required: true
         ifabsent: string(a/ps)
 
   MolarEnergyQuantity:
@@ -82,6 +87,7 @@ classes:
         pattern: "^[+-]?\\d+(\\.\\d+)?$"
       value_unit:
         range: MolarEnergyUnit
+        required: true
         ifabsent: string(kJ/mol)
 
   EnergyQuantity:
@@ -92,6 +98,7 @@ classes:
         range: float
       value_unit:
         range: EnergyUnit
+        required: true
         ifabsent: string(kWh)
 
   TemperatureQuantity:
@@ -103,6 +110,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: TemperatureUnit
+        required: true
         ifabsent: string(K)
 
   PressureQuantity:
@@ -113,6 +121,7 @@ classes:
         range: float
       value_unit:
         range: PressureUnit
+        required: true
         ifabsent: string(bar)
 
   CompressibilityQuantity:
@@ -123,6 +132,7 @@ classes:
         range: float
       value_unit:
         range: CompressibilityUnit
+        required: true
         ifabsent: string(1/bar)
 
   MassQuantity:
@@ -134,6 +144,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: MassUnit
+        required: true
         ifabsent: string(g/mol)
 
   ConcentrationQuantity:
@@ -145,6 +156,7 @@ classes:
         minimum_value: 0
       value_unit:
         range: ConcentrationUnit
+        required: true
         ifabsent: string(M)
 
   ForceQuantity:
@@ -156,6 +168,7 @@ classes:
         pattern: "^[+-]?\\d+(\\.\\d+)?$"
       value_unit:
         range: ForceUnit
+        required: true
         ifabsent: string(kJ/mol/nm)
 
   ChargeQuantity:
@@ -166,6 +179,7 @@ classes:
         range: float
       value_unit:
         range: ChargeUnit
+        required: true
         ifabsent: string(e)
 
   AngleQuantity:
@@ -176,6 +190,7 @@ classes:
         range: float
       value_unit:
         range: AngleUnit
+        required: true
         ifabsent: string(degree)
 
   ByteQuantity:
@@ -186,6 +201,7 @@ classes:
         range: float
       value_unit:
         range: ByteUnit
+        required: true
         ifabsent: string(GB)
 
   VectorLengthQuantity:
@@ -198,6 +214,7 @@ classes:
         minimum_cardinality: 3
       value_unit:
         range: LengthUnit
+        required: true
         ifabsent: string(nm)
 
   VectorAngleQuantity:
@@ -210,6 +227,7 @@ classes:
         minimum_cardinality: 3
       value_unit:
         range: AngleUnit
+        required: true
         ifabsent: string(degree)
 
   VectorVolumeQuantity:
@@ -221,6 +239,7 @@ classes:
         exact_cardinality: 3
       value_unit:
         range: LengthUnit
+        required: true
         ifabsent: string(nm)
 
   VectorCompressibilityQuantity:
@@ -233,6 +252,7 @@ classes:
           maximum_number_dimensions: 3
       value_unit:
         range: CompressibilityUnit
+        required: true
         ifabsent: string(1/bar)
 
   VectorPressureQuantity:
@@ -245,6 +265,7 @@ classes:
         minimum_cardinality: 3
       value_unit:
         range: PressureUnit
+        required: true
         ifabsent: string(bar)
 
   VectorTemperatureQuantity:
@@ -255,6 +276,7 @@ classes:
         multivalued: true
       value_unit:
         range: TemperatureUnit
+        required: true
         ifabsent: string(K)
 
   VectorTimeQuantity:
@@ -265,6 +287,7 @@ classes:
         multivalued: true
       value_unit:
         range: TimeUnit
+        required: true
         ifabsent: string(s)
 
   MatrixPressureQuantity:
@@ -282,6 +305,7 @@ classes:
               exact_cardinality: 3
       value_unit:
         range: PressureUnit
+        required: true
         ifabsent: string(bar)
 
   MatrixCompressibilityQuantity:
@@ -299,6 +323,7 @@ classes:
               exact_cardinality: 3
       value_unit:
         range: CompressibilityUnit
+        required: true
         ifabsent: string(1/bar)
 
   MatrixQuantity: # general matrix

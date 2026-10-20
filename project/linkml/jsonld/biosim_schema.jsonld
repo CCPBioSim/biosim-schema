@@ -7857,6 +7857,7 @@
         "LengthQuantity"
       ],
       "range": "LengthUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7883,6 +7884,7 @@
         "VolumeQuantity"
       ],
       "range": "VolumeUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7909,6 +7911,7 @@
         "TimeQuantity"
       ],
       "range": "TimeUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7935,6 +7938,7 @@
         "FrequencyQuantity"
       ],
       "range": "FrequencyUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7961,6 +7965,7 @@
         "FrictionCoefficientQuantity"
       ],
       "range": "FrictionCoefficientUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -7987,6 +7992,7 @@
         "MolarEnergyQuantity"
       ],
       "range": "MolarEnergyUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8012,6 +8018,7 @@
         "EnergyQuantity"
       ],
       "range": "EnergyUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8038,6 +8045,7 @@
         "TemperatureQuantity"
       ],
       "range": "TemperatureUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8063,6 +8071,7 @@
         "PressureQuantity"
       ],
       "range": "PressureUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8088,6 +8097,7 @@
         "CompressibilityQuantity"
       ],
       "range": "CompressibilityUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8114,6 +8124,7 @@
         "MassQuantity"
       ],
       "range": "MassUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8140,6 +8151,7 @@
         "ConcentrationQuantity"
       ],
       "range": "ConcentrationUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8166,6 +8178,7 @@
         "ForceQuantity"
       ],
       "range": "ForceUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8191,6 +8204,7 @@
         "ChargeQuantity"
       ],
       "range": "ChargeUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8216,6 +8230,7 @@
         "AngleQuantity"
       ],
       "range": "AngleUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8241,6 +8256,7 @@
         "ByteQuantity"
       ],
       "range": "ByteUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8269,6 +8285,7 @@
         "VectorLengthQuantity"
       ],
       "range": "LengthUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8297,6 +8314,7 @@
         "VectorAngleQuantity"
       ],
       "range": "AngleUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8324,6 +8342,7 @@
         "VectorVolumeQuantity"
       ],
       "range": "LengthUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8354,6 +8373,7 @@
         "VectorCompressibilityQuantity"
       ],
       "range": "CompressibilityUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8382,6 +8402,7 @@
         "VectorPressureQuantity"
       ],
       "range": "PressureUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8408,6 +8429,7 @@
         "VectorTemperatureQuantity"
       ],
       "range": "TemperatureUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8434,6 +8456,7 @@
         "VectorTimeQuantity"
       ],
       "range": "TimeUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8476,6 +8499,7 @@
         "MatrixPressureQuantity"
       ],
       "range": "PressureUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8518,6 +8542,7 @@
         "MatrixCompressibilityQuantity"
       ],
       "range": "CompressibilityUnit",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -8594,6 +8619,7 @@
           "name": "value_unit",
           "ifabsent": "string(nm)",
           "range": "LengthUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8621,6 +8647,7 @@
           "name": "value_unit",
           "ifabsent": "string(nm\u00b3)",
           "range": "VolumeUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8648,6 +8675,7 @@
           "name": "value_unit",
           "ifabsent": "string(s)",
           "range": "TimeUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8675,6 +8703,7 @@
           "name": "value_unit",
           "ifabsent": "string(1/ps)",
           "range": "FrequencyUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8702,6 +8731,7 @@
           "name": "value_unit",
           "ifabsent": "string(a/ps)",
           "range": "FrictionCoefficientUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8729,6 +8759,7 @@
           "name": "value_unit",
           "ifabsent": "string(kJ/mol)",
           "range": "MolarEnergyUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8755,6 +8786,7 @@
           "name": "value_unit",
           "ifabsent": "string(kWh)",
           "range": "EnergyUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8782,6 +8814,7 @@
           "name": "value_unit",
           "ifabsent": "string(K)",
           "range": "TemperatureUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8808,6 +8841,7 @@
           "name": "value_unit",
           "ifabsent": "string(bar)",
           "range": "PressureUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8834,6 +8868,7 @@
           "name": "value_unit",
           "ifabsent": "string(1/bar)",
           "range": "CompressibilityUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8861,6 +8896,7 @@
           "name": "value_unit",
           "ifabsent": "string(g/mol)",
           "range": "MassUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8888,6 +8924,7 @@
           "name": "value_unit",
           "ifabsent": "string(M)",
           "range": "ConcentrationUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8915,6 +8952,7 @@
           "name": "value_unit",
           "ifabsent": "string(kJ/mol/nm)",
           "range": "ForceUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8941,6 +8979,7 @@
           "name": "value_unit",
           "ifabsent": "string(e)",
           "range": "ChargeUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8967,6 +9006,7 @@
           "name": "value_unit",
           "ifabsent": "string(degree)",
           "range": "AngleUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -8993,6 +9033,7 @@
           "name": "value_unit",
           "ifabsent": "string(GB)",
           "range": "ByteUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9022,6 +9063,7 @@
           "name": "value_unit",
           "ifabsent": "string(nm)",
           "range": "LengthUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9051,6 +9093,7 @@
           "name": "value_unit",
           "ifabsent": "string(degree)",
           "range": "AngleUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9079,6 +9122,7 @@
           "name": "value_unit",
           "ifabsent": "string(nm)",
           "range": "LengthUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9110,6 +9154,7 @@
           "name": "value_unit",
           "ifabsent": "string(1/bar)",
           "range": "CompressibilityUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9139,6 +9184,7 @@
           "name": "value_unit",
           "ifabsent": "string(bar)",
           "range": "PressureUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9166,6 +9212,7 @@
           "name": "value_unit",
           "ifabsent": "string(K)",
           "range": "TemperatureUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9193,6 +9240,7 @@
           "name": "value_unit",
           "ifabsent": "string(s)",
           "range": "TimeUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9236,6 +9284,7 @@
           "name": "value_unit",
           "ifabsent": "string(bar)",
           "range": "PressureUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -9279,6 +9328,7 @@
           "name": "value_unit",
           "ifabsent": "string(1/bar)",
           "range": "CompressibilityUnit",
+          "required": true,
           "@type": "SlotDefinition"
         }
       ],

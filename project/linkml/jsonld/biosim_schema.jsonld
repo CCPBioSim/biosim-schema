@@ -6,7 +6,7 @@
     "https://CCPBioSim.github.io/biosim-schema"
   ],
   "id": "https://CCPBioSim.ac.uk/biosim-schema/",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "imports": [
     "linkml:types",
     "./components/biosim_quantities",
@@ -467,6 +467,7 @@
             "has_quantity_kind": "Concentration"
           },
           "aliases": [
+            "M",
             "Molar",
             "mol/L",
             "mol/m^3",
@@ -490,7 +491,10 @@
           "unit": {
             "ucum_code": "e",
             "has_quantity_kind": "ElectricCharge"
-          }
+          },
+          "aliases": [
+            "e"
+          ]
         },
         {
           "text": "C",
@@ -499,7 +503,10 @@
           "unit": {
             "ucum_code": "C",
             "has_quantity_kind": "ChargeNumber"
-          }
+          },
+          "aliases": [
+            "C"
+          ]
         }
       ]
     },
@@ -677,6 +684,7 @@
           "text": "bar",
           "description": "bar",
           "aliases": [
+            "bar",
             "Bar"
           ]
         },
@@ -684,6 +692,8 @@
           "text": "Pa",
           "description": "Pascal",
           "aliases": [
+            "Pa",
+            "pascal",
             "Pascal"
           ]
         }
@@ -9871,10 +9881,11 @@
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.12.0",
+  "metamodel_version": "1.11.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-10-16T10:01:46",
+  "source_file_date": "2026-10-16T18:20:46",
   "source_file_size": 3327,
+  "generation_date": "2026-10-20T16:01:16",
   "@type": "SchemaDefinition",
   "@context": [
     "file:///Users/jas.kalayan/Library/CloudStorage/OneDrive-ScienceandTechnologyFacilitiesCouncil/STFC_job/bin/BioSimDR/biosim-schema/project/linkml/jsonld/biosim_schema.context.jsonld",

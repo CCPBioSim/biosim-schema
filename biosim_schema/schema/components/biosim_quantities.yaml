@@ -382,6 +382,7 @@ enums:
       M:
         description: "Molar concentration"
         aliases:
+          - M
           - Molar
           - mol/L
           - "mol/m^3"
@@ -398,6 +399,8 @@ enums:
     permissible_values:
       e:
         description: Electric charge carried by a single proton or by a single electron.
+        aliases:
+          - e
         meaning: qudt:E
         unit:
           ucum_code: e
@@ -405,6 +408,8 @@ enums:
       C:
         description:
           The SI unit of electric charge. One coulomb is the amount of charge accumulated in one second by a current of one ampere.
+        aliases:
+          - C
         meaning: qudt:C
         unit:
           ucum_code: C
@@ -531,10 +536,13 @@ enums:
       bar:
         description: bar
         aliases:
+          - bar
           - Bar
       Pa:
         description: Pascal
         aliases:
+          - Pa
+          - pascal
           - Pascal
 
   CompressibilityUnit:

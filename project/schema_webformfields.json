@@ -629,8 +629,8 @@
                 "label": "Value Unit",
                 "hint": "Units to describe pressure.",
                 "options": [
-                  "Bar",
-                  "Pascal"
+                  "bar",
+                  "Pa"
                 ],
                 "multiple": false,
                 "default": "bar"
@@ -657,8 +657,8 @@
                 "label": "Value Unit",
                 "hint": "Units to describe pressure.",
                 "options": [
-                  "Bar",
-                  "Pascal"
+                  "bar",
+                  "Pa"
                 ],
                 "multiple": false,
                 "default": "bar"
@@ -1188,8 +1188,8 @@
                 "label": "Value Unit",
                 "hint": "Units to describe pressure.",
                 "options": [
-                  "Bar",
-                  "Pascal"
+                  "bar",
+                  "Pa"
                 ],
                 "multiple": false,
                 "default": "bar"
@@ -1666,7 +1666,7 @@
                 "label": "Value Unit",
                 "hint": "Units for concentration quantity.",
                 "options": [
-                  "Molar"
+                  "M"
                 ],
                 "multiple": false,
                 "default": "M"

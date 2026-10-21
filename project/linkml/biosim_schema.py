@@ -59,7 +59,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.12.0"
-version = "1.0.1"
+version = "1.1.0"
 
 # Namespaces
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
@@ -148,15 +148,17 @@ class LengthQuantity(YAMLRoot):
     class_name: ClassVar[str] = "LengthQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.LengthQuantity
 
+    value_unit: Union[str, "LengthUnit"] = 'nm'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "LengthUnit"]] = 'nm'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, LengthUnit):
+            self.value_unit = LengthUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, LengthUnit):
-            self.value_unit = LengthUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -173,15 +175,17 @@ class VolumeQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VolumeQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VolumeQuantity
 
+    value_unit: Union[str, "VolumeUnit"] = 'nm³'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "VolumeUnit"]] = 'nm³'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, VolumeUnit):
+            self.value_unit = VolumeUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, VolumeUnit):
-            self.value_unit = VolumeUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -198,15 +202,17 @@ class TimeQuantity(YAMLRoot):
     class_name: ClassVar[str] = "TimeQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.TimeQuantity
 
+    value_unit: Union[str, "TimeUnit"] = 's'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "TimeUnit"]] = 's'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, TimeUnit):
+            self.value_unit = TimeUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, TimeUnit):
-            self.value_unit = TimeUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -223,15 +229,17 @@ class FrequencyQuantity(YAMLRoot):
     class_name: ClassVar[str] = "FrequencyQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.FrequencyQuantity
 
+    value_unit: Union[str, "FrequencyUnit"] = '1/ps'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "FrequencyUnit"]] = '1/ps'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, FrequencyUnit):
+            self.value_unit = FrequencyUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, FrequencyUnit):
-            self.value_unit = FrequencyUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -248,15 +256,17 @@ class FrictionCoefficientQuantity(YAMLRoot):
     class_name: ClassVar[str] = "FrictionCoefficientQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.FrictionCoefficientQuantity
 
+    value_unit: Union[str, "FrictionCoefficientUnit"] = 'a/ps'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "FrictionCoefficientUnit"]] = 'a/ps'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, FrictionCoefficientUnit):
+            self.value_unit = FrictionCoefficientUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, FrictionCoefficientUnit):
-            self.value_unit = FrictionCoefficientUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -273,15 +283,17 @@ class MolarEnergyQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MolarEnergyQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MolarEnergyQuantity
 
+    value_unit: Union[str, "MolarEnergyUnit"] = 'kJ/mol'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "MolarEnergyUnit"]] = 'kJ/mol'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, MolarEnergyUnit):
+            self.value_unit = MolarEnergyUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, MolarEnergyUnit):
-            self.value_unit = MolarEnergyUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -298,15 +310,17 @@ class EnergyQuantity(YAMLRoot):
     class_name: ClassVar[str] = "EnergyQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.EnergyQuantity
 
+    value_unit: Union[str, "EnergyUnit"] = 'kWh'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "EnergyUnit"]] = 'kWh'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, EnergyUnit):
+            self.value_unit = EnergyUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, EnergyUnit):
-            self.value_unit = EnergyUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -323,15 +337,17 @@ class TemperatureQuantity(YAMLRoot):
     class_name: ClassVar[str] = "TemperatureQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.TemperatureQuantity
 
+    value_unit: Union[str, "TemperatureUnit"] = 'K'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "TemperatureUnit"]] = 'K'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, TemperatureUnit):
+            self.value_unit = TemperatureUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, TemperatureUnit):
-            self.value_unit = TemperatureUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -348,15 +364,17 @@ class PressureQuantity(YAMLRoot):
     class_name: ClassVar[str] = "PressureQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.PressureQuantity
 
+    value_unit: Union[str, "PressureUnit"] = 'bar'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "PressureUnit"]] = 'bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, PressureUnit):
+            self.value_unit = PressureUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, PressureUnit):
-            self.value_unit = PressureUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -373,15 +391,17 @@ class CompressibilityQuantity(YAMLRoot):
     class_name: ClassVar[str] = "CompressibilityQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.CompressibilityQuantity
 
+    value_unit: Union[str, "CompressibilityUnit"] = '1/bar'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "CompressibilityUnit"]] = '1/bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, CompressibilityUnit):
+            self.value_unit = CompressibilityUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, CompressibilityUnit):
-            self.value_unit = CompressibilityUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -398,15 +418,17 @@ class MassQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MassQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MassQuantity
 
+    value_unit: Union[str, "MassUnit"] = 'g/mol'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "MassUnit"]] = 'g/mol'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, MassUnit):
+            self.value_unit = MassUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, MassUnit):
-            self.value_unit = MassUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -423,15 +445,17 @@ class ConcentrationQuantity(YAMLRoot):
     class_name: ClassVar[str] = "ConcentrationQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.ConcentrationQuantity
 
+    value_unit: Union[str, "ConcentrationUnit"] = 'M'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "ConcentrationUnit"]] = 'M'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, ConcentrationUnit):
+            self.value_unit = ConcentrationUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, ConcentrationUnit):
-            self.value_unit = ConcentrationUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -448,15 +472,17 @@ class ForceQuantity(YAMLRoot):
     class_name: ClassVar[str] = "ForceQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.ForceQuantity
 
+    value_unit: Union[str, "ForceUnit"] = 'kJ/mol/nm'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "ForceUnit"]] = 'kJ/mol/nm'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, ForceUnit):
+            self.value_unit = ForceUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, ForceUnit):
-            self.value_unit = ForceUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -473,15 +499,17 @@ class ChargeQuantity(YAMLRoot):
     class_name: ClassVar[str] = "ChargeQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.ChargeQuantity
 
+    value_unit: Union[str, "ChargeUnit"] = 'e'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "ChargeUnit"]] = 'e'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, ChargeUnit):
+            self.value_unit = ChargeUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, ChargeUnit):
-            self.value_unit = ChargeUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -498,15 +526,17 @@ class AngleQuantity(YAMLRoot):
     class_name: ClassVar[str] = "AngleQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.AngleQuantity
 
+    value_unit: Union[str, "AngleUnit"] = 'degree'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "AngleUnit"]] = 'degree'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, AngleUnit):
+            self.value_unit = AngleUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, AngleUnit):
-            self.value_unit = AngleUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -523,15 +553,17 @@ class ByteQuantity(YAMLRoot):
     class_name: ClassVar[str] = "ByteQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.ByteQuantity
 
+    value_unit: Union[str, "ByteUnit"] = 'GB'
     value: Optional[float] = None
-    value_unit: Optional[Union[str, "ByteUnit"]] = 'GB'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, ByteUnit):
+            self.value_unit = ByteUnit(self.value_unit)
+
         if self.value is not None and not isinstance(self.value, float):
             self.value = float(self.value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, ByteUnit):
-            self.value_unit = ByteUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -548,16 +580,18 @@ class VectorLengthQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorLengthQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorLengthQuantity
 
+    value_unit: Union[str, "LengthUnit"] = 'nm'
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "LengthUnit"]] = 'nm'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, LengthUnit):
+            self.value_unit = LengthUnit(self.value_unit)
+
         if not isinstance(self.vector_value, list):
             self.vector_value = [self.vector_value] if self.vector_value is not None else []
         self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
-
-        if self.value_unit is not None and not isinstance(self.value_unit, LengthUnit):
-            self.value_unit = LengthUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -574,16 +608,18 @@ class VectorAngleQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorAngleQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorAngleQuantity
 
+    value_unit: Union[str, "AngleUnit"] = 'degree'
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "AngleUnit"]] = 'degree'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, AngleUnit):
+            self.value_unit = AngleUnit(self.value_unit)
+
         if not isinstance(self.vector_value, list):
             self.vector_value = [self.vector_value] if self.vector_value is not None else []
         self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
-
-        if self.value_unit is not None and not isinstance(self.value_unit, AngleUnit):
-            self.value_unit = AngleUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -600,16 +636,18 @@ class VectorVolumeQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorVolumeQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorVolumeQuantity
 
+    value_unit: Union[str, "LengthUnit"] = 'nm'
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "LengthUnit"]] = 'nm'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, LengthUnit):
+            self.value_unit = LengthUnit(self.value_unit)
+
         if not isinstance(self.vector_value, list):
             self.vector_value = [self.vector_value] if self.vector_value is not None else []
         self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
-
-        if self.value_unit is not None and not isinstance(self.value_unit, LengthUnit):
-            self.value_unit = LengthUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -626,15 +664,17 @@ class VectorCompressibilityQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorCompressibilityQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorCompressibilityQuantity
 
+    value_unit: Union[str, "CompressibilityUnit"] = '1/bar'
     vector_value: Optional[float] = None
-    value_unit: Optional[Union[str, "CompressibilityUnit"]] = '1/bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, CompressibilityUnit):
+            self.value_unit = CompressibilityUnit(self.value_unit)
+
         if self.vector_value is not None and not isinstance(self.vector_value, float):
             self.vector_value = float(self.vector_value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, CompressibilityUnit):
-            self.value_unit = CompressibilityUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -651,16 +691,18 @@ class VectorPressureQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorPressureQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorPressureQuantity
 
+    value_unit: Union[str, "PressureUnit"] = 'bar'
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "PressureUnit"]] = 'bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, PressureUnit):
+            self.value_unit = PressureUnit(self.value_unit)
+
         if not isinstance(self.vector_value, list):
             self.vector_value = [self.vector_value] if self.vector_value is not None else []
         self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
-
-        if self.value_unit is not None and not isinstance(self.value_unit, PressureUnit):
-            self.value_unit = PressureUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -677,16 +719,18 @@ class VectorTemperatureQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorTemperatureQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorTemperatureQuantity
 
+    value_unit: Union[str, "TemperatureUnit"] = 'K'
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "TemperatureUnit"]] = 'K'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, TemperatureUnit):
+            self.value_unit = TemperatureUnit(self.value_unit)
+
         if not isinstance(self.vector_value, list):
             self.vector_value = [self.vector_value] if self.vector_value is not None else []
         self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
-
-        if self.value_unit is not None and not isinstance(self.value_unit, TemperatureUnit):
-            self.value_unit = TemperatureUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -703,16 +747,18 @@ class VectorTimeQuantity(YAMLRoot):
     class_name: ClassVar[str] = "VectorTimeQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.VectorTimeQuantity
 
+    value_unit: Union[str, "TimeUnit"] = 's'
     vector_value: Optional[Union[float, list[float]]] = empty_list()
-    value_unit: Optional[Union[str, "TimeUnit"]] = 's'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, TimeUnit):
+            self.value_unit = TimeUnit(self.value_unit)
+
         if not isinstance(self.vector_value, list):
             self.vector_value = [self.vector_value] if self.vector_value is not None else []
         self.vector_value = [v if isinstance(v, float) else float(v) for v in self.vector_value]
-
-        if self.value_unit is not None and not isinstance(self.value_unit, TimeUnit):
-            self.value_unit = TimeUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -729,15 +775,17 @@ class MatrixPressureQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MatrixPressureQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MatrixPressureQuantity
 
+    value_unit: Union[str, "PressureUnit"] = 'bar'
     vector_value: Optional[float] = None
-    value_unit: Optional[Union[str, "PressureUnit"]] = 'bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, PressureUnit):
+            self.value_unit = PressureUnit(self.value_unit)
+
         if self.vector_value is not None and not isinstance(self.vector_value, float):
             self.vector_value = float(self.vector_value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, PressureUnit):
-            self.value_unit = PressureUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -754,15 +802,17 @@ class MatrixCompressibilityQuantity(YAMLRoot):
     class_name: ClassVar[str] = "MatrixCompressibilityQuantity"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.MatrixCompressibilityQuantity
 
+    value_unit: Union[str, "CompressibilityUnit"] = '1/bar'
     vector_value: Optional[float] = None
-    value_unit: Optional[Union[str, "CompressibilityUnit"]] = '1/bar'
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value_unit):
+            self.MissingRequiredField("value_unit")
+        if not isinstance(self.value_unit, CompressibilityUnit):
+            self.value_unit = CompressibilityUnit(self.value_unit)
+
         if self.vector_value is not None and not isinstance(self.vector_value, float):
             self.vector_value = float(self.vector_value)
-
-        if self.value_unit is not None and not isinstance(self.value_unit, CompressibilityUnit):
-            self.value_unit = CompressibilityUnit(self.value_unit)
 
         super().__post_init__(**kwargs)
 
@@ -4074,153 +4124,153 @@ slots.lengthQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="
                    model_uri=BIOSIM_SCHEMA.lengthQuantity__value, domain=None, range=Optional[float])
 
 slots.lengthQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="lengthQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.lengthQuantity__value_unit, domain=None, range=Optional[Union[str, "LengthUnit"]])
+                   model_uri=BIOSIM_SCHEMA.lengthQuantity__value_unit, domain=None, range=Union[str, "LengthUnit"])
 
 slots.volumeQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="volumeQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.volumeQuantity__value, domain=None, range=Optional[float])
 
 slots.volumeQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="volumeQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.volumeQuantity__value_unit, domain=None, range=Optional[Union[str, "VolumeUnit"]])
+                   model_uri=BIOSIM_SCHEMA.volumeQuantity__value_unit, domain=None, range=Union[str, "VolumeUnit"])
 
 slots.timeQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="timeQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.timeQuantity__value, domain=None, range=Optional[float])
 
 slots.timeQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="timeQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.timeQuantity__value_unit, domain=None, range=Optional[Union[str, "TimeUnit"]])
+                   model_uri=BIOSIM_SCHEMA.timeQuantity__value_unit, domain=None, range=Union[str, "TimeUnit"])
 
 slots.frequencyQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="frequencyQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.frequencyQuantity__value, domain=None, range=Optional[float])
 
 slots.frequencyQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="frequencyQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.frequencyQuantity__value_unit, domain=None, range=Optional[Union[str, "FrequencyUnit"]])
+                   model_uri=BIOSIM_SCHEMA.frequencyQuantity__value_unit, domain=None, range=Union[str, "FrequencyUnit"])
 
 slots.frictionCoefficientQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="frictionCoefficientQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.frictionCoefficientQuantity__value, domain=None, range=Optional[float])
 
 slots.frictionCoefficientQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="frictionCoefficientQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.frictionCoefficientQuantity__value_unit, domain=None, range=Optional[Union[str, "FrictionCoefficientUnit"]])
+                   model_uri=BIOSIM_SCHEMA.frictionCoefficientQuantity__value_unit, domain=None, range=Union[str, "FrictionCoefficientUnit"])
 
 slots.molarEnergyQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="molarEnergyQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.molarEnergyQuantity__value, domain=None, range=Optional[float],
                    pattern=re.compile(r'^[+-]?\d+(\.\d+)?$'))
 
 slots.molarEnergyQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="molarEnergyQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.molarEnergyQuantity__value_unit, domain=None, range=Optional[Union[str, "MolarEnergyUnit"]])
+                   model_uri=BIOSIM_SCHEMA.molarEnergyQuantity__value_unit, domain=None, range=Union[str, "MolarEnergyUnit"])
 
 slots.energyQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="energyQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.energyQuantity__value, domain=None, range=Optional[float])
 
 slots.energyQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="energyQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.energyQuantity__value_unit, domain=None, range=Optional[Union[str, "EnergyUnit"]])
+                   model_uri=BIOSIM_SCHEMA.energyQuantity__value_unit, domain=None, range=Union[str, "EnergyUnit"])
 
 slots.temperatureQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="temperatureQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.temperatureQuantity__value, domain=None, range=Optional[float])
 
 slots.temperatureQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="temperatureQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.temperatureQuantity__value_unit, domain=None, range=Optional[Union[str, "TemperatureUnit"]])
+                   model_uri=BIOSIM_SCHEMA.temperatureQuantity__value_unit, domain=None, range=Union[str, "TemperatureUnit"])
 
 slots.pressureQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="pressureQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.pressureQuantity__value, domain=None, range=Optional[float])
 
 slots.pressureQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="pressureQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.pressureQuantity__value_unit, domain=None, range=Optional[Union[str, "PressureUnit"]])
+                   model_uri=BIOSIM_SCHEMA.pressureQuantity__value_unit, domain=None, range=Union[str, "PressureUnit"])
 
 slots.compressibilityQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="compressibilityQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.compressibilityQuantity__value, domain=None, range=Optional[float])
 
 slots.compressibilityQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="compressibilityQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.compressibilityQuantity__value_unit, domain=None, range=Optional[Union[str, "CompressibilityUnit"]])
+                   model_uri=BIOSIM_SCHEMA.compressibilityQuantity__value_unit, domain=None, range=Union[str, "CompressibilityUnit"])
 
 slots.massQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="massQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.massQuantity__value, domain=None, range=Optional[float])
 
 slots.massQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="massQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.massQuantity__value_unit, domain=None, range=Optional[Union[str, "MassUnit"]])
+                   model_uri=BIOSIM_SCHEMA.massQuantity__value_unit, domain=None, range=Union[str, "MassUnit"])
 
 slots.concentrationQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="concentrationQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.concentrationQuantity__value, domain=None, range=Optional[float])
 
 slots.concentrationQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="concentrationQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.concentrationQuantity__value_unit, domain=None, range=Optional[Union[str, "ConcentrationUnit"]])
+                   model_uri=BIOSIM_SCHEMA.concentrationQuantity__value_unit, domain=None, range=Union[str, "ConcentrationUnit"])
 
 slots.forceQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="forceQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.forceQuantity__value, domain=None, range=Optional[float],
                    pattern=re.compile(r'^[+-]?\d+(\.\d+)?$'))
 
 slots.forceQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="forceQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.forceQuantity__value_unit, domain=None, range=Optional[Union[str, "ForceUnit"]])
+                   model_uri=BIOSIM_SCHEMA.forceQuantity__value_unit, domain=None, range=Union[str, "ForceUnit"])
 
 slots.chargeQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="chargeQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.chargeQuantity__value, domain=None, range=Optional[float])
 
 slots.chargeQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="chargeQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.chargeQuantity__value_unit, domain=None, range=Optional[Union[str, "ChargeUnit"]])
+                   model_uri=BIOSIM_SCHEMA.chargeQuantity__value_unit, domain=None, range=Union[str, "ChargeUnit"])
 
 slots.angleQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="angleQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.angleQuantity__value, domain=None, range=Optional[float])
 
 slots.angleQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="angleQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.angleQuantity__value_unit, domain=None, range=Optional[Union[str, "AngleUnit"]])
+                   model_uri=BIOSIM_SCHEMA.angleQuantity__value_unit, domain=None, range=Union[str, "AngleUnit"])
 
 slots.byteQuantity__value = Slot(uri=BIOSIM_SCHEMA['quantities/value'], name="byteQuantity__value", curie=BIOSIM_SCHEMA.curie('quantities/value'),
                    model_uri=BIOSIM_SCHEMA.byteQuantity__value, domain=None, range=Optional[float])
 
 slots.byteQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="byteQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.byteQuantity__value_unit, domain=None, range=Optional[Union[str, "ByteUnit"]])
+                   model_uri=BIOSIM_SCHEMA.byteQuantity__value_unit, domain=None, range=Union[str, "ByteUnit"])
 
 slots.vectorLengthQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorLengthQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorLengthQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.vectorLengthQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorLengthQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorLengthQuantity__value_unit, domain=None, range=Optional[Union[str, "LengthUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorLengthQuantity__value_unit, domain=None, range=Union[str, "LengthUnit"])
 
 slots.vectorAngleQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorAngleQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorAngleQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.vectorAngleQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorAngleQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorAngleQuantity__value_unit, domain=None, range=Optional[Union[str, "AngleUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorAngleQuantity__value_unit, domain=None, range=Union[str, "AngleUnit"])
 
 slots.vectorVolumeQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorVolumeQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorVolumeQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.vectorVolumeQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorVolumeQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorVolumeQuantity__value_unit, domain=None, range=Optional[Union[str, "LengthUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorVolumeQuantity__value_unit, domain=None, range=Union[str, "LengthUnit"])
 
 slots.vectorCompressibilityQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorCompressibilityQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorCompressibilityQuantity__vector_value, domain=None, range=Optional[float])
 
 slots.vectorCompressibilityQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorCompressibilityQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorCompressibilityQuantity__value_unit, domain=None, range=Optional[Union[str, "CompressibilityUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorCompressibilityQuantity__value_unit, domain=None, range=Union[str, "CompressibilityUnit"])
 
 slots.vectorPressureQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorPressureQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorPressureQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.vectorPressureQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorPressureQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorPressureQuantity__value_unit, domain=None, range=Optional[Union[str, "PressureUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorPressureQuantity__value_unit, domain=None, range=Union[str, "PressureUnit"])
 
 slots.vectorTemperatureQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorTemperatureQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorTemperatureQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.vectorTemperatureQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorTemperatureQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorTemperatureQuantity__value_unit, domain=None, range=Optional[Union[str, "TemperatureUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorTemperatureQuantity__value_unit, domain=None, range=Union[str, "TemperatureUnit"])
 
 slots.vectorTimeQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="vectorTimeQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.vectorTimeQuantity__vector_value, domain=None, range=Optional[Union[float, list[float]]])
 
 slots.vectorTimeQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="vectorTimeQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.vectorTimeQuantity__value_unit, domain=None, range=Optional[Union[str, "TimeUnit"]])
+                   model_uri=BIOSIM_SCHEMA.vectorTimeQuantity__value_unit, domain=None, range=Union[str, "TimeUnit"])
 
 slots.matrixPressureQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="matrixPressureQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.matrixPressureQuantity__vector_value, domain=None, range=Optional[float])
 
 slots.matrixPressureQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="matrixPressureQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.matrixPressureQuantity__value_unit, domain=None, range=Optional[Union[str, "PressureUnit"]])
+                   model_uri=BIOSIM_SCHEMA.matrixPressureQuantity__value_unit, domain=None, range=Union[str, "PressureUnit"])
 
 slots.matrixCompressibilityQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="matrixCompressibilityQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.matrixCompressibilityQuantity__vector_value, domain=None, range=Optional[float])
 
 slots.matrixCompressibilityQuantity__value_unit = Slot(uri=BIOSIM_SCHEMA['quantities/value_unit'], name="matrixCompressibilityQuantity__value_unit", curie=BIOSIM_SCHEMA.curie('quantities/value_unit'),
-                   model_uri=BIOSIM_SCHEMA.matrixCompressibilityQuantity__value_unit, domain=None, range=Optional[Union[str, "CompressibilityUnit"]])
+                   model_uri=BIOSIM_SCHEMA.matrixCompressibilityQuantity__value_unit, domain=None, range=Union[str, "CompressibilityUnit"])
 
 slots.matrixQuantity__vector_value = Slot(uri=BIOSIM_SCHEMA['quantities/vector_value'], name="matrixQuantity__vector_value", curie=BIOSIM_SCHEMA.curie('quantities/vector_value'),
                    model_uri=BIOSIM_SCHEMA.matrixQuantity__vector_value, domain=None, range=Optional[float])

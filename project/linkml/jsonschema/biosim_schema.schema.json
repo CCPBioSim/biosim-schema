@@ -94,16 +94,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AngleUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/AngleUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "AngleQuantity",
             "type": "object"
         },
@@ -271,16 +267,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ByteUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ByteUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "ByteQuantity",
             "type": "object"
         },
@@ -343,16 +335,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ChargeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ChargeUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "ChargeQuantity",
             "type": "object"
         },
@@ -376,16 +364,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CompressibilityUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/CompressibilityUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "CompressibilityQuantity",
             "type": "object"
         },
@@ -451,16 +435,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ConcentrationUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ConcentrationUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "ConcentrationQuantity",
             "type": "object"
         },
@@ -536,16 +516,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/EnergyUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/EnergyUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "EnergyQuantity",
             "type": "object"
         },
@@ -723,16 +699,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ForceUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/ForceUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "ForceQuantity",
             "type": "object"
         },
@@ -757,16 +729,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/FrequencyUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/FrequencyUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "FrequencyQuantity",
             "type": "object"
         },
@@ -790,16 +758,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/FrictionCoefficientUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/FrictionCoefficientUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "FrictionCoefficientQuantity",
             "type": "object"
         },
@@ -1128,16 +1092,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LengthUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/LengthUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "LengthQuantity",
             "type": "object"
         },
@@ -1265,16 +1225,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/MassUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/MassUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "MassQuantity",
             "type": "object"
         },
@@ -1292,14 +1248,7 @@
             "description": "A quantity representing compressibility vectors in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CompressibilityUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/CompressibilityUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -1318,6 +1267,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "MatrixCompressibilityQuantity",
             "type": "object"
         },
@@ -1326,14 +1278,7 @@
             "description": "A quantity representing pressure vectors in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/PressureUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -1352,6 +1297,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "MatrixPressureQuantity",
             "type": "object"
         },
@@ -1486,16 +1434,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/MolarEnergyUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/MolarEnergyUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "MolarEnergyQuantity",
             "type": "object"
         },
@@ -2046,16 +1990,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/PressureUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "PressureQuantity",
             "type": "object"
         },
@@ -2819,16 +2759,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TemperatureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TemperatureUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "TemperatureQuantity",
             "type": "object"
         },
@@ -2955,16 +2891,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TimeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TimeUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "TimeQuantity",
             "type": "object"
         },
@@ -3114,14 +3046,7 @@
             "description": "A quantity representing 3D angles.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/AngleUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/AngleUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3135,6 +3060,9 @@
                     ]
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorAngleQuantity",
             "type": "object"
         },
@@ -3143,14 +3071,7 @@
             "description": "A quantity representing compressibility in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/CompressibilityUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/CompressibilityUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3168,6 +3089,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorCompressibilityQuantity",
             "type": "object"
         },
@@ -3176,14 +3100,7 @@
             "description": "A quantity representing 3D lengths/dimensions.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LengthUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/LengthUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3197,6 +3114,9 @@
                     ]
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorLengthQuantity",
             "type": "object"
         },
@@ -3205,14 +3125,7 @@
             "description": "A quantity representing pressure in 3D.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/PressureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/PressureUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3226,6 +3139,9 @@
                     ]
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorPressureQuantity",
             "type": "object"
         },
@@ -3234,14 +3150,7 @@
             "description": "Temperature values for multiple coupling groups.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TemperatureUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TemperatureUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3253,6 +3162,9 @@
                     ]
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorTemperatureQuantity",
             "type": "object"
         },
@@ -3261,14 +3173,7 @@
             "description": "Time values for multiple coupling groups.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TimeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/TimeUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3280,6 +3185,9 @@
                     ]
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorTimeQuantity",
             "type": "object"
         },
@@ -3288,14 +3196,7 @@
             "description": "A quantity representing volume as via 3 length dimensions.",
             "properties": {
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/LengthUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/LengthUnit"
                 },
                 "vector_value": {
                     "items": {
@@ -3307,6 +3208,9 @@
                     ]
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VectorVolumeQuantity",
             "type": "object"
         },
@@ -3322,16 +3226,12 @@
                     ]
                 },
                 "value_unit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/VolumeUnit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "#/$defs/VolumeUnit"
                 }
             },
+            "required": [
+                "value_unit"
+            ],
             "title": "VolumeQuantity",
             "type": "object"
         },

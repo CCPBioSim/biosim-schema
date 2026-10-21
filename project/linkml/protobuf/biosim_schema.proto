@@ -1,7 +1,7 @@
 syntax = "proto3";
 package biosim_schema;
 // metamodel_version: 1.12.0
-// version: 1.0.1
+// version: 1.1.0
 // Analysis stage of simulation workflow.
 message Analysis {
   // Name of the tool used to analyse simulation.

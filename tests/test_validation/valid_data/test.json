@@ -35,6 +35,10 @@
         ],
         "value_unit": "1/bar"
       },
+      "target_pressure": {
+        "value": 1.01325,
+        "value_unit": "bar"
+      },
       "target_pressure_vector": {
         "vector_value": [
           [

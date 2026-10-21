@@ -9,127 +9,127 @@ COMMUNITY = "BioSimDB"
 
 class LengthQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['Å', 'nm']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['Å', 'nm']), required=True)
 
 
 class VolumeQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['Å³', 'nm³']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['Å³', 'nm³']), required=True)
 
 
 class TimeQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['s', 'ms', 'μs', 'ns', 'ps', 'fs']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['s', 'ms', 'μs', 'ns', 'ps', 'fs']), required=True)
 
 
 class FrequencyQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['1/ps']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['1/ps']), required=True)
 
 
 class FrictionCoefficientQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['a/ps', 'kg/s']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['a/ps', 'kg/s']), required=True)
 
 
 class MolarEnergyQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['kcal/mol', 'kJ/mol']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['kcal/mol', 'kJ/mol']), required=True)
 
 
 class EnergyQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['kWh']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['kWh']), required=True)
 
 
 class TemperatureQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['K', '°C', '°F']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['K', '°C', '°F']), required=True)
 
 
 class PressureQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['bar', 'Pa']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['bar', 'Pa']), required=True)
 
 
 class CompressibilityQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), required=True)
 
 
 class MassQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['g/mol', 'Da']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['g/mol', 'Da']), required=True)
 
 
 class ConcentrationQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['M']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['M']), required=True)
 
 
 class ForceQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['kJ/mol/nm', 'kcal/mol/Å']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['kJ/mol/nm', 'kcal/mol/Å']), required=True)
 
 
 class ChargeQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['e', 'C']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['e', 'C']), required=True)
 
 
 class AngleQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['degree', 'radian']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['degree', 'radian']), required=True)
 
 
 class ByteQuantitySchema(Schema):
     value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['GB', 'MB']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['GB', 'MB']), required=True)
 
 
 class VectorLengthQuantitySchema(Schema):
     vector_value = fields.List(fields.Float(), allow_none=True)
-    value_unit = fields.String(validate=OneOf(['Å', 'nm']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['Å', 'nm']), required=True)
 
 
 class VectorAngleQuantitySchema(Schema):
     vector_value = fields.List(fields.Float(), allow_none=True)
-    value_unit = fields.String(validate=OneOf(['degree', 'radian']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['degree', 'radian']), required=True)
 
 
 class VectorVolumeQuantitySchema(Schema):
     vector_value = fields.List(fields.Float(), allow_none=True)
-    value_unit = fields.String(validate=OneOf(['Å', 'nm']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['Å', 'nm']), required=True)
 
 
 class VectorCompressibilityQuantitySchema(Schema):
     vector_value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), required=True)
 
 
 class VectorPressureQuantitySchema(Schema):
     vector_value = fields.List(fields.Float(), allow_none=True)
-    value_unit = fields.String(validate=OneOf(['bar', 'Pa']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['bar', 'Pa']), required=True)
 
 
 class VectorTemperatureQuantitySchema(Schema):
     vector_value = fields.List(fields.Float(), allow_none=True)
-    value_unit = fields.String(validate=OneOf(['K', '°C', '°F']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['K', '°C', '°F']), required=True)
 
 
 class VectorTimeQuantitySchema(Schema):
     vector_value = fields.List(fields.Float(), allow_none=True)
-    value_unit = fields.String(validate=OneOf(['s', 'ms', 'μs', 'ns', 'ps', 'fs']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['s', 'ms', 'μs', 'ns', 'ps', 'fs']), required=True)
 
 
 class MatrixPressureQuantitySchema(Schema):
     vector_value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['bar', 'Pa']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['bar', 'Pa']), required=True)
 
 
 class MatrixCompressibilityQuantitySchema(Schema):
     vector_value = fields.Float(allow_none=True)
-    value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), allow_none=True)
+    value_unit = fields.String(validate=OneOf(['1/bar', '1/Pa']), required=True)
 
 
 class MatrixQuantitySchema(Schema):

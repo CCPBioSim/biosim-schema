@@ -19,7 +19,8 @@ from pathlib import Path
 import yaml
 
 METADATA_KEYS = ("label", "hint", "typehint", "placeholder", "units", "example")
-"""tuple[str, ...]: Field metadata keys copied from each webform node into the summary."""
+"""tuple[str, ...]: Field metadata keys copied from each webform node into the
+summary."""
 
 
 def _summarise(node):

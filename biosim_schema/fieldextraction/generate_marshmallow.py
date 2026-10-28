@@ -139,7 +139,10 @@ class MarshmallowGenerator:
         self._resolve_nested_mappings()
 
     def _resolve_nested_mappings(self) -> None:
-        """Backfill nested ES `properties` once all classes are built (handles recursion)."""
+        """Backfill nested ES `properties` once all classes are built.
+
+        Handles recursion.
+        """
 
         def resolve(mapping: dict, seen: frozenset[str]) -> dict:
             resolved = {}

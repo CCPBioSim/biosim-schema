@@ -4,7 +4,8 @@ This script walks the schema starting from a root class, collects slot-level
 and enum-level `engine_mapping` annotations, and writes forward and reverse
 lookup tables to `schema_enginemappings.json`.
 
-The schema_enginemappings.json file is used to extract metadata from MD topology, trajectory, and log files via the biosim-extractor.
+The schema_enginemappings.json file is used to extract metadata from MD topology,
+trajectory, and log files via the biosim-extractor.
 """
 
 import argparse

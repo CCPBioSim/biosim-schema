@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'biosim-schema'
-copyright = '2026, CCPBioSim'
-release = '1.2.0'
+project = "biosim-schema"
+copyright = "2026, CCPBioSim"
+release = "1.2.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -33,23 +33,23 @@ source_suffix = {
 }
 
 autosummary_generate = True
-napoleon_google_docstring = False
+napoleon_google_docstring = True
+napoleon_numpy_docstring = False
 napoleon_use_param = False
 napoleon_use_ivar = True
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns = []
 suppress_warnings = [
-    "toc.not_included", # not all md files need to be in toc
+    "toc.not_included",  # not all md files need to be in toc
 ]
-
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'furo'
-html_static_path = ['_static']
+html_theme = "furo"
+html_static_path = ["_static"]
 html_theme_options = {
     "dark_logo": "logos/biosim-schema-logo-light-text.png",
     "light_logo": "logos/biosim-schema-logo-dark-text.png",

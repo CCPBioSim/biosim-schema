@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.8
+    rev: v0.17.2
     hooks:
       - id: ruff-check
         args: [--fix]
@@ -16,12 +16,20 @@ repos:
       - id: check-yaml
         exclude: ^conda-recipe/meta\.yaml$
       - id: check-toml
+      - id: check-case-conflict
+      - id: check-ast
       - id: end-of-file-fixer
         exclude: ^project/
       - id: trailing-whitespace
         exclude: ^project/
-      - id: check-case-conflict
-      - id: check-ast
+
+  - repo: https://github.com/rstcheck/rstcheck
+    rev: v6.3.0
+    hooks:
+      - id: rstcheck
+        name: rstcheck (docstrings only)
+        files: \.py$
+        args: ["--report-level", "warning"]
 
   - repo: local
     hooks:
@@ -38,3 +46,10 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+
+      - id: sphinx-docs
+        name: sphinx-build (pre-push, warnings as errors)
+        entry: bash -lc 'biosim-schema-generate docs && make -C docs clean && make -C docs html SPHINXOPTS="-W --keep-going"'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

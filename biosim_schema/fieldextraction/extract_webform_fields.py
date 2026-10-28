@@ -35,7 +35,8 @@ class WebFormFieldExtractor:
     """Extracts UI form field definitions from a compiled LinkML JSON-LD schema.
 
     Traverses the schema class/slot/enum graph and renders each slot directly
-    into a dict suitable for driving a web form (type, label, hint, options, constraints).
+    into a dict suitable for driving a web form (type, label, hint, options,
+    constraints).
     """
 
     def __init__(self, filepath):
@@ -61,14 +62,17 @@ class WebFormFieldExtractor:
         Returns:
             dict: Nested form field definitions keyed by slot name.
         """
-        with open(self.filepath, "r") as f:
+        with open(self.filepath) as f:
             self.schema = json.load(f)
 
         self._build_indexes()
         return self._render_class_fields(root_class)
 
     def _build_indexes(self):
-        """Index classes, slots, and enums from the loaded schema by name for O(1) lookup."""
+        """Index classes, slots, and enums from the loaded schema by name.
+
+        Gives O(1) lookup.
+        """
         self.class_index = {c["name"]: c for c in self.schema.get("classes", [])}
         self.slot_index = {s["name"]: s for s in self.schema.get("slots", [])}
         self.enum_index = {e["name"]: e for e in self.schema.get("enums", [])}
@@ -188,7 +192,8 @@ class WebFormFieldExtractor:
 
         if slot.get("minimum_value") is not None:
             result["min"] = slot["minimum_value"]
-        # if slot.get("maximum_value") is not None: result["max"] = slot["maximum_value"]
+        # if slot.get("maximum_value") is not None:
+        #     result["max"] = slot["maximum_value"]
 
         base_uri = self._get_annotation(slot, "base_uri")
         if base_uri:
@@ -294,7 +299,9 @@ class WebFormFieldExtractor:
     # =========================================================
 
     def _is_primitive(self, range_):
-        """Return True if range_ is one of the primitive types (string, integer, float, boolean).
+        """Return True if range_ is one of the primitive types.
+
+        The primitive types are string, integer, float and boolean.
 
         Args:
             range_: The range string from a slot definition.
@@ -345,7 +352,9 @@ class WebFormFieldExtractor:
     # =========================================================
 
     def _to_title_words(self, text):
-        """Convert snake_case slot names to display labels while preserving existing caps.
+        """Convert snake_case slot names to display labels.
+
+        Preserves existing capitals.
 
         Strips a double-underscore prefix (LinkML induced name) if present.
 

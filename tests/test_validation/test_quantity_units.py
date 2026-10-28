@@ -20,6 +20,7 @@ def _unit_attribute_cases():
 
 @pytest.mark.parametrize("attr, enums", _unit_attribute_cases())
 def test_quantity_unit_is_required(attr, enums):
-    """Check that every quantity's ``value_unit`` is a required slot with an enum range."""
+    """Check that every quantity's ``value_unit`` is a required slot with an enum
+    range."""
     assert attr.get("range") in enums, f"value_unit has no unit enum range: {attr}"
     assert attr.get("required") is True, "value_unit must set `required: true`"

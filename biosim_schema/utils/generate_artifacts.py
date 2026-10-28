@@ -18,9 +18,9 @@ import argparse
 import json
 import shutil
 import subprocess
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 from biosim_schema.fieldextraction.extract_engine_mappings import MappingsExtractor
 from biosim_schema.fieldextraction.extract_summary import (

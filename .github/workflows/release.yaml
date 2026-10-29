@@ -34,6 +34,12 @@ jobs:
           {"path": "CITATION.cff", "pattern": "^version:.*", "replace": "version: {version}"},
           {"path": "CITATION.cff", "pattern": "^date-released:.*", "replace": "date-released: '{date}'"}
         ]
+      version-command: |
+        python -m pip install .
+        biosim-schema-generate derived
+        biosim-schema-generate jsonschema
+      release-assets-command: tar -czf biosim-schema-artifacts.tar.gz biosim_schema/schema/ project/
+      release-assets: biosim-schema-artifacts.tar.gz
     secrets:
       AUTO_PR_MERGE: ${{ secrets.AUTO_PR_MERGE }}
       ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}

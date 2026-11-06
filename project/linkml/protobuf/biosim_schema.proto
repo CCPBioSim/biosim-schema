@@ -1,7 +1,7 @@
 syntax = "proto3";
 package biosim_schema;
 // metamodel_version: 1.12.0
-// version: 1.1.0
+// version: 1.2.0
 // Analysis stage of simulation workflow.
 message Analysis {
   // Name of the tool used to analyse simulation.
@@ -394,18 +394,18 @@ message SimulationBox {
 }
 // root class for biosim-schema
 message SimulationMetadata {
-  // Simulation stages
-  SimulationStages stages = 1;
-  // Simulation settings
-  SimulationSettings settings = 2;
-  // Simulation observables.
-  SimulationObservables observables = 3;
-  // Topology information.
-  TopologyMetadata topology = 4;
-  // Trajectory information.
-  TrajectoryMetadata trajectory = 5;
   // Composition of simulated system.
-  SystemComposition composition = 6;
+  SystemComposition composition = 1;
+  // Topology information.
+  TopologyMetadata topology = 2;
+  // Trajectory information.
+  TrajectoryMetadata trajectory = 3;
+  // Simulation stages
+  SimulationStages stages = 4;
+  // Simulation settings
+  SimulationSettings settings = 5;
+  // Simulation observables.
+  SimulationObservables observables = 6;
   // Force field potentials used to describe simulated particles.
   PotentialMetadata potentials = 7;
   // Computational environment information.
@@ -768,6 +768,7 @@ enum GeneralPotentialName {
   GENERAL_POTENTIAL_NAME_OPLS = 4;
   GENERAL_POTENTIAL_NAME_GROMOS = 5;
   GENERAL_POTENTIAL_NAME_CHARMM = 6;
+  GENERAL_POTENTIAL_NAME_MARTINI = 7;
 }
 // Vendor of the GPU used in the compute nodes.
 enum GpuVendor {
@@ -795,6 +796,7 @@ enum LengthUnit {
 enum LipidPotentialName {
   LIPID_POTENTIAL_NAME_UNSPECIFIED = 0;
   LIPID_POTENTIAL_NAME_LIPID21 = 1;
+  LIPID_POTENTIAL_NAME_MARTINI = 2;
 }
 // Method used to implement long-range interactions of point charges in the simulation.
 enum LongRangeInteractionMethod {
@@ -896,6 +898,7 @@ enum PeriodicBoundaryConditions {
 enum PolymerPotentialName {
   POLYMER_POTENTIAL_NAME_UNSPECIFIED = 0;
   POLYMER_POTENTIAL_NAME_LIGN_AMB25 = 1;
+  POLYMER_POTENTIAL_NAME_MARTINI = 2;
 }
 // Coupling type for adjusting box vectors.
 enum PressureCouplingType {
@@ -929,6 +932,8 @@ enum ProteinPotentialName {
   PROTEIN_POTENTIAL_NAME_PHOSAA19_SB = 13;
   PROTEIN_POTENTIAL_NAME_FF14_SB_MOD_AA = 14;
   PROTEIN_POTENTIAL_NAME_FF19_SB_MOD_AA = 15;
+  PROTEIN_POTENTIAL_NAME_MARTINI = 16;
+  PROTEIN_POTENTIAL_NAME_CALVADOS = 17;
 }
 // Job scheduler used for simulation execution.
 enum Scheduler {
@@ -951,6 +956,7 @@ enum SetupTool {
   SETUP_TOOL_PY_MSMT = 7;
   SETUP_TOOL_MDGX = 8;
   SETUP_TOOL_PARMED = 9;
+  SETUP_TOOL_CHARMM_GUI = 10;
 }
 // Options for simulation methods.
 enum SimulationMethod {
@@ -1050,4 +1056,5 @@ enum WaterPotentialName {
   WATER_POTENTIAL_NAME_SPCEB = 12;
   WATER_POTENTIAL_NAME_SPC_FW = 13;
   WATER_POTENTIAL_NAME_Q_SPC_FW = 14;
+  WATER_POTENTIAL_NAME_MARTINI = 15;
 }

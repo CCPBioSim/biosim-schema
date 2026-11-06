@@ -59,7 +59,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String, U
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.12.0"
-version = "1.1.0"
+version = "1.2.0"
 
 # Namespaces
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
@@ -92,18 +92,27 @@ class SimulationMetadata(YAMLRoot):
     class_name: ClassVar[str] = "SimulationMetadata"
     class_model_uri: ClassVar[URIRef] = BIOSIM_SCHEMA.SimulationMetadata
 
+    composition: Optional[Union[dict, "SystemComposition"]] = None
+    topology: Optional[Union[dict, "TopologyMetadata"]] = None
+    trajectory: Optional[Union[dict, "TrajectoryMetadata"]] = None
     stages: Optional[Union[dict, "SimulationStages"]] = None
     settings: Optional[Union[dict, "SimulationSettings"]] = None
     observables: Optional[Union[dict, "SimulationObservables"]] = None
-    topology: Optional[Union[dict, "TopologyMetadata"]] = None
-    trajectory: Optional[Union[dict, "TrajectoryMetadata"]] = None
-    composition: Optional[Union[dict, "SystemComposition"]] = None
     potentials: Optional[Union[dict, "PotentialMetadata"]] = None
     compute: Optional[Union[dict, "ComputationalEnvironment"]] = None
     files: Optional[Union[Union[dict, "FileMetadata"], list[Union[dict, "FileMetadata"]]]] = empty_list()
     biosim_schema_version: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self.composition is not None and not isinstance(self.composition, SystemComposition):
+            self.composition = SystemComposition(**as_dict(self.composition))
+
+        if self.topology is not None and not isinstance(self.topology, TopologyMetadata):
+            self.topology = TopologyMetadata(**as_dict(self.topology))
+
+        if self.trajectory is not None and not isinstance(self.trajectory, TrajectoryMetadata):
+            self.trajectory = TrajectoryMetadata(**as_dict(self.trajectory))
+
         if self.stages is not None and not isinstance(self.stages, SimulationStages):
             self.stages = SimulationStages(**as_dict(self.stages))
 
@@ -112,15 +121,6 @@ class SimulationMetadata(YAMLRoot):
 
         if self.observables is not None and not isinstance(self.observables, SimulationObservables):
             self.observables = SimulationObservables(**as_dict(self.observables))
-
-        if self.topology is not None and not isinstance(self.topology, TopologyMetadata):
-            self.topology = TopologyMetadata(**as_dict(self.topology))
-
-        if self.trajectory is not None and not isinstance(self.trajectory, TrajectoryMetadata):
-            self.trajectory = TrajectoryMetadata(**as_dict(self.trajectory))
-
-        if self.composition is not None and not isinstance(self.composition, SystemComposition):
-            self.composition = SystemComposition(**as_dict(self.composition))
 
         if self.potentials is not None and not isinstance(self.potentials, PotentialMetadata):
             self.potentials = PotentialMetadata(**as_dict(self.potentials))
@@ -2477,6 +2477,13 @@ class SetupTool(EnumDefinitionImpl):
         description="Tool used to setup a system for simulation.",
     )
 
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "CHARMM-GUI",
+            PermissibleValue(
+                text="CHARMM-GUI",
+                description="""A web-based graphical user interface that helps researchers build complex biomolecular systems and generate input files for molecular dynamics (MD) simulations."""))
+
 class MinimisationAlgorithm(EnumDefinitionImpl):
     """
     Algorithm used to minimise particle interactions.
@@ -3128,6 +3135,9 @@ class WaterPotentialName(EnumDefinitionImpl):
     SPCEB = PermissibleValue(
         text="SPCEB",
         description="Parameters for a water model.")
+    MARTINI = PermissibleValue(
+        text="MARTINI",
+        description="""Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.""")
 
     _defn = EnumDefinition(
         name="WaterPotentialName",
@@ -3188,6 +3198,12 @@ class ProteinPotentialName(EnumDefinitionImpl):
     ff19SB_modAA = PermissibleValue(
         text="ff19SB_modAA",
         description="""Force field with ff19SB for modified amino acids like selenomethionine, cyano-phenylalanine, and azido-phenylalanine, acetylated lysine and for the nitroxide spin-label methanesulfonothioate (MTSL).""")
+    MARTINI = PermissibleValue(
+        text="MARTINI",
+        description="""Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.""")
+    CALVADOS = PermissibleValue(
+        text="CALVADOS",
+        description="""Used for intrisically disordered proteins and represents each amino acid residue with a single bead (typically centered at the C-alpha atom)""")
 
     _defn = EnumDefinition(
         name="ProteinPotentialName",
@@ -3282,6 +3298,9 @@ class LipidPotentialName(EnumDefinitionImpl):
     LIPID21 = PermissibleValue(
         text="LIPID21",
         description="""An Amber lipid force field building on the modular nature of LIPID11, LIPID 14 and LIPID 17 to allow for tensionless lipid bilayer simulations in Amber.""")
+    MARTINI = PermissibleValue(
+        text="MARTINI",
+        description="""Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.""")
 
     _defn = EnumDefinition(
         name="LipidPotentialName",
@@ -3295,6 +3314,9 @@ class PolymerPotentialName(EnumDefinitionImpl):
     LignAmb25 = PermissibleValue(
         text="LignAmb25",
         description="""Force field that includes parameters for all common monolignol units and their associated linkages along with less commonly encountered units.""")
+    MARTINI = PermissibleValue(
+        text="MARTINI",
+        description="""Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.""")
 
     _defn = EnumDefinition(
         name="PolymerPotentialName",
@@ -3320,6 +3342,9 @@ class GeneralPotentialName(EnumDefinitionImpl):
     CHARMM = PermissibleValue(
         text="CHARMM",
         description="""CHARMM (Chemistry at HARvard Macromolecular Mechanics) is a both a set of force fields and a software package for molecular dynamics simulations and analysis. Includes united atom (CHARMM19) and all atom (CHARMM22, CHARMM27, CHARMM36) force fields.""")
+    MARTINI = PermissibleValue(
+        text="MARTINI",
+        description="""Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.""")
 
     _defn = EnumDefinition(
         name="GeneralPotentialName",

@@ -1,4 +1,432 @@
 {
+  "composition": {
+    "label": "Composition",
+    "hint": "Composition of simulated system.",
+    "fields": {
+      "system_counts": {
+        "label": "System Counts",
+        "hint": "Entity counts across the simulated system.",
+        "fields": {
+          "total_molecule_count": {
+            "label": "Total Molecule Count",
+            "hint": "Total number of simulated molecules, defined as bonded atoms or beads.",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 1
+            }
+          },
+          "total_atom_count": {
+            "label": "Total Atom Count",
+            "hint": "Total number of atoms in the simulation.",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 1
+            }
+          },
+          "unique_molecule_count": {
+            "label": "Unique Molecule Count",
+            "hint": "Number of unique simulated molecules, defined as bonded atoms or beads.",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 1
+            }
+          },
+          "salt_concentration": {
+            "label": "Salt Concentration",
+            "hint": "Concentration of salt in the solution.",
+            "example": {
+              "value": 0.1,
+              "value_unit": "M"
+            },
+            "default_unit": "M",
+            "typehint": "float"
+          }
+        }
+      },
+      "molecule_ID": {
+        "label": "Molecule ID",
+        "hint": "Persistent identifier of a molecule being simulated.",
+        "fields": {
+          "PDB_ID": {
+            "label": "PDB ID",
+            "hint": "Protein Data Bank identifier",
+            "typehint": "string",
+            "placeholder": "2VB1",
+            "example": {
+              "value": "2VB1"
+            }
+          },
+          "UNIPROT_ID": {
+            "label": "UNIPROT ID",
+            "hint": "UniProt accession ID",
+            "typehint": "string",
+            "placeholder": "P0DP23",
+            "example": {
+              "value": "P0DP23"
+            }
+          },
+          "SMILES": {
+            "label": "SMILES",
+            "hint": "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",
+            "typehint": "string",
+            "placeholder": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+            "example": {
+              "value": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+            }
+          },
+          "InChI": {
+            "label": "InChI",
+            "hint": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
+            "typehint": "string",
+            "placeholder": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",
+            "example": {
+              "value": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
+            }
+          },
+          "InChIKey": {
+            "label": "InChIKey",
+            "hint": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
+            "typehint": "string",
+            "placeholder": "RYYVLZVUVIJVGH-UHFFFAOYSA-N",
+            "example": {
+              "value": "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
+            }
+          },
+          "alphafold_ID": {
+            "label": "AlphaFold ID",
+            "hint": "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",
+            "typehint": "string",
+            "placeholder": "AF-P12345-F1",
+            "example": {
+              "value": "AF-P12345-F1"
+            }
+          },
+          "PubChem_CID": {
+            "label": "PubChem CID",
+            "hint": "PubChem CID of chemical molecules and their activities against biological assays.",
+            "typehint": "string",
+            "placeholder": "100101",
+            "example": {
+              "value": "100101"
+            }
+          },
+          "protein_sequence": {
+            "label": "Protein Sequence",
+            "hint": "One letter sequence for protein amino acids.",
+            "typehint": "string",
+            "placeholder": "DRVYIHPF",
+            "example": {
+              "value": "DRVYIHPF"
+            }
+          },
+          "nucleic_sequence": {
+            "label": "Nucleic Sequence",
+            "hint": "One letter sequence for nucleic acid nucleotides.",
+            "typehint": "string",
+            "placeholder": "ATGCATCGATCGATCGATCG",
+            "example": {
+              "value": "ATGCATCGATCGATCGATCG"
+            }
+          },
+          "predicted_structure": {
+            "label": "Predicted Structure?",
+            "hint": "Are the molecule positions derived from a prediction?",
+            "typehint": "boolean",
+            "placeholder": "True",
+            "example": {
+              "value": "True"
+            }
+          },
+          "modified": {
+            "label": "Modified?",
+            "hint": "Has the initial model been modified from the original?",
+            "typehint": "boolean",
+            "placeholder": "True",
+            "example": {
+              "value": "True"
+            }
+          },
+          "molecular_formula": {
+            "label": "Molecular Formula",
+            "hint": "The molecular formula of a molecule\\",
+            "typehint": "string",
+            "placeholder": "C8H10N4O2",
+            "example": {
+              "value": "C8H10N4O2"
+            }
+          },
+          "molecular_weight": {
+            "label": "Molecular Weight",
+            "hint": "The molecular weight of a molecule.",
+            "example": {
+              "value": 18.0,
+              "value_unit": "g/mol"
+            },
+            "default_unit": "g/mol",
+            "typehint": "float"
+          },
+          "molecule_charge": {
+            "label": "Molecule Charge",
+            "hint": "Electrostatic charge of a molecule.",
+            "example": {
+              "value": -1.0,
+              "value_unit": "e"
+            },
+            "default_unit": "e",
+            "typehint": "float"
+          },
+          "molecule_count": {
+            "label": "Molecule Count",
+            "hint": "Number of instances of a given molecule, defined as bonded atoms or beads.",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 1
+            }
+          },
+          "atom_count": {
+            "label": "Atom Count",
+            "hint": "Number of atoms in a molecule.",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 1
+            }
+          },
+          "monomer_count": {
+            "label": "Monomer Count",
+            "hint": "Number of monomeric units in a polymer(e.g. protein or nucleic acid).",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 1
+            }
+          },
+          "simulated_particle_names": {
+            "label": "Simulated Particle Names",
+            "hint": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
+            "typehint": "string",
+            "placeholder": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",
+            "example": {
+              "value": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
+            }
+          },
+          "simulated_molecule_name": {
+            "label": "Simulated Molecule Name",
+            "hint": "Molecule name used in the simulation.",
+            "typehint": "string",
+            "placeholder": "POPS"
+          }
+        }
+      }
+    }
+  },
+  "topology": {
+    "label": "Topology",
+    "hint": "Topology information.",
+    "fields": {
+      "connectivity": {
+        "label": "Connectivity",
+        "hint": "Particle connectivity information",
+        "fields": {
+          "bonds": {
+            "label": "Bonds?",
+            "hint": "Are bond parameters present in the topology?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "dihedrals": {
+            "label": "Dihedrals?",
+            "hint": "Are dihedral parameters present in the topology?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          }
+        }
+      },
+      "particles": {
+        "label": "Particles",
+        "hint": "Particles information",
+        "fields": {
+          "masses": {
+            "label": "Masses?",
+            "hint": "Are masses present in the topology?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "fixed_charges": {
+            "label": "Fixed Charges?",
+            "hint": "Are fixed charges on atoms included in the topology?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "system_charge": {
+            "label": "System Charge",
+            "hint": "Total electrostatic charge of the system given by the elementary charge (e).",
+            "example": {
+              "value": 0.0,
+              "value_unit": "e"
+            },
+            "default_unit": "e",
+            "typehint": "float"
+          },
+          "coarse_grained": {
+            "label": "Coarse Grained?",
+            "hint": "Are atoms coarse-grained?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "resolution": {
+            "label": "Resolution",
+            "hint": "Resolution of simulated molecules.",
+            "example": {
+              "value": "All Atom"
+            },
+            "typehint": "string"
+          }
+        }
+      }
+    }
+  },
+  "trajectory": {
+    "label": "Trajectory",
+    "hint": "Trajectory information.",
+    "fields": {
+      "simulation_box": {
+        "label": "Simulation Box",
+        "hint": "Information about the simulation box.",
+        "fields": {
+          "box_dimensions": {
+            "label": "Box Dimensions",
+            "hint": "The lengths/dimensions of the box used to simulate the system.",
+            "example": {
+              "value": [
+                10,
+                10,
+                10
+              ],
+              "value_unit": "nm"
+            },
+            "default_unit": "nm",
+            "typehint": "list"
+          },
+          "box_angles": {
+            "label": "Box Angles",
+            "hint": "The angles of the box used to simulate the system.",
+            "example": {
+              "value": [
+                90,
+                90,
+                90
+              ],
+              "value_unit": "degree"
+            },
+            "default_unit": "degree",
+            "typehint": "list"
+          },
+          "box_type": {
+            "label": "Box Type",
+            "hint": "Types of box used to simulate the system.",
+            "example": {
+              "value": "Cubic"
+            },
+            "typehint": "string"
+          },
+          "periodic_boundary_conditions": {
+            "label": "Periodic Boundary Conditions",
+            "hint": "What directions in a simulation cell periodic boundaries are set if they are turned on.",
+            "example": {
+              "value": "xyz"
+            },
+            "typehint": "string"
+          }
+        }
+      },
+      "trajectory_output": {
+        "label": "Trajectory Output",
+        "hint": "Information included in trajectory files.",
+        "fields": {
+          "positions": {
+            "label": "Positions?",
+            "hint": "Are per-frame positions included in the trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "forces": {
+            "label": "Forces?",
+            "hint": "Are per-frame forces included in the trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "velocities": {
+            "label": "Velocities?",
+            "hint": "Are per-frame velocities included in the trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "polarizable_charges": {
+            "label": "Polarizable Charges?",
+            "hint": "Are per-frame polarizable charges included in the trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "energies": {
+            "label": "Energies?",
+            "hint": "Are per-frame energies included in the trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "water": {
+            "label": "Water?",
+            "hint": "Are water molecules included in the trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "replica": {
+            "label": "Replica?",
+            "hint": "Is this trajectory a replica of another provided trajectory?",
+            "typehint": "boolean",
+            "example": {
+              "value": "True"
+            }
+          },
+          "frame_count": {
+            "label": "Frame Count",
+            "hint": "Total number of snapshots that make up a trajectory.",
+            "typehint": "integer",
+            "placeholder": "1",
+            "example": {
+              "value": 10000
+            }
+          }
+        }
+      }
+    }
+  },
   "stages": {
     "label": "Stages",
     "hint": "Simulation stages",
@@ -562,434 +990,6 @@
             },
             "default_unit": "nm",
             "typehint": "list"
-          }
-        }
-      }
-    }
-  },
-  "topology": {
-    "label": "Topology",
-    "hint": "Topology information.",
-    "fields": {
-      "connectivity": {
-        "label": "Connectivity",
-        "hint": "Particle connectivity information",
-        "fields": {
-          "bonds": {
-            "label": "Bonds?",
-            "hint": "Are bond parameters present in the topology?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "dihedrals": {
-            "label": "Dihedrals?",
-            "hint": "Are dihedral parameters present in the topology?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          }
-        }
-      },
-      "particles": {
-        "label": "Particles",
-        "hint": "Particles information",
-        "fields": {
-          "masses": {
-            "label": "Masses?",
-            "hint": "Are masses present in the topology?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "fixed_charges": {
-            "label": "Fixed Charges?",
-            "hint": "Are fixed charges on atoms included in the topology?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "system_charge": {
-            "label": "System Charge",
-            "hint": "Total electrostatic charge of the system given by the elementary charge (e).",
-            "example": {
-              "value": 0.0,
-              "value_unit": "e"
-            },
-            "default_unit": "e",
-            "typehint": "float"
-          },
-          "coarse_grained": {
-            "label": "Coarse Grained?",
-            "hint": "Are atoms coarse-grained?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "resolution": {
-            "label": "Resolution",
-            "hint": "Resolution of simulated molecules.",
-            "example": {
-              "value": "All Atom"
-            },
-            "typehint": "string"
-          }
-        }
-      }
-    }
-  },
-  "trajectory": {
-    "label": "Trajectory",
-    "hint": "Trajectory information.",
-    "fields": {
-      "simulation_box": {
-        "label": "Simulation Box",
-        "hint": "Information about the simulation box.",
-        "fields": {
-          "box_dimensions": {
-            "label": "Box Dimensions",
-            "hint": "The lengths/dimensions of the box used to simulate the system.",
-            "example": {
-              "value": [
-                10,
-                10,
-                10
-              ],
-              "value_unit": "nm"
-            },
-            "default_unit": "nm",
-            "typehint": "list"
-          },
-          "box_angles": {
-            "label": "Box Angles",
-            "hint": "The angles of the box used to simulate the system.",
-            "example": {
-              "value": [
-                90,
-                90,
-                90
-              ],
-              "value_unit": "degree"
-            },
-            "default_unit": "degree",
-            "typehint": "list"
-          },
-          "box_type": {
-            "label": "Box Type",
-            "hint": "Types of box used to simulate the system.",
-            "example": {
-              "value": "Cubic"
-            },
-            "typehint": "string"
-          },
-          "periodic_boundary_conditions": {
-            "label": "Periodic Boundary Conditions",
-            "hint": "What directions in a simulation cell periodic boundaries are set if they are turned on.",
-            "example": {
-              "value": "xyz"
-            },
-            "typehint": "string"
-          }
-        }
-      },
-      "trajectory_output": {
-        "label": "Trajectory Output",
-        "hint": "Information included in trajectory files.",
-        "fields": {
-          "positions": {
-            "label": "Positions?",
-            "hint": "Are per-frame positions included in the trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "forces": {
-            "label": "Forces?",
-            "hint": "Are per-frame forces included in the trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "velocities": {
-            "label": "Velocities?",
-            "hint": "Are per-frame velocities included in the trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "polarizable_charges": {
-            "label": "Polarizable Charges?",
-            "hint": "Are per-frame polarizable charges included in the trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "energies": {
-            "label": "Energies?",
-            "hint": "Are per-frame energies included in the trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "water": {
-            "label": "Water?",
-            "hint": "Are water molecules included in the trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "replica": {
-            "label": "Replica?",
-            "hint": "Is this trajectory a replica of another provided trajectory?",
-            "typehint": "boolean",
-            "example": {
-              "value": "True"
-            }
-          },
-          "frame_count": {
-            "label": "Frame Count",
-            "hint": "Total number of snapshots that make up a trajectory.",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 10000
-            }
-          }
-        }
-      }
-    }
-  },
-  "composition": {
-    "label": "Composition",
-    "hint": "Composition of simulated system.",
-    "fields": {
-      "system_counts": {
-        "label": "System Counts",
-        "hint": "Entity counts across the simulated system.",
-        "fields": {
-          "total_molecule_count": {
-            "label": "Total Molecule Count",
-            "hint": "Total number of simulated molecules, defined as bonded atoms or beads.",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 1
-            }
-          },
-          "total_atom_count": {
-            "label": "Total Atom Count",
-            "hint": "Total number of atoms in the simulation.",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 1
-            }
-          },
-          "unique_molecule_count": {
-            "label": "Unique Molecule Count",
-            "hint": "Number of unique simulated molecules, defined as bonded atoms or beads.",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 1
-            }
-          },
-          "salt_concentration": {
-            "label": "Salt Concentration",
-            "hint": "Concentration of salt in the solution.",
-            "example": {
-              "value": 0.1,
-              "value_unit": "M"
-            },
-            "default_unit": "M",
-            "typehint": "float"
-          }
-        }
-      },
-      "molecule_ID": {
-        "label": "Molecule ID",
-        "hint": "Persistent identifier of a molecule being simulated.",
-        "fields": {
-          "PDB_ID": {
-            "label": "PDB ID",
-            "hint": "Protein Data Bank identifier",
-            "typehint": "string",
-            "placeholder": "2VB1",
-            "example": {
-              "value": "2VB1"
-            }
-          },
-          "UNIPROT_ID": {
-            "label": "UNIPROT ID",
-            "hint": "UniProt accession ID",
-            "typehint": "string",
-            "placeholder": "P0DP23",
-            "example": {
-              "value": "P0DP23"
-            }
-          },
-          "SMILES": {
-            "label": "SMILES",
-            "hint": "Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",
-            "typehint": "string",
-            "placeholder": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
-            "example": {
-              "value": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
-            }
-          },
-          "InChI": {
-            "label": "InChI",
-            "hint": "The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information",
-            "typehint": "string",
-            "placeholder": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",
-            "example": {
-              "value": "InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3"
-            }
-          },
-          "InChIKey": {
-            "label": "InChIKey",
-            "hint": "The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",
-            "typehint": "string",
-            "placeholder": "RYYVLZVUVIJVGH-UHFFFAOYSA-N",
-            "example": {
-              "value": "RYYVLZVUVIJVGH-UHFFFAOYSA-N"
-            }
-          },
-          "alphafold_ID": {
-            "label": "AlphaFold ID",
-            "hint": "AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",
-            "typehint": "string",
-            "placeholder": "AF-P12345-F1",
-            "example": {
-              "value": "AF-P12345-F1"
-            }
-          },
-          "PubChem_CID": {
-            "label": "PubChem CID",
-            "hint": "PubChem CID of chemical molecules and their activities against biological assays.",
-            "typehint": "string",
-            "placeholder": "100101",
-            "example": {
-              "value": "100101"
-            }
-          },
-          "protein_sequence": {
-            "label": "Protein Sequence",
-            "hint": "One letter sequence for protein amino acids.",
-            "typehint": "string",
-            "placeholder": "DRVYIHPF",
-            "example": {
-              "value": "DRVYIHPF"
-            }
-          },
-          "nucleic_sequence": {
-            "label": "Nucleic Sequence",
-            "hint": "One letter sequence for nucleic acid nucleotides.",
-            "typehint": "string",
-            "placeholder": "ATGCATCGATCGATCGATCG",
-            "example": {
-              "value": "ATGCATCGATCGATCGATCG"
-            }
-          },
-          "predicted_structure": {
-            "label": "Predicted Structure?",
-            "hint": "Are the molecule positions derived from a prediction?",
-            "typehint": "boolean",
-            "placeholder": "True",
-            "example": {
-              "value": "True"
-            }
-          },
-          "modified": {
-            "label": "Modified?",
-            "hint": "Has the initial model been modified from the original?",
-            "typehint": "boolean",
-            "placeholder": "True",
-            "example": {
-              "value": "True"
-            }
-          },
-          "molecular_formula": {
-            "label": "Molecular Formula",
-            "hint": "The molecular formula of a molecule\\",
-            "typehint": "string",
-            "placeholder": "C8H10N4O2",
-            "example": {
-              "value": "C8H10N4O2"
-            }
-          },
-          "molecular_weight": {
-            "label": "Molecular Weight",
-            "hint": "The molecular weight of a molecule.",
-            "example": {
-              "value": 18.0,
-              "value_unit": "g/mol"
-            },
-            "default_unit": "g/mol",
-            "typehint": "float"
-          },
-          "molecule_charge": {
-            "label": "Molecule Charge",
-            "hint": "Electrostatic charge of a molecule.",
-            "example": {
-              "value": -1.0,
-              "value_unit": "e"
-            },
-            "default_unit": "e",
-            "typehint": "float"
-          },
-          "molecule_count": {
-            "label": "Molecule Count",
-            "hint": "Number of instances of a given molecule, defined as bonded atoms or beads.",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 1
-            }
-          },
-          "atom_count": {
-            "label": "Atom Count",
-            "hint": "Number of atoms in a molecule.",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 1
-            }
-          },
-          "monomer_count": {
-            "label": "Monomer Count",
-            "hint": "Number of monomeric units in a polymer(e.g. protein or nucleic acid).",
-            "typehint": "integer",
-            "placeholder": "1",
-            "example": {
-              "value": 1
-            }
-          },
-          "simulated_particle_names": {
-            "label": "Simulated Particle Names",
-            "hint": "List of particle names (e.g. atoms or beads) that describe a simulated molecule",
-            "typehint": "string",
-            "placeholder": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",
-            "example": {
-              "value": "CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B"
-            }
-          },
-          "simulated_molecule_name": {
-            "label": "Simulated Molecule Name",
-            "hint": "Molecule name used in the simulation.",
-            "typehint": "string",
-            "placeholder": "POPS"
           }
         }
       }

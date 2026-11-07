@@ -248,3 +248,99 @@ def test_main_unknown_command_raises(monkeypatch, tmp_path):
     monkeypatch.setattr(mod, "parse_args", lambda: _args("nope"))
     with pytest.raises(ValueError):
         mod.main()
+
+
+def test_repo_root_falls_back_to_module_location(monkeypatch, tmp_path):
+    """Use the package location when the working directory lacks the schema."""
+    monkeypatch.chdir(tmp_path)
+
+    assert mod.repo_root() == mod.Path(mod.__file__).resolve().parents[2]
+
+
+def test_run_invokes_subprocess(monkeypatch, tmp_path):
+    """Run commands with the requested working directory and failure checking."""
+    called = {}
+    monkeypatch.setattr(
+        mod.subprocess,
+        "run",
+        lambda cmd, **kwargs: called.update(cmd=cmd, **kwargs),
+    )
+
+    mod.run(["tool", "arg"], cwd=tmp_path)
+
+    assert called == {"cmd": ["tool", "arg"], "cwd": tmp_path, "check": True}
+
+
+@pytest.mark.parametrize(
+    ("generator", "interface"),
+    [
+        (mod.generate_project, None),
+        (mod.generate_jsonld, "jsonld"),
+        (mod.generate_jsonschema, "jsonschema"),
+    ],
+)
+def test_project_generators_build_expected_command(
+    monkeypatch, tmp_path, generator, interface
+):
+    """Pass each project-generation command the schema and output directory."""
+    paths = mod.ArtifactPaths(repo_root=tmp_path, schema_name="demo")
+    called = {}
+    monkeypatch.setattr(
+        mod, "run", lambda cmd, cwd=None: called.update(cmd=cmd, cwd=cwd)
+    )
+
+    generator(paths)
+
+    assert called["cmd"][0] == "gen-project"
+    assert called["cmd"][-1] == "java" if interface is None else True
+    if interface is not None:
+        assert called["cmd"][1:3] == ["-I", interface]
+    assert called["cwd"] == tmp_path
+
+
+def test_generate_invenio_marshmallow_writes_generated_code(monkeypatch, tmp_path):
+    """Create the Invenio output directory and write generated code."""
+    paths = mod.ArtifactPaths(repo_root=tmp_path, schema_name="demo")
+
+    class FakeGenerator:
+        def __init__(self, schema_path):
+            assert schema_path == str(paths.schema_path)
+
+        def generate(self):
+            return "# generated"
+
+    monkeypatch.setattr(mod, "MarshmallowGenerator", FakeGenerator)
+
+    mod.generate_invenio_marshmallow(paths)
+
+    assert (paths.project_dir / "invenio" / "biosimdb_fields.py").read_text() == (
+        "# generated"
+    )
+
+
+def test_parse_args_accepts_schema_name_and_verify_docs(monkeypatch):
+    """Parse global schema options and verify subcommand options."""
+    monkeypatch.setattr(
+        "sys.argv",
+        ["generate-artifacts", "--schema-name", "demo", "verify", "--include-docs"],
+    )
+
+    args = mod.parse_args()
+
+    assert (args.schema_name, args.command, args.include_docs) == (
+        "demo",
+        "verify",
+        True,
+    )
+
+
+def test_main_dispatches_jsonschema(monkeypatch, tmp_path):
+    """Dispatch the jsonschema subcommand to its generator."""
+    monkeypatch.setattr(mod, "parse_args", lambda: _args("jsonschema"))
+    monkeypatch.setattr(mod, "repo_root", lambda: tmp_path)
+    called = []
+    monkeypatch.setattr(mod, "generate_jsonschema", lambda paths: called.append(paths))
+
+    mod.main()
+
+    assert called == [mod.ArtifactPaths(tmp_path, "biosim_schema")]

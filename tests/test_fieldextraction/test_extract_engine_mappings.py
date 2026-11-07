@@ -1,3 +1,4 @@
+import argparse
 import json
 
 from biosim_schema.fieldextraction.extract_engine_mappings import MappingsExtractor
@@ -213,3 +214,108 @@ def test_walks_nested_class_paths(tmp_path):
     assert result["forward"]["gromacs"]["SimulationMetadata.settings.seed"] == [
         {"key": "ld-seed", "value": "42"}
     ]
+
+
+def test_enum_mapping_with_multiple_values_and_multivalued_slot(tmp_path):
+    """Index each enum mapping value and mark the reverse path multivalued."""
+    schema = {
+        "classes": [{"name": "SimulationMetadata", "slots": ["ensemble"]}],
+        "slots": [
+            {
+                "name": "ensemble",
+                "range": "Ensemble",
+                "multivalued": True,
+                "annotations": [],
+            }
+        ],
+        "enums": [
+            {
+                "name": "Ensemble",
+                "permissible_values": [
+                    {
+                        "text": "NPT",
+                        "annotations": [
+                            {
+                                "tag": "engine_mapping",
+                                "value": [
+                                    {
+                                        "engine": "gromacs",
+                                        "key": "pcoupl",
+                                        "value": ["berendsen", "parrinello"],
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ],
+            }
+        ],
+    }
+
+    result = MappingsExtractor(str(_write_json(tmp_path, schema))).extract()
+    path = "SimulationMetadata.ensemble"
+    reverse = result["reverse"]["gromacs"]["pcoupl"]
+
+    assert reverse["by_path"][path] == {
+        "berendsen": ["NPT"],
+        "parrinello": ["NPT"],
+    }
+    assert reverse["path_metadata"][path] == {"multivalued": True}
+
+
+def test_mapping_without_key_is_ignored(tmp_path):
+    """Skip mappings that do not declare an engine key."""
+    schema = {
+        "classes": [{"name": "SimulationMetadata", "slots": ["time"]}],
+        "slots": [
+            {
+                "name": "time",
+                "range": "float",
+                "annotations": [
+                    {"tag": "engine_mapping", "value": [{"engine": "gromacs"}]}
+                ],
+            }
+        ],
+        "enums": [],
+    }
+
+    result = MappingsExtractor(str(_write_json(tmp_path, schema))).extract()
+
+    assert result == {"forward": {}, "reverse": {}}
+
+
+def test_main_writes_output_file(tmp_path, monkeypatch):
+    """Write formatted mapping JSON when an output path is supplied."""
+    import biosim_schema.fieldextraction.extract_engine_mappings as mod
+
+    schema_path = _write_json(tmp_path, {"classes": [], "slots": [], "enums": []})
+    output_path = tmp_path / "mappings.json"
+    monkeypatch.setattr(
+        mod,
+        "parse_args",
+        lambda: argparse.Namespace(
+            jsonldschema=str(schema_path), output=str(output_path)
+        ),
+    )
+
+    mod.main()
+
+    assert json.loads(output_path.read_text()) == {"forward": {}, "reverse": {}}
+
+
+def test_main_prints_output_without_output_path(tmp_path, monkeypatch, capsys):
+    """Print formatted mapping JSON when no output path is supplied."""
+    import argparse
+
+    import biosim_schema.fieldextraction.extract_engine_mappings as mod
+
+    schema_path = _write_json(tmp_path, {"classes": [], "slots": [], "enums": []})
+    monkeypatch.setattr(
+        mod,
+        "parse_args",
+        lambda: argparse.Namespace(jsonldschema=str(schema_path), output=None),
+    )
+
+    mod.main()
+
+    assert json.loads(capsys.readouterr().out) == {"forward": {}, "reverse": {}}

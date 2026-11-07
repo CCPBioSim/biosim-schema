@@ -1,5 +1,5 @@
 # metamodel_version: 1.12.0
-# version: 1.1.0
+# version: 1.2.0
 BASE <https://CCPBioSim.ac.uk/biosim-schema/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -292,7 +292,8 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#GAFF2>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#OPLS>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#GROMOS>
-             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#CHARMM> ] ? ;
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#CHARMM>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotentialName#MARTINI> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/GeneralPotential> ] ?
@@ -390,7 +391,8 @@ linkml:Sparqlpath xsd:string
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> CLOSED {
     (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/lipid_potential_name> [
-             <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotentialName#LIPID21> ] ? ;
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotentialName#LIPID21>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotentialName#MARTINI> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/LipidPotential> ] ?
@@ -573,7 +575,8 @@ linkml:Sparqlpath xsd:string
 <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> CLOSED {
     (  $<https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential_tes> ( 
           <https://CCPBioSim.ac.uk/biosim-schema/potentials/polymer_potential_name> [
-             <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotentialName#LignAmb25> ] ? ;
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotentialName#LignAmb25>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotentialName#MARTINI> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/PolymerPotential> ] ?
@@ -679,7 +682,9 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#phosaa14SB>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#phosaa19SB>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff14SB_modAA>
-             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff19SB_modAA> ] ? ;
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#ff19SB_modAA>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#MARTINI>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotentialName#CALVADOS> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/ProteinPotential> ] ?
@@ -696,7 +701,8 @@ linkml:Sparqlpath xsd:string
           <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#antechamber>
           <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#pyMSMT>
           <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#mdgx>
-          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#parmed> ] ? ;
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#parmed>
+          <https://CCPBioSim.ac.uk/biosim-schema/stages/SetupTool#CHARMM-GUI> ] ? ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/stages/Setup> ] ?
     )
 }
@@ -746,12 +752,12 @@ linkml:Sparqlpath xsd:string
 }
 
 <SimulationMetadata> CLOSED {
-    (  $<SimulationMetadata_tes> (  <stages> @<https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> ? ;
-          <settings> @<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> ? ;
-          <observables> @<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables> ? ;
+    (  $<SimulationMetadata_tes> (  <composition> @<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> ? ;
           <topology> @<https://CCPBioSim.ac.uk/biosim-schema/topology/TopologyMetadata> ? ;
           <trajectory> @<https://CCPBioSim.ac.uk/biosim-schema/trajectory/TrajectoryMetadata> ? ;
-          <composition> @<https://CCPBioSim.ac.uk/biosim-schema/composition/SystemComposition> ? ;
+          <stages> @<https://CCPBioSim.ac.uk/biosim-schema/stages/SimulationStages> ? ;
+          <settings> @<https://CCPBioSim.ac.uk/biosim-schema/settings/SimulationSettings> ? ;
+          <observables> @<https://CCPBioSim.ac.uk/biosim-schema/observables/SimulationObservables> ? ;
           <potentials> @<https://CCPBioSim.ac.uk/biosim-schema/potentials/PotentialMetadata> ? ;
           <compute> @<https://CCPBioSim.ac.uk/biosim-schema/compute/ComputationalEnvironment> ? ;
           <files> @<https://CCPBioSim.ac.uk/biosim-schema/files/FileMetadata> * ;
@@ -1027,7 +1033,8 @@ linkml:Sparqlpath xsd:string
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#SPCE>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#SPCEB>
              <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#SPC/Fw>
-             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#q-SPC/Fw> ] ? ;
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#q-SPC/Fw>
+             <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotentialName#MARTINI> ] ? ;
           <https://CCPBioSim.ac.uk/biosim-schema/composition/modified> @linkml:Boolean ?
        ) ;
        rdf:type [ <https://CCPBioSim.ac.uk/biosim-schema/potentials/WaterPotential> ] ?

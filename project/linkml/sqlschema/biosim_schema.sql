@@ -1,12 +1,12 @@
 -- # Class: SimulationMetadata Description: root class for biosim-schema
 --     * Slot: id
 --     * Slot: biosim_schema_version Description: Version of biosim-schema used to populate metadata.
+--     * Slot: composition_id Description: Composition of simulated system.
+--     * Slot: topology_id Description: Topology information.
+--     * Slot: trajectory_id Description: Trajectory information.
 --     * Slot: stages_id Description: Simulation stages
 --     * Slot: settings_id Description: Simulation settings
 --     * Slot: observables_id Description: Simulation observables.
---     * Slot: topology_id Description: Topology information.
---     * Slot: trajectory_id Description: Trajectory information.
---     * Slot: composition_id Description: Composition of simulated system.
 --     * Slot: potentials_id Description: Force field potentials used to describe simulated particles.
 --     * Slot: compute_id Description: Computational environment information.
 -- # Class: LengthQuantity Description: A quantity representing length.
@@ -902,8 +902,8 @@ CREATE TABLE "VectorLengthQuantity_vector_value" (
 	PRIMARY KEY ("VectorLengthQuantity_id", vector_value),
 	FOREIGN KEY("VectorLengthQuantity_id") REFERENCES "VectorLengthQuantity" (id)
 );
-CREATE INDEX "ix_VectorLengthQuantity_vector_value_vector_value" ON "VectorLengthQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorLengthQuantity_vector_value_VectorLengthQuantity_id" ON "VectorLengthQuantity_vector_value" ("VectorLengthQuantity_id");
+CREATE INDEX "ix_VectorLengthQuantity_vector_value_vector_value" ON "VectorLengthQuantity_vector_value" (vector_value);
 
 CREATE TABLE "VectorAngleQuantity_vector_value" (
 	"VectorAngleQuantity_id" INTEGER,
@@ -929,8 +929,8 @@ CREATE TABLE "VectorPressureQuantity_vector_value" (
 	PRIMARY KEY ("VectorPressureQuantity_id", vector_value),
 	FOREIGN KEY("VectorPressureQuantity_id") REFERENCES "VectorPressureQuantity" (id)
 );
-CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
 CREATE INDEX "ix_VectorPressureQuantity_vector_value_vector_value" ON "VectorPressureQuantity_vector_value" (vector_value);
+CREATE INDEX "ix_VectorPressureQuantity_vector_value_VectorPressureQuantity_id" ON "VectorPressureQuantity_vector_value" ("VectorPressureQuantity_id");
 
 CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	"VectorTemperatureQuantity_id" INTEGER,
@@ -938,8 +938,8 @@ CREATE TABLE "VectorTemperatureQuantity_vector_value" (
 	PRIMARY KEY ("VectorTemperatureQuantity_id", vector_value),
 	FOREIGN KEY("VectorTemperatureQuantity_id") REFERENCES "VectorTemperatureQuantity" (id)
 );
-CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_vector_value" ON "VectorTemperatureQuantity_vector_value" (vector_value);
 CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_VectorTemperatureQuantity_id" ON "VectorTemperatureQuantity_vector_value" ("VectorTemperatureQuantity_id");
+CREATE INDEX "ix_VectorTemperatureQuantity_vector_value_vector_value" ON "VectorTemperatureQuantity_vector_value" (vector_value);
 
 CREATE TABLE "VectorTimeQuantity_vector_value" (
 	"VectorTimeQuantity_id" INTEGER,
@@ -974,8 +974,8 @@ CREATE TABLE "Production_simulation_tool" (
 	PRIMARY KEY ("Production_id", simulation_tool),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_tool_Production_id" ON "Production_simulation_tool" ("Production_id");
 CREATE INDEX "ix_Production_simulation_tool_simulation_tool" ON "Production_simulation_tool" (simulation_tool);
+CREATE INDEX "ix_Production_simulation_tool_Production_id" ON "Production_simulation_tool" ("Production_id");
 
 CREATE TABLE "Production_simulation_software" (
 	"Production_id" INTEGER,
@@ -983,8 +983,8 @@ CREATE TABLE "Production_simulation_software" (
 	PRIMARY KEY ("Production_id", simulation_software),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
 CREATE INDEX "ix_Production_simulation_software_Production_id" ON "Production_simulation_software" ("Production_id");
+CREATE INDEX "ix_Production_simulation_software_simulation_software" ON "Production_simulation_software" (simulation_software);
 
 CREATE TABLE "Production_simulation_method" (
 	"Production_id" INTEGER,
@@ -992,8 +992,8 @@ CREATE TABLE "Production_simulation_method" (
 	PRIMARY KEY ("Production_id", simulation_method),
 	FOREIGN KEY("Production_id") REFERENCES "Production" (id)
 );
-CREATE INDEX "ix_Production_simulation_method_Production_id" ON "Production_simulation_method" ("Production_id");
 CREATE INDEX "ix_Production_simulation_method_simulation_method" ON "Production_simulation_method" (simulation_method);
+CREATE INDEX "ix_Production_simulation_method_Production_id" ON "Production_simulation_method" ("Production_id");
 
 CREATE TABLE "Analysis_analysis_tool" (
 	"Analysis_id" INTEGER,
@@ -1001,8 +1001,8 @@ CREATE TABLE "Analysis_analysis_tool" (
 	PRIMARY KEY ("Analysis_id", analysis_tool),
 	FOREIGN KEY("Analysis_id") REFERENCES "Analysis" (id)
 );
-CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 CREATE INDEX "ix_Analysis_analysis_tool_Analysis_id" ON "Analysis_analysis_tool" ("Analysis_id");
+CREATE INDEX "ix_Analysis_analysis_tool_analysis_tool" ON "Analysis_analysis_tool" (analysis_tool);
 
 CREATE TABLE "Analysis_analysis_software" (
 	"Analysis_id" INTEGER,
@@ -1108,8 +1108,8 @@ CREATE TABLE "Minimisation_minimisation_algorithm" (
 	PRIMARY KEY ("Minimisation_id", minimisation_algorithm),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_minimisation_algorithm_Minimisation_id" ON "Minimisation_minimisation_algorithm" ("Minimisation_id");
 CREATE INDEX "ix_Minimisation_minimisation_algorithm_minimisation_algorithm" ON "Minimisation_minimisation_algorithm" (minimisation_algorithm);
+CREATE INDEX "ix_Minimisation_minimisation_algorithm_Minimisation_id" ON "Minimisation_minimisation_algorithm" ("Minimisation_id");
 
 CREATE TABLE "Minimisation_simulation_tool" (
 	"Minimisation_id" INTEGER,
@@ -1117,8 +1117,8 @@ CREATE TABLE "Minimisation_simulation_tool" (
 	PRIMARY KEY ("Minimisation_id", simulation_tool),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_simulation_tool_Minimisation_id" ON "Minimisation_simulation_tool" ("Minimisation_id");
 CREATE INDEX "ix_Minimisation_simulation_tool_simulation_tool" ON "Minimisation_simulation_tool" (simulation_tool);
+CREATE INDEX "ix_Minimisation_simulation_tool_Minimisation_id" ON "Minimisation_simulation_tool" ("Minimisation_id");
 
 CREATE TABLE "Minimisation_simulation_software" (
 	"Minimisation_id" INTEGER,
@@ -1126,27 +1126,27 @@ CREATE TABLE "Minimisation_simulation_software" (
 	PRIMARY KEY ("Minimisation_id", simulation_software),
 	FOREIGN KEY("Minimisation_id") REFERENCES "Minimisation" (id)
 );
-CREATE INDEX "ix_Minimisation_simulation_software_simulation_software" ON "Minimisation_simulation_software" (simulation_software);
 CREATE INDEX "ix_Minimisation_simulation_software_Minimisation_id" ON "Minimisation_simulation_software" ("Minimisation_id");
+CREATE INDEX "ix_Minimisation_simulation_software_simulation_software" ON "Minimisation_simulation_software" (simulation_software);
 
 CREATE TABLE "SimulationMetadata" (
 	id INTEGER NOT NULL,
 	biosim_schema_version TEXT,
+	composition_id INTEGER,
+	topology_id INTEGER,
+	trajectory_id INTEGER,
 	stages_id INTEGER,
 	settings_id INTEGER,
 	observables_id INTEGER,
-	topology_id INTEGER,
-	trajectory_id INTEGER,
-	composition_id INTEGER,
 	potentials_id INTEGER,
 	compute_id INTEGER,
 	PRIMARY KEY (id),
+	FOREIGN KEY(composition_id) REFERENCES "SystemComposition" (id),
+	FOREIGN KEY(topology_id) REFERENCES "TopologyMetadata" (id),
+	FOREIGN KEY(trajectory_id) REFERENCES "TrajectoryMetadata" (id),
 	FOREIGN KEY(stages_id) REFERENCES "SimulationStages" (id),
 	FOREIGN KEY(settings_id) REFERENCES "SimulationSettings" (id),
 	FOREIGN KEY(observables_id) REFERENCES "SimulationObservables" (id),
-	FOREIGN KEY(topology_id) REFERENCES "TopologyMetadata" (id),
-	FOREIGN KEY(trajectory_id) REFERENCES "TrajectoryMetadata" (id),
-	FOREIGN KEY(composition_id) REFERENCES "SystemComposition" (id),
 	FOREIGN KEY(potentials_id) REFERENCES "PotentialMetadata" (id),
 	FOREIGN KEY(compute_id) REFERENCES "ComputationalEnvironment" (id)
 );

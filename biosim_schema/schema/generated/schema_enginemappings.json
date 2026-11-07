@@ -1,6 +1,239 @@
 {
   "forward": {
+    "toptrajparser": {
+      "SimulationMetadata.composition.system_counts.total_molecule_count": [
+        {
+          "key": "total_molecule_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.system_counts.total_atom_count": [
+        {
+          "key": "total_atom_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.system_counts.unique_molecule_count": [
+        {
+          "key": "unique_molecule_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.SMILES": [
+        {
+          "key": "SMILES",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.InChI": [
+        {
+          "key": "InChI",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.InChIKey": [
+        {
+          "key": "InChIKey",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.protein_sequence": [
+        {
+          "key": "protein_sequence",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.nucleic_sequence": [
+        {
+          "key": "nucleic_sequence",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.molecular_formula": [
+        {
+          "key": "molecular_formula",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.molecular_weight": [
+        {
+          "key": "molecular_weight",
+          "value": null,
+          "unit": "g/mol"
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.molecule_charge": [
+        {
+          "key": "molecule_charge",
+          "value": null,
+          "unit": "e"
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.molecule_count": [
+        {
+          "key": "molecule_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.atom_count": [
+        {
+          "key": "atom_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.monomer_count": [
+        {
+          "key": "monomer_count",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.simulated_particle_names": [
+        {
+          "key": "simulated_particle_names",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.composition.molecule_ID.simulated_molecule_name": [
+        {
+          "key": "simulated_molecule_name",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.topology.connectivity.bonds": [
+        {
+          "key": "bonds",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.topology.connectivity.dihedrals": [
+        {
+          "key": "dihedrals",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.topology.particles.masses": [
+        {
+          "key": "masses",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.topology.particles.fixed_charges": [
+        {
+          "key": "fixed_charges",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.topology.particles.system_charge": [
+        {
+          "key": "system_charge",
+          "value": null,
+          "unit": "e"
+        }
+      ],
+      "SimulationMetadata.topology.particles.coarse_grained": [
+        {
+          "key": "coarse_grained",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.trajectory.simulation_box.box_dimensions": [
+        {
+          "key": "box_dimensions",
+          "value": null,
+          "unit": "Ang"
+        }
+      ],
+      "SimulationMetadata.trajectory.simulation_box.box_angles": [
+        {
+          "key": "box_angles",
+          "value": null,
+          "unit": "degree"
+        }
+      ],
+      "SimulationMetadata.trajectory.simulation_box.box_type": {
+        "Cubic": [
+          {
+            "key": "box_type",
+            "value": "cubic"
+          }
+        ],
+        "Tetragonal": [
+          {
+            "key": "box_type",
+            "value": "tetragonal"
+          }
+        ],
+        "Orthorhombic": [
+          {
+            "key": "box_type",
+            "value": "orthorhombic"
+          }
+        ],
+        "Truncated Octahedron": [
+          {
+            "key": "box_type",
+            "value": "truncated octahedron"
+          }
+        ],
+        "Triclinic": [
+          {
+            "key": "box_type",
+            "value": "triclinic"
+          }
+        ]
+      },
+      "SimulationMetadata.trajectory.trajectory_output.positions": [
+        {
+          "key": "positions",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.trajectory.trajectory_output.forces": [
+        {
+          "key": "forces",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.trajectory.trajectory_output.velocities": [
+        {
+          "key": "velocities",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.trajectory.trajectory_output.water": [
+        {
+          "key": "water",
+          "value": null
+        }
+      ],
+      "SimulationMetadata.trajectory.trajectory_output.frame_count": [
+        {
+          "key": "frame_count",
+          "value": null
+        }
+      ]
+    },
     "gromacs": {
+      "SimulationMetadata.trajectory.simulation_box.periodic_boundary_conditions": {
+        "None": [
+          {
+            "key": "pbc",
+            "value": false
+          }
+        ],
+        "xyz": [
+          {
+            "key": "pbc",
+            "value": "xyz"
+          }
+        ],
+        "xy": [
+          {
+            "key": "pbc",
+            "value": "xy"
+          }
+        ]
+      },
       "SimulationMetadata.stages.minimisation.energy_tolerance": [
         {
           "key": "emtol",
@@ -372,27 +605,7 @@
           "value": null,
           "unit": "nm"
         }
-      ],
-      "SimulationMetadata.trajectory.simulation_box.periodic_boundary_conditions": {
-        "None": [
-          {
-            "key": "pbc",
-            "value": false
-          }
-        ],
-        "xyz": [
-          {
-            "key": "pbc",
-            "value": "xyz"
-          }
-        ],
-        "xy": [
-          {
-            "key": "pbc",
-            "value": "xy"
-          }
-        ]
-      }
+      ]
     },
     "amber": {
       "SimulationMetadata.stages.minimisation.energy_tolerance": [
@@ -686,223 +899,224 @@
           "unit": "K"
         }
       ]
-    },
-    "toptrajparser": {
-      "SimulationMetadata.topology.connectivity.bonds": [
-        {
-          "key": "bonds",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.topology.connectivity.dihedrals": [
-        {
-          "key": "dihedrals",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.topology.particles.masses": [
-        {
-          "key": "masses",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.topology.particles.fixed_charges": [
-        {
-          "key": "fixed_charges",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.topology.particles.system_charge": [
-        {
-          "key": "system_charge",
-          "value": null,
-          "unit": "e"
-        }
-      ],
-      "SimulationMetadata.topology.particles.coarse_grained": [
-        {
-          "key": "coarse_grained",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.trajectory.simulation_box.box_dimensions": [
-        {
-          "key": "box_dimensions",
-          "value": null,
-          "unit": "Ang"
-        }
-      ],
-      "SimulationMetadata.trajectory.simulation_box.box_angles": [
-        {
-          "key": "box_angles",
-          "value": null,
-          "unit": "degree"
-        }
-      ],
-      "SimulationMetadata.trajectory.simulation_box.box_type": {
-        "Cubic": [
-          {
-            "key": "box_type",
-            "value": "cubic"
-          }
-        ],
-        "Tetragonal": [
-          {
-            "key": "box_type",
-            "value": "tetragonal"
-          }
-        ],
-        "Orthorhombic": [
-          {
-            "key": "box_type",
-            "value": "orthorhombic"
-          }
-        ],
-        "Truncated Octahedron": [
-          {
-            "key": "box_type",
-            "value": "truncated octahedron"
-          }
-        ],
-        "Triclinic": [
-          {
-            "key": "box_type",
-            "value": "triclinic"
-          }
-        ]
-      },
-      "SimulationMetadata.trajectory.trajectory_output.positions": [
-        {
-          "key": "positions",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.trajectory.trajectory_output.forces": [
-        {
-          "key": "forces",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.trajectory.trajectory_output.velocities": [
-        {
-          "key": "velocities",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.trajectory.trajectory_output.water": [
-        {
-          "key": "water",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.trajectory.trajectory_output.frame_count": [
-        {
-          "key": "frame_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.system_counts.total_molecule_count": [
-        {
-          "key": "total_molecule_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.system_counts.total_atom_count": [
-        {
-          "key": "total_atom_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.system_counts.unique_molecule_count": [
-        {
-          "key": "unique_molecule_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.SMILES": [
-        {
-          "key": "SMILES",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.InChI": [
-        {
-          "key": "InChI",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.InChIKey": [
-        {
-          "key": "InChIKey",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.protein_sequence": [
-        {
-          "key": "protein_sequence",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.nucleic_sequence": [
-        {
-          "key": "nucleic_sequence",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.molecular_formula": [
-        {
-          "key": "molecular_formula",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.molecular_weight": [
-        {
-          "key": "molecular_weight",
-          "value": null,
-          "unit": "g/mol"
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.molecule_charge": [
-        {
-          "key": "molecule_charge",
-          "value": null,
-          "unit": "e"
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.molecule_count": [
-        {
-          "key": "molecule_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.atom_count": [
-        {
-          "key": "atom_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.monomer_count": [
-        {
-          "key": "monomer_count",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.simulated_particle_names": [
-        {
-          "key": "simulated_particle_names",
-          "value": null
-        }
-      ],
-      "SimulationMetadata.composition.molecule_ID.simulated_molecule_name": [
-        {
-          "key": "simulated_molecule_name",
-          "value": null
-        }
-      ]
     }
   },
   "reverse": {
+    "toptrajparser": {
+      "total_molecule_count": {
+        "by_path": {
+          "SimulationMetadata.composition.system_counts.total_molecule_count": {}
+        },
+        "path_metadata": {}
+      },
+      "total_atom_count": {
+        "by_path": {
+          "SimulationMetadata.composition.system_counts.total_atom_count": {}
+        },
+        "path_metadata": {}
+      },
+      "unique_molecule_count": {
+        "by_path": {
+          "SimulationMetadata.composition.system_counts.unique_molecule_count": {}
+        },
+        "path_metadata": {}
+      },
+      "SMILES": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.SMILES": {}
+        },
+        "path_metadata": {}
+      },
+      "InChI": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.InChI": {}
+        },
+        "path_metadata": {}
+      },
+      "InChIKey": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.InChIKey": {}
+        },
+        "path_metadata": {}
+      },
+      "protein_sequence": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.protein_sequence": {}
+        },
+        "path_metadata": {}
+      },
+      "nucleic_sequence": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.nucleic_sequence": {}
+        },
+        "path_metadata": {}
+      },
+      "molecular_formula": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.molecular_formula": {}
+        },
+        "path_metadata": {}
+      },
+      "molecular_weight": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.molecular_weight": {}
+        },
+        "path_metadata": {}
+      },
+      "molecule_charge": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.molecule_charge": {}
+        },
+        "path_metadata": {}
+      },
+      "molecule_count": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.molecule_count": {}
+        },
+        "path_metadata": {}
+      },
+      "atom_count": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.atom_count": {}
+        },
+        "path_metadata": {}
+      },
+      "monomer_count": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.monomer_count": {}
+        },
+        "path_metadata": {}
+      },
+      "simulated_particle_names": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.simulated_particle_names": {}
+        },
+        "path_metadata": {}
+      },
+      "simulated_molecule_name": {
+        "by_path": {
+          "SimulationMetadata.composition.molecule_ID.simulated_molecule_name": {}
+        },
+        "path_metadata": {}
+      },
+      "bonds": {
+        "by_path": {
+          "SimulationMetadata.topology.connectivity.bonds": {}
+        },
+        "path_metadata": {}
+      },
+      "dihedrals": {
+        "by_path": {
+          "SimulationMetadata.topology.connectivity.dihedrals": {}
+        },
+        "path_metadata": {}
+      },
+      "masses": {
+        "by_path": {
+          "SimulationMetadata.topology.particles.masses": {}
+        },
+        "path_metadata": {}
+      },
+      "fixed_charges": {
+        "by_path": {
+          "SimulationMetadata.topology.particles.fixed_charges": {}
+        },
+        "path_metadata": {}
+      },
+      "system_charge": {
+        "by_path": {
+          "SimulationMetadata.topology.particles.system_charge": {}
+        },
+        "path_metadata": {}
+      },
+      "coarse_grained": {
+        "by_path": {
+          "SimulationMetadata.topology.particles.coarse_grained": {}
+        },
+        "path_metadata": {}
+      },
+      "box_dimensions": {
+        "by_path": {
+          "SimulationMetadata.trajectory.simulation_box.box_dimensions": {}
+        },
+        "path_metadata": {}
+      },
+      "box_angles": {
+        "by_path": {
+          "SimulationMetadata.trajectory.simulation_box.box_angles": {}
+        },
+        "path_metadata": {}
+      },
+      "box_type": {
+        "by_path": {
+          "SimulationMetadata.trajectory.simulation_box.box_type": {
+            "cubic": [
+              "Cubic"
+            ],
+            "tetragonal": [
+              "Tetragonal"
+            ],
+            "orthorhombic": [
+              "Orthorhombic"
+            ],
+            "truncated octahedron": [
+              "Truncated Octahedron"
+            ],
+            "triclinic": [
+              "Triclinic"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
+      "positions": {
+        "by_path": {
+          "SimulationMetadata.trajectory.trajectory_output.positions": {}
+        },
+        "path_metadata": {}
+      },
+      "forces": {
+        "by_path": {
+          "SimulationMetadata.trajectory.trajectory_output.forces": {}
+        },
+        "path_metadata": {}
+      },
+      "velocities": {
+        "by_path": {
+          "SimulationMetadata.trajectory.trajectory_output.velocities": {}
+        },
+        "path_metadata": {}
+      },
+      "water": {
+        "by_path": {
+          "SimulationMetadata.trajectory.trajectory_output.water": {}
+        },
+        "path_metadata": {}
+      },
+      "frame_count": {
+        "by_path": {
+          "SimulationMetadata.trajectory.trajectory_output.frame_count": {}
+        },
+        "path_metadata": {}
+      }
+    },
     "gromacs": {
+      "pbc": {
+        "by_path": {
+          "SimulationMetadata.trajectory.simulation_box.periodic_boundary_conditions": {
+            "False": [
+              "None"
+            ],
+            "xyz": [
+              "xyz"
+            ],
+            "xy": [
+              "xy"
+            ]
+          }
+        },
+        "path_metadata": {}
+      },
       "emtol": {
         "by_path": {
           "SimulationMetadata.stages.minimisation.energy_tolerance": {}
@@ -1216,22 +1430,6 @@
           "SimulationMetadata.observables.simulation_averages.average_volume_vector": {}
         },
         "path_metadata": {}
-      },
-      "pbc": {
-        "by_path": {
-          "SimulationMetadata.trajectory.simulation_box.periodic_boundary_conditions": {
-            "False": [
-              "None"
-            ],
-            "xyz": [
-              "xyz"
-            ],
-            "xy": [
-              "xy"
-            ]
-          }
-        },
-        "path_metadata": {}
       }
     },
     "amber": {
@@ -1494,204 +1692,6 @@
       "temp": {
         "by_path": {
           "SimulationMetadata.settings.thermostat.target_temperature": {}
-        },
-        "path_metadata": {}
-      }
-    },
-    "toptrajparser": {
-      "bonds": {
-        "by_path": {
-          "SimulationMetadata.topology.connectivity.bonds": {}
-        },
-        "path_metadata": {}
-      },
-      "dihedrals": {
-        "by_path": {
-          "SimulationMetadata.topology.connectivity.dihedrals": {}
-        },
-        "path_metadata": {}
-      },
-      "masses": {
-        "by_path": {
-          "SimulationMetadata.topology.particles.masses": {}
-        },
-        "path_metadata": {}
-      },
-      "fixed_charges": {
-        "by_path": {
-          "SimulationMetadata.topology.particles.fixed_charges": {}
-        },
-        "path_metadata": {}
-      },
-      "system_charge": {
-        "by_path": {
-          "SimulationMetadata.topology.particles.system_charge": {}
-        },
-        "path_metadata": {}
-      },
-      "coarse_grained": {
-        "by_path": {
-          "SimulationMetadata.topology.particles.coarse_grained": {}
-        },
-        "path_metadata": {}
-      },
-      "box_dimensions": {
-        "by_path": {
-          "SimulationMetadata.trajectory.simulation_box.box_dimensions": {}
-        },
-        "path_metadata": {}
-      },
-      "box_angles": {
-        "by_path": {
-          "SimulationMetadata.trajectory.simulation_box.box_angles": {}
-        },
-        "path_metadata": {}
-      },
-      "box_type": {
-        "by_path": {
-          "SimulationMetadata.trajectory.simulation_box.box_type": {
-            "cubic": [
-              "Cubic"
-            ],
-            "tetragonal": [
-              "Tetragonal"
-            ],
-            "orthorhombic": [
-              "Orthorhombic"
-            ],
-            "truncated octahedron": [
-              "Truncated Octahedron"
-            ],
-            "triclinic": [
-              "Triclinic"
-            ]
-          }
-        },
-        "path_metadata": {}
-      },
-      "positions": {
-        "by_path": {
-          "SimulationMetadata.trajectory.trajectory_output.positions": {}
-        },
-        "path_metadata": {}
-      },
-      "forces": {
-        "by_path": {
-          "SimulationMetadata.trajectory.trajectory_output.forces": {}
-        },
-        "path_metadata": {}
-      },
-      "velocities": {
-        "by_path": {
-          "SimulationMetadata.trajectory.trajectory_output.velocities": {}
-        },
-        "path_metadata": {}
-      },
-      "water": {
-        "by_path": {
-          "SimulationMetadata.trajectory.trajectory_output.water": {}
-        },
-        "path_metadata": {}
-      },
-      "frame_count": {
-        "by_path": {
-          "SimulationMetadata.trajectory.trajectory_output.frame_count": {}
-        },
-        "path_metadata": {}
-      },
-      "total_molecule_count": {
-        "by_path": {
-          "SimulationMetadata.composition.system_counts.total_molecule_count": {}
-        },
-        "path_metadata": {}
-      },
-      "total_atom_count": {
-        "by_path": {
-          "SimulationMetadata.composition.system_counts.total_atom_count": {}
-        },
-        "path_metadata": {}
-      },
-      "unique_molecule_count": {
-        "by_path": {
-          "SimulationMetadata.composition.system_counts.unique_molecule_count": {}
-        },
-        "path_metadata": {}
-      },
-      "SMILES": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.SMILES": {}
-        },
-        "path_metadata": {}
-      },
-      "InChI": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.InChI": {}
-        },
-        "path_metadata": {}
-      },
-      "InChIKey": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.InChIKey": {}
-        },
-        "path_metadata": {}
-      },
-      "protein_sequence": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.protein_sequence": {}
-        },
-        "path_metadata": {}
-      },
-      "nucleic_sequence": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.nucleic_sequence": {}
-        },
-        "path_metadata": {}
-      },
-      "molecular_formula": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.molecular_formula": {}
-        },
-        "path_metadata": {}
-      },
-      "molecular_weight": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.molecular_weight": {}
-        },
-        "path_metadata": {}
-      },
-      "molecule_charge": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.molecule_charge": {}
-        },
-        "path_metadata": {}
-      },
-      "molecule_count": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.molecule_count": {}
-        },
-        "path_metadata": {}
-      },
-      "atom_count": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.atom_count": {}
-        },
-        "path_metadata": {}
-      },
-      "monomer_count": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.monomer_count": {}
-        },
-        "path_metadata": {}
-      },
-      "simulated_particle_names": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.simulated_particle_names": {}
-        },
-        "path_metadata": {}
-      },
-      "simulated_molecule_name": {
-        "by_path": {
-          "SimulationMetadata.composition.molecule_ID.simulated_molecule_name": {}
         },
         "path_metadata": {}
       }

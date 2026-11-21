@@ -6,7 +6,7 @@
     "https://CCPBioSim.github.io/biosim-schema"
   ],
   "id": "https://CCPBioSim.ac.uk/biosim-schema/",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "imports": [
     "linkml:types",
     "./components/biosim_quantities",
@@ -994,6 +994,10 @@
         {
           "text": "parmed",
           "description": "Provides a way to extract information about parameters defined in a parameter-topology file."
+        },
+        {
+          "text": "CHARMM-GUI",
+          "description": "A web-based graphical user interface that helps researchers build complex biomolecular systems and generate input files for molecular dynamics (MD) simulations."
         }
       ]
     },
@@ -2604,6 +2608,10 @@
         {
           "text": "q-SPC/Fw",
           "description": "qSPC/Fw parameters for flexible water models, for path-integral MD. Also know as SPG"
+        },
+        {
+          "text": "MARTINI",
+          "description": "Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies."
         }
       ]
     },
@@ -2672,6 +2680,14 @@
         {
           "text": "ff19SB_modAA",
           "description": "Force field with ff19SB for modified amino acids like selenomethionine, cyano-phenylalanine, and azido-phenylalanine, acetylated lysine and for the nitroxide spin-label methanesulfonothioate (MTSL)."
+        },
+        {
+          "text": "MARTINI",
+          "description": "Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies."
+        },
+        {
+          "text": "CALVADOS",
+          "description": "Used for intrisically disordered proteins and represents each amino acid residue with a single bead (typically centered at the C-alpha atom)"
         }
       ]
     },
@@ -2756,6 +2772,10 @@
         {
           "text": "LIPID21",
           "description": "An Amber lipid force field building on the modular nature of LIPID11, LIPID 14 and LIPID 17 to allow for tensionless lipid bilayer simulations in Amber."
+        },
+        {
+          "text": "MARTINI",
+          "description": "Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies."
         }
       ]
     },
@@ -2768,6 +2788,10 @@
         {
           "text": "LignAmb25",
           "description": "Force field that includes parameters for all common monolignol units and their associated linkages along with less commonly encountered units."
+        },
+        {
+          "text": "MARTINI",
+          "description": "Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies."
         }
       ]
     },
@@ -2800,6 +2824,10 @@
         {
           "text": "CHARMM",
           "description": "CHARMM (Chemistry at HARvard Macromolecular Mechanics) is a both a set of force fields and a software package for molecular dynamics simulations and analysis. Includes united atom (CHARMM19) and all atom (CHARMM22, CHARMM27, CHARMM36) force fields."
+        },
+        {
+          "text": "MARTINI",
+          "description": "Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies."
         }
       ]
     },
@@ -8582,12 +8610,12 @@
       "description": "root class for biosim-schema",
       "from_schema": "https://CCPBioSim.ac.uk/biosim-schema/",
       "slots": [
+        "composition",
+        "topology",
+        "trajectory",
         "stages",
         "settings",
         "observables",
-        "topology",
-        "trajectory",
-        "composition",
         "potentials",
         "compute",
         "files",
@@ -9933,7 +9961,7 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "biosim_schema.yaml",
-  "source_file_date": "2026-10-16T18:20:46",
+  "source_file_date": "2026-11-06T20:35:32",
   "source_file_size": 3327,
   "@type": "SchemaDefinition",
   "@context": [

@@ -246,6 +246,9 @@ enums:
       parmed:
         description:
           Provides a way to extract information about parameters defined in a parameter-topology file.
+      "CHARMM-GUI":
+        description:
+          A web-based graphical user interface that helps researchers build complex biomolecular systems and generate input files for molecular dynamics (MD) simulations.
 
 
   MinimisationAlgorithm:

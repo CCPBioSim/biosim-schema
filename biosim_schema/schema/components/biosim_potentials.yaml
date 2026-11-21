@@ -230,6 +230,9 @@ enums:
       "q-SPC/Fw":
         description:
           qSPC/Fw parameters for flexible water models, for path-integral MD. Also know as SPG
+      MARTINI:
+        description:
+          Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.
 
   ProteinPotentialName:
     description:
@@ -280,6 +283,12 @@ enums:
       ff19SB_modAA:
         description:
           Force field with ff19SB for modified amino acids like selenomethionine, cyano-phenylalanine, and azido-phenylalanine, acetylated lysine and for the nitroxide spin-label methanesulfonothioate (MTSL).
+      MARTINI:
+        description:
+          Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.
+      CALVADOS:
+        description:
+          Used for intrisically disordered proteins and represents each amino acid residue with a single bead (typically centered at the C-alpha atom)
 
   NucleicPotentialName:
     description:
@@ -340,6 +349,9 @@ enums:
       LIPID21:
         description:
           An Amber lipid force field building on the modular nature of LIPID11, LIPID 14 and LIPID 17 to allow for tensionless lipid bilayer simulations in Amber.
+      MARTINI:
+        description:
+          Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.
 
   PolymerPotentialName:
     description:
@@ -348,6 +360,10 @@ enums:
       LignAmb25:
         description:
           Force field that includes parameters for all common monolignol units and their associated linkages along with less commonly encountered units.
+      MARTINI:
+        description:
+          Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.
+
   GeneralPotentialName:
     description:
       Force fields used to parametrize molecules in a simulation.
@@ -370,6 +386,9 @@ enums:
       CHARMM:
         description:
           CHARMM (Chemistry at HARvard Macromolecular Mechanics) is a both a set of force fields and a software package for molecular dynamics simulations and analysis. Includes united atom (CHARMM19) and all atom (CHARMM22, CHARMM27, CHARMM36) force fields.
+      MARTINI:
+        description:
+          Mapped pseudo-atoms (typically ~4 heavy atoms per bead) using simplified Lennard-Jones (nonbonded) and bonded (harmonic/constraint) potentials calibrated to reproduce thermodynamic partition/hydration free energies.
 
   MachineLearnedPotentialName:
     description:

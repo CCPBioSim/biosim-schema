@@ -138,7 +138,7 @@ class MatrixQuantitySchema(Schema):
 
 
 class SetupSchema(Schema):
-    setup_tool = fields.String(validate=OneOf(['pdb4amber', 'prepareforleap', 'packmol', 'packmol_memgen', 'LEaP', 'antechamber', 'pyMSMT', 'mdgx', 'parmed']), allow_none=True)
+    setup_tool = fields.String(validate=OneOf(['pdb4amber', 'prepareforleap', 'packmol', 'packmol_memgen', 'LEaP', 'antechamber', 'pyMSMT', 'mdgx', 'parmed', 'CHARMM-GUI']), allow_none=True)
 
 
 class MinimisationSchema(Schema):
@@ -317,17 +317,17 @@ class TrajectoryMetadataSchema(Schema):
 
 
 class WaterPotentialSchema(Schema):
-    water_potential_name = fields.String(validate=OneOf(['OPC', 'OPC3', 'OPC3POL', 'POL3', 'TIP3P', 'TIP3PFB', 'TIP4PFB', 'TIP4P', 'TIP5P', 'TIP4PEW', 'SPCE', 'SPCEB', 'SPC/Fw', 'q-SPC/Fw']), allow_none=True)
+    water_potential_name = fields.String(validate=OneOf(['OPC', 'OPC3', 'OPC3POL', 'POL3', 'TIP3P', 'TIP3PFB', 'TIP4PFB', 'TIP4P', 'TIP5P', 'TIP4PEW', 'SPCE', 'SPCEB', 'SPC/Fw', 'q-SPC/Fw', 'MARTINI']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
 class ProteinPotentialSchema(Schema):
-    protein_potential_name = fields.String(validate=OneOf(['ff19SB', 'ff99SB', 'ff99SB-ILDN', 'ff99SB-disp', 'ff14SB', 'ff14SBonlysc', 'ff15ipq', 'fb15', 'ff03', 'ff03ua', 'phosaa10', 'phosaa14SB', 'phosaa19SB', 'ff14SB_modAA', 'ff19SB_modAA']), allow_none=True)
+    protein_potential_name = fields.String(validate=OneOf(['ff19SB', 'ff99SB', 'ff99SB-ILDN', 'ff99SB-disp', 'ff14SB', 'ff14SBonlysc', 'ff15ipq', 'fb15', 'ff03', 'ff03ua', 'phosaa10', 'phosaa14SB', 'phosaa19SB', 'ff14SB_modAA', 'ff19SB_modAA', 'MARTINI', 'CALVADOS']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
 class LipidPotentialSchema(Schema):
-    lipid_potential_name = fields.String(validate=OneOf(['LIPID21']), allow_none=True)
+    lipid_potential_name = fields.String(validate=OneOf(['LIPID21', 'MARTINI']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
@@ -342,12 +342,12 @@ class CarbohydratePotentialSchema(Schema):
 
 
 class PolymerPotentialSchema(Schema):
-    polymer_potential_name = fields.String(validate=OneOf(['LignAmb25']), allow_none=True)
+    polymer_potential_name = fields.String(validate=OneOf(['LignAmb25', 'MARTINI']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
 class GeneralPotentialSchema(Schema):
-    general_potential_name = fields.String(validate=OneOf(['gem.pmemd', 'GAFF', 'GAFF2', 'OPLS', 'GROMOS', 'CHARMM']), allow_none=True)
+    general_potential_name = fields.String(validate=OneOf(['gem.pmemd', 'GAFF', 'GAFF2', 'OPLS', 'GROMOS', 'CHARMM', 'MARTINI']), allow_none=True)
     modified = fields.Boolean(allow_none=True)
 
 
@@ -408,12 +408,12 @@ class FileMetadataSchema(Schema):
 
 
 class SimulationMetadataSchema(Schema):
+    composition = fields.Nested(SystemCompositionSchema, allow_none=True)
+    topology = fields.Nested(TopologyMetadataSchema, allow_none=True)
+    trajectory = fields.Nested(TrajectoryMetadataSchema, allow_none=True)
     stages = fields.Nested(SimulationStagesSchema, allow_none=True)
     settings = fields.Nested(SimulationSettingsSchema, allow_none=True)
     observables = fields.Nested(SimulationObservablesSchema, allow_none=True)
-    topology = fields.Nested(TopologyMetadataSchema, allow_none=True)
-    trajectory = fields.Nested(TrajectoryMetadataSchema, allow_none=True)
-    composition = fields.Nested(SystemCompositionSchema, allow_none=True)
     potentials = fields.Nested(PotentialMetadataSchema, allow_none=True)
     compute = fields.Nested(ComputationalEnvironmentSchema, allow_none=True)
     files = fields.List(fields.Nested(FileMetadataSchema), allow_none=True)
@@ -421,12 +421,12 @@ class SimulationMetadataSchema(Schema):
 
 
 FIELDS = {
+    "composition": fields.Nested(SystemCompositionSchema, allow_none=True),
+    "topology": fields.Nested(TopologyMetadataSchema, allow_none=True),
+    "trajectory": fields.Nested(TrajectoryMetadataSchema, allow_none=True),
     "stages": fields.Nested(SimulationStagesSchema, allow_none=True),
     "settings": fields.Nested(SimulationSettingsSchema, allow_none=True),
     "observables": fields.Nested(SimulationObservablesSchema, allow_none=True),
-    "topology": fields.Nested(TopologyMetadataSchema, allow_none=True),
-    "trajectory": fields.Nested(TrajectoryMetadataSchema, allow_none=True),
-    "composition": fields.Nested(SystemCompositionSchema, allow_none=True),
     "potentials": fields.Nested(PotentialMetadataSchema, allow_none=True),
     "compute": fields.Nested(ComputationalEnvironmentSchema, allow_none=True),
     "files": fields.List(fields.Nested(FileMetadataSchema), allow_none=True),
@@ -434,6 +434,225 @@ FIELDS = {
 }
 
 MAPPING = {
+    "composition": {
+        "type": "object",
+        "properties": {
+            "system_counts": {
+                "type": "object",
+                "properties": {
+                    "total_molecule_count": {
+                        "type": "integer"
+                    },
+                    "total_atom_count": {
+                        "type": "integer"
+                    },
+                    "unique_molecule_count": {
+                        "type": "integer"
+                    },
+                    "salt_concentration": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "double"
+                            },
+                            "value_unit": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            },
+            "molecule_ID": {
+                "type": "object",
+                "properties": {
+                    "PDB_ID": {
+                        "type": "text"
+                    },
+                    "UNIPROT_ID": {
+                        "type": "text"
+                    },
+                    "SMILES": {
+                        "type": "text"
+                    },
+                    "InChI": {
+                        "type": "text"
+                    },
+                    "InChIKey": {
+                        "type": "text"
+                    },
+                    "alphafold_ID": {
+                        "type": "text"
+                    },
+                    "PubChem_CID": {
+                        "type": "text"
+                    },
+                    "protein_sequence": {
+                        "type": "text"
+                    },
+                    "nucleic_sequence": {
+                        "type": "text"
+                    },
+                    "predicted_structure": {
+                        "type": "boolean"
+                    },
+                    "modified": {
+                        "type": "boolean"
+                    },
+                    "molecular_formula": {
+                        "type": "text"
+                    },
+                    "molecular_weight": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "double"
+                            },
+                            "value_unit": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "molecule_charge": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "double"
+                            },
+                            "value_unit": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "molecule_count": {
+                        "type": "integer"
+                    },
+                    "atom_count": {
+                        "type": "integer"
+                    },
+                    "monomer_count": {
+                        "type": "integer"
+                    },
+                    "simulated_particle_names": {
+                        "type": "text"
+                    },
+                    "simulated_molecule_name": {
+                        "type": "text"
+                    }
+                }
+            }
+        }
+    },
+    "topology": {
+        "type": "object",
+        "properties": {
+            "connectivity": {
+                "type": "object",
+                "properties": {
+                    "bonds": {
+                        "type": "boolean"
+                    },
+                    "dihedrals": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "particles": {
+                "type": "object",
+                "properties": {
+                    "masses": {
+                        "type": "boolean"
+                    },
+                    "fixed_charges": {
+                        "type": "boolean"
+                    },
+                    "system_charge": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "double"
+                            },
+                            "value_unit": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "coarse_grained": {
+                        "type": "boolean"
+                    },
+                    "resolution": {
+                        "type": "keyword"
+                    }
+                }
+            }
+        }
+    },
+    "trajectory": {
+        "type": "object",
+        "properties": {
+            "simulation_box": {
+                "type": "object",
+                "properties": {
+                    "box_dimensions": {
+                        "type": "object",
+                        "properties": {
+                            "vector_value": {
+                                "type": "double"
+                            },
+                            "value_unit": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "box_angles": {
+                        "type": "object",
+                        "properties": {
+                            "vector_value": {
+                                "type": "double"
+                            },
+                            "value_unit": {
+                                "type": "keyword"
+                            }
+                        }
+                    },
+                    "box_type": {
+                        "type": "keyword"
+                    },
+                    "periodic_boundary_conditions": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "trajectory_output": {
+                "type": "object",
+                "properties": {
+                    "positions": {
+                        "type": "boolean"
+                    },
+                    "forces": {
+                        "type": "boolean"
+                    },
+                    "velocities": {
+                        "type": "boolean"
+                    },
+                    "polarizable_charges": {
+                        "type": "boolean"
+                    },
+                    "energies": {
+                        "type": "boolean"
+                    },
+                    "water": {
+                        "type": "boolean"
+                    },
+                    "replica": {
+                        "type": "boolean"
+                    },
+                    "frame_count": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    },
     "stages": {
         "type": "object",
         "properties": {
@@ -852,225 +1071,6 @@ MAPPING = {
                                 "type": "keyword"
                             }
                         }
-                    }
-                }
-            }
-        }
-    },
-    "topology": {
-        "type": "object",
-        "properties": {
-            "connectivity": {
-                "type": "object",
-                "properties": {
-                    "bonds": {
-                        "type": "boolean"
-                    },
-                    "dihedrals": {
-                        "type": "boolean"
-                    }
-                }
-            },
-            "particles": {
-                "type": "object",
-                "properties": {
-                    "masses": {
-                        "type": "boolean"
-                    },
-                    "fixed_charges": {
-                        "type": "boolean"
-                    },
-                    "system_charge": {
-                        "type": "object",
-                        "properties": {
-                            "value": {
-                                "type": "double"
-                            },
-                            "value_unit": {
-                                "type": "keyword"
-                            }
-                        }
-                    },
-                    "coarse_grained": {
-                        "type": "boolean"
-                    },
-                    "resolution": {
-                        "type": "keyword"
-                    }
-                }
-            }
-        }
-    },
-    "trajectory": {
-        "type": "object",
-        "properties": {
-            "simulation_box": {
-                "type": "object",
-                "properties": {
-                    "box_dimensions": {
-                        "type": "object",
-                        "properties": {
-                            "vector_value": {
-                                "type": "double"
-                            },
-                            "value_unit": {
-                                "type": "keyword"
-                            }
-                        }
-                    },
-                    "box_angles": {
-                        "type": "object",
-                        "properties": {
-                            "vector_value": {
-                                "type": "double"
-                            },
-                            "value_unit": {
-                                "type": "keyword"
-                            }
-                        }
-                    },
-                    "box_type": {
-                        "type": "keyword"
-                    },
-                    "periodic_boundary_conditions": {
-                        "type": "keyword"
-                    }
-                }
-            },
-            "trajectory_output": {
-                "type": "object",
-                "properties": {
-                    "positions": {
-                        "type": "boolean"
-                    },
-                    "forces": {
-                        "type": "boolean"
-                    },
-                    "velocities": {
-                        "type": "boolean"
-                    },
-                    "polarizable_charges": {
-                        "type": "boolean"
-                    },
-                    "energies": {
-                        "type": "boolean"
-                    },
-                    "water": {
-                        "type": "boolean"
-                    },
-                    "replica": {
-                        "type": "boolean"
-                    },
-                    "frame_count": {
-                        "type": "integer"
-                    }
-                }
-            }
-        }
-    },
-    "composition": {
-        "type": "object",
-        "properties": {
-            "system_counts": {
-                "type": "object",
-                "properties": {
-                    "total_molecule_count": {
-                        "type": "integer"
-                    },
-                    "total_atom_count": {
-                        "type": "integer"
-                    },
-                    "unique_molecule_count": {
-                        "type": "integer"
-                    },
-                    "salt_concentration": {
-                        "type": "object",
-                        "properties": {
-                            "value": {
-                                "type": "double"
-                            },
-                            "value_unit": {
-                                "type": "keyword"
-                            }
-                        }
-                    }
-                }
-            },
-            "molecule_ID": {
-                "type": "object",
-                "properties": {
-                    "PDB_ID": {
-                        "type": "text"
-                    },
-                    "UNIPROT_ID": {
-                        "type": "text"
-                    },
-                    "SMILES": {
-                        "type": "text"
-                    },
-                    "InChI": {
-                        "type": "text"
-                    },
-                    "InChIKey": {
-                        "type": "text"
-                    },
-                    "alphafold_ID": {
-                        "type": "text"
-                    },
-                    "PubChem_CID": {
-                        "type": "text"
-                    },
-                    "protein_sequence": {
-                        "type": "text"
-                    },
-                    "nucleic_sequence": {
-                        "type": "text"
-                    },
-                    "predicted_structure": {
-                        "type": "boolean"
-                    },
-                    "modified": {
-                        "type": "boolean"
-                    },
-                    "molecular_formula": {
-                        "type": "text"
-                    },
-                    "molecular_weight": {
-                        "type": "object",
-                        "properties": {
-                            "value": {
-                                "type": "double"
-                            },
-                            "value_unit": {
-                                "type": "keyword"
-                            }
-                        }
-                    },
-                    "molecule_charge": {
-                        "type": "object",
-                        "properties": {
-                            "value": {
-                                "type": "double"
-                            },
-                            "value_unit": {
-                                "type": "keyword"
-                            }
-                        }
-                    },
-                    "molecule_count": {
-                        "type": "integer"
-                    },
-                    "atom_count": {
-                        "type": "integer"
-                    },
-                    "monomer_count": {
-                        "type": "integer"
-                    },
-                    "simulated_particle_names": {
-                        "type": "text"
-                    },
-                    "simulated_molecule_name": {
-                        "type": "text"
                     }
                 }
             }

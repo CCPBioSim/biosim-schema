@@ -45,12 +45,12 @@ classes:
     description: root class for biosim-schema
     tree_root: true
     slots:
+      - composition # class
+      - topology # class
+      - trajectory # class
       - stages # class
       - settings # class
       - observables # class
-      - topology # class
-      - trajectory # class
-      - composition # class
       - potentials # class
       - compute # class
       - files # class

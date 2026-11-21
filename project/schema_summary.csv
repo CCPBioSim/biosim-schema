@@ -1,4 +1,46 @@
 section,subsection_1,field,field_name,help_text,placeholder_text,default_unit,data_type,example
+composition,system_counts,total_molecule_count,Total Molecule Count,"Total number of simulated molecules, defined as bonded atoms or beads.",1,,integer,{'value': 1}
+composition,system_counts,total_atom_count,Total Atom Count,Total number of atoms in the simulation.,1,,integer,{'value': 1}
+composition,system_counts,unique_molecule_count,Unique Molecule Count,"Number of unique simulated molecules, defined as bonded atoms or beads.",1,,integer,{'value': 1}
+composition,system_counts,salt_concentration,Salt Concentration,Concentration of salt in the solution.,,M,float,"{'value': 0.1, 'value_unit': 'M'}"
+composition,molecule_ID,PDB_ID,PDB ID,Protein Data Bank identifier,2VB1,,string,{'value': '2VB1'}
+composition,molecule_ID,UNIPROT_ID,UNIPROT ID,UniProt accession ID,P0DP23,,string,{'value': 'P0DP23'}
+composition,molecule_ID,SMILES,SMILES,"Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",CN1C=NC2=C1C(=O)N(C(=O)N2C)C,,string,{'value': 'CN1C=NC2=C1C(=O)N(C(=O)N2C)C'}
+composition,molecule_ID,InChI,InChI,"The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information","InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",,string,"{'value': 'InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3'}"
+composition,molecule_ID,InChIKey,InChIKey,"The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",RYYVLZVUVIJVGH-UHFFFAOYSA-N,,string,{'value': 'RYYVLZVUVIJVGH-UHFFFAOYSA-N'}
+composition,molecule_ID,alphafold_ID,AlphaFold ID,"AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",AF-P12345-F1,,string,{'value': 'AF-P12345-F1'}
+composition,molecule_ID,PubChem_CID,PubChem CID,PubChem CID of chemical molecules and their activities against biological assays.,100101,,string,{'value': '100101'}
+composition,molecule_ID,protein_sequence,Protein Sequence,One letter sequence for protein amino acids.,DRVYIHPF,,string,{'value': 'DRVYIHPF'}
+composition,molecule_ID,nucleic_sequence,Nucleic Sequence,One letter sequence for nucleic acid nucleotides.,ATGCATCGATCGATCGATCG,,string,{'value': 'ATGCATCGATCGATCGATCG'}
+composition,molecule_ID,predicted_structure,Predicted Structure?,Are the molecule positions derived from a prediction?,True,,boolean,{'value': 'True'}
+composition,molecule_ID,modified,Modified?,Has the initial model been modified from the original?,True,,boolean,{'value': 'True'}
+composition,molecule_ID,molecular_formula,Molecular Formula,The molecular formula of a molecule\,C8H10N4O2,,string,{'value': 'C8H10N4O2'}
+composition,molecule_ID,molecular_weight,Molecular Weight,The molecular weight of a molecule.,,g/mol,float,"{'value': 18.0, 'value_unit': 'g/mol'}"
+composition,molecule_ID,molecule_charge,Molecule Charge,Electrostatic charge of a molecule.,,e,float,"{'value': -1.0, 'value_unit': 'e'}"
+composition,molecule_ID,molecule_count,Molecule Count,"Number of instances of a given molecule, defined as bonded atoms or beads.",1,,integer,{'value': 1}
+composition,molecule_ID,atom_count,Atom Count,Number of atoms in a molecule.,1,,integer,{'value': 1}
+composition,molecule_ID,monomer_count,Monomer Count,Number of monomeric units in a polymer(e.g. protein or nucleic acid).,1,,integer,{'value': 1}
+composition,molecule_ID,simulated_particle_names,Simulated Particle Names,List of particle names (e.g. atoms or beads) that describe a simulated molecule,"CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",,string,"{'value': 'CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B'}"
+composition,molecule_ID,simulated_molecule_name,Simulated Molecule Name,Molecule name used in the simulation.,POPS,,string,
+topology,connectivity,bonds,Bonds?,Are bond parameters present in the topology?,,,boolean,{'value': 'True'}
+topology,connectivity,dihedrals,Dihedrals?,Are dihedral parameters present in the topology?,,,boolean,{'value': 'True'}
+topology,particles,masses,Masses?,Are masses present in the topology?,,,boolean,{'value': 'True'}
+topology,particles,fixed_charges,Fixed Charges?,Are fixed charges on atoms included in the topology?,,,boolean,{'value': 'True'}
+topology,particles,system_charge,System Charge,Total electrostatic charge of the system given by the elementary charge (e).,,e,float,"{'value': 0.0, 'value_unit': 'e'}"
+topology,particles,coarse_grained,Coarse Grained?,Are atoms coarse-grained?,,,boolean,{'value': 'True'}
+topology,particles,resolution,Resolution,Resolution of simulated molecules.,,,string,{'value': 'All Atom'}
+trajectory,simulation_box,box_dimensions,Box Dimensions,The lengths/dimensions of the box used to simulate the system.,,nm,list,"{'value': [10, 10, 10], 'value_unit': 'nm'}"
+trajectory,simulation_box,box_angles,Box Angles,The angles of the box used to simulate the system.,,degree,list,"{'value': [90, 90, 90], 'value_unit': 'degree'}"
+trajectory,simulation_box,box_type,Box Type,Types of box used to simulate the system.,,,string,{'value': 'Cubic'}
+trajectory,simulation_box,periodic_boundary_conditions,Periodic Boundary Conditions,What directions in a simulation cell periodic boundaries are set if they are turned on.,,,string,{'value': 'xyz'}
+trajectory,trajectory_output,positions,Positions?,Are per-frame positions included in the trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,forces,Forces?,Are per-frame forces included in the trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,velocities,Velocities?,Are per-frame velocities included in the trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,polarizable_charges,Polarizable Charges?,Are per-frame polarizable charges included in the trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,energies,Energies?,Are per-frame energies included in the trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,water,Water?,Are water molecules included in the trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,replica,Replica?,Is this trajectory a replica of another provided trajectory?,,,boolean,{'value': 'True'}
+trajectory,trajectory_output,frame_count,Frame Count,Total number of snapshots that make up a trajectory.,1,,integer,{'value': 10000}
 stages,setup,setup_tool,Setup Tool,Tool used to setup a system for simulation.,,,string,{'value': 'pdb4amber'}
 stages,minimisation,energy_tolerance,Energy Tolerance,"Tolerance energy for when minimization stops, this is when the maximum force on any atom is less than this value (default is often 1000 kJ/mol/nm or 10−4kcal), given as a float.",,kJ/mol/nm,float,"{'value': 1000, 'value_unit': 'kJ/mol/nm'}"
 stages,minimisation,number_of_minimisation_steps,Number Of Minimisation Steps,"Number of integration steps performed during minimisation of the system, given as an integer.",,,integer,{'value': 5000}
@@ -50,48 +92,6 @@ observables,simulation_averages,average_pressure,Average Pressure,"Average press
 observables,simulation_averages,average_temperature,Average Temperature,"Average temperature sampled from the simulation, given as a float.",,K,float,"{'value': 300, 'value_unit': 'K'}"
 observables,simulation_averages,average_volume,Average Volume,"Average volume sampled from the simulation, given as a float.",,nm³,float,"{'value': 100, 'value_unit': 'nm³'}"
 observables,simulation_averages,average_volume_vector,Average Volume Vector,"Average volume sampled from the simulation, given as a list, (e.g. 10, 10, 10).",,nm,list,"{'value': [1, 1, 1], 'value_unit': 'nm'}"
-topology,connectivity,bonds,Bonds?,Are bond parameters present in the topology?,,,boolean,{'value': 'True'}
-topology,connectivity,dihedrals,Dihedrals?,Are dihedral parameters present in the topology?,,,boolean,{'value': 'True'}
-topology,particles,masses,Masses?,Are masses present in the topology?,,,boolean,{'value': 'True'}
-topology,particles,fixed_charges,Fixed Charges?,Are fixed charges on atoms included in the topology?,,,boolean,{'value': 'True'}
-topology,particles,system_charge,System Charge,Total electrostatic charge of the system given by the elementary charge (e).,,e,float,"{'value': 0.0, 'value_unit': 'e'}"
-topology,particles,coarse_grained,Coarse Grained?,Are atoms coarse-grained?,,,boolean,{'value': 'True'}
-topology,particles,resolution,Resolution,Resolution of simulated molecules.,,,string,{'value': 'All Atom'}
-trajectory,simulation_box,box_dimensions,Box Dimensions,The lengths/dimensions of the box used to simulate the system.,,nm,list,"{'value': [10, 10, 10], 'value_unit': 'nm'}"
-trajectory,simulation_box,box_angles,Box Angles,The angles of the box used to simulate the system.,,degree,list,"{'value': [90, 90, 90], 'value_unit': 'degree'}"
-trajectory,simulation_box,box_type,Box Type,Types of box used to simulate the system.,,,string,{'value': 'Cubic'}
-trajectory,simulation_box,periodic_boundary_conditions,Periodic Boundary Conditions,What directions in a simulation cell periodic boundaries are set if they are turned on.,,,string,{'value': 'xyz'}
-trajectory,trajectory_output,positions,Positions?,Are per-frame positions included in the trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,forces,Forces?,Are per-frame forces included in the trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,velocities,Velocities?,Are per-frame velocities included in the trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,polarizable_charges,Polarizable Charges?,Are per-frame polarizable charges included in the trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,energies,Energies?,Are per-frame energies included in the trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,water,Water?,Are water molecules included in the trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,replica,Replica?,Is this trajectory a replica of another provided trajectory?,,,boolean,{'value': 'True'}
-trajectory,trajectory_output,frame_count,Frame Count,Total number of snapshots that make up a trajectory.,1,,integer,{'value': 10000}
-composition,system_counts,total_molecule_count,Total Molecule Count,"Total number of simulated molecules, defined as bonded atoms or beads.",1,,integer,{'value': 1}
-composition,system_counts,total_atom_count,Total Atom Count,Total number of atoms in the simulation.,1,,integer,{'value': 1}
-composition,system_counts,unique_molecule_count,Unique Molecule Count,"Number of unique simulated molecules, defined as bonded atoms or beads.",1,,integer,{'value': 1}
-composition,system_counts,salt_concentration,Salt Concentration,Concentration of salt in the solution.,,M,float,"{'value': 0.1, 'value_unit': 'M'}"
-composition,molecule_ID,PDB_ID,PDB ID,Protein Data Bank identifier,2VB1,,string,{'value': '2VB1'}
-composition,molecule_ID,UNIPROT_ID,UNIPROT ID,UniProt accession ID,P0DP23,,string,{'value': 'P0DP23'}
-composition,molecule_ID,SMILES,SMILES,"Simplified Molecular Input Line Entry System (SMILES) ASCII-based line notation used to describe chemical structures. It represents molecular graphs with atoms and bonds, allowing software to convert these short strings into 2D or 3D models.",CN1C=NC2=C1C(=O)N(C(=O)N2C)C,,string,{'value': 'CN1C=NC2=C1C(=O)N(C(=O)N2C)C'}
-composition,molecule_ID,InChI,InChI,"The International Chemical Identifier (InChi) is a textual identifier for chemical substances, designed to provide a standard way to encode molecular information","InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3",,string,"{'value': 'InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3'}"
-composition,molecule_ID,InChIKey,InChIKey,"The condensed, 27 character InChIKey, which is a hashed version of the full InChI (using the SHA-256 algorithm), designed to allow for easy web searches of chemical compounds.",RYYVLZVUVIJVGH-UHFFFAOYSA-N,,string,{'value': 'RYYVLZVUVIJVGH-UHFFFAOYSA-N'}
-composition,molecule_ID,alphafold_ID,AlphaFold ID,"AlphaFold predicted protein structure identifier (AlphaFold DB, EMBL-EBI)",AF-P12345-F1,,string,{'value': 'AF-P12345-F1'}
-composition,molecule_ID,PubChem_CID,PubChem CID,PubChem CID of chemical molecules and their activities against biological assays.,100101,,string,{'value': '100101'}
-composition,molecule_ID,protein_sequence,Protein Sequence,One letter sequence for protein amino acids.,DRVYIHPF,,string,{'value': 'DRVYIHPF'}
-composition,molecule_ID,nucleic_sequence,Nucleic Sequence,One letter sequence for nucleic acid nucleotides.,ATGCATCGATCGATCGATCG,,string,{'value': 'ATGCATCGATCGATCGATCG'}
-composition,molecule_ID,predicted_structure,Predicted Structure?,Are the molecule positions derived from a prediction?,True,,boolean,{'value': 'True'}
-composition,molecule_ID,modified,Modified?,Has the initial model been modified from the original?,True,,boolean,{'value': 'True'}
-composition,molecule_ID,molecular_formula,Molecular Formula,The molecular formula of a molecule\,C8H10N4O2,,string,{'value': 'C8H10N4O2'}
-composition,molecule_ID,molecular_weight,Molecular Weight,The molecular weight of a molecule.,,g/mol,float,"{'value': 18.0, 'value_unit': 'g/mol'}"
-composition,molecule_ID,molecule_charge,Molecule Charge,Electrostatic charge of a molecule.,,e,float,"{'value': -1.0, 'value_unit': 'e'}"
-composition,molecule_ID,molecule_count,Molecule Count,"Number of instances of a given molecule, defined as bonded atoms or beads.",1,,integer,{'value': 1}
-composition,molecule_ID,atom_count,Atom Count,Number of atoms in a molecule.,1,,integer,{'value': 1}
-composition,molecule_ID,monomer_count,Monomer Count,Number of monomeric units in a polymer(e.g. protein or nucleic acid).,1,,integer,{'value': 1}
-composition,molecule_ID,simulated_particle_names,Simulated Particle Names,List of particle names (e.g. atoms or beads) that describe a simulated molecule,"CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B",,string,"{'value': 'CNO, PO4, GL1, GL2, C1A, D2A, C3A, C4A, C1B, C2B, C3B, C4B'}"
-composition,molecule_ID,simulated_molecule_name,Simulated Molecule Name,Molecule name used in the simulation.,POPS,,string,
 potentials,water_potential,water_potential_name,Water Potential Name,Force fields used to parametrize water molecules in a simulation.,,,string,{'value': 'TIP3P'}
 potentials,water_potential,modified,Modified?,Has the initial model been modified from the original?,True,,boolean,{'value': 'True'}
 potentials,protein_potential,protein_potential_name,Protein Potential Name,Force fields used to parametrize amino acids in proteins in a simulation.,,,string,{'value': 'ff19SB'}

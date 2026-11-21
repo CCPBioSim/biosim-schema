@@ -813,7 +813,8 @@
                 "GAFF2",
                 "OPLS",
                 "GROMOS",
-                "CHARMM"
+                "CHARMM",
+                "MARTINI"
             ],
             "title": "GeneralPotentialName",
             "type": "string"
@@ -1142,7 +1143,8 @@
         "LipidPotentialName": {
             "description": "Force fields used to parametrize lipids in a simulation.",
             "enum": [
-                "LIPID21"
+                "LIPID21",
+                "MARTINI"
             ],
             "title": "LipidPotentialName",
             "type": "string"
@@ -1867,7 +1869,8 @@
         "PolymerPotentialName": {
             "description": "Force fields used to parametrize polymers in a simulation.",
             "enum": [
-                "LignAmb25"
+                "LignAmb25",
+                "MARTINI"
             ],
             "title": "PolymerPotentialName",
             "type": "string"
@@ -2099,7 +2102,9 @@
                 "phosaa14SB",
                 "phosaa19SB",
                 "ff14SB_modAA",
-                "ff19SB_modAA"
+                "ff19SB_modAA",
+                "MARTINI",
+                "CALVADOS"
             ],
             "title": "ProteinPotentialName",
             "type": "string"
@@ -2146,7 +2151,8 @@
                 "antechamber",
                 "pyMSMT",
                 "mdgx",
-                "parmed"
+                "parmed",
+                "CHARMM-GUI"
             ],
             "title": "SetupTool",
             "type": "string"
@@ -3289,7 +3295,8 @@
                 "SPCE",
                 "SPCEB",
                 "SPC/Fw",
-                "q-SPC/Fw"
+                "q-SPC/Fw",
+                "MARTINI"
             ],
             "title": "WaterPotentialName",
             "type": "string"
